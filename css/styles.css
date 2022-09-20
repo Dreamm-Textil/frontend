@@ -174,9 +174,7 @@ font-size: 12px;
   padding: 0;
   box-sizing: border-box;
 }
-midle{
-  max-width: 1170px;
-}
+
 header {
   font-family: var(--ff-secondary);
   background: var(--clr-grey-10);
@@ -184,6 +182,7 @@ header {
   line-height: 1.5;
   font-size: 0.875rem;
   margin: 0;
+  min-height: 90px;
 }
 body {
   font-family: var(--ff-secondary);
@@ -214,9 +213,11 @@ a {
   }
 }
 main {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 1170px;
+  min-height: calc(100vh - 115.5px - 151px);
 }
 
 
@@ -416,6 +417,9 @@ nav .nav-header h2{
   border: 1px solid white;
   color: white;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .login-and-password{
   display: flex;
@@ -446,7 +450,7 @@ nav .nav-header h2{
   width: 100%;
   background-color: #E2E2E2;
 }
-.show-password-btn{
+.show-password-btn, .show-password-btn-regestration-page, .repeat-show-password-btn-regestration-page{
 border: none;
 background-color: #E2E2E2;
 cursor: pointer;
@@ -532,3 +536,89 @@ footer{
   color: white;
   font-size: 1rem;
 }
+
+/*-------------------------------------------------------- REGISTRATION PAGE -------------------------------------------------------- */ 
+
+.main-regestration-container{
+  margin-top: 20px;
+  font-size: 17px;
+  margin-top: 30px;
+}
+.main-regestration{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  margin: auto;
+  gap: 20px;
+  font-size: 12px;
+  margin-top: 30px;
+}
+.name-surname{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+}
+.phone-number, .gmail-addres, .password-registration-page, .repeat-password-registration-page{
+  width: 100%;
+}
+.input-name, .input-surname, .input-phone-number, .input-gmail-addres {
+  width: 100%;
+  height: 33px;
+  outline: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #E2E2E2;
+  border: 1px solid black;
+  font-size: 16px;
+}
+.regestration-btn-regestration-page{
+width: 100%;
+display: flex;
+justify-content: end;
+margin-top: 30px;
+}
+.button-regestration-btn-regestration-page{
+  background-color:#1E1E1E;
+  border: 1px solid white;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 200px;
+  max-width: 313px;
+  box-sizing: border-box;
+  max-height: 100px;
+  height: 46px;
+  transition: var(--transition);
+}
+.button-regestration-btn-regestration-page:hover{
+  background-color: #EA4C89;
+}
+.password-registration-page-container, .repeat-password-registration-page-container{
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  background-color:#E2E2E2;
+}
+.input-password-registration-page, .input-repeat-password-registration-page{
+  width: 100%;
+  height: 33px;
+  outline: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #E2E2E2;
+  border: none;
+  font-size: 16px;
+}
+
+.input.error{
+  border: 1px solid red;
+  transition: 0.4s;
+}
+

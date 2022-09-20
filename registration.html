@@ -12,20 +12,6 @@
     <title>Dream Textile</title>
 </head>
 <header>
-  <div class="intro">
-    <div class="video">
-      <video class="video-media" src="video.mp4" 
-      autoplay muted loop></video>
-    </div>
-    <div class="logo-container">
-      <div class="logo-text">
-        <h2>Dream Textile</h2>
-        <h3>Постільна білизна</h3>
-      </div>
-      <div class="button-allnewproduct">
-        <button class="allnewprod-btn">Усі новинки</button>
-      </div>
-    </div>
     <nav>
       <div class="header-links-container">
         <ul class="header-links">
@@ -78,20 +64,67 @@
             </button>
           </li>
         </ul>
-      </div>
     </nav>
-    
-  </div>
 </header>
 <main>
-  <h3>h1</h3>
-    <h3>asd</h3>
-    <h3>asd</h3>
-    
-    <h3>asd</h3>
-    <h3>asd</h3>
-    <i class="far fa-eye-slash"></i>
-    <i class="far fa-eye"></i>
+    <div class="main-regestration-container">
+        <div class="header-registration-page">
+            <h2>Реєстрація</h2>
+        </div>
+        <form class="js-form" action="" novalidate>
+            <div class="main-regestration">
+                <div class="name-surname">
+                    <div class="name">
+                        <h2>Ім'я</h2>
+                        <input class="input input-name js-input">
+                    </div>
+                    <div class="surname">
+                        <h2>Прізвище</h2>
+                        <input class="input input-surname js-input">
+                    </div>
+                </div>
+                <div class="phone-number">
+                    <h2>Телефон</h2>
+                    <input class="input input-phone-number js-input">
+                </div>
+                <div class="gmail-addres">
+                    <h2>Адреса електронної пошти</h2>
+                    <input class="input input-gmail-addres js-input">
+                </div>
+                <div class="password-registration-page">
+                    <h2>Пароль</h2>
+                    <div class="input password-registration-page-container js-input">
+                        <input type="password" id="PasswordRegistrationPage" class="input-password-registration-page js-input">
+                        <button type="button" class="show-password-btn-regestration-page" onclick="showPasswordRegistrationPage()">
+                            <span class="see-icon">
+                            <i class="far fa-eye"></i>
+                            </span>
+                            <span class="non-see-icon">
+                            <i class="far fa-eye-slash"></i>
+                            </span>
+                        </button> 
+                    </div>
+                </div>
+                <div class="repeat-password-registration-page">
+                    <h2>Повторити пароль</h2>
+                    <div class="input repeat-password-registration-page-container js-input">
+                        <input type="password" class="input-repeat-password-registration-page js-input" id="RepeatPasswordRegistrationPage">
+                        <button type="button" class="repeat-show-password-btn-regestration-page" onclick="showRepeatPasswordRegistrationPage()">
+                            <span class="see-icon">
+                            <i class="far fa-eye"></i>
+                            </span>
+                            <span class="non-see-icon">
+                            <i class="far fa-eye-slash"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="regestration-btn-regestration-page">
+                    <button type="submit" class="button-regestration-btn-regestration-page">Зареєструватися</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </main>
 <footer>
   <div class="footer-header">
