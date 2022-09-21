@@ -97,7 +97,7 @@ let formPasswordContainer = document.querySelector(".password-registration-page-
 let formRepeatPasswordContainer = document.querySelector(".repeat-password-registration-page-container")
 
 function validateEmail(email) {
-  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
@@ -117,7 +117,6 @@ form.onsubmit = function(){
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
   let passwordVal = formPassword.value;
   let passwordRepeatVal = formRepeatPassword.value;
-  console.log(passwordVal);
  
 
   formInputs.forEach(function(input){
@@ -132,12 +131,10 @@ form.onsubmit = function(){
   });
 
   if(emptyInputs.length !== 0){
-    console.log('inputs not filled');
     return false;
   }
 
   if (!validatePhone(phoneVal)) {
-    console.log('phone not valid');
     formPhone.classList.add('error');
     return false;
   } else {
@@ -145,7 +142,6 @@ form.onsubmit = function(){
   }
 
   if(!validateEmail(emailVal)){
-    console.log('email not valid');
     formEmail.classList.add('error');
     return false;
   }
@@ -154,7 +150,6 @@ form.onsubmit = function(){
   }
 
   if (validateCountry(emailVal)) {
-    console.log('email from Columbia');
     formEmail.classList.add('error');
     return false;
   } else {
@@ -171,7 +166,52 @@ form.onsubmit = function(){
     formRepeatPasswordContainer.classList.remove('error')
   }
 
+  let acceptRegestration = document.querySelector('.main-regestration-container');
+  acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
+                                    <div class ="header-after-registration">
+                                      <div class ="success-regestration-header">
+                                        <i class="far fa-check-circle"></i>
+                                        <h2>Успіх</h2>
+                                      </div>
+                                      <div class = "success-registration-main">
+                                        <h2>Вітаємо, Ваш акаунт успішно створенний</h2>
+                                      </div>
+                                      <div class = "succes-registration-footer">
+                                        <a href="index.html"> Продовжити </a>
+                                        <button>Увійти</button>
+                                    </div>
+                                  </div>`
+
+  // const formData = new FormData(this);
+
+  //   fetch('login.php', {
+  //     method: 'post',
+  //     body: formData
+  //   }).then(function(response){
+  //     return response.text();
+  //   }).then(function(text){
+  //     console.log(text);
+  //   }).catch(function(error){
+  //     console.error(error);
+  //   })
+ 
 }
+
+// form.addEventListener('submit', function(e){
+//   e.preventDefault();
+//   fetch('https://jsonplaceholder.typicode.com/posts', {
+//     method: 'POST',
+//     body: JSON.stringify({
+//       title: 'foo',
+//       body: 'bar',
+//       formPhone: formPhone.value,
+//     }),
+//   })
+//     .then((response) => response.json())
+//     .then((json) => console.log(json));
+// })
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------//
 
