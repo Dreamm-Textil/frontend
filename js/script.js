@@ -165,7 +165,7 @@ form.onsubmit = function(){
     formPasswordContainer.classList.remove('error');
     formRepeatPasswordContainer.classList.remove('error')
   }
-
+  
   let acceptRegestration = document.querySelector('.main-regestration-container');
   acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
                                     <div class ="header-after-registration">
@@ -177,39 +177,82 @@ form.onsubmit = function(){
                                         <h2>Вітаємо, Ваш акаунт успішно створенний</h2>
                                       </div>
                                       <div class = "succes-registration-footer">
-                                        <a href="index.html"> Продовжити </a>
-                                        <button>Увійти</button>
-                                    </div>
-                                  </div>`
+                                        <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
+                                        <button class="log-in-bt">Увійти<i class="fas fa-chevron-right"></i></button>
+                                     </div>
+                                  </div>
+                                  <div class="modal-overlay">
+                                  <div class="modal-container">
+                                      <div class="header-modal-log-in">
+                                      <h3>Вхід до особистого кабінету</h3>
+                                      </div>
+                                      <div class="login-and-password">
+                                        <input class="login" placeholder="Login">
+                                        <div class="password-container">
+                                          <input  type="password" class="password" placeholder="Password" value="" id="myInputPasswor">
+                                          <button class="show-password-bt" onclick="myFunction()">
+                                            <span class="see-icon">
+                                              <i class="far fa-eye"></i>
+                                            </span>
+                                            <span class="non-see-icon">
+                                              <i class="far fa-eye-slash"></i>
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                      <div class="login-and-password-btn">
+                                        <button class="autorization-btn">Авторизація</button>
+                                        <a href="registration.html" class="registration-btn">Реєстарція</a>
+                                        <div class="remebmer-me-btn">
+                                          <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
+                                        </div>
+                                      </div>
+                                      <button class="close-btn"><i class="fas fa-times"></i></button>
+                                  </div>
+                                </div> `
+                                
 
-  // const formData = new FormData(this);
+const modalBt = document.querySelector(".log-in-bt");
 
-  //   fetch('login.php', {
-  //     method: 'post',
-  //     body: formData
-  //   }).then(function(response){
-  //     return response.text();
-  //   }).then(function(text){
-  //     console.log(text);
-  //   }).catch(function(error){
-  //     console.error(error);
-  //   })
- 
+modalBt.addEventListener('click', function(){
+  modalOverlay.classList.toggle("open-modal");
+  console.log(123);
+  });
+  
+  closeBtn.addEventListener("click", function () {
+      modalOverlay.classList.remove("open-modal");
+  });
+
+  function myFunction() {
+    let x = document.getElementById("myInputPasswor");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  const btns = document.querySelectorAll(".show-password-bt");
+  btns.forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      const showPassword = e.currentTarget;
+      showPassword.classList.toggle("show-password");
+    })
+  })
+  
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: formName.value,
+        body: 'bar',
+        formPhone: formPhone.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
 }
 
-// form.addEventListener('submit', function(e){
-//   e.preventDefault();
-//   fetch('https://jsonplaceholder.typicode.com/posts', {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       title: 'foo',
-//       body: 'bar',
-//       formPhone: formPhone.value,
-//     }),
-//   })
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
-// })
+
 
 
 
