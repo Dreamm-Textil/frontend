@@ -43,8 +43,6 @@
 }
 
 
-
-
 .intro{
     max-height: 100vh;
     overflow: hidden;
@@ -92,7 +90,9 @@ left: 0;
 color: #B2B2B2;
 font-size: 12px;
 }
-
+.social-icons-phone-size{
+  display: none;
+}
 .header-links li a{
   color:#B2B2B2;
   font-size: 13px;
@@ -186,7 +186,6 @@ header {
 }
 body {
   font-family: var(--ff-secondary);
-  background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
@@ -255,13 +254,13 @@ nav .nav-header h2{
 .logo {
   height: 40px;
 }
-.links a {
+/* .links a {
   color: white;
   font-size: 1rem;
   display: block;
   padding: 0.5rem 1rem;
   transition: var(--transition);
-}
+} */
 .links a:hover {
   background: var(--clr-primary-8);
   color: #EA4C89;
@@ -450,12 +449,7 @@ nav .nav-header h2{
   width: 100%;
   background-color: #E2E2E2;
 }
-.show-password-btn, .show-password-btn-regestration-page, .repeat-show-password-btn-regestration-page{
-border: none;
-background-color: #E2E2E2;
-cursor: pointer;
-margin-right: 5px;
-}
+
 .remebmer-me-btn{
   display: flex;
   flex-direction: row;
@@ -537,211 +531,122 @@ footer{
   font-size: 1rem;
 }
 
-/*-------------------------------------------------------- REGISTRATION PAGE -------------------------------------------------------- */ 
 
-.main-regestration-container{
-  margin-top: 20px;
-  font-size: 17px;
-  margin-top: 30px;
+
+@media only screen and (max-width: 767px){
+  .header-links-container{
+    display: none;
+  }
+  .video{
+    margin-top: 46px;
+  }
+  .logo-container{
+    margin-top: 15px;
+  }
+  .logo-text > h2{
+    font-size: 26px;
+  }
+  .logo-text > h3{
+    font-size: 15px;
+  }
+  .allnewprod-btn {
+    width: 156px;
+    height: 42px;
+    font-size: 16px;
+  }
+  .logo-text{
+    margin-top: 20px;
+  }
+  .logo{
+    font-size: 21px;
+  }
+  .fa-bars{
+    font-size: 22px;
+  }
+  .nav-header{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+  }
+  .social-icons {
+    display: none;
+  }
+  .links a {
+    color: white;
+    font-size: 1rem;
+    display: block;
+    padding: 0.5rem 1rem;
+    transition: var(--transition);
+  }
+  .links a:hover {
+    background: var(--clr-primary-8);
+    color: #EA4C89;
+    padding-left: 1.5rem;
+  }
+  .links a {
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+  }
+  .links a:hover {
+    padding: 0;
+    background: transparent;
+  }
+  .social-icons-phone-size button {
+    margin: 0 0.5rem;
+    color: white;
+    transition: var(--transition);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .social-icons-phone-size button:hover {
+    color: #EA4C89;
+  }
+  .social-icons-phone-size{
+    display: flex;
+  }
+  .social-icons-phone-size {
+    display: flex;
+    margin-left: 60px;
+  }
+  .footer-header{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-links{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-header{
+    height: 146px;
+  }
+  .footer-nav > h3 {
+    color: white;
+    font-size: 12px;
+    margin-right: 58px;
+    width: 383px;
 }
-.main-regestration{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  max-width: 500px;
-  margin: auto;
-  gap: 20px;
-  font-size: 12px;
-  margin-top: 30px;
+.footer-logo {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: #1E1E1E;
+  font-size: 21px;
 }
-.name-surname{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 30px;
 }
-.phone-number, .gmail-addres, .password-registration-page, .repeat-password-registration-page{
-  width: 100%;
-}
-.input-name, .input-surname, .input-phone-number, .input-gmail-addres {
-  width: 100%;
-  height: 33px;
-  outline: none;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #E2E2E2;
-  border: 1px solid black;
-  font-size: 16px;
-}
-.regestration-btn-regestration-page{
-width: 100%;
-display: flex;
-justify-content: end;
-margin-top: 30px;
-}
-.button-regestration-btn-regestration-page{
-  background-color:#1E1E1E;
-  border: 1px solid white;
+.nav-button-index, .nav-button-about-us, .nav-button-delivery{
   color: white;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 200px;
-  max-width: 313px;
-  box-sizing: border-box;
-  max-height: 100px;
-  height: 46px;
+  font-size: 1rem;
+  display: block;
+  padding: 0.5rem 1rem;
   transition: var(--transition);
 }
-.button-regestration-btn-regestration-page:hover{
-  background-color: #EA4C89;
-}
-.password-registration-page-container, .repeat-password-registration-page-container{
-  display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-  background-color:#E2E2E2;
-}
-.input-password-registration-page, .input-repeat-password-registration-page{
-  width: 100%;
-  height: 33px;
-  outline: none;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #E2E2E2;
-  border: none;
-  font-size: 16px;
-}
-
-.input.error{
-  border: 1px solid red;
-  transition: 0.4s;
-}
-
-.main-regestration-container-after-registration{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 486px;
-  margin: auto;
-  margin-top: 100px;
-}
-.header-after-registration{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  width: 100%;
-  border: 1px solid #8BC34A;
-}
-.fa-check-circle{
-  color: white;
-  font-size: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.success-regestration-header{
-  width: 100%;
-  background-color: #8BC34A;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 30px;
-  gap: 10px;
-}
-.success-regestration-header > h2{
-  color: white;
-}
-.success-registration-main > h2{
-  color: #75758B;
-  font-size: 18px;
-}
-.success-registration-main{
-  margin-top: 20px;
-}
-.succes-registration-footer{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  box-sizing: border-box;
-  max-width: 490px;
-  width: 100%;
-  background-color: #8BC34A;
-  margin-top: 20px;
-  height: 71px;
-}
-.succes-registration-footer > a{
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:#8BC34A;
-  border: none;
-  transition: var(--transition);
-  width: 130px;
-  height: 36px;
-  font-size: 14px;
-  gap: 3px;
-  font-size: 16px;
-}
-.back-to-shop-after-regestration > i{
-  margin-left: 10px;
-  transition: transform 0.5s;
-}
-.back-to-shop-after-regestration:hover > i{
-transform: translateX(-5px);
-transition: transform 0.5s;
-}
-
-.back-to-shop-after-regestration{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.succes-registration-footer > button{
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color:#8BC34A;
-  transition: var(--transition);
-  width: 90px;
-  height: 36px;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  gap: 3px;
-  font-size: 16px;
-}
-.log-in-bt > i{
-  margin-right: 10px;
-  transition: transform 0.5s;
-}
-.log-in-bt:hover > i{
-transform: translateX(5px);
-transition: transform 0.5s;
-}
-
-
-/*------------------------------------------------------------------------------------------------------------------------------- */ 
-
-/*-------------------------------------------------------- ABOUT US PAGE -------------------------------------------------------- */ 
-
-.logo-about-us-container{
-  width: 100%;
-  height: 100%;
+.nav-button-index-click, .nav-button-about-us-click, .nav-button-delivery-click{
+  color:#EA4C89;
 }

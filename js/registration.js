@@ -8,6 +8,78 @@ let formPassword = document.querySelector(".input-password-registration-page");
 let formRepeatPassword = document.querySelector(".input-repeat-password-registration-page");
 let formPasswordContainer = document.querySelector(".password-registration-page-container")
 let formRepeatPasswordContainer = document.querySelector(".repeat-password-registration-page-container")
+const navToggle = document.querySelector(".nav-toggle");
+const links = document.querySelector(".links");
+const modalBtn = document.querySelector(".log-in-btn");
+const modalBtnPhoneSize = document.querySelector(".log-in-btn-phone-size");
+const modalOverlay = document.querySelector(".modal-overlay");
+const closeBtn = document.querySelector(".close-btn");
+const inputLogin = document.querySelector(".login");
+const inputPassword = document.querySelector(".password");
+let aboutUsBtn = document.querySelector('.nav-button-about-us');
+let indexBtn = document.querySelector('.nav-button-index');
+let deliveryBtn = document.querySelector('.nav-button-delivery');
+
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+
+
+navToggle.addEventListener('click', function(){
+    if(links.classList.contains('show-links')){
+        links.classList.remove('show-links')
+    } else {
+        links.classList.add("show-links");
+    }
+});
+
+modalBtn.addEventListener('click', function(){
+modalOverlay.classList.toggle("open-modal");
+});
+
+modalBtnPhoneSize.addEventListener('click', function(){
+  modalOverlay.classList.toggle("open-modal");
+  });
+
+closeBtn.addEventListener("click", function () {
+    modalOverlay.classList.remove("open-modal");
+});
+
+// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
+
+function myFunction() {
+  let x = document.getElementById("myInputPassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+const btns = document.querySelectorAll(".show-password-btn");
+btns.forEach(function(btn){
+  btn.addEventListener("click", function(e){
+    const showPassword = e.currentTarget;
+    showPassword.classList.toggle("show-password");
+  })
+})
+
+// ------------------------------------------------------------------------------------------------------------------------------------//
+
+const autorizationBtn = document.querySelector(".autorization-btn");
+autorizationBtn.addEventListener("click", function(){
+  let arrLogin = [];
+  let arrPassword = [];
+  arrLogin.push(inputLogin.value)
+  arrPassword.push(inputPassword.value);
+  console.log("Login:" + arrLogin.join('') + " " + "Password:" + arrPassword.join(''));
+})
+
+
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+
 
 function validateEmail(email) {
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -79,7 +151,7 @@ form.onsubmit = function(){
     formRepeatPasswordContainer.classList.remove('error')
   }
   
-  let acceptRegestration = document.querySelector('.main-regestration-container');
+  let acceptRegestration = document.querySelector('.main-regestration-contrainer-first');
   acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
                                     <div class ="header-after-registration">
                                       <div class ="success-regestration-header">
@@ -156,12 +228,11 @@ modalBt.addEventListener('click', function(){
     fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
       body: JSON.stringify({
-        formName: formName.value,
-        formSurname: formSurname.value,
-        formPhone: formPhone.value,
-        formEmail: formEmail.value,
-        formPassword: formPassword.value,
-        formRepeatPassword: formRepeatPassword.value
+        name: formName.value,
+        secondName: formSurname.value,
+        phoneNumber: formPhone.value,
+        email: formEmail.value,
+        password: formPassword.value
       }),
     })
       .then((response) => response.json())
