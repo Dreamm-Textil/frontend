@@ -249,6 +249,11 @@ modalBt.addEventListener('click', function(){
 
 fetch('http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration', {
   method: 'POST',
+  mode: "cors",
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json'
+  },
   body: JSON.stringify({
     "name": "Mes",
     "secondName": "Le",
@@ -256,16 +261,11 @@ fetch('http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration', {
     "phoneNumber": "+38089123465",
     "password": "carloAncheloti"
   }),
-  headers: {
-    'Content-type': 'application/json',
-    'Accept': 'application/json',
-  },
 })
   .then((response) => response.json())
   .then((json) => console.log(json));
 
-
- }
+}
 
   function showPasswordRegistrationPage() {
     let x = document.getElementById("PasswordRegistrationPage");
