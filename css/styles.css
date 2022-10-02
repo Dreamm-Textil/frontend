@@ -540,9 +540,6 @@ footer{
   .video{
     margin-top: 46px;
   }
-  .logo-container{
-    margin-top: 15px;
-  }
   .logo-text > h2{
     font-size: 26px;
   }
@@ -550,13 +547,9 @@ footer{
     font-size: 15px;
   }
   .allnewprod-btn {
-    width: 156px;
-    height: 42px;
-    font-size: 16px;
+    display: none;
   }
-  .logo-text{
-    margin-top: 20px;
-  }
+
   .logo{
     font-size: 21px;
   }
