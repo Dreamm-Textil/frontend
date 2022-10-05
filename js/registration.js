@@ -226,23 +226,23 @@ modalBt.addEventListener('click', function(){
   })
   
 
-// fetch('http://ec2-54-163-18-112.compute-1.amazonaws.com:8080/registration', {
-//   method: 'POST',
-//   mode: "cors",
-//   headers: {
-//     'Access-Control-Allow-Origin':'*',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//   name: formName.value,
-//   secondName: formSurname.value,
-//   phoneNumber: formPhone.value,
-//   email: formEmail.value, 
-//   password: formPassword.value
-//   }),
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
+fetch('http://ec2-54-163-18-112.compute-1.amazonaws.com:8080/registration', {
+  method: 'POST',
+  mode: "cors",
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  name: formName.value,
+  secondName: formSurname.value,
+  phoneNumber: formPhone.value,
+  email: formEmail.value, 
+  password: formPassword.value
+  }),
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));
 
 }
 
