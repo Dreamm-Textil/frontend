@@ -6,8 +6,8 @@ let formPhone = document.querySelector(".input-phone-number");
 let formEmail = document.querySelector(".input-gmail-addres");
 let formPassword = document.querySelector(".input-password-registration-page");
 let formRepeatPassword = document.querySelector(".input-repeat-password-registration-page");
-let formPasswordContainer = document.querySelector(".password-registration-page-container")
-let formRepeatPasswordContainer = document.querySelector(".repeat-password-registration-page-container")
+let formPasswordContainer = document.querySelector(".input-password-registration-page");
+let formRepeatPasswordContainer = document.querySelector(".input-repeat-password-registration-page");
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
 const modalBtn = document.querySelector(".log-in-btn");
@@ -97,59 +97,59 @@ function validatePhone(phone) {
 }
 
 form.onsubmit = function(){
-  // let emailVal = formEmail.value;
-  // let phoneVal = formPhone.value;
-  // let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-  // let passwordVal = formPassword.value;
-  // let passwordRepeatVal = formRepeatPassword.value;
+  let emailVal = formEmail.value;
+  let phoneVal = formPhone.value;
+  let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+  let passwordVal = formPassword.value;
+  let passwordRepeatVal = formRepeatPassword.value;
  
 
-  // formInputs.forEach(function(input){
-  //   if(input.value === ''){
-  //     input.classList.add('error');
-  //     formPasswordContainer.classList.add('error');
-  //     formRepeatPasswordContainer.classList.add('error');
-  //   }
-  //   else{
-  //     input.classList.remove('error');
-  //   }
-  // });
+  formInputs.forEach(function(input){
+    if(input.value === ''){
+      input.classList.add('error');
+      formPasswordContainer.classList.add('error');
+      formRepeatPasswordContainer.classList.add('error');
+    }
+    else{
+      input.classList.remove('error');
+    }
+  });
 
-  // if(emptyInputs.length !== 0){
-  //   return false;
-  // }
+  if(emptyInputs.length !== 0){
+    return false;
+  }
 
-  // if (!validatePhone(phoneVal)) {
-  //   formPhone.classList.add('error');
-  //   return false;
-  // } else {
-  //   formPhone.classList.remove('error');
-  // }
+  if (!validatePhone(phoneVal)) {
+    formPhone.classList.add('error');
+    return false;
+  } else {
+    formPhone.classList.remove('error');
+  }
 
-  // if(!validateEmail(emailVal)){
-  //   formEmail.classList.add('error');
-  //   return false;
-  // }
-  // else{
-  //   formEmail.classList.remove('error');
-  // }
+  if(!validateEmail(emailVal)){
+    formEmail.classList.add('error');
+    return false;
+  }
+  else{
+    formEmail.classList.remove('error');
+  }
 
-  // if (validateCountry(emailVal)) {
-  //   formEmail.classList.add('error');
-  //   return false;
-  // } else {
-  // formEmail.classList.remove('error');
-  // }
+  if (validateCountry(emailVal)) {
+    formEmail.classList.add('error');
+    return false;
+  } else {
+  formEmail.classList.remove('error');
+  }
 
-  // if(passwordVal !== passwordRepeatVal){
-  //   formPasswordContainer.classList.add('error');
-  //   formRepeatPasswordContainer.classList.add('error')
-  //   return false;
-  // }
-  // else{
-  //   formPasswordContainer.classList.remove('error');
-  //   formRepeatPasswordContainer.classList.remove('error')
-  // }
+  if(passwordVal !== passwordRepeatVal){
+    formPasswordContainer.classList.add('error');
+    formRepeatPasswordContainer.classList.add('error')
+    return false;
+  }
+  else{
+    formPasswordContainer.classList.remove('error');
+    formRepeatPasswordContainer.classList.remove('error')
+  }
   
   let acceptRegestration = document.querySelector('.main-regestration-contrainer-first');
   acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
@@ -225,45 +225,24 @@ modalBt.addEventListener('click', function(){
     })
   })
   
-//     fetch('http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration', {
-//     method: 'GET', 
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//         // name: formName.value,
-//         // secondName: formSurname.value,
-//         // phoneNumber: formPhone.value,
-//         // email: formEmail.value,
-//         // password: formPassword.value
-//         "name": "Mes",
-//         "secondName": "Le",
-//         "email": "messi@gmail.com",
-//         "phoneNumber": "+38089123465",
-//         "password": "carloAncheloti"
-//       }),
-//     })
-//       // .then((response) => response.json())
-//       .then((json) => console.log(json));
 
-fetch('http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration', {
-  method: 'POST',
-  mode: "cors",
-  headers: {
-    'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    "name": "Mes",
-    "secondName": "Le",
-    "email": "messi@gmail.com",
-    "phoneNumber": "+38089123465",
-    "password": "carloAncheloti"
-  }),
-})
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+// fetch('http://ec2-54-163-18-112.compute-1.amazonaws.com:8080/registration', {
+//   method: 'POST',
+//   mode: "cors",
+//   headers: {
+//     'Access-Control-Allow-Origin':'*',
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//   name: formName.value,
+//   secondName: formSurname.value,
+//   phoneNumber: formPhone.value,
+//   email: formEmail.value, 
+//   password: formPassword.value
+//   }),
+// })
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
 
 }
 
