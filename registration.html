@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about_us.css">
+    <link rel="stylesheet" href="css/regestration.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -32,6 +34,21 @@
         <!-- nav header -->
         <div class="nav-header">
           <a class = "logo" href="index.html">Dream Textile</a>
+          <ul class="social-icons-phone-size">
+            <li>
+              <button class="log-in-btn-phone-size"><i class="fas fa-user"></i> Увійти</button>
+            </li>
+            <li>
+              <button href="https://www.twitter.com">
+                <i class="far fa-heart"></i>
+              </button>
+            </li>
+            <li>
+              <button class="bagadge-shop">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+            </li>
+          </ul>
           <button class="nav-toggle">
             <i class="fas fa-bars"></i>
           </button>
@@ -39,13 +56,13 @@
         <!-- links -->
         <ul class="links">
           <li>
-            <a href="index.html">Каталог</a>
+            <a type ="button" class="nav-button-index" href="index.html">Каталог</a>
           </li>
           <li>
-            <a href="about_us.html">Про нас</a>
+            <a type ="button" class="nav-button-about-us" href="about_us.html">Про нас</a>
           </li>
           <li>
-            <a href="projects.html">Доставка та оплата</a>
+            <a type ="button" class="nav-button-delivery" href="delivery.html">Доставка та оплата</a>
           </li>
           
         </ul>
@@ -67,21 +84,20 @@
     </nav>
 </header>
 <main>
+  <div class="main-regestration-contrainer-first">
     <div class="main-regestration-container">
         <div class="header-registration-page">
             <h2>Реєстрація</h2>
         </div>
-        <form class="js-form" action="" novalidate>
+        <form class="js-form" method="POST" action="http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration" novalidate>
             <div class="main-regestration">
-                <div class="name-surname">
-                    <div class="name">
-                        <h2>Ім'я</h2>
-                        <input class="input input-name js-input">
-                    </div>
-                    <div class="surname">
-                        <h2>Прізвище</h2>
-                        <input class="input input-surname js-input">
-                    </div>
+                <div class="name">
+                    <h2>Ім'я</h2>
+                    <input class="input input-name js-input">
+                </div>
+                <div class="surname">
+                    <h2>Прізвище</h2>
+                    <input class="input input-surname js-input">
                 </div>
                 <div class="phone-number">
                     <h2>Телефон</h2>
@@ -125,6 +141,7 @@
             </div>
         </form>
     </div>
+  </div>
 </main>
 <footer>
   <div class="footer-header">
@@ -142,13 +159,13 @@
     <div class="footer-nav">
       <ul class="links">
         <li>
-          <a href="index.html">Каталог</a>
+          <a type ="button" class="nav-button-index" href="index.html">Каталог</a>
         </li>
         <li>
-          <a href="about_us.html">Про нас</a>
+          <a type ="button" class="nav-button-about-us" href="about_us.html">Про нас</a>
         </li>
         <li>
-          <a href="projects.html">Доставка та оплата</a>
+          <a type ="button" class="nav-button-delivery" href="delivery.html">Доставка та оплата</a>
         </li>
       </ul>
       <h3>Copyright © 2022 | Kravtsov</h3>
@@ -166,10 +183,10 @@
           <input  type="password" class="password" placeholder="Password" value="" id="myInputPassword">
           <button class="show-password-btn" onclick="myFunction()">
             <span class="see-icon">
-              <i class="far fa-eye"></i>
+              <i class="far fa-eye fa-eye-modal"></i>
             </span>
             <span class="non-see-icon">
-              <i class="far fa-eye-slash"></i>
+              <i class="far fa-eye-slash fa-eye-slash-modal"></i>
             </span>
           </button>
         </div>
@@ -184,7 +201,6 @@
       <button class="close-btn"><i class="fas fa-times"></i></button>
   </div>
 </div>    
-<script src="js/script.js"></script>
 <script src="js/registration.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
 </html>

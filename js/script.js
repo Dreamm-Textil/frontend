@@ -1,10 +1,19 @@
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
 const modalBtn = document.querySelector(".log-in-btn");
+const modalBtnPhoneSize = document.querySelector(".log-in-btn-phone-size");
 const modalOverlay = document.querySelector(".modal-overlay");
 const closeBtn = document.querySelector(".close-btn");
 const inputLogin = document.querySelector(".login");
-const inputPassword = document.querySelector(".password")
+const inputPassword = document.querySelector(".password");
+let aboutUsBtn = document.querySelector('.nav-button-about-us');
+let indexBtn = document.querySelector('.nav-button-index');
+let deliveryBtn = document.querySelector('.nav-button-delivery');
+
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.add("nav-button-index-click");
+
 
 navToggle.addEventListener('click', function(){
     if(links.classList.contains('show-links')){
@@ -18,11 +27,15 @@ modalBtn.addEventListener('click', function(){
 modalOverlay.classList.toggle("open-modal");
 });
 
+modalBtnPhoneSize.addEventListener('click', function(){
+  modalOverlay.classList.toggle("open-modal");
+  });
+
 closeBtn.addEventListener("click", function () {
     modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-------------//
+// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
 
 function myFunction() {
   let x = document.getElementById("myInputPassword");
@@ -51,3 +64,4 @@ autorizationBtn.addEventListener("click", function(){
   arrPassword.push(inputPassword.value);
   console.log("Login:" + arrLogin.join('') + " " + "Password:" + arrPassword.join(''));
 })
+
