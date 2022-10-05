@@ -182,7 +182,7 @@ header {
   line-height: 1.5;
   font-size: 0.875rem;
   margin: 0;
-  min-height: 90px;
+  min-height: 85px;
 }
 body {
   font-family: var(--ff-secondary);
@@ -217,7 +217,7 @@ main {
   flex-direction: column;
   margin: auto;
   max-width: 1170px;
-  min-height: calc(100vh - 115.5px - 151px);
+  min-height: calc(100vh - 110.5px - 151px);
 }
 
 
@@ -622,3 +622,126 @@ margin-top: 30px;
   transition: 0.4s;
 }
 
+.main-regestration-container-after-registration{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 486px;
+  margin: auto;
+  margin-top: 100px;
+}
+.header-after-registration{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  border: 1px solid #8BC34A;
+}
+.fa-check-circle{
+  color: white;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-regestration-header{
+  width: 100%;
+  background-color: #8BC34A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  gap: 10px;
+}
+.success-regestration-header > h2{
+  color: white;
+}
+.success-registration-main > h2{
+  color: #75758B;
+  font-size: 18px;
+}
+.success-registration-main{
+  margin-top: 20px;
+}
+.succes-registration-footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  max-width: 490px;
+  width: 100%;
+  background-color: #8BC34A;
+  margin-top: 20px;
+  height: 71px;
+}
+.succes-registration-footer > a{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#8BC34A;
+  border: none;
+  transition: var(--transition);
+  width: 130px;
+  height: 36px;
+  font-size: 14px;
+  gap: 3px;
+  font-size: 16px;
+}
+.back-to-shop-after-regestration > i{
+  margin-left: 10px;
+  transition: transform 0.5s;
+}
+.back-to-shop-after-regestration:hover > i{
+transform: translateX(-5px);
+transition: transform 0.5s;
+}
+
+.back-to-shop-after-regestration{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.succes-registration-footer > button{
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#8BC34A;
+  transition: var(--transition);
+  width: 90px;
+  height: 36px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  gap: 3px;
+  font-size: 16px;
+}
+.log-in-bt > i{
+  margin-right: 10px;
+  transition: transform 0.5s;
+}
+.log-in-bt:hover > i{
+transform: translateX(5px);
+transition: transform 0.5s;
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------------------- */ 
+
+/*-------------------------------------------------------- ABOUT US PAGE -------------------------------------------------------- */ 
+
+.logo-about-us-container{
+  width: 100%;
+  height: 100%;
+}

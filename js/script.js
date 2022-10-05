@@ -97,7 +97,7 @@ let formPasswordContainer = document.querySelector(".password-registration-page-
 let formRepeatPasswordContainer = document.querySelector(".repeat-password-registration-page-container")
 
 function validateEmail(email) {
-  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
@@ -117,7 +117,6 @@ form.onsubmit = function(){
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
   let passwordVal = formPassword.value;
   let passwordRepeatVal = formRepeatPassword.value;
-  console.log(passwordVal);
  
 
   formInputs.forEach(function(input){
@@ -132,12 +131,10 @@ form.onsubmit = function(){
   });
 
   if(emptyInputs.length !== 0){
-    console.log('inputs not filled');
     return false;
   }
 
   if (!validatePhone(phoneVal)) {
-    console.log('phone not valid');
     formPhone.classList.add('error');
     return false;
   } else {
@@ -145,7 +142,6 @@ form.onsubmit = function(){
   }
 
   if(!validateEmail(emailVal)){
-    console.log('email not valid');
     formEmail.classList.add('error');
     return false;
   }
@@ -154,7 +150,6 @@ form.onsubmit = function(){
   }
 
   if (validateCountry(emailVal)) {
-    console.log('email from Columbia');
     formEmail.classList.add('error');
     return false;
   } else {
@@ -170,8 +165,96 @@ form.onsubmit = function(){
     formPasswordContainer.classList.remove('error');
     formRepeatPasswordContainer.classList.remove('error')
   }
+  
+  let acceptRegestration = document.querySelector('.main-regestration-container');
+  acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
+                                    <div class ="header-after-registration">
+                                      <div class ="success-regestration-header">
+                                        <i class="far fa-check-circle"></i>
+                                        <h2>Успіх</h2>
+                                      </div>
+                                      <div class = "success-registration-main">
+                                        <h2>Вітаємо, Ваш акаунт успішно створенний</h2>
+                                      </div>
+                                      <div class = "succes-registration-footer">
+                                        <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
+                                        <button class="log-in-bt">Увійти<i class="fas fa-chevron-right"></i></button>
+                                     </div>
+                                  </div>
+                                  <div class="modal-overlay">
+                                  <div class="modal-container">
+                                      <div class="header-modal-log-in">
+                                      <h3>Вхід до особистого кабінету</h3>
+                                      </div>
+                                      <div class="login-and-password">
+                                        <input class="login" placeholder="Login">
+                                        <div class="password-container">
+                                          <input  type="password" class="password" placeholder="Password" value="" id="myInputPasswor">
+                                          <button class="show-password-bt" onclick="myFunction()">
+                                            <span class="see-icon">
+                                              <i class="far fa-eye"></i>
+                                            </span>
+                                            <span class="non-see-icon">
+                                              <i class="far fa-eye-slash"></i>
+                                            </span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                      <div class="login-and-password-btn">
+                                        <button class="autorization-btn">Авторизація</button>
+                                        <a href="registration.html" class="registration-btn">Реєстарція</a>
+                                        <div class="remebmer-me-btn">
+                                          <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
+                                        </div>
+                                      </div>
+                                      <button class="close-btn"><i class="fas fa-times"></i></button>
+                                  </div>
+                                </div> `
+                                
 
+const modalBt = document.querySelector(".log-in-bt");
+
+modalBt.addEventListener('click', function(){
+  modalOverlay.classList.toggle("open-modal");
+  console.log(123);
+  });
+  
+  closeBtn.addEventListener("click", function () {
+      modalOverlay.classList.remove("open-modal");
+  });
+
+  function myFunction() {
+    let x = document.getElementById("myInputPasswor");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  const btns = document.querySelectorAll(".show-password-bt");
+  btns.forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      const showPassword = e.currentTarget;
+      showPassword.classList.toggle("show-password");
+    })
+  })
+  
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        name: formName.value,
+        body: 'bar',
+        formPhone: formPhone.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
 }
+
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------//
 
