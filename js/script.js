@@ -76,19 +76,18 @@ btns.forEach(function(btn){
 
 personalCabineteAfterRegestration.addEventListener("click", function(e){
   e.preventDefault();
-  console.log(123);
+  console.log(document.cookie.valueOf('Authorization').substring(14));
   // fetch('http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/user')
   // .then((response) => response.json())
   // .then((json) => console.log(json));
 
   fetch('http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/user', {
     method: 'GET',
-    mode: "cors",
     headers: {
       'Access-Control-Allow-Origin':'*',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
     },
-    credentials: "same-origin"
   })
   .then((response) => response.json())
   .then((json) => console.log(json));
