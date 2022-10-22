@@ -51,6 +51,9 @@
               <button class="log-in-btn-phone-size"><i class="fas fa-user"></i> Увійти</button>
             </li>
             <li>
+              <a type="button" href="personal_cabinete.html" class="personal-cabinete-after-registration-phone-size"><i class="fas fa-user"></i> Особистий кабінет</a>
+            </li>
+            <li>
               <button href="https://www.twitter.com">
                 <i class="far fa-heart"></i>
               </button>
@@ -81,6 +84,9 @@
         <ul class="social-icons">
           <li>
             <button class="log-in-btn"><i class="fas fa-user"></i> Увійти</button>
+          </li>
+          <li>
+            <a type="button" href="personal_cabinete.html" class="personal-cabinete-after-registration"><i class="fas fa-user"></i> Особистий кабінет</a>
           </li>
           <li>
             <button href="https://www.twitter.com">
@@ -192,31 +198,38 @@
       <div class="header-modal-log-in">
       <h3>Вхід до особистого кабінету</h3>
       </div>
-      <div class="login-and-password">
-        <input class="login" placeholder="Login">
-        <div class="password-container">
-          <input  type="password" class="password" placeholder="Password" value="" id="myInputPassword">
-          <button class="show-password-btn" onclick="myFunction()">
-            <span class="see-icon">
-              <i class="far fa-eye fa-eye-modal"></i>
-            </span>
-            <span class="non-see-icon">
-              <i class="far fa-eye-slash fa-eye-slash-modal"></i>
-            </span>
-          </button>
+      <form onsubmit="mySubmitFunction(event)" value="login" class="js-form-login" method="POST" action="http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration" novalidate>
+        <div class="login-and-password">
+          <input class="login input-login js-input-login" placeholder="Login">
+          <div class="input password-modal-page-container js-input-login">
+            <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Password">
+            <button type="button" class="show-password-btn-modal" onclick="myFunction()">
+                <span class="see-icon">
+                <i class="far fa-eye fa-eye-modal"></i>
+                </span>
+                <span class="non-see-icon">
+                <i class="far fa-eye-slash fa-eye-slash-modal"></i>
+                </span>
+            </button> 
         </div>
-      </div>
-      <div class="login-and-password-btn">
-        <button class="autorization-btn">Авторизація</button>
-        <a href="registration.html" class="registration-btn">Реєстарція</a>
-        <div class="remebmer-me-btn">
-          <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
         </div>
-      </div>
-      <button class="close-btn"><i class="fas fa-times"></i></button>
+        <div class="wrong-password-or-email-container">
+          <i class="fa-solid fa-xmark"></i>
+          <h2>Неправильно вказано Email або пароль</h2>
+        </div>
+        <div class="login-and-password-btn">
+          <button href="index.html" type="submit" class="autorization-btn">Авторизація</button>
+          <a href="registration.html" class="registration-btn">Реєстарція</a>
+          <div class="remebmer-me-btn">
+            <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
+          </div>
+        </div>
+        <button type="button" class="close-btn"><i class="fas fa-times"></i></button>
+      </form>
   </div>
 </div>
 <form class="js-form" action="" novalidate></form>
 <script src="js/about_us.js"></script>
+<script src="js/login.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
 </html>

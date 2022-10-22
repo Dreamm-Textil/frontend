@@ -9,10 +9,23 @@ const inputPassword = document.querySelector(".password");
 let aboutUsBtn = document.querySelector('.nav-button-about-us');
 let indexBtn = document.querySelector('.nav-button-index');
 let deliveryBtn = document.querySelector('.nav-button-delivery');
+let personalCabineteAfterRegestration = document.querySelector('.personal-cabinete-after-registration');
+let personalCabineteAfterRegestrationPhoneSize = document.querySelector('.personal-cabinete-after-registration-phone-size');
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.add("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
+
+
+let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+if(value_or_null === null){
+  console.log('clear');
+}else{
+  personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
+  modalBtn.classList.add("log-in-btn-unshow");
+  personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
+  modalBtnPhoneSize.classList.add("log-in-btn-unshow")
+}
 
 
 navToggle.addEventListener('click', function(){
@@ -46,22 +59,11 @@ function myFunction() {
   }
 }
 
-const btns = document.querySelectorAll(".show-password-btn");
+const btns = document.querySelectorAll(".show-password-btn-modal");
 btns.forEach(function(btn){
   btn.addEventListener("click", function(e){
     const showPassword = e.currentTarget;
     showPassword.classList.toggle("show-password");
   })
 })
-
 // ------------------------------------------------------------------------------------------------------------------------------------//
-
-const autorizationBtn = document.querySelector(".autorization-btn");
-autorizationBtn.addEventListener("click", function(){
-  let arrLogin = [];
-  let arrPassword = [];
-  arrLogin.push(inputLogin.value)
-  arrPassword.push(inputPassword.value);
-  console.log("Login:" + arrLogin.join('') + " " + "Password:" + arrPassword.join(''));
-})
-

@@ -69,6 +69,10 @@ left: 0;
     top: 0;
     left: 0;
 }
+.video-personal-cabinete{
+  position: relative;
+    padding-bottom:5.25%;
+}
 
 .header-links-container{
   max-width: 1170px;
@@ -286,14 +290,9 @@ nav .nav-header h2{
 }
 .logo {
   height: 40px;
-}
-/* .links a {
   color: white;
-  font-size: 1rem;
-  display: block;
-  padding: 0.5rem 1rem;
-  transition: var(--transition);
-} */
+}
+
 .links a:hover {
   background: var(--clr-primary-8);
   color: #EA4C89;
@@ -351,6 +350,17 @@ nav .nav-header h2{
     cursor: pointer;
   }
   .social-icons button:hover {
+    color: #EA4C89;
+  }
+  .social-icons a {
+    margin: 0 0.5rem;
+    transition: var(--transition);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .social-icons a:hover {
     color: #EA4C89;
   }
 }
@@ -443,6 +453,9 @@ nav .nav-header h2{
   border: 1px solid white;
   color: white;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .registration-btn{
   background-color: #EA4C89;
@@ -563,6 +576,83 @@ footer{
   color: white;
   font-size: 1rem;
 }
+
+.personal-cabinete-after-registration{
+  display: none;
+}
+
+.personal-cabinete-after-registration-show{
+  display: flex;
+  gap: 5px;
+}
+
+.log-in-btn-unshow{
+  display: none;
+}
+
+.personal-cabinete-after-registration-phone-size{
+  display: none;
+}
+
+.personal-cabinete-after-registration-phone-size-show{
+  display: flex;
+  gap: 5px;
+}
+
+li, a{
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.js-form-login{
+  display: flex;
+    max-width: 1033px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-login.error{
+  border: 1px solid rgb(222, 14, 14);
+}
+.input-login.error:focus{
+  border: 1px solid #EA4C89;
+}
+
+.cookie{
+  font-size: 8rem;
+  color: red;
+}
+
+
+.wrong-password-or-email-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 290px;
+  width: 100%;
+  gap: 6px;
+  border-bottom: 1px solid red;
+  display: none;
+}
+
+.wrong-password-or-email-container >h2{
+  font-size: 14px;
+  color: red;
+}
+.fa-xmark{
+  font-size: 15px;
+  color: red;
+}
+.show-wrong-password-or-email-container{
+  display: flex;
+}
+
 
 @media only screen and (max-width: 1450px){
   .logo-text {
@@ -716,6 +806,6 @@ footer{
   padding: 0.5rem 1rem;
   transition: var(--transition);
 }
-.nav-button-index-click, .nav-button-about-us-click, .nav-button-delivery-click{
+.nav-button-index-click, .nav-button-about-us-click, .nav-button-delivery-click, .nav-button-personal-cabinete-click{
   color:#EA4C89;
 }

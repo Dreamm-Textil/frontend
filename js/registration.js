@@ -25,6 +25,15 @@ aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
 
+let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+if(value_or_null === null){
+  console.log('clear');
+}else{
+  console.log('user');
+  aboutUsBtn.classList.add("nav-button-about-us-click");
+}
+
+
 navToggle.addEventListener('click', function(){
     if(links.classList.contains('show-links')){
         links.classList.remove('show-links')
@@ -65,16 +74,6 @@ btns.forEach(function(btn){
 })
 
 // ------------------------------------------------------------------------------------------------------------------------------------//
-
-const autorizationBtn = document.querySelector(".autorization-btn");
-autorizationBtn.addEventListener("click", function(){
-  let arrLogin = [];
-  let arrPassword = [];
-  arrLogin.push(inputLogin.value)
-  arrPassword.push(inputPassword.value);
-  console.log("Login:" + arrLogin.join('') + " " + "Password:" + arrPassword.join(''));
-})
-
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
@@ -201,7 +200,6 @@ const modalBt = document.querySelector(".log-in-bt");
 
 modalBt.addEventListener('click', function(){
   modalOverlay.classList.toggle("open-modal");
-  console.log(123);
   });
   
   closeBtn.addEventListener("click", function () {
@@ -226,7 +224,7 @@ modalBt.addEventListener('click', function(){
   })
   
 
-fetch('http://ec2-54-163-18-112.compute-1.amazonaws.com:8080/registration', {
+fetch('http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/registration', {
   method: 'POST',
   mode: "cors",
   headers: {
@@ -283,4 +281,3 @@ fetch('http://ec2-54-163-18-112.compute-1.amazonaws.com:8080/registration', {
       RepeatshowPasswordRegistrationPage.classList.toggle("show-password");
     })
 })
-  
