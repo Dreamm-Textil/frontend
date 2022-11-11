@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="UA">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about_us.css">
+    <link rel="stylesheet" href="css/regestration.css">
+    <link rel="stylesheet" href="css/personal_cabinete.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <title>Dream Textile</title>
+</head>
+<header>
+  <div class="intro-about-us">
+    <div class="video-clear">
+      
+    </div>
+  <nav>
+    <div class="header-links-container">
+      <ul class="header-links">
+        <li>
+          <a href="https://www.instagram.com/dreamm.textil/"><i class="fab fa-instagram"></i> dream.textile</a>
+        </li>
+        <li>
+          <a href="index.html"><i class="fas fa-envelope"></i> zakaz.dream@gmail.com</a>
+        </li>
+      </ul>
+      <ul class="work-time">
+        <li>
+          <h2>Графік роботи магазину : ПН - СБ : з 8:00 до 21:00</h2>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-center">
+      <!-- nav header -->
+      <div class="nav-header">
+        <a class = "logo" href="index.html">Dream Textile</a>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <ul class="social-icons-phone-size">
+          
+          <li>
+            <button href="https://www.twitter.com">
+              <i class="far fa-heart"></i>
+            </button>
+          </li>
+          <li>
+            <button class="bagadge-shop">
+              <i class="fas fa-shopping-bag"></i>
+            </button>
+          </li>
+        </ul>
+        <button class="nav-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <!-- links -->
+      <ul class="links">
+        <li>
+          <a type="button" class="log-in-btn-phone-size"><i class="fas fa-user"></i> Увійти</a>
+        </li>
+        <li>
+          <a type="button" href="profile_personal_cabinete.html" class="personal-cabinete-after-registration-phone-size"><i class="fas fa-user"></i> Особистий кабінет</a>
+        </li>
+        <li>
+          <a type ="button" class="nav-button-index" href="index.html">Каталог</a>
+        </li>
+        <li>
+          <a type ="button" class="nav-button-about-us" href="about_us.html">Про нас</a>
+        </li>
+        <li>
+          <a type ="button" class="nav-button-delivery" href="delivery.html">Доставка та оплата</a>
+        </li>
+        
+      </ul>
+      <ul class="social-icons">
+        <li>
+          <button class="log-in-btn"><i class="fas fa-user"></i> Увійти</button>
+        </li>
+        <li>
+          <a type="button" href="profile_personal_cabinete.html" class="personal-cabinete-after-registration"><i class="fas fa-user"></i> Особистий кабінет</a>
+        </li>
+        <li>
+          <button href="https://www.twitter.com">
+            <i class="far fa-heart"></i>
+          </button>
+        </li>
+        <li>
+          <button class="bagadge-shop">
+            <i class="fas fa-shopping-bag"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="main-container-personal-cabinete">
+    <div class="nav-personal-cabinete">
+      <div class="button-nav-personal-cabinete">
+        <a type="button" href="profile_personal_cabinete.html" class="profile-personal-cabinete">Профіль</a>
+        <button class="my-order-personal-cabinete">Мої замовлення</button>
+        <a type="button" href="change-password_personal_cabinete.html" class="change-password-personal-cabinete">Змінити пароль</a>
+        <button type="button" class="log-in-btn button-log-out-btn-profile-page">Вийти   <i class="fa-solid fa-arrow-right-from-bracket"></i></button>  
+      </div>
+      <div class="main-settings-contrainer-first">
+        <div class="main-settings-container">
+            
+            <form onsubmit="myRegestrationForm(event)" value="regestration" class="js-form" method="POST" action="http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/registration" novalidate>
+                <div class="main-regestration">
+                    <div class="name">
+                        <h2>Ім'я</h2>
+                        <input class="input input-name js-input">
+                    </div>
+                    <div class="surname">
+                        <h2>Прізвище</h2>
+                        <input class="input input-surname js-input">
+                    </div>
+                    <div class="phone-number">
+                        <h2>Телефон</h2>
+                        <input class="input input-phone-number js-input">
+                    </div>
+                    <div class="gmail-addres">
+                        <h2>Адреса електронної пошти</h2>
+                        <input class="input input-gmail-addres js-input">
+                    </div>
+                </div>
+                <div class="profile-btn-regestration-page">
+                  <button type="submit" class="button-regestration-btn-regestration-page">Зберегти зміни</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="delete-user-btn button-delete-profile">Видалити обліковий запис</button>
+  </div>
+</main>
+<footer>
+  <div class="footer-header">
+    <a class = "footer-logo" href="index.html">Dream Textile</a>
+    <ul class="footer-links">
+      <li>
+        <a href="https://www.instagram.com/dreamm.textil/"><i class="fab fa-instagram"></i> dream.textile</a>
+      </li>
+      <li>
+        <a href="index.html"><i class="fas fa-envelope"></i> zakaz.dream@gmail.com</a>
+      </li>
+    </ul>
+  </div>
+ <div class="footer-container">
+    <div class="footer-nav">
+      <ul class="links">
+        <li>
+          <a type ="button" class="nav-button-index" href="index.html">Каталог</a>
+        </li>
+        <li>
+          <a type ="button" class="nav-button-about-us" href="about_us.html">Про нас</a>
+        </li>
+        <li>
+          <a type ="button" class="nav-button-delivery" href="delivery.html">Доставка та оплата</a>
+        </li>
+      </ul>
+      <h3>Copyright © 2022 | Kravtsov</h3>
+    </div>
+ </div>
+</footer>
+<div class="modal-overlay-exit">
+  <div class="modal-container-exit">
+      <div class="header-modal-log-in">
+      <h3>Бажаєте вийти із особистого кабінету?</h3>
+      <div class="agree-disagree-btn-container">
+        <button type="button" class="disagree-for-exit-btn">Ні</button>
+        <button type="button" class="agree-for-exit-btn">Так</button>
+      </div>
+      </div>
+  </div>
+</div>
+<div class="modal-overlay-delete">
+  <div class="modal-container-delete">
+      <div class="header-modal-log-in">
+      <h3>Бажаєте видалити особистий профіль?</h3>
+      <div class="agree-disagree-btn-container">
+        <button type="button" class="disagree-for-delete-btn">Ні</button>
+        <button type="button" class="agree-for-delete-btn">Так</button>
+      </div>
+      </div>
+  </div>
+</div>
+<script src="js/login.js"></script>
+<!-- <script src="js/script.js"></script> -->
+<script src="js/profile_personal_cabinete.js"></script>
+<script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
+</html>

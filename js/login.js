@@ -50,7 +50,7 @@ formInputsLogin.forEach(function(input){
   formEmailLogin.classList.remove('error');
   }
 
-  fetch('http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/login', {
+  fetch('http://ec2-18-234-82-133.compute-1.amazonaws.com:8080/api/auth/login', {
     method: 'POST',
     mode: "cors",
     headers: {
