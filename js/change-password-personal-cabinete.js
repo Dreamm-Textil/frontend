@@ -90,7 +90,7 @@ form.onsubmit = function(e){
                                 
 
 
-fetch('http://ec2-18-234-82-133.compute-1.amazonaws.com:8080/api/user/update-password', {
+fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user/update-password', {
   method: 'PUT',
   mode: "cors",
   headers: {

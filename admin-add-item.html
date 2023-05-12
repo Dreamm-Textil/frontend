@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about_us.css">
     <link rel="stylesheet" href="css/regestration.css">
-    <link rel="stylesheet" href="css/personal_cabinete.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -15,10 +14,6 @@
     <title>Dream Textile</title>
 </head>
 <header>
-  <div class="intro-about-us">
-    <div class="video-clear">
-      
-    </div>
   <nav>
     <div class="header-links-container">
       <ul class="header-links">
@@ -63,7 +58,7 @@
           <a type="button" class="log-in-btn-phone-size"><i class="fas fa-user"></i> Увійти</a>
         </li>
         <li>
-          <a type="button" href="profile_personal_cabinete.html" class="personal-cabinete-after-registration-phone-size"><i class="fas fa-user"></i> Особистий кабінет</a>
+          <a type="button" href="personal_cabinete.html" class="personal-cabinete-after-registration-phone-size"><i class="fas fa-user"></i> Особистий кабінет</a>
         </li>
         <li>
           <a type ="button" class="nav-button-index" href="index.html">Каталог</a>
@@ -81,7 +76,7 @@
           <button class="log-in-btn"><i class="fas fa-user"></i> Увійти</button>
         </li>
         <li>
-          <a type="button" href="profile_personal_cabinete.html" class="personal-cabinete-after-registration"><i class="fas fa-user"></i> Особистий кабінет</a>
+          <a type="button" href="personal_cabinete.html" class="personal-cabinete-after-registration"><i class="fas fa-user"></i> Особистий кабінет</a>
         </li>
         <li>
           <button href="https://www.twitter.com">
@@ -98,46 +93,50 @@
   </nav>
 </header>
 <main>
-  <div class="main-container-personal-cabinete">
-    <div class="nav-personal-cabinete">
-      <div class="button-nav-personal-cabinete">
-        <a type="button" href="profile_personal_cabinete.html" class="profile-personal-cabinete">Профіль</a>
-        <button class="my-order-personal-cabinete">Мої замовлення</button>
-        <a type="button" href="change-password_personal_cabinete.html" class="change-password-personal-cabinete">Змінити пароль</a>
-        <button type="button" class="log-in-btn button-log-out-btn-profile-page">Вийти   <i class="fa-solid fa-arrow-right-from-bracket"></i></button>  
-      </div>
-      <div class="main-settings-contrainer-first">
-        <div class="main-settings-container">
-            
-            <form onsubmit="myRegestrationForm(event)" value="regestration" class="js-form" method="POST" action="http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/registration" novalidate>
-                <div class="main-regestration">
-                    <div class="name">
-                        <h2>Ім'я</h2>
-                        <input class="input input-name js-input">
-                    </div>
-                    <div class="surname">
-                        <h2>Прізвище</h2>
-                        <input class="input input-surname js-input">
-                    </div>
-                    <div class="phone-number">
-                        <h2>Телефон</h2>
-                        <input class="input input-phone-number js-input">
-                    </div>
-                    <div class="gmail-addres">
-                        <h2>Адреса електронної пошти</h2>
-                        <input class="input input-gmail-addres js-input">
-                    </div>
-                </div>
-                <div class="profile-btn-regestration-page">
-                  <button type="submit" class="button-regestration-btn-regestration-page">Зберегти зміни</button>
-                </div>
-            </form>
-        </div>
-      </div>
+    <div class="add-item-container">
+        <form class="js-form"></form>
+        <form class="add-form">
+            <div class="add-name">
+                <h2>Назва:</h2>
+                <input>
+            </div>
+            <div class="add-material">
+                <h2>Матеріал:</h2>
+            <div>
+                <select>
+                    <option>RANFORS</option>
+                    <option>SATIN</option>
+                    <option>STRAP_SATIN</option>
+                    <option>POPLIN</option>
+                    <option>BIAZ</option>
+                </select>    
+            </div>
+            <div class="add-size">
+                <h2>Розмір:</h2>
+            <div>
+                <select>
+                    <option>1.5</option>
+                    <option>2</option>
+                    <option>Євро</option>
+                    <option>Сімейний</option>
+                    <option>Дитячий</option>
+                </select>    
+            </div>
+            <div class="add-price">
+                <h2>Ціна:</h2>
+                <input>
+            </div>
+            <div class="add-price-discount">
+                <h2>Ціна зі знижкою:</h2>
+                <input>
+            </div>
+            <div class="add-photo">
+                <h2>Посилання на фото:</h2>
+                <input>
+            </div>
+            <button type="submit">Зберегти</button>
+        </form>
     </div>
-    <button type="button" class="delete-user-btn button-delete-profile">Видалити обліковий запис</button>
-    <button type="button" class="glek">Add postel</button>
-  </div>
 </main>
 <footer>
   <div class="footer-header">
@@ -168,30 +167,43 @@
     </div>
  </div>
 </footer>
-<div class="modal-overlay-exit">
-  <div class="modal-container-exit">
+<div class="modal-overlay">
+  <div class="modal-container">
       <div class="header-modal-log-in">
-      <h3>Бажаєте вийти із особистого кабінету?</h3>
-      <div class="agree-disagree-btn-container">
-        <button type="button" class="disagree-for-exit-btn">Ні</button>
-        <button type="button" class="agree-for-exit-btn">Так</button>
+      <h3>Вхід до особистого кабінету</h3>
       </div>
-      </div>
+      <form onsubmit="mySubmitFunction(event)" value="login" class="js-form-login" method="POST" action="http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration" novalidate>
+        <div class="login-and-password">
+          <input class="login input-login js-input-login" placeholder="Login">
+          <div class="input password-modal-page-container js-input-login">
+            <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Password">
+            <button type="button" class="show-password-btn-modal" onclick="myFunction()">
+                <span class="see-icon">
+                <i class="far fa-eye fa-eye-modal"></i>
+                </span>
+                <span class="non-see-icon">
+                <i class="far fa-eye-slash fa-eye-slash-modal"></i>
+                </span>
+            </button> 
+        </div>
+        </div>
+        <div class="wrong-password-or-email-container">
+          <i class="fa-solid fa-xmark"></i>
+          <h2>Неправильно вказано Email або пароль</h2>
+        </div>
+        <div class="login-and-password-btn">
+          <button href="index.html" type="submit" class="autorization-btn">Авторизація</button>
+          <a href="registration.html" class="registration-btn">Реєстарція</a>
+          <div class="remebmer-me-btn">
+            <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
+          </div>
+        </div>
+        <button type="button" class="close-btn"><i class="fas fa-times"></i></button>
+      </form>
   </div>
 </div>
-<div class="modal-overlay-delete">
-  <div class="modal-container-delete">
-      <div class="header-modal-log-in">
-      <h3>Бажаєте видалити особистий профіль?</h3>
-      <div class="agree-disagree-btn-container">
-        <button type="button" class="disagree-for-delete-btn">Ні</button>
-        <button type="button" class="agree-for-delete-btn">Так</button>
-      </div>
-      </div>
-  </div>
-</div>
+<script src="js/registration.js"></script>
+<script src="js/admin-add-item.js"></script>
 <script src="js/login.js"></script>
-<!-- <script src="js/script.js"></script> -->
-<script src="js/profile_personal_cabinete.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
 </html>

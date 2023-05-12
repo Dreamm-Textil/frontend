@@ -344,3 +344,11 @@
     position: relative;
     margin-bottom: 300px;
   }
+
+.glek{
+    display: none;
+}
+
+.glek-show{
+    display: flex;
+}

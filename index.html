@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about_us.css">
     <link rel="stylesheet" href="css/regestration.css">
+    <link rel="stylesheet" href="css/catalog.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -36,10 +37,10 @@
         <h2>Постільна білизна</h2>
       </div>
       <div class="button-allnewproduct">
-        <button class="allnewprod-btn">Усі новинки</button>
+        <a type="button" class="allnewprod-btn" href="#allnewproduct">Усі новинки</a>
       </div>
     </div>
-    <nav>
+    <nav >
       <div class="header-links-container">
         <ul class="header-links">
           <li>
@@ -118,14 +119,59 @@
     </nav>
   </div>
 </header>
-<main>
-  <h3>h1</h3>
-    <h3>asd</h3>
-    <h3>asd</h3>
-    <h3>asd</h3>
-    <h3>asd</h3>
-    <i class="far fa-eye-slash"></i>
-    <i class="far fa-eye"></i>
+<main >
+  <div class="main-catalog-container" id="allnewproduct">
+    <h2 class="catalog-title">Каталог</h2>
+    <div class="catalog-container">
+      <div class="filtr-catalog-container">
+       
+        <div class="filter-size-container">
+          <div class="change-size-container">
+              <button type="button" class="one-and-half-size-btn">1,5-спальний</button>
+              <button type="button" class="double-size-btn">2-спальний</button>
+              <button type="button" class="euro-size-btn">Євростандарт</button>
+              <button type="button" class="size-btn-family">Сімейний</button>
+              <button type="button" class="size-btn-children">Дитячий</button>
+          </div>
+        </div>
+        <div class="information-about-product">
+          <div class="info-container">
+            <div class="material-container">
+              <img src="images/needle.png">
+              <div class="material">
+                <div class="title">Матеріал:</div>
+                <div class="text">Ранфорс - 100% бавовна</div>
+              </div>
+            </div>
+            
+              <div class="material-container">
+                <img src="images/double-bed.png">
+                <div class="material">
+                  <div class="title">У комплекті:</div>
+                  <div class="text-complectation"> - простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.</div>
+                </div>
+              </div>
+            
+            <div class="material-container">
+              <img src="images/sewing-machine.png">
+              <div class="material">
+                <div class="title">Виробник:</div>
+                <div class="text">Україна</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-panel">
+        <button class="admin-edit">Редагувати</button>
+        <a href="admin-add-item.html" class="admin-add">Додати постільну білизну</a>
+      </div>
+      <div class="product-section">
+  
+      </div>
+  </div>
+  
+  
     <form class="js-form" action="" novalidate></form>
 </main>
 
