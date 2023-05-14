@@ -19,6 +19,7 @@
     margin: auto;
     background-color: #18181bed;
     border-radius: 10px;
+    height: 684px;
   }
   .main-regestration{
     display: flex;
@@ -102,7 +103,7 @@
     max-height: 100px;
     height: 38px;
     font-weight: 100;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     border-radius: 5px;
   }
   .button-regestration-btn-regestration-page:hover{
@@ -359,5 +360,13 @@
   }
   .regestration-btn-regestration-page{
     padding: 0px 5px 0px 5px;
+  }
+  .main-regestration-contrainer-first{
+    margin-top: 0px;
+    padding: 0px 10px;
+    height: 640px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 }

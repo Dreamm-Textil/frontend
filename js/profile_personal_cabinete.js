@@ -51,12 +51,6 @@ fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
 .then((response) => response.json())
 
 .then((json) =>{ formPhone.value = json.phoneNumber; formEmail.value = json.email; formName.value = json.name; formSurname.value = json.secondName
-  if (json.role === "ADMIN"){
-    addNewPost.classList.add("glek-show");
-  }
-  else{
-    return
-  }
 });
                                            
 

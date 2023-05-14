@@ -68,10 +68,10 @@
     max-height: 100px;
     height: 42px;
     font-weight: 100;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .profile-personal-cabinete:hover,.button-log-out-btn-profile-page:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
-    background-color: black;
+    background-color: #ea4c89d0;
     color: white;
     transition: 0.1s;
 }

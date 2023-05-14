@@ -18,9 +18,12 @@ let euroSizeBtn = document.querySelector('.euro-size-btn');
 let familySizeBtn = document.querySelector('.size-btn-family');
 let childrenSizeBtn = document.querySelector('.size-btn-children');
 let complectation = document.querySelector('.text-complectation');
-
-
 let adminPanel = document.querySelector('.admin-panel');
+
+if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+  
+// }
+// else{
 
 fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
   
@@ -37,9 +40,11 @@ fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
     adminPanel.classList.add("admin-panel-show");
   }
   else{
-    return
+    console.log(123);
   }
 });
+}
+
 
 
 getSize('ONE_AND_HALF');
@@ -204,7 +209,7 @@ function getSize(s){
                                       <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
                                       <div class="card-body">
                                         <div class="card-title-size-container">
-                                          <h2 сlass="promotion-card" style="color:#EA4C89;">Знижка -50%</h2>
+                                          <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
                                           <button class="like"><i class="far fa-heart change-heart"></i></button>
                                         </div>
                                         <!-- <div class="card-title-container"> -->
