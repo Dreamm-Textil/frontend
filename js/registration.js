@@ -65,7 +65,7 @@ function myFunction() {
   }
 }
 
-const btns = document.querySelectorAll(".show-password-btn");
+const btns = document.querySelectorAll(".show-password-btn-modal");
 btns.forEach(function(btn){
   btn.addEventListener("click", function(e){
     const showPassword = e.currentTarget;

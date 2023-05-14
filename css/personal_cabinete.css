@@ -136,8 +136,8 @@
     justify-content: flex-end;
     margin-top: 40px;
 }
-.agree-for-exit-btn{
-    background-color: #1E1E1E;
+.agree-for-exit-btn, .agree-for-delete-btn{
+    background-color: #ea4c89d0;
     border: none;
     color: white;
     display: flex;
@@ -151,46 +151,56 @@
     max-height: 100px;
     height: 33px;
     font-weight: 100;
-    border-radius: 10px;
+    border-radius: 5px;
 }
-.disagree-for-exit-btn,.agree-for-delete-btn, .disagree-for-delete-btn{
-    background-color: #1E1E1E;
-    border: none;
-    color: white;
-    font-size: 17px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 117px;
-    max-width: 313px;
-    box-sizing: border-box;
-    max-height: 100px;
-    height: 33px;
-    font-weight: 100;
-    border-radius: 10px;
-}
-.disagree-for-exit-btn:hover, .agree-for-exit-btn:hover, .agree-for-delete-btn:hover, .disagree-for-delete-btn:hover{
+
+.agree-for-exit-btn:hover, .agree-for-delete-btn:hover{
     background-color: #EA4C89;
+}
+.disagree-for-exit-btn, .disagree-for-delete-btn{
+    background-color: #28282B;
+    border: none;
+    color: #ea4c89d0;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 117px;
+    max-width: 313px;
+    box-sizing: border-box;
+    max-height: 100px;
+    height: 33px;
+    font-weight: 100;
+    border-radius: 5px;
+}
+.disagree-for-exit-btn:hover, .disagree-for-delete-btn:hover{
+    background-color: #35353B;
+  color: white;
 }
 
 .button-delete-profile{
-    background-color: rgb(177, 1, 1);
+    background-color: #18181b00;
     border: none;
-    color: white;
+    color: #ea4c89d0;
     font-size: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 231px;
-    max-width: 313px;
+    width: 100%;
     box-sizing: border-box;
     max-height: 100px;
     height: 40px;
     font-weight: 100;
-    border-radius: 10px;
+    border-radius: 5px;
+    margin-bottom: 25px;
 }
+.button-delete-profile:hover{
+    background-color: #35353B;
+  color: white;
+}
+
 
 @media only screen and (max-width: 700px){
     .button-nav-personal-cabinete {
@@ -214,6 +224,10 @@
         width: 100%;
         border: none;
     }
+    .profile-btn-regestration-page, .button-delete-profile{
+        padding: 0px 5px 0px 5px;
+    }
+
     .main-regestration {
         display: flex;
         justify-content: center;
@@ -264,10 +278,9 @@
   .profile-btn-regestration-page {
     width: 100%;
     display: flex;
+    flex-direction: column;
     margin-top: 30px;
     justify-content: flex-end;
-    gap: 13px;
-    padding-right: 5px;
 }
 .fa-arrow-right-from-bracket{
     margin-left: 6px;
@@ -293,7 +306,7 @@
     z-index: 3;
   }
   .modal-container-exit {
-    background: var(--clr-white);
+    background: #28282B;
     border-radius: var(--radius);
     width: 90vw;
     height: 30vh;
@@ -309,6 +322,7 @@
   .header-modal-log-in > h3 {
     font-size: 23px;
     text-align: center;
+    color: white;
 }
 
 .modal-overlay-delete {
@@ -331,7 +345,7 @@
     z-index: 3;
   }
   .modal-container-delete {
-    background: var(--clr-white);
+    background: #28282B;
     border-radius: var(--radius);
     width: 90vw;
     height: 30vh;
@@ -344,11 +358,3 @@
     position: relative;
     margin-bottom: 300px;
   }
-
-.glek{
-    display: none;
-}
-
-.glek-show{
-    display: flex;
-}

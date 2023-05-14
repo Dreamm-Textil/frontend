@@ -95,44 +95,44 @@
 <main>
     <div class="add-item-container">
         <form class="js-form"></form>
-        <form class="add-form">
+        <form class="add-form" id="myForm" onsubmit="mySubmitFunctionAdd(event)">
             <div class="add-name">
                 <h2>Назва:</h2>
-                <input>
+                <input class="input-name-new-item">
             </div>
             <div class="add-material">
                 <h2>Матеріал:</h2>
             <div>
-                <select>
-                    <option>RANFORS</option>
-                    <option>SATIN</option>
-                    <option>STRAP_SATIN</option>
-                    <option>POPLIN</option>
-                    <option>BIAZ</option>
+                <select id="ddlViewBy">
+                    <option value="1">RANFORS</option>
+                    <option value="2">SATIN</option>
+                    <option value="3">STRAP_SATIN</option>
+                    <option value="4">POPLIN</option>
+                    <option value="5">BIAZ</option>
                 </select>    
             </div>
             <div class="add-size">
                 <h2>Розмір:</h2>
             <div>
-                <select>
-                    <option>1.5</option>
-                    <option>2</option>
-                    <option>Євро</option>
-                    <option>Сімейний</option>
-                    <option>Дитячий</option>
+                <select id="ddlViewB">
+                    <option value="1">1.5</option>
+                    <option value="2">2</option>
+                    <option value="3">Євро</option>
+                    <option value="4">Сімейний</option>
+                    <option value="5">Дитячий</option>
                 </select>    
             </div>
             <div class="add-price">
                 <h2>Ціна:</h2>
-                <input>
+                <input class="price-new-item">
             </div>
             <div class="add-price-discount">
                 <h2>Ціна зі знижкою:</h2>
-                <input>
+                <input class="price-new-item-discount">
             </div>
             <div class="add-photo">
                 <h2>Посилання на фото:</h2>
-                <input>
+                <input class="url-input-new" id="inpFile" type="file">
             </div>
             <button type="submit">Зберегти</button>
         </form>
@@ -179,10 +179,10 @@
             <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Password">
             <button type="button" class="show-password-btn-modal" onclick="myFunction()">
                 <span class="see-icon">
-                <i class="far fa-eye fa-eye-modal"></i>
+                <i class="far fa-eye fa-eye-modal" style="color: white;"></i>
                 </span>
                 <span class="non-see-icon">
-                <i class="far fa-eye-slash fa-eye-slash-modal"></i>
+                <i class="far fa-eye-slash fa-eye-slash-modal" style="color: white;"></i>
                 </span>
             </button> 
         </div>
@@ -193,10 +193,7 @@
         </div>
         <div class="login-and-password-btn">
           <button href="index.html" type="submit" class="autorization-btn">Авторизація</button>
-          <a href="registration.html" class="registration-btn">Реєстарція</a>
-          <div class="remebmer-me-btn">
-            <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
-          </div>
+          <a href="registration.html" class="registration-btn">Немає акаунту? Зареєструватися</a>
         </div>
         <button type="button" class="close-btn"><i class="fas fa-times"></i></button>
       </form>

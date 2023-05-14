@@ -122,7 +122,6 @@ oneAndHalfSizeBtn.addEventListener('click', function(){
   familySizeBtn.classList.remove("one-and-half-size-btn-show")
   childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
   getSize('ONE_AND_HALF');
-  
   complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
 })
 
