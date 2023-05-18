@@ -93,7 +93,7 @@
     flex-direction: column;
     margin: auto;
     background-color: #18181bed;
-    border-radius: 10px;
+    border-radius: 5px;
     
   }
 
@@ -158,9 +158,9 @@
     background-color: #EA4C89;
 }
 .disagree-for-exit-btn, .disagree-for-delete-btn{
-    background-color: #28282B;
+    background-color: #35353b9d;
     border: none;
-    color: #ea4c89d0;
+    color: white;
     font-size: 17px;
     display: flex;
     justify-content: center;

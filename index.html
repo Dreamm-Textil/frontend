@@ -203,6 +203,7 @@
       <h3>Copyright © 2022 | Kravtsov</h3>
     </div>
  </div>
+ <div id="root"></div>
 </footer>
 <div class="modal-overlay">
   <div class="modal-container">
@@ -211,19 +212,19 @@
       </div>
       <form onsubmit="mySubmitFunction(event)" value="login" class="js-form-login" method="POST" action="http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration" novalidate>
         <div class="login-and-password">
-          <input class="login input-login js-input-login" placeholder="Login">
-          <div class="input password-modal-page-container js-input-login">
-            <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Password">
-            <button type="button" class="show-password-btn-modal" onclick="myFunction()">
-                <span class="see-icon">
-                <i class="far fa-eye fa-eye-modal" style="color: white;"></i>
-                </span>
-                <span class="non-see-icon">
-                <i class="far fa-eye-slash fa-eye-slash-modal" style="color: white;"></i>
-                </span>
-            </button> 
-        </div>
-        </div>
+          <input class="login input-login js-input-login" placeholder="Пошта">
+            <div class="input password-modal-page-container js-input-login">
+              <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Пароль">
+              <button type="button" class="show-password-btn-modal" onclick="myFunction()">
+                  <span class="see-icon">
+                  <i class="far fa-eye fa-eye-modal" style="color: white;"></i>
+                  </span>
+                  <span class="non-see-icon">
+                  <i class="far fa-eye-slash fa-eye-slash-modal" style="color: white;"></i>
+                  </span>
+              </button> 
+            </div>
+          </div>
         <div class="wrong-password-or-email-container">
           <i class="fa-solid fa-xmark"></i>
           <h2>Неправильно вказано Email або пароль</h2>

@@ -4,10 +4,10 @@ let personalInfoPhoneGmail = document.querySelector('.profile-personal-cabinete-
 let changePasswordBtn = document.querySelector('.change-password-personal-cabinete');
 let profileMainRegestration = document.querySelector('.main-regestration'); 
 
-deliveryBtn.classList.remove("nav-button-about-us-click");
-aboutUsBtn.classList.remove("nav-button-about-us-click");
-indexBtn.classList.remove("nav-button-index-click");
-personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
+// deliveryBtn.classList.remove("nav-button-about-us-click");
+// aboutUsBtn.classList.remove("nav-button-about-us-click");
+// indexBtn.classList.remove("nav-button-index-click");
+// personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
 
 
 
