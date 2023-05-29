@@ -1,0 +1,114 @@
+.order {
+    background-image: url('https://ranfors.son-relax.com.ua/wp-content/themes/postel/img/wave-line.jpg');
+    background-repeat: no-repeat;
+    background-position: 0 75%;
+    background-size: contain;
+    margin-bottom: 35px;
+    max-height: 50vh;
+}
+.block-title {
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    padding-top: 80px;
+    margin-bottom: 48px;
+    color: #404040;
+}
+.inner {
+    max-width: 1590px;
+    margin: 0 auto;
+}
+.block-title .title {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+}
+
+.h-t-order-inner {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 52px;
+}
+.h-t-order-inner>* {
+    width: 100%;
+    max-width: 245px;
+    padding: 0 30px;
+    text-align: center;
+}
+.h-t-order-inner .number {
+    font-size: 60px;
+    line-height: 60px;
+    margin-bottom: 110px;
+    font-weight: 800;
+    color: #EA4C89;
+}
+.h-t-order-inner .item .text {
+    font-weight: 500;
+}
+.h-t-order-inner>* {
+    width: 100%;
+    max-width: 245px;
+    padding: 0 30px;
+    text-align: center;
+}
+.h-t-order-inner .second .number.mob {
+    display: none;
+}
+.h-t-order-inner .second .number {
+    margin-top: 110px;
+    margin-bottom: 0px;
+}
+.clear-div{
+    height: 65px;
+}
+
+
+@media only screen and (max-width: 767px){
+    .h-t-order-inner {
+        display: block;
+        padding: 0px;
+    }
+    .h-t-order-inner>* {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .h-t-order-inner .number {
+        margin-bottom: 50px;
+    }
+    .h-t-order-inner>* {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .h-t-order-inner .second .number.mob {
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 50px;
+    }
+    .h-t-order-inner .second .number {
+        display: none;
+    }
+    .order {
+        background-image: none;
+    }
+    .block-title {
+        position: relative;
+        text-align: center;
+        font-size: 28px;
+        width: 100%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: 500;
+        padding-top: 80px;
+        margin-bottom: 48px;
+        color: #404040;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        max-width: 1170px;
+        min-height: calc(100vh - 0.5px - 100px);
+    }
+}

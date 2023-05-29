@@ -1,0 +1,277 @@
+
+.intro-about-us{
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.intro-about-us::after{
+    content: '';
+display: block;
+width: 100%;
+height: 100%;
+/* background-color: rgba(0, 0 , 0 ,0.5); */
+position: absolute;
+top: 0;
+left: 0;
+}
+.clear-div{
+    height: 65px;
+}
+
+.logo-container-about-us-page{
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.logo-text-about-us-page{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 8px;
+    background-color: rgba(0,0,0,0.5);
+}
+.logo-text-about-us-page > h2{
+    color: white;
+    font-size: 50px;
+    font-family:400 2rem / 2.6rem "Futura PT", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 488px;
+    height: 120.5px;
+    font-weight: 100;
+}
+.about-us-main-container{
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.about-us-img-bedside-quality{
+    max-width: 650px;
+    height: 888px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.about-us-main-container > h2{
+    max-width: 651px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+}
+
+.intro-about-us-page-quality{
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+.intro-about-us-page-quality::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.about-us-img-bedside-quality-container{
+    position: relative;
+    padding-bottom:56.25%;
+}
+.about-us-title-bedside-quality-container{
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: end;
+}
+.about-us-title-bedside-quality{
+    max-width: 721px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    height: 433px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10rem 1.5rem 10rem 5rem;
+}
+.about-us-title-bedside-quality > h2{
+    max-width: 510px;
+    color: white;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+}
+.about-us-title-bedside-quality > p{
+    max-width: 510px;
+    color: white;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+.good-price-title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    max-width: 1170px;
+    width: 100%;
+    margin-top: 60px;
+}
+.good-price-title{
+    max-width: 598px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 20px;
+}
+.good-price-title > h2{
+    max-width: 510px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+}
+.good-price-title > p{
+    max-width: 510px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+.good-price-img{
+    max-height: auto;
+    max-width: 650px;
+    width: 100%;
+}
+.about-ranfors-contrainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+    gap:30px;
+}
+.about-ranfors-contrainer > h2{
+    max-width: 651px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+}
+.left-and-right-side-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.left-and-right-side-container > p{
+    max-width: 510px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+}
+.left-side-title-about-ranfors{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    gap: 20px;
+}
+.right-side-title-about-ranfors{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 600px;
+    width: 100%;
+    gap: 20px;
+}
+@media only screen and (max-width: 767px){
+    .logo-text-about-us-page > h2 {
+        color: white;
+        font-family: 400 2rem / 2.6rem "Futura PT", sans-serif;
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 272px;
+        height: 61px;
+        font-size: 28px;
+    }
+    .logo-text-about-us-page {
+        margin-top: 59px;
+    }
+    .about-us-main-container > h2 {
+        max-width: 651px;
+        font-size: 28px;
+        display: flex;
+        justify-content: center;
+    }
+    .about-us-main-container {
+        margin-top: 59px;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .about-us-title-bedside-quality > h2 {
+        font-size: 28px;
+    }
+    .about-us-bedside-quality-container{
+        width: 800px;
+    }
+    .about-us-title-bedside-quality {
+        padding: 10px;
+        height: 455px;
+    }
+    .good-price-title-container {
+        flex-direction: column;
+        margin-top: 0px;
+        gap: 15px;
+    }
+    .good-price-title > h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+    .good-price-title > p {
+        padding: 0px 10px;
+    }
+    .about-ranfors-contrainer > h2 {
+        font-size: 28px;
+        text-align: center;
+    }
+    .left-and-right-side-container {
+        padding: 0px 10px;
+        gap: 15px;
+    }
+}
