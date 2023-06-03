@@ -68,11 +68,12 @@
                 <i class="far fa-heart"></i>
               </button>
             </li>
-            <li>
-              <button class="bagadge-shop">
+            <!-- <li>
+              <a href="cart.html" class="bagadge-shops">
+                <option class="counter" value='0'>0</option>
                 <i class="fas fa-shopping-bag"></i>
-              </button>
-            </li>
+              </a>
+            </li> -->
           </ul>
           <button class="nav-toggle">
             <i class="fas fa-bars"></i>
@@ -110,16 +111,18 @@
             </button>
           </li>
           <li>
-            <button class="bagadge-shop">
+            <a href="cart.html" class="bagadge-shops">
+              <option class="counter" value='0'>0</option>
               <i class="fas fa-shopping-bag"></i>
-            </button>
+            </a>
           </li>
         </ul>
       </div>
     </nav>
   </div>
 </header>
-<main >
+<main>
+  
   <div class="main-catalog-container" id="allnewproduct">
     <h2 class="catalog-title">Каталог</h2>
     <div class="catalog-container">
@@ -163,7 +166,7 @@
         </div>
       </div>
       <div class="admin-panel">
-        <button class="admin-edit">Редагувати</button>
+        <a href="admin-edit-price.html" class="admin-edit">Редагувати ціну</a>
         <a href="admin-add-item.html" class="admin-add">Додати постільну білизну</a>
       </div>
       <div class="product-section">
@@ -204,6 +207,12 @@
     </div>
  </div>
  <div id="root"></div>
+ <label>
+  <input type="checkbox" class="alertCheckbox" autocomplete="off" />
+  <div class="alert success">
+    <span class="alertText">Постільна білизна успішно видаленна
+  </div>
+</label>
 </footer>
 <div class="modal-overlay">
   <div class="modal-container">

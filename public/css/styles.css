@@ -693,7 +693,7 @@ footer{
   justify-content: space-around;
   gap: 20px;
   width: 100%;
-  max-width: 550px;
+  max-width: 600px;
 }
 
 .admin-edit, .admin-add{
@@ -710,12 +710,32 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 .log-in-btn-unshow{
   display: none;
 }
 
+.bagadge-shops{
+  position: relative;
+}
+.counter{
+  position: absolute;
+  top: -10px;
+  left: 7px;
+  background-color: #EA4C89;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.counter-show{
+  display: flex;
+}
 
 li, a{
   color: white;
@@ -793,7 +813,76 @@ li, a{
 .show-wrong-password-or-email-container{
   display: flex;
 }
+.btn-delete-item{
+  position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 2%;
+    left: 83%;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(161 161 161 / 40%);
+    opacity: 1;
+}
+.btn-delete-item:hover{
+  background-color:rgba(161 161 161 / 80%);
+}
+.btn-delete-item > img{
+  width: 20px;
+}
 
+.alert {
+  z-index: 3;
+    position: fixed;
+    top: 88px;
+    left: 40%;
+    right: 40%;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    line-height: 1.8;
+    border-radius: 5px;
+    cursor: hand;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 400;
+  display: none;
+}
+.alert-show{
+  display: flex;
+}
+
+.alertCheckbox {
+  display: none;
+}
+:checked + .alert {
+  display: none;
+}
+
+.alertText {
+  display: table;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 16px;
+}
+
+.alertClose {
+  float: right;
+  padding-top: 5px;
+  font-size: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.success {
+  background-color: rgb(165, 255, 165);
+  border: 1px solid #DED;
+  color: rgb(108, 120, 108);
+}
 
 @media only screen and (max-width: 1450px){
   .logo-text {
@@ -832,7 +921,6 @@ li, a{
 
 @media only screen and (max-width: 880px){
   .logo-bedclothes-title {
-    
     margin-top: 0px;
 }
   .svg-video{
@@ -961,6 +1049,10 @@ li, a{
   align-items: center;
   margin-bottom: 27px;
 }
+.alert{
+  left: 30%;
+    right: 30%;
+}
 }
 
 
@@ -971,8 +1063,14 @@ li, a{
   .logo-bedclothes-title {
     margin-top: 25px;
   }
-  
-  
+  .alert{
+    left: 20%;
+      right: 20%;
+  }
+  .admin-panel-show{
+    flex-direction: column;
+  }
+ 
 }
 
 @media only screen and (max-width: 440px){
@@ -986,6 +1084,7 @@ li, a{
   .intro{
     margin-top: 46px;
   }
+  
 }
 
 @media only screen and (max-width: 390px){

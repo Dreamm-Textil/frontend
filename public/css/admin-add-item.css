@@ -1,7 +1,7 @@
 .main-add-item-container{
     margin-top: 20px;
     padding: 0px 10px;
-    height: 722px;
+    height: 700px;
     display: flex;
     justify-content: center;
 }
@@ -55,6 +55,7 @@ font-size: 17px;
     gap: 17px;
     font-size: 12px;
     margin-top: 30px;
+    padding: 0px 5px 0px 5px;
 }
 .add-name, .add-material, .add-size, .add-price, .add-price-discount, .color-container, .add-photo{
     width: 100%;
@@ -141,3 +142,15 @@ font-size: 17px;
 .warning-img-show{
     display: flex;
 }
+
+/* .container {
+    position: relative;
+    width: 50%;
+  } */
+
+  .btn-delete-item {
+    position: absolute;
+    top: 3%;
+    left: 82%;
+}
+

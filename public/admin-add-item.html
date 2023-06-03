@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/catalog.css">
     <link rel="stylesheet" href="css/admin-add-item.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="css/regestration.css">
 
     <title>Dream Textile</title>
 </head>
@@ -39,13 +41,14 @@
             
             <li>
               <button href="https://www.twitter.com">
-                <i class="far fa-heart"></i>
+                <i class="far fa-heart" ></i>
               </button>
             </li>
             <li>
-              <button class="bagadge-shop">
+              <a href="cart.html" class="bagadge-shops">
+                <option class="counter" value='0'>0</option>
                 <i class="fas fa-shopping-bag"></i>
-              </button>
+              </a>
             </li>
           </ul>
           <button class="nav-toggle">
@@ -84,9 +87,10 @@
             </button>
           </li>
           <li>
-            <button class="bagadge-shop">
+            <a href="cart.html" class="bagadge-shops">
+              <option class="counter" value='0'>0</option>
               <i class="fas fa-shopping-bag"></i>
-            </button>
+            </a>
           </li>
         </ul>
       </div>
@@ -110,11 +114,11 @@
                       <h2>Матеріал:</h2>
                   <div>
                       <select id="ddlViewBy">
-                          <option value="1">RANFORS</option>
-                          <option value="2">SATIN</option>
-                          <option value="3">STRAP_SATIN</option>
-                          <option value="4">POPLIN</option>
-                          <option value="5">BIAZ</option>
+                          <option value="RANFORS">Ранофорс</option>
+                          <option value="SATIN">Сатин</option>
+                          <option value="STRAP_SATIN">Страйп Сатин</option>
+                          <option value="POPLIN">Поплін</option>
+                          <option value="BIAZ">Бязь</option>
                       </select>    
                   </div>
                   </div>
@@ -122,11 +126,11 @@
                       <h2>Розмір:</h2>
                   <div>
                       <select id="ddlViewB">
-                          <option value="1">1.5</option>
-                          <option value="2">2</option>
-                          <option value="3">Євро</option>
-                          <option value="4">Сімейний</option>
-                          <option value="5">Дитячий</option>
+                          <option value="ONE_AND_HALF">Півтораспальний</option>
+                          <option value="DOUBLE">Двоспальний</option>
+                          <option value="EURO">Євро</option>
+                          <option value="FAMILY">Сімейний</option>
+                          <option value="CHILDREN">Дитячий</option>
                       </select>    
                   </div>
                   </div>
@@ -142,22 +146,21 @@
                     <h2>Колір</h2>
                     <div>
                       <select id="ddlViewColor">
-                          <option value="1">RED</option>
-                          <option value="2">ORANGE</option>
-                          <option value="3">YELLOW</option>
-                          <option value="4">GREEN</option>
-                          <option value="5">BLUE</option>
-                          <option value="1">INDIGO</option>
-                          <option value="2">VIOLET</option>
-                          <option value="3">PURPLE</option>
-                          <option value="4">PINK</option>
-                          <option value="5">SILVER</option>
-                          <option value="5">GOLD</option>
-                          <option value="1">BEIGE</option>
-                          <option value="2">BROWN</option>
-                          <option value="3">GRAY</option>
-                          <option value="4">BLACK</option>
-                          <option value="5">WHITE</option>
+                          <option value="RED">Червоний</option>
+                          <option value="ORANGE">Помаранчовий</option>
+                          <option value="YELLOW">Жовтий</option>
+                          <option value="GREEN">Зелений</option>
+                          <option value="BLUE">Блакитний</option>
+                          <option value="INDIGO">Індіго</option>
+                          <option value="VIOLET">Фіолетовий</option>
+                          <option value="PINK">Рожевий</option>
+                          <option value="SILVER">Сріблястий</option>
+                          <option value="GOLD">Золотий</option>
+                          <option value="BEIGE">Бежевий</option>
+                          <option value="BROWN">Коричневий</option>
+                          <option value="GRAY">Сірий</option>
+                          <option value="BLACK">Чорний</option>
+                          <option value="WHITE">Білий</option>
                       </select>    
                   </div>
                   </div>

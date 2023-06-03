@@ -72,12 +72,13 @@ formInputsLogin.forEach(function(input){
     }
     else{
     document.cookie = `Authorization=${response.headers.get('Authorization')}`;
-    location.href="http://127.0.0.1:5500/index.html";
+    // location.href="http://127.0.0.1:5500";
+    location.reload();
     }
   })
   
 }
 
-  
+
 
 

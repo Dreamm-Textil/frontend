@@ -19,18 +19,20 @@ const inputPassword = document.querySelector(".password");
 let aboutUsBtn = document.querySelector('.nav-button-about-us');
 let indexBtn = document.querySelector('.nav-button-index');
 let deliveryBtn = document.querySelector('.nav-button-delivery');
+let personalCabineteAfterRegestration = document.querySelector('.personal-cabinete-after-registration');
+let personalCabineteAfterRegestrationPhoneSize = document.querySelector('.personal-cabinete-after-registration-phone-size');
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
-
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
-  aboutUsBtn.classList.add("nav-button-about-us-click");
+  personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
+  modalBtn.classList.add("log-in-btn-unshow");
+  personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
+  modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
 
 
@@ -281,3 +283,33 @@ fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/auth/registration
       RepeatshowPasswordRegistrationPage.classList.toggle("show-password");
     })
 })
+
+let counterBagadge = document.querySelector('.counter');
+count = localStorage.getItem("numberLS");
+
+  if(count<1 || count === 0){
+    counterBagadge.classList.remove('counter-show')
+  }
+  else{
+    counterBagadge.classList.add('counter-show')
+  }
+  if (count !== ''){
+    let numberArray1 = [];
+    numberArray1 = count.split(',');
+    numberArray1.shift();
+    counterBagadge.innerHTML = numberArray1.length;
+}
+
+function cliclAddToBagBtn(id){ 
+ counterBagadge.classList.add('counter-show')
+let arrayBagage = [localStorage.getItem("numberLS")];
+let count;
+let numberArray = [];
+  count = localStorage.getItem("numberLS");
+  numberArray = count.split(',');
+  counterBagadge.value = numberArray.length;
+  console.log(counterBagadge.value);
+  counterBagadge.innerHTML = counterBagadge.value++;
+  arrayBagage.push(id)
+  localStorage.setItem("numberLS", arrayBagage);
+}

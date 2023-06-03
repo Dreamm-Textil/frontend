@@ -19,12 +19,10 @@ let familySizeBtn = document.querySelector('.size-btn-family');
 let childrenSizeBtn = document.querySelector('.size-btn-children');
 let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
+let adminOnPage = false;
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+// if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   
-// }
-// else{
-
 fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
   
   method: 'GET',
@@ -38,16 +36,15 @@ fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
 .then((json) =>{ 
   if (json.role === "ADMIN"){
     adminPanel.classList.add("admin-panel-show");
+    adminOnPage = true;
   }
   else{
-    console.log(123);
+    adminOnPage = false;
   }
 });
-}
+// }
 
-
-
-getSize('ONE_AND_HALF');
+setTimeout(function() { getSize('ONE_AND_HALF'); }, 500);
 oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
@@ -57,9 +54,7 @@ personalCabineteAfterRegestration.classList.remove("nav-button-personal-cabinete
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
@@ -179,7 +174,9 @@ complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> 
 })
 
 
+
 function getSize(s){
+  
     const sizeMap = new Map()
       sizeMap.set("ONE_AND_HALF", "Півтораспальний")
       sizeMap.set("DOUBLE", "Двохспальний")
@@ -192,18 +189,59 @@ function getSize(s){
       materialMap.set("STRAP_SATIN", "Страйп сатин")
       materialMap.set("POPLIN", "Поплин")
       materialMap.set("BIAZ", "Бязь")
-
-    fetch(`http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile/all?size=${s}`, {
+    
+  
+      fetch(`http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile/all?size=${s}`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin':'*',
         'Content-Type': 'application/json',
       },
+      
     })
 
     .then((response) => response.json())
     .then((json) => {
       json.forEach(user=> {
+        if(adminOnPage){
+          list_element.innerHTML += `<div class="product-container">
+          <div class="card product">
+            <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
+            <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
+            <div class="card-body">
+              <div class="card-title-size-container">
+                <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
+                <button class="like"><i class="far fa-heart change-heart"></i></button>
+              </div>
+              <!-- <div class="card-title-container"> -->
+                <h4 class="card-title">${user.name}</h4>
+              <!-- </div> -->
+              <div class="cart-size-container">
+                <div class="card-size-title">
+                  <h2>Розмір:</h2>
+                </div>
+                <div class="card-size">
+                  <h2>${sizeMap.get(user.size)}</h2>
+                </div>
+              </div>
+              <div class="cart-size-container">
+                <div class="card-size-title">
+                  <h2>Матеріал:</h2>
+                </div>
+                <div class="card-size">
+                  <h2>${materialMap.get(user.material)}</h2>
+                </div>
+              </div>
+              <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
+              <div class="card-btns-container">
+                <button class="to-bag"  onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>`;
+        }
+        else{
           list_element.innerHTML += `<div class="product-container">
                                     <div class="card product">
                                       <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
@@ -233,12 +271,68 @@ function getSize(s){
                                         </div>
                                         <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
                                         <div class="card-btns-container">
-                                          <button class="to-bag">В кошик</button>
+                                          <button class="to-bag"  onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                   </div>`;
+        }
       })
-    });
+    }); 
 }
+
+function cliclDeleteBtn(id){
+  let alertSecces = document.querySelector('.alert');
+  alertSecces.classList.add("alert-show")
+  setTimeout(() => {
+    alertSecces.classList.remove("alert-show")
+    location.reload();
+  }, 1500);
+  
+  fetch(`http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+}
+
+
+
+
+let counterBagadge = document.querySelector('.counter');
+count = localStorage.getItem("numberLS");
+
+  if(count<1 || count === 0){
+    counterBagadge.classList.remove('counter-show')
+  }
+  else{
+    counterBagadge.classList.add('counter-show')
+  }
+  if (count !== ''){
+    let numberArray1 = [];
+    numberArray1 = count.split(',');
+    numberArray1.shift();
+    counterBagadge.innerHTML = numberArray1.length;
+}
+
+function cliclAddToBagBtn(id){ 
+ counterBagadge.classList.add('counter-show')
+let arrayBagage = [localStorage.getItem("numberLS")];
+let count;
+let numberArray = [];
+  count = localStorage.getItem("numberLS");
+  numberArray = count.split(',');
+  counterBagadge.value = numberArray.length;
+  console.log(counterBagadge.value);
+  counterBagadge.innerHTML = counterBagadge.value++;
+  arrayBagage.push(id)
+  localStorage.setItem("numberLS", arrayBagage);
+}
+
+

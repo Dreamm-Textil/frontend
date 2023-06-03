@@ -17,10 +17,56 @@ let indexBtn = document.querySelector('.nav-button-index');
 let deliveryBtn = document.querySelector('.nav-button-delivery');
 let formInputsAdd = document.querySelectorAll(".js-input");
 let warningImg = document.querySelector(".warning-img");
+const navToggle = document.querySelector(".nav-toggle");
+const links = document.querySelector(".links");
+
+
+
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
+
+
+
+navToggle.addEventListener('click', function(){
+  if(links.classList.contains('show-links')){
+      links.classList.remove('show-links')
+  } else {
+      links.classList.add("show-links");
+  }
+});
+
+modalBtn.addEventListener('click', function(){
+modalOverlay.classList.toggle("open-modal");
+});
+
+modalBtnPhoneSize.addEventListener('click', function(){
+modalOverlay.classList.toggle("open-modal");
+});
+
+closeBtn.addEventListener("click", function () {
+  modalOverlay.classList.remove("open-modal");
+});
+
+// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
+
+function myFunction() {
+let x = document.getElementById("myInputPassword");
+if (x.type === "password") {
+  x.type = "text";
+} else {
+  x.type = "password";
+}
+}
+
+const btns = document.querySelectorAll(".show-password-btn-modal");
+btns.forEach(function(btn){
+btn.addEventListener("click", function(e){
+  const showPassword = e.currentTarget;
+  showPassword.classList.toggle("show-password");
+})
+})
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
@@ -80,42 +126,13 @@ function mySubmitFunctionAdd(e) {
                                       <h2>Успіх</h2>
                                     </div>
                                     <div class = "success-registration-main">
-                                      <h2>Вітаємо, Ваш акаунт успішно створенний</h2>
+                                      <h2>Вітаємо, Постільна білизна у каталозі</h2>
                                     </div>
                                     <div class = "succes-registration-footer">
                                       <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
-                                      <button class="log-in-bt">Увійти<i class="fas fa-chevron-right"></i></button>
+                                      <a class="log-in-bt" href="admin-add-item.html">Додати постіль<i class="fas fa-chevron-right"></i></a>
                                   </div>
-                                </div>
-                                <div class="modal-overlay">
-                                <div class="modal-container">
-                                    <div class="header-modal-log-in">
-                                    <h3>Вхід до особистого кабінету</h3>
-                                    </div>
-                                    <div class="login-and-password">
-                                      <input class="login" placeholder="Login">
-                                      <div class="password-container">
-                                        <input  type="password" class="password" placeholder="Password" value="" id="myInputPasswor">
-                                        <button class="show-password-bt" onclick="myFunction()">
-                                          <span class="see-icon">
-                                            <i class="far fa-eye"></i>
-                                          </span>
-                                          <span class="non-see-icon">
-                                            <i class="far fa-eye-slash"></i>
-                                          </span>
-                                        </button>
-                                      </div>
-                                    </div>
-                                    <div class="login-and-password-btn">
-                                      <button class="autorization-btn">Авторизація</button>
-                                      <a href="registration.html" class="registration-btn">Реєстарція</a>
-                                      <div class="remebmer-me-btn">
-                                        <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
-                                      </div>
-                                    </div>
-                                    <button class="close-btn"><i class="fas fa-times"></i></button>
-                                </div>
-                              </div> `
+                                </div> `
     
     e.preventDefault();
     var value = inputMaterial.value;
@@ -134,6 +151,7 @@ function mySubmitFunctionAdd(e) {
     console.log(flag);
     
     
+    
     e.preventDefault();
     fetch('http://127.0.0.1:5500/api', {
         method: 'POST',
@@ -143,4 +161,54 @@ function mySubmitFunctionAdd(e) {
     .then(data => console.log(data));
     e.preventDefault();
     console.log(name.value);
+
+    fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile', {
+    method: 'POST',
+    mode: "cors",
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    },
+    body: JSON.stringify({
+    name: inputName.value, 
+    size: valueSize,
+    price: inputPrice.value,
+    discountPrice: inputPriceDiscount.value,
+    color: valueColor,
+    material: value,
+    imgUrl: "images/catalog/" + flag
+    }),
+    credentials: "same-origin"
+  })
+}
+
+let counterBagadge = document.querySelector('.counter');
+count = localStorage.getItem("numberLS");
+
+  if(count<1 || count === 0){
+    counterBagadge.classList.remove('counter-show')
+  }
+  else{
+    counterBagadge.classList.add('counter-show')
+  }
+  if (count !== ''){
+    let numberArray1 = [];
+    numberArray1 = count.split(',');
+    numberArray1.shift();
+    counterBagadge.innerHTML = numberArray1.length;
+}
+
+function cliclAddToBagBtn(id){ 
+ counterBagadge.classList.add('counter-show')
+let arrayBagage = [localStorage.getItem("numberLS")];
+let count;
+let numberArray = [];
+  count = localStorage.getItem("numberLS");
+  numberArray = count.split(',');
+  counterBagadge.value = numberArray.length;
+  console.log(counterBagadge.value);
+  counterBagadge.innerHTML = counterBagadge.value++;
+  arrayBagage.push(id)
+  localStorage.setItem("numberLS", arrayBagage);
 }
