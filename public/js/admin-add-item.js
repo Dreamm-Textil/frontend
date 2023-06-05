@@ -162,7 +162,7 @@ function mySubmitFunctionAdd(e) {
     e.preventDefault();
     console.log(name.value);
 
-    fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile', {
+    fetch(`${serverMachineUrl}/api/textile`, {
     method: 'POST',
     mode: "cors",
     headers: {
@@ -181,34 +181,4 @@ function mySubmitFunctionAdd(e) {
     }),
     credentials: "same-origin"
   })
-}
-
-let counterBagadge = document.querySelector('.counter');
-count = localStorage.getItem("numberLS");
-
-  if(count<1 || count === 0){
-    counterBagadge.classList.remove('counter-show')
-  }
-  else{
-    counterBagadge.classList.add('counter-show')
-  }
-  if (count !== ''){
-    let numberArray1 = [];
-    numberArray1 = count.split(',');
-    numberArray1.shift();
-    counterBagadge.innerHTML = numberArray1.length;
-}
-
-function cliclAddToBagBtn(id){ 
- counterBagadge.classList.add('counter-show')
-let arrayBagage = [localStorage.getItem("numberLS")];
-let count;
-let numberArray = [];
-  count = localStorage.getItem("numberLS");
-  numberArray = count.split(',');
-  counterBagadge.value = numberArray.length;
-  console.log(counterBagadge.value);
-  counterBagadge.innerHTML = counterBagadge.value++;
-  arrayBagage.push(id)
-  localStorage.setItem("numberLS", arrayBagage);
 }

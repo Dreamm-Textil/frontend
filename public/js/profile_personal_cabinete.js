@@ -38,7 +38,7 @@ deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
                                                   ;
-fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
+fetch(`${serverMachineUrl}/api/user`, {
   
   method: 'GET',
   headers: {
@@ -185,7 +185,7 @@ form.onsubmit = function(){
                                 
 
 
-fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
+fetch(`${serverMachineUrl}/api/user`, {
   method: 'PUT',
   mode: "cors",
   headers: {
@@ -253,7 +253,7 @@ closeBtnDeleteUser.addEventListener("click", function () {
 });
 
 deleteAcountBtn.addEventListener('click', function(){
-  fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
+  fetch(`${serverMachineUrl}/api/user`, {
   method: 'DELETE',
   mode: "cors",
   headers: {
@@ -268,32 +268,3 @@ document.cookie = `Authorization=`
 location.href="http://127.0.0.1:5500/index.html";
 })
 
-let counterBagadge = document.querySelector('.counter');
-count = localStorage.getItem("numberLS");
-
-  if(count<1 || count === 0){
-    counterBagadge.classList.remove('counter-show')
-  }
-  else{
-    counterBagadge.classList.add('counter-show')
-  }
-  if (count !== ''){
-    let numberArray1 = [];
-    numberArray1 = count.split(',');
-    numberArray1.shift();
-    counterBagadge.innerHTML = numberArray1.length;
-}
-
-function cliclAddToBagBtn(id){ 
- counterBagadge.classList.add('counter-show')
-let arrayBagage = [localStorage.getItem("numberLS")];
-let count;
-let numberArray = [];
-  count = localStorage.getItem("numberLS");
-  numberArray = count.split(',');
-  counterBagadge.value = numberArray.length;
-  console.log(counterBagadge.value);
-  counterBagadge.innerHTML = counterBagadge.value++;
-  arrayBagage.push(id)
-  localStorage.setItem("numberLS", arrayBagage);
-}

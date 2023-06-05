@@ -20,6 +20,16 @@ let warningImg = document.querySelector(".warning-img");
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
 
+let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+if(value_or_null === null){
+  console.log('clear');
+}else{
+  console.log('user');
+  personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
+  modalBtn.classList.add("log-in-btn-unshow");
+  personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
+  modalBtnPhoneSize.classList.add("log-in-btn-unshow");
+}
 
 
 
@@ -68,16 +78,7 @@ btn.addEventListener("click", function(e){
 })
 })
 
-let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
-if(value_or_null === null){
-  console.log('clear');
-}else{
-  console.log('user');
-  personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
-  modalBtn.classList.add("log-in-btn-unshow");
-  personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
-  modalBtnPhoneSize.classList.add("log-in-btn-unshow");
-}
+
 
 function mySubmitFunctionAdd(e) {
   e.preventDefault()
@@ -119,8 +120,8 @@ function mySubmitFunctionAdd(e) {
     var value = inputMaterial.value;
     var valueSize = inputSize.value;
 
-    fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/texti', {
-    method: 'POST',
+    fetch(`${serverMachineUrl}/api/textile/update-prices`, {
+    method: 'PUT',
     mode: "cors",
     headers: {
       'Access-Control-Allow-Origin':'*',
@@ -128,41 +129,11 @@ function mySubmitFunctionAdd(e) {
       'Authorization':  document.cookie.valueOf('Authorization').substring(14)
     },
     body: JSON.stringify({
-    size: valueSize,
-    price: inputPrice.value,
-    discountPrice: inputPriceDiscount.value,
-    material: value,
+      price: inputPrice.value,
+      discountPrice: inputPriceDiscount.value,
+      material: value,
+      size: valueSize
     }),
-    credentials: "same-origin"
+      credentials: "same-origin"
   })
-}
-
-let counterBagadge = document.querySelector('.counter');
-count = localStorage.getItem("numberLS");
-
-  if(count<1 || count === 0){
-    counterBagadge.classList.remove('counter-show')
-  }
-  else{
-    counterBagadge.classList.add('counter-show')
-  }
-  if (count !== ''){
-    let numberArray1 = [];
-    numberArray1 = count.split(',');
-    numberArray1.shift();
-    counterBagadge.innerHTML = numberArray1.length;
-}
-
-function cliclAddToBagBtn(id){ 
- counterBagadge.classList.add('counter-show')
-let arrayBagage = [localStorage.getItem("numberLS")];
-let count;
-let numberArray = [];
-  count = localStorage.getItem("numberLS");
-  numberArray = count.split(',');
-  counterBagadge.value = numberArray.length;
-  console.log(counterBagadge.value);
-  counterBagadge.innerHTML = counterBagadge.value++;
-  arrayBagage.push(id)
-  localStorage.setItem("numberLS", arrayBagage);
 }

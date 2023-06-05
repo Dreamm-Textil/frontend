@@ -23,7 +23,7 @@ let adminOnPage = false;
 
 // if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   
-fetch('http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/user', {
+fetch(`${serverMachineUrl}/api/user`, {
   
   method: 'GET',
   headers: {
@@ -121,7 +121,11 @@ oneAndHalfSizeBtn.addEventListener('click', function(){
   euroSizeBtn.classList.remove("one-and-half-size-btn-show")
   familySizeBtn.classList.remove("one-and-half-size-btn-show")
   childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
+  
   getSize('ONE_AND_HALF');
+  setTimeout(() => {
+    updateButtonStatus();
+  }, 800)
   complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
 })
 
@@ -134,6 +138,10 @@ euroSizeBtn.classList.remove("one-and-half-size-btn-show")
 familySizeBtn.classList.remove("one-and-half-size-btn-show")
 childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('DOUBLE');
+setTimeout(() => {
+  updateButtonStatus();
+}, 800);
+
 complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
 })
 
@@ -146,6 +154,9 @@ euroSizeBtn.classList.add("one-and-half-size-btn-show")
 familySizeBtn.classList.remove("one-and-half-size-btn-show")
 childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('EURO');
+setTimeout(() => {
+  updateButtonStatus();
+}, 800)
 complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
 })
 
@@ -158,6 +169,9 @@ euroSizeBtn.classList.remove("one-and-half-size-btn-show")
 familySizeBtn.classList.add("one-and-half-size-btn-show")
 childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('FAMILY');
+setTimeout(() => {
+  updateButtonStatus();
+}, 800)
 complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
 })
 
@@ -170,6 +184,9 @@ euroSizeBtn.classList.remove("one-and-half-size-btn-show")
 familySizeBtn.classList.remove("one-and-half-size-btn-show")
 childrenSizeBtn.classList.add("one-and-half-size-btn-show")
 getSize('CHILDREN');
+setTimeout(() => {
+  updateButtonStatus();
+}, 800)
 complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.'
 })
 
@@ -191,7 +208,7 @@ function getSize(s){
       materialMap.set("BIAZ", "Бязь")
     
   
-      fetch(`http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile/all?size=${s}`, {
+      fetch(`${serverMachineUrl}/api/textile/all?size=${s}`, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin':'*',
@@ -204,6 +221,7 @@ function getSize(s){
     .then((json) => {
       json.forEach(user=> {
         if(adminOnPage){
+          
           list_element.innerHTML += `<div class="product-container">
           <div class="card product">
             <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
@@ -234,7 +252,7 @@ function getSize(s){
               </div>
               <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
               <div class="card-btns-container">
-                <button class="to-bag"  onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+                <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
               </div>
             </div>
           </div>
@@ -271,7 +289,7 @@ function getSize(s){
                                         </div>
                                         <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
                                         <div class="card-btns-container">
-                                          <button class="to-bag"  onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+                                          <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
                                         </div>
                                       </div>
                                     </div>
@@ -290,7 +308,7 @@ function cliclDeleteBtn(id){
     location.reload();
   }, 1500);
   
-  fetch(`http://ec2-3-93-66-171.compute-1.amazonaws.com:8080/api/textile?id=${id}`, {
+  fetch(`${serverMachineUrl}/api/textile?id=${id}`, {
     method: 'DELETE',
     headers: {
       'Access-Control-Allow-Origin':'*',
@@ -301,38 +319,3 @@ function cliclDeleteBtn(id){
   .then(res => res.json())
   .then(data => console.log(data));
 }
-
-
-
-
-let counterBagadge = document.querySelector('.counter');
-count = localStorage.getItem("numberLS");
-
-  if(count<1 || count === 0){
-    counterBagadge.classList.remove('counter-show')
-  }
-  else{
-    counterBagadge.classList.add('counter-show')
-  }
-  if (count !== ''){
-    let numberArray1 = [];
-    numberArray1 = count.split(',');
-    numberArray1.shift();
-    counterBagadge.innerHTML = numberArray1.length;
-}
-
-function cliclAddToBagBtn(id){ 
- counterBagadge.classList.add('counter-show')
-let arrayBagage = [localStorage.getItem("numberLS")];
-let count;
-let numberArray = [];
-  count = localStorage.getItem("numberLS");
-  numberArray = count.split(',');
-  counterBagadge.value = numberArray.length;
-  console.log(counterBagadge.value);
-  counterBagadge.innerHTML = counterBagadge.value++;
-  arrayBagage.push(id)
-  localStorage.setItem("numberLS", arrayBagage);
-}
-
-

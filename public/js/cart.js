@@ -22,7 +22,6 @@ const links = document.querySelector(".links");
 
 
 
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
@@ -83,38 +82,57 @@ let main = document.querySelector('.kek');
 
 var x = localStorage.getItem("numberLS");
 
-main.innerHTML = x;
-let arr = Array.from(x)
+let arr = [];
+arr = x.split(',');
+
+let cartProductsPage = document.querySelector('.cart__products-product');
+
 arr.forEach((e)=>{
-    console.log(e);
+  fetch(`${serverMachineUrl}/api/textile?id=${e}`, {
+    method: 'GET',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+    },
+  })
+  .then((response) => response.json())
+  .then((json) => {console.log(json);
+    cartProductsPage.innerHTML +=`<div class="products-container">
+                                    <div class="img-cart">
+                                      <img src="${json.imgUrl}">
+                                    </div>
+                                    <span class="cart-name">${json.name}</span>
+                                    <table class="cart__config">
+                                      <tbody><tr>
+                                          <th class="size-cart">Розмір:</th>
+                                          <td>${json.size}</td>
+                                      </tr>
+                                          <th class="color-cart">Колір:</th>
+                                          <td>${json.color}</td>
+                                      </tr>
+                                      </tbody>
+                                    </table>
+                                    <span type="number" class="cart-price" value="1">${json.discountPrice}</span>
+                                    <div class="cart__counter">
+                                      <span>Кількість:</span>
+                                      <input  name="quantity" value="1">
+                                      <div class="arrow-container">
+                                        <img type="button" src="images/increase.png" class="increase"></img>
+                                        <img class="decrease" type="button" src="images/increase.png"></img>
+                                      </div>
+                                    </div>
+                                    <span class="cart-price-all" value="0">${json.discountPrice}</span>
+                                    <button class="cart-delete-btn"><img src="images/delete.png"></button>
+                                  </div>`
+  })
 })
 
-let counterBagadge = document.querySelector('.counter');
-count = localStorage.getItem("numberLS");
+let increaseItems = document.querySelector('.increase');
+let cartPriceValue = document.querySelector('.cart-price');
 
-  if(count<1 || count === 0){
-    counterBagadge.classList.remove('counter-show')
-  }
-  else{
-    counterBagadge.classList.add('counter-show')
-  }
-  if (count !== ''){
-    let numberArray1 = [];
-    numberArray1 = count.split(',');
-    numberArray1.shift();
-    counterBagadge.innerHTML = numberArray1.length;
-}
+increaseItems.addEventListener("click", (e)=>{
+console.log(cartPriceValue.value);
+})
 
-function cliclAddToBagBtn(id){ 
- counterBagadge.classList.add('counter-show')
-let arrayBagage = [localStorage.getItem("numberLS")];
-let count;
-let numberArray = [];
-  count = localStorage.getItem("numberLS");
-  numberArray = count.split(',');
-  counterBagadge.value = numberArray.length;
-  console.log(counterBagadge.value);
-  counterBagadge.innerHTML = counterBagadge.value++;
-  arrayBagage.push(id)
-  localStorage.setItem("numberLS", arrayBagage);
-}
+
+

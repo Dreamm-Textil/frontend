@@ -311,7 +311,9 @@ nav .nav-header h2{
   padding-left: 1.5rem;
 }
 .social-icons {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .links {
   height: 0;
@@ -329,8 +331,21 @@ nav .nav-header h2{
   display: flex;
   gap: 5px;
 }
+.social-icons button{
+  margin: 0 0.5rem;
+  color: white;
+  transition: var(--transition);
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* position: absolute;
+  top: 34%;
+  left: 77%; */
+}
+
 
 @media screen and (min-width: 880px) {
+ 
   .nav-center {
     max-width: 1170px;
     margin: 0 auto;
@@ -391,8 +406,9 @@ nav .nav-header h2{
     cursor: pointer;
     font-size: 14px;
   }
-  .social-icons a:hover {
+  .fa-shopping-bag:hover {
     color: #EA4C89;
+    transition: var(--transition);
   }
 }
 
@@ -685,6 +701,10 @@ footer{
   gap: 5px;
 }
 
+.personal-cabinete-after-registration-show:hover{
+  color: #EA4C89;
+  transition: var(--transition);
+}
 .admin-panel{
   display: none;
 }
@@ -717,10 +737,10 @@ footer{
   display: none;
 }
 
-.bagadge-shops{
+.bagadge-shops, .bagadge-shops-phone-size{
   position: relative;
 }
-.counter{
+.counter, .counter-phone-size{
   position: absolute;
   top: -10px;
   left: 7px;
@@ -877,6 +897,12 @@ li, a{
 .clear {
   clear: both;
 }
+.fa-heart{
+  font-size: 15px;
+}
+.fa-shopping-bag{
+  font-size: 15px;
+}
 
 .success {
   background-color: rgb(165, 255, 165);
@@ -917,11 +943,26 @@ li, a{
     margin-bottom: 106px;
     height: 153px;
   }
+  
 }
 
 @media only screen and (max-width: 880px){
   .logo-bedclothes-title {
     margin-top: 0px;
+}
+.personal-cabinete-after-registration-show{
+  display: none;
+}
+.log-in-btn{
+  display: none;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 1.7%;
+  left: 86%;
 }
   .svg-video{
     height: 148px;
@@ -1070,6 +1111,14 @@ li, a{
   .admin-panel-show{
     flex-direction: column;
   }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1.7%;
+    left: 79%;
+  }
  
 }
 
@@ -1084,6 +1133,14 @@ li, a{
   .intro{
     margin-top: 46px;
   }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1.8%;
+    left: 74%;
+  }
   
 }
 
@@ -1093,6 +1150,23 @@ li, a{
   }
   .logo-bedclothes-title {
     margin-top: 22px;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1.5%;
+    left: 70%;
+  }
+  .personal-cabinete-after-registration-show{
+    font-size: 11px;
+  }
+  .fa-heart{
+    font-size: 13px;
+  }
+  .fa-shopping-bag{
+    font-size: 13px;
   }
   .logo {
     font-size: 20px;
