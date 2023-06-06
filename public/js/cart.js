@@ -232,19 +232,14 @@ arr.forEach((e) => {
             'input[name="quantity"]'
           );
 
-          // Створити новий елемент <span> зі сформованою ціною
           const button = document.querySelector(`button[data-id="${json.id}"]`);
-
-          // Отримати батьківський елемент кнопки
           const parentElement = button.parentNode;
-
-          // Створити новий елемент <span> зі сформованою ціною
           const newPriceElement = document.createElement("span");
           const price = json.discountPrice * quantity;
           const formattedPrice = formatPrice(price);
           newPriceElement.innerText = `${formattedPrice} грн`;
 
-          // Вставити новий елемент перед кнопкою
+
           parentElement.insertBefore(newPriceElement, button);
 
           let cartPriceElements = document.querySelectorAll(".cart-price");
@@ -260,13 +255,11 @@ arr.forEach((e) => {
             return price.toLocaleString("uk-UA");
           }
 
-          // Format the total sum without decimal if it ends with .00
           let formattedTotalSum = totalSum.toFixed(2);
           if (formattedTotalSum.endsWith(".00")) {
             formattedTotalSum = formattedTotalSum.replace(".00", "");
           }
           formattedTotalSum = totalSum.toLocaleString("uk-UA");
-          // Update the cart summary element with the total sum
           const cartSummaryTitle = document.querySelector(
             ".cart-summaty-title"
           );
@@ -274,18 +267,11 @@ arr.forEach((e) => {
 
           deleteBtn.forEach((button) => {
             button.addEventListener("click", () => {
-              // Get the parent container of the item to be deleted
               const container = button.closest(".products-container");
-
-              // Get the data-id attribute value of the item
               const id = container
                 .querySelector(".cart-price-all")
                 .getAttribute("data-id");
-
-              // Remove the item from the cart
               container.remove();
-
-              // Update the local storage by removing the item's ID
               const storedQuantity = localStorage.getItem("numberLS");
               const storedQuantityArray = storedQuantity
                 ? storedQuantity.split(",")
@@ -354,20 +340,17 @@ arr.forEach((e) => {
               }
             });
           });
-          // --------------------------------------------
 
           const quantityInputse = document.querySelectorAll(
             'input[name="quantity"]'
           );
 
-          // Add event listeners to each quantity input
           quantityInputs.forEach((quantityInput) => {
             quantityInput.addEventListener("blur", (e) => {
               const id = quantityInput.getAttribute("data-id");
               if (quantityInput.value < 0) {
-                localStorage.removeItem(id); // Видалити ID елементу з localStorage
-          
-                // Оновити значення в local storage
+                localStorage.removeItem(id); 
+
                 const storedIds = localStorage.getItem("numberLS");
                 if (storedIds) {
                   const idsArray = storedIds.split(",");
@@ -378,7 +361,6 @@ arr.forEach((e) => {
                 location.reload();
                 return;
               } else {
-                // Решта коду для оновлення значення кількості та перезавантаження сторінки
                 const newQuantity = parseInt(quantityInput.value);
                 e.preventDefault();
                 const storedIds = localStorage.getItem("numberLS");
@@ -396,10 +378,7 @@ arr.forEach((e) => {
             });
           });
 
-          // ============================================================================
-
           function updateCartPrice(id, quantity) {
-            // Оновити ціну для заданого ідентифікатора товару
             const price = parseFloat(prices[id]);
             const cartPriceElement = document.querySelector(
               `.cart-price[data-id="${id}"]`
@@ -409,7 +388,6 @@ arr.forEach((e) => {
             );
             const totalPrice = price * quantity;
 
-            // Оновити відображення ціни та загальної ціни
             cartPriceElement.innerText = price.toFixed(2);
             cartPriceAllElement.innerText = totalPrice.toFixed(2);
           }
