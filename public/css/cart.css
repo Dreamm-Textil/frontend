@@ -158,7 +158,7 @@ font-size: 17px;
     padding: 5px;
 }
 .cart__products-product{
-    margin-top: 63px;
+    margin-top: 38px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,7 +167,7 @@ font-size: 17px;
     border-bottom: 1px solid #E5E5E5;
 }
 .img-cart > img{
-    width: 100px;
+    width: 115px;
 }
 .cart__config{
     width: 100%;
@@ -259,6 +259,9 @@ cart__counter .increase {
     line-height: 1.8rem;
     color: #000000;
     text-align: center;
+    background: none;
+    border: none;
+    outline: none;
 }
 .cart-delete-btn > img{
     background-color: none;
@@ -280,6 +283,81 @@ cart__counter .increase {
     color: black;
     font-family: "Futura PT", sans-serif;
     font-weight: 100;
-    font-size: 40px;
+    font-size: 36px;
     margin-top: 15px;
+}
+.back-from-cart-to-catalog, .to-order{
+    color: black;
+    cursor: pointer;
+}
+.cart-summary-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 63px;
+    width: 100%;
+}
+.cart-summary{
+    max-width: 485px;
+    width: 100%;
+}
+.cart-summary-links{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+}
+.to-order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1E1E1E;
+    color: white;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+    font-size: 17px;
+    text-decoration: none;
+    text-align: center;
+}
+.to-order:hover{
+    background-color: #EA4C89;
+}
+.back-from-cart-to-catalog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    color: #ea4c89d0;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+}
+
+.back-from-cart-to-catalog:hover{
+    color: black
+  }
+.cart-summaty-title{
+    text-align: end;
+}
+
+.material-cart{
+    display: flex;
+}
+.cart__products-product-unshow {
+    margin-top: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+}
+.title-cart-clear{
+   font-weight: 100;
+   margin-bottom: 20px;
+}
+.cart-summaty-title{
+    font-weight: 100;
 }
