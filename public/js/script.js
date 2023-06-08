@@ -126,7 +126,7 @@ oneAndHalfSizeBtn.addEventListener('click', function(){
   setTimeout(() => {
     updateButtonStatus();
   }, 800)
-  complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
+  complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
 
 
@@ -142,7 +142,7 @@ setTimeout(() => {
   updateButtonStatus();
 }, 800);
 
-complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
+complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
 
 
@@ -157,7 +157,7 @@ getSize('EURO');
 setTimeout(() => {
   updateButtonStatus();
 }, 800)
-complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
+complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
 
 
@@ -172,7 +172,7 @@ getSize('FAMILY');
 setTimeout(() => {
   updateButtonStatus();
 }, 800)
-complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.'
+complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
 
 
@@ -187,7 +187,7 @@ getSize('CHILDREN');
 setTimeout(() => {
   updateButtonStatus();
 }, 800)
-complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.'
+complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
 
 

@@ -1,0 +1,280 @@
+.main-add-item-container{
+    margin-top: 0px;
+    padding: 0px 10px;
+    height: 668px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.main-add-item-container > h2{
+    max-width: 651px;
+    color: black;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.main-add-item{
+font-size: 17px;
+    margin-top: 0px;
+    width: 100%;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin: auto;
+    background-color: none;
+    border-radius: 10px;
+    height: 600px;
+}
+.header-add-item{
+    max-width: 640px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.header-add-item > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 100;
+    height: 66px;
+}
+
+.form-kek{
+    width: 100%;
+}
+
+.add-item-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: auto;
+    gap: 17px;
+    font-size: 12px;
+    margin-top: 30px;
+    padding: 0px 5px 0px 5px;
+}
+.add-name, .add-material, .add-size, .add-price, .add-price-discount, .color-container, .add-photo{
+    width: 100%;
+}
+.add-item-container h2 {
+    color: black;
+    font-weight: 100;
+    font-size: 16px;
+}
+#name{
+    display: none;
+}
+.input-name-new-item, #ddlViewBy, #ddlViewB, .price-new-item, .price-new-item-discount, #ddlViewColor{
+    width: 100%;
+    height: 38px;
+    outline: none;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #464649;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+}
+.input-name-new-item:focus, #ddlViewBy:focus, #ddlViewB:focus, .price-new-item:focus, .price-new-item-discount:focus, #ddlViewColor:focus{
+    border:1px solid #EA4C89;
+    background-color: black;
+    box-sizing: border-box;
+    outline: none;
+}
+#files{
+    max-width: 285px;
+    width: 100%;
+    height: 38px;
+    outline: none;
+    border: none;
+    background-color: none;
+    font-size: 16px;
+    border-radius: 5px;
+    color: white;
+    box-sizing: border-box;
+    margin-top: 12px;
+}
+.add-item-sub-btn{
+    background-color: #ea4c89d0;
+    border: none;
+    color: white;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 100px;
+    height: 38px;
+    font-weight: 100;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    margin-top: 27px;
+}
+
+.add-item-sub-btn:hover{
+    background-color: #EA4C89;
+}
+
+.error{
+    border: 1px solid red;
+}
+
+.files-type-edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.files-type-edit img{
+    width: 36px;
+}
+.warning-img{
+    display: none;
+}
+.warning-img-show{
+    display: flex;
+}
+
+/* .container {
+    position: relative;
+    width: 50%;
+  } */
+
+  .btn-delete-item {
+    position: absolute;
+    top: 3%;
+    left: 82%;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .select-selected {
+    background-color: #f2f2f2;
+    padding: 8px 16px;
+  }
+  
+  .select-options {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .select-option {
+    padding: 8px 16px;
+  }
+  
+  .select-option:hover {
+    background-color: #f2f2f2;
+  }
+  .hidden {
+    display: none;
+  }
+
+  .city-delivery-container{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+  #selectedPostOffice, #selectedRegion{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .select-input, .select-input-house{
+    display: flex;
+    flex-direction: row;
+    max-width: 363px;
+    align-items: center;
+    width: 100%;
+    height: 37px;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0px 5px 0px 5px;
+    cursor: pointer;
+  }
+  #regionsInput, #postOfficesInput{
+    font-size: 16px;
+    max-width: 344px;
+    width: 100%;
+    display: none;
+    outline: none;
+
+    background-color: #fff;
+    /* border: 1px solid #aaa; */
+    height: 37px;
+    border: 1px solid #aaa;
+    padding: 0px 5px 0px 5px;
+  }
+  
+  .select-options{
+    max-width: 363px;
+    display: block;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 0px 5px 0px 5px;
+    max-width: 363px;
+    width: 100%;
+  }
+  .select-options > .option:hover{
+    background-color: #0073AA;
+    color: white;
+    cursor: pointer;
+  }
+
+  .regoins-container, .regoins-container-house{
+    display: flex;
+    justify-content: center;
+    margin-top: 9px;
+    margin-bottom: 9px;
+  }
+  .select-wrapper-container, .select-wrapper-container-house{
+    max-width: 364px;
+    border: none;
+  }
+  .select-wrapper-container-show, .select-wrapper-container-house-show{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border: 1px solid #aaa;
+  }
+
+  .select-input-show{
+    border-bottom: 1px solid #aaa;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+  }
+  .select-input-house-show{
+    border-bottom: 1px solid #aaa;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+  }
+  .arrow-down-click, .arrow-down-house-click{
+    rotate: 180deg;
+  }

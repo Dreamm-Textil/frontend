@@ -172,7 +172,7 @@ font-size: 17px;
 .cart__config{
     width: 100%;
     max-width: 14rem;
-    margin-right: 1rem;
+    margin-right: 0rem;
     border-collapse: separate;
     border-spacing: 0 1.2rem;
 }
@@ -189,21 +189,7 @@ font-size: 17px;
     width: 100%;
     padding: 10px 10px 5px 10px;
 }
-.cart__counter {
-    position: relative;
-    width: 100%;
-    max-width: 17.6rem;
-    margin-right: 1rem;
-    padding: 1.5rem 1rem;
-    border: 1px solid #000000;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    gap: 10px;
-}
+
 .cart__counter .increase, .cart__counter .decrease {
     right: 1rem;
     display: flex;
@@ -229,9 +215,9 @@ cart__counter .increase {
 .cart__counter {
     position: relative;
     width: 100%;
-    height: 54px;
-    max-width: 232px;
-    margin-right: 1rem;
+    height: 53px;
+    max-width: 215px;
+    margin-right: 0rem;
     border: 1px solid #000000;
     display: -ms-flexbox;
     display: flex;
@@ -239,6 +225,9 @@ cart__counter .increase {
     align-items: center;
     -ms-flex-pack: start;
     justify-content: flex-start;
+
+    padding: 1.5rem 1rem;
+    gap: 10px;
 }
 
 .cart__counter span {
@@ -252,7 +241,7 @@ cart__counter .increase {
 
 .cart__counter input {
     width: 3rem;
-    margin-left: 0.5rem;
+    margin-left: 0rem;
     border: none;
     font-size: 13px;
     padding: 0;
@@ -263,11 +252,15 @@ cart__counter .increase {
     border: none;
     outline: none;
 }
-.cart-delete-btn > img{
+.cart-delete-btn > i {
+    display: flex;
     background-color: none;
     width: 20px;
     height: 20px;
+    justify-content: center;
+    align-items: center;
 }
+
 .cart-delete-btn{
     cursor: pointer;
     background: none;
@@ -275,7 +268,9 @@ cart__counter .increase {
     border: none;
 }
 .cart-name{
-    max-width: 118px;
+    display: flex;
+    justify-content: center;
+    max-width: 80px;
     width: 100%;
 }
 .cart-title{
@@ -283,7 +278,7 @@ cart__counter .increase {
     color: black;
     font-family: "Futura PT", sans-serif;
     font-weight: 100;
-    font-size: 36px;
+    font-size: 33px;
     margin-top: 15px;
 }
 .back-from-cart-to-catalog, .to-order{
@@ -322,6 +317,7 @@ cart__counter .increase {
 }
 .to-order:hover{
     background-color: #EA4C89;
+    transition: all 0.3s linear;
 }
 .back-from-cart-to-catalog{
     display: flex;
@@ -337,7 +333,8 @@ cart__counter .increase {
 }
 
 .back-from-cart-to-catalog:hover{
-    color: black
+    color: black;
+    transition: all 0.3s linear;
   }
 .cart-summaty-title{
     text-align: end;
@@ -360,4 +357,90 @@ cart__counter .increase {
 }
 .cart-summaty-title{
     font-weight: 100;
+}
+@media only screen and (max-width: 880px){
+    .products-container {
+        flex-wrap: wrap;
+        width: 100%;
+        max-width: 28rem;
+        margin: 0 auto;
+        justify-content: center;
+        padding: 20px 10px 20px 10px
+    }
+    .cart-delete-btn {
+        
+        margin-left: 17px;
+    }
+    .cart__counter input {
+        margin-left: 0rem;
+        width: 2rem;
+        
+    }
+    .cart__counter {
+        position: relative;
+        width: 100%;
+        height: 54px;
+        max-width: 190px;
+        margin-right: 1rem;
+    }
+    .cart-name {
+        display: flex;
+        justify-content: center;
+        max-width: 350px;
+        width: 100%;
+    }
+    header {
+        line-height: 1.5;
+        font-size: 0.875rem;
+        margin: 0;
+        min-height: 50px;
+    }
+    .cart-title {
+        max-width: 651px;
+        color: black;
+        font-family: "Futura PT", sans-serif;
+        font-weight: 100;
+        font-size: 31px;
+        margin-top: 15px;
+    }
+    .cart__products-product {
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        border-top: 1px solid #E5E5E5;
+        border-bottom: 1px solid #E5E5E5;
+    }
+    
+}
+
+
+@media only screen and (max-width: 360px){
+    .logo-text {
+      margin-bottom: 0px;
+      margin-top: 0px;
+  }
+  .cart-delete-btn {
+    margin-left: 5px;
+  }
+  .cart__counter {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    max-width: 165px;
+    margin-right: 1rem;
+}
+.cart__counter input {
+    margin-left: 0rem;
+    width: 1rem;
+}
+.cart__config {
+    width: 100%;
+    max-width: 11rem;
+    margin-right: 0rem;
+    border-collapse: separate;
+    border-spacing: 0 1.2rem;
+}
+
 }

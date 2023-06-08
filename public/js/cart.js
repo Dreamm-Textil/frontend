@@ -143,7 +143,6 @@ arr.forEach((e) => {
       console.log(json);
       const storedQuantity = localStorage.getItem("numberLS");
 
-      // Перевірити, чи є значення пустим
       if (storedQuantity === "") {
         cartProductsPage.classList.add("cart__products-product-unshow");
         cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
@@ -151,7 +150,6 @@ arr.forEach((e) => {
       } else {
         cartProductsPage.classList.remove("cart__products-product-unshow");
         if (!displayedElements.includes(json.id)) {
-          // const quantity = quantityCount[json.id];
           const quantity = quantityCount[json.id];
           const storedQuantity = localStorage.getItem("numberLS");
           const storedQuantityArray = storedQuantity
@@ -207,10 +205,13 @@ arr.forEach((e) => {
                                           json.id
                                         }" value="0" id="cart-price-all-${
             json.id
-          }" data-price="${json.discountPrice * quantity}"></span>
+          }" data-price="${json.discountPrice * quantity}" style="
+          display: none;
+      "></span>
                                         <button data-id="${
                                           json.id
-                                        }" class="cart-delete-btn"><img src="images/delete.png"></button>
+                                        }" class="cart-delete-btn"><i class="fas fa-trash-alt" style="color: black; transition: all 0.2s linear; font-size: 18px;font-weight: 100;" 
+                                        onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i></button>
                                       </div> `;
           let cartSummaryContainer = document.querySelector(
             ".cart-summary-container"
@@ -219,7 +220,7 @@ arr.forEach((e) => {
                                                                           <h2 class="cart-summaty-title">Підсумок замовлення:</h2>
                                                                           <div class="cart-summary-links">
                                                                             <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>
-                                                                            <a type="button" class="to-order">Оформити<br>замовлення</a>
+                                                                            <a type="button" href="placing-an-order.html"class="to-order">Оформити<br>замовлення</a>
                                                                           </div>
                                                                         </div>`;
           let totalSum = 0;
@@ -231,15 +232,12 @@ arr.forEach((e) => {
           let quantityInputs = document.querySelectorAll(
             'input[name="quantity"]'
           );
-
           const button = document.querySelector(`button[data-id="${json.id}"]`);
           const parentElement = button.parentNode;
           const newPriceElement = document.createElement("span");
           const price = json.discountPrice * quantity;
           const formattedPrice = formatPrice(price);
           newPriceElement.innerText = `${formattedPrice} грн`;
-
-
           parentElement.insertBefore(newPriceElement, button);
 
           let cartPriceElements = document.querySelectorAll(".cart-price");
