@@ -89,77 +89,135 @@
   <form class="js-form"></form>
 </header>
 <main>
+  <div class="container-order">
   <div class="main-add-item-container">
     <h2>Оформлення замовлення</h2>
     <div class="main-add-item">
               <form onsubmit="mySubmitFunctionAdd(event)"class="form-kek">
                 <div class="order-container">
-                  <div class="placing-an-order-col-1"> 
-                    <div class="name-surname-order">
-                        <div class="name-order-container">
-                            <h2>Ім'я</h2>
-                            <input class="name-order js-input">
-                        </div>
-                        <div class="surname-order-container">
-                            <h2>Прізвище</h2>
-                            <input class="surname-order js-input">
-                        </div>
-                    </div>
-                    <div class="phone-order-container">
-                        <h2>Телефон</h2>
-                        <input class="phone-order js-input">
-                    </div>
-                    <div class="pills-size-container">
-                        <h2>Оберіть розмір подушок:</h2>
-                         <div>
+                  <div class="order">
+                    <div class="placing-an-order-col-1"> 
+                      <div class="name-surname-order">
+                          <div class="name-order-container">
+                              <h2>Ім'я</h2>
+                              <input class="name-order js-input">
+                          </div>
+                          <div class="surname-order-container">
+                              <h2>Прізвище</h2>
+                              <input class="surname-order js-input">
+                          </div>
+                      </div>
+                      <div class="phone-order-container">
+                          <h2>Телефон</h2>
+                          <input class="phone-order js-input">
+                      </div>
+                      <div class="gmail-order-container">
+                        <h2>Електронна пошта (необов'язково)</h2>
+                        <input class="gmail-order">
+                      </div>
+                      <div class="type-radio">
+                        <h2 class="quastion">Вкажіть розмір наволочок</h2>
+                        <label class="size-pills-7070"><input type="radio" name="recommend" required=""><h1>70*70</h1></label>
+                        <label class="size-pills-7050"><input type="radio" name="recommend" required=""><h1>50*70</h1></label>
+                        <label class="size-pills-none"><input type="radio" name="recommend" required=""><h1>Інший (вкажіть розмір у примітках)</h1></label>
+                      </div>
+                      <div class="rubber-band-container">                      
+                        <div>
                             <div>
                                 <input type="checkbox" id="scales" name="scales" unchecked>
-                                <label for="scales">50*70</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="scaіles" name="scіales" unchecked>
-                                <label for="scales">70*70</label>
-                            </div>                          
-                         </div>
-                    </div>
-                    <div class="city-delivery-container">
-                      <h2>Вкажіть адресу доставки:</h2>
-                      <div class="select-wrapper">
-                        <div class="select-wrapper-container">
-                          <div class="select-input" onclick="toggleOptionsVisibility(event, 'regions')">
-                            <div id="selectedRegion">Виберіть місто</div>
-                            <div class="arrow-down"><i class="fa-solid fa-chevron-down"></i></div>
-                          </div>
-                          <div class="kek">
-                          <div class="regoins-container">
-                            <input type="text" id="regionsInput" oninput="filterOptions('regions')" onclick="toggleInputVisibility(event, 'regions'); event.stopPropagation();" placeholder="Введіть назву міста" class="hidden" style="display: none;">
-                          </div>
+                                <label for="scales">Простирадло на резинці (вкажіть розмір у примітках)</label>
+                            </div>                         
                         </div>
-                        <div class="select-options" id="regionsOptions" style="display: none;"></div>
                       </div>
                     </div>
-                      <div class="select-wrapper">
-                        <div class="select-wrapper-container-house">
-                          <div class="select-input-house" onclick="toggleOptionsVisibility(event, 'postOffices')">
-                            <div id="selectedPostOffice">Виберіть відділення</div>
-                            <div class="arrow-down-house"><i class="fa-solid fa-chevron-down"></i></div>
-                          </div>
-                          <div class="regoins-container-house">
-                            <input type="text" id="postOfficesInput" oninput="filterOptions('postOffices')" onclick="toggleInputVisibility(event, 'postOffices'); event.stopPropagation();" placeholder="Введіть номер відділення" class="hidden" style="display: none;">
-                          </div>
-                        </div>
-                        <div class="select-options" id="postOfficesOptions" style="display: none;"></div>
-                      </div>
-
+                    <div class="placing-an-order-col-2">
                       
-
-                  </div> 
+                      <div class="city-delivery-container">
+                        <h2>Вкажіть адресу доставки:</h2>
+                        <div class="select-wrapper">
+                          <div class="select-wrapper-container">
+                            <div class="select-input" onclick="toggleOptionsVisibility(event, 'regions')">
+                              <div id="selectedRegion">Виберіть місто</div>
+                              <div class="arrow-down"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+                            <div class="regions-container-first">
+                              <div class="regoins-container">
+                                <input type="text" id="regionsInput" oninput="filterOptions('regions')" onclick="toggleInputVisibility(event, 'regions'); event.stopPropagation();" placeholder="Введіть назву міста" class="hidden" style="display: none;">
+                              </div>
+                            </div>
+                          <div class="select-options" id="regionsOptions" style="display: none;"></div>
+                        </div>
+                      </div>
+                        <div class="select-wrapper-house">
+                          <div class="select-wrapper-container-house">
+                            <div class="select-input-house" onclick="toggleOptionsVisibility(event, 'postOffices')">
+                              <div id="selectedPostOffice">Виберіть відділення</div>
+                              <div class="arrow-down-house"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>
+                            <div class="regions-container-house-first">
+                              <div class="regoins-container-house">
+                                <input type="text" id="postOfficesInput" oninput="filterOptions('postOffices')" onclick="toggleInputVisibility(event, 'postOffices'); event.stopPropagation();" placeholder="Введіть номер відділення" class="hidden" style="display: none;">
+                              </div>
+                            </div>
+                          
+                            <div class="select-options" id="postOfficesOptions" style="display: none;"></div>
+                          </div>
+                        </div> 
+                        <div class="idividuly-text-container">
+                          <h2>Примітки (необов'язково)</h2>
+                          <textarea></textarea>
+                        </div>
+                      </div>
+                  </div>
+                  
+                
+                  
+              </div>
+              <div class="completed-title-order">
+                <h2>Підсумок замовлення</h2>
+              </div>
+              <div class="cart__products-product">
+              
+              </div>
+              <div class="cart-summary-container">
+              
+              </div>
+              <div class="paymant-titlle-order">
+                <h2>Оберіть спосіб платежу</h2>
+              </div>
+                <div class="pyament-comtainer">
+                  <ul class="wc_payment_methods payment_methods methods">
+                    <li class="wc_payment_method payment_method_bacs full-paymant-container cursor">
+                      <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="bacs" data-order_button_text="">
+                      <div class="full-paymant">
+                        <label for="payment_method_bacs full-paymant-title">
+                          <h2 class="full-paymant-title-label cursor hover">Передплата на банківські картку/рахнок</h2>
+                        </label>
+                      </div>
+                      <div class="payment_box payment_method_bacs" style="display: block;">
+                        <p class="show">Оплата повним платежем. Оплату приймаємо на карту (відправимо реквізити в viber/telegram).</p>
+                      </div>
+                    </li>
+                    <li class="wc_payment_method payment_method_cod avans-paymant-container cursor">
+                      <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="cod" checked="checked" data-order_button_text="">
+                      <div class="avans-paymant">
+                        <label for="payment_method_cod">
+                          <h2 class="avams-paymant-title-label cursor hover">Накладний платіж (оплата при отриманні)</h2>
+                        </label>
+                      </div>
+                      <div class="payment_box payment_method_cod kek">
+                        <p class="show ">Оплата накладним платежем при отриманні.<br> Аванс на відправку накладним платежем 150 грн на карту (відправимо реквізити в viber/telegram).</p>
+                        
+                      </div>
+                    </li>
+                  </ul>
                 </div>
-                <button type="submit" class="add-item-sub-btn">Зберегти</button>
+                <button type="submit" class="add-item-sub-btn">Підтвердити замовлення</button>
             </form>
           
       </div>
   </div>
+</div>
 </main>
 <footer>
   <div class="footer-header">
