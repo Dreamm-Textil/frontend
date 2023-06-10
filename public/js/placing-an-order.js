@@ -19,12 +19,31 @@ let formInputsAdd = document.querySelectorAll(".js-input");
 let warningImg = document.querySelector(".warning-img");
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
+let formNameOrder = document.querySelector('.name-order');
+let formSecondNameOrder = document.querySelector('.surname-order');
+let formPhoneOrder = document.querySelector('.phone-order');
+let formGmailOrder = document.querySelector('.gmail-order');
+
+if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+  fetch(`${serverMachineUrl}/api/user`, {
+    method: 'GET',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    },
+  })
+
+  .then((response) => response.json())
+
+  .then((json) =>{ formNameOrder.value = json.name; formSecondNameOrder.value = json.secondName; formPhoneOrder.value = json.phoneNumber;
+    formGmailOrder.value = json.email;
+  });
+}
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
@@ -107,7 +126,6 @@ function fetchRegions() {
 
 
 function fetchPostOffices(city) {
-  console.log(city);
   fetch('https://api.novaposhta.ua/v2.0/json/Address/getWarehouses', {
     method: 'POST',
     headers: {
@@ -156,12 +174,12 @@ function initializeOptions(options, containerId) {
   }
   
 }
-
+let selectInputShow = document.querySelector('.select-input');
 function toggleOptionsVisibility(event, containerId) {
   const optionsContainer = document.getElementById(`${containerId}Options`);
   const inputElement = document.getElementById(`${containerId}Input`);
   let wrapperShow = document.querySelector('.select-wrapper-container');
-  let selectInputShow = document.querySelector('.select-input');
+  
   let wrapperShowHouse = document.querySelector('.select-wrapper-container-house')
   let arrowDownClick = document.querySelector('.arrow-down')
   let selectInputHouseShow = document.querySelector('.select-input-house');
@@ -224,10 +242,11 @@ function toggleOptionsVisibility(event, containerId) {
 
   event.stopPropagation();
 }
-
+const selectedOption = document.getElementById('selectedRegion');
+const selectedPostOffice = document.getElementById('selectedPostOffice');
 function selectOption(option, containerId) {
   if (containerId === 'regions') {
-    const selectedOption = document.getElementById('selectedRegion');
+    
     selectedOption.textContent = option;
 
     const selectedPostOffice = document.getElementById('selectedPostOffice');
@@ -238,7 +257,7 @@ function selectOption(option, containerId) {
 
     fetchPostOffices(option);
   } else if (containerId === 'postOffices') {
-    const selectedPostOffice = document.getElementById('selectedPostOffice');
+    
     selectedPostOffice.textContent = option;
 
     fetchPostOffices(option); 
@@ -250,7 +269,6 @@ function selectOption(option, containerId) {
 }
 
 function filterOptions(containerId) {
-  console.log(containerId);
   const inputElement = document.getElementById(`${containerId}Input`);
   const filterValue = inputElement.value.toUpperCase();
 
@@ -374,7 +392,6 @@ arr.forEach((e) => {
   })
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       const storedQuantity = localStorage.getItem("numberLS");
 
       if (storedQuantity === "") {
@@ -672,3 +689,154 @@ arr.forEach((e) => {
   bacsParagraph.innerHTML = ''
   codParagraph.innerHTML = 'Оплата накладним платежем при отриманні. Аванс на відправку накладним платежем 150 грн на карту (відправимо реквізити в viber/telegram).';
  });
+
+let sizeRadio = document.getElementById('size-radio');
+let radioButtons = sizeRadio.querySelectorAll('input[type="radio"]');
+let selectedValue; 
+
+function handleRadioButtonChange() {
+  for (var i = 0; i < radioButtons.length; i++) {
+    if (radioButtons[i].checked) {
+      selectedValue = radioButtons[i].nextElementSibling.textContent;
+
+      break;
+    }
+  }
+}
+
+for (var i = 0; i < radioButtons.length; i++) {
+  radioButtons[i].addEventListener('change', handleRadioButtonChange);
+}
+
+
+let formInputs = document.querySelectorAll('.js-input')
+
+
+
+
+form.onsubmit = function(e){
+  
+  formInputs.forEach(function(input){
+    input.addEventListener('focus', function() {
+      input.classList.remove('error');
+      
+    });
+  });
+
+  e.preventDefault()
+  
+  let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
+ 
+  var inputElement = document.querySelector('.phone-order');
+  
+
+
+  inputElement.addEventListener('focus', function() {
+    var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
+    wrongPhoneContainer.classList.remove('show-wrong-phone-container')
+    formPhoneOrder.classList.remove('error');
+    
+  });
+
+  
+  formInputs.forEach(function(input){
+    if(input.value === ''){
+      input.classList.add('error');
+      formNameOrder.classList.add('error');
+    }
+    else{
+      input.classList.remove('error');
+    }
+  });
+
+  if(emptyInputs.length !== 0){
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    return false;
+  }
+
+  function validatePhone(phone) {
+    let re = /^[0-9\s]*$/;
+    return re.test(String(phone)) || phone.startsWith("+");
+  }
+  if (!validatePhone(formPhoneOrder.value)) {
+    
+    formPhoneOrder.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
+  } else {
+    formPhoneOrder.classList.remove('error');
+  }
+
+  if ((formPhoneOrder.value.length === 13 || formPhoneOrder.value.length === 10)) {
+    formPhoneOrder.classList.remove('error');
+  } else {
+    
+    formPhoneOrder.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
+  }
+
+  let checkbox = document.getElementById('scales');
+  let checkScales;
+  let textAreaOrder = document.querySelector('.textarea-order').value;
+  let chekAvansOrFull = document.querySelector('.avams-paymant-title-label');
+  let checkAvansOrFullText;
+
+  if (chekAvansOrFull){
+    checkAvansOrFullText = 'Накладний платіж'
+  }
+  else{
+    checkAvansOrFullText = 'Повна оплата'
+  }
+  
+  if (checkbox.checked) {
+    checkScales = true;
+  } else {
+    checkScales = false;
+  }
+
+
+  console.log(formNameOrder.value);
+  console.log(formSecondNameOrder.value)
+  console.log(formPhoneOrder.value);
+  console.log(formGmailOrder.value);
+  console.log(selectedValue);
+  console.log(checkScales);
+  console.log(selectedOption.textContent);
+  console.log(selectedPostOffice.textContent);
+  console.log(textAreaOrder);
+  console.log(checkAvansOrFullText);
+                                
+
+
+// fetch(`${serverMachineUrl}/api/auth/registration`, {
+//   method: 'POST',
+//   mode: "cors",
+//   headers: {
+//     'Access-Control-Allow-Origin':'*',
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify({
+//   name: formName.value,
+//   secondName: formSurname.value,
+//   phoneNumber: formPhone.value,
+//   email: formEmail.value, 
+//   password: formPassword.value
+//   }),
+// })
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+
+}

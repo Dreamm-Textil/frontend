@@ -71,9 +71,9 @@ let value_or_null = (document.cookie.match(
   /^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/
 ) || [, null])[1];
 if (value_or_null === null) {
-  console.log("clear");
+
 } else {
-  console.log("user");
+
   personalCabineteAfterRegestration.classList.add(
     "personal-cabinete-after-registration-show"
   );
@@ -140,7 +140,6 @@ arr.forEach((e) => {
   })
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       const storedQuantity = localStorage.getItem("numberLS");
 
       if (storedQuantity === "") {

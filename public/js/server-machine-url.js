@@ -16,7 +16,6 @@ if (!localStorage.getItem('numberLS')) {
     if (count !== ''){
       let numberArray1 = [];
       numberArray1 = count.split(',');
-      console.log(numberArray1);
       counterBagadge.innerHTML = numberArray1.length;
 }
   

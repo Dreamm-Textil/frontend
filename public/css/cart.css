@@ -195,7 +195,6 @@ font-size: 17px;
     display: flex;
     width: 0.6rem;
     height: 0.6rem;
-    background: url(../img/i-submeny-arr.svg) center/contain no-repeat;
     cursor: pointer;
 }
 cart__counter .increase {

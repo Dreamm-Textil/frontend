@@ -8,6 +8,12 @@ let showWrongPassword = document.querySelector(".wrong-password-or-email-contain
   
 function mySubmitFunction(e) {
     e.preventDefault();
+    formInputsLogin.forEach(function(input){
+      input.addEventListener('focus', function() {
+        input.classList.remove('error');
+        
+      });
+    });
 function validateEmail(email) {
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());

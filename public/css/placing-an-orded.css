@@ -241,7 +241,7 @@ font-size: 17px;
     width: 100%;
     display: none;
     outline: none;
-
+    border-radius: 5px;
     background-color: #464649;
     /* border: 1px solid #aaa; */
     height: 37px;
@@ -274,13 +274,15 @@ font-size: 17px;
     border-radius: 5px;
 }
   .select-options{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     max-width: 473px;
     display: block;
     max-height: 120px;
     overflow-y: auto;
     padding: 0px 5px 0px 5px;
     width: 100%;
-    background-color: #464649;
+    background-color: black;
     color: white;
   }
   .select-options > .option:hover{
@@ -294,7 +296,7 @@ font-size: 17px;
     justify-content: center;
     align-items: center;
     height: 49px;
-    background-color: #464649;
+    background-color: black;
   }
 
   .regions-container-first-show, .regions-container-house-first-show{
@@ -319,6 +321,7 @@ font-size: 17px;
   }
 
   .select-input-show{
+    background: black;
     border-bottom: none;
     border-top: none;
     border-left: none;
@@ -329,6 +332,7 @@ font-size: 17px;
     border-bottom-right-radius: 0px;
   }
   .select-input-house-show{
+    background: black;
     border-bottom: none;
     border-top: none;
     border-left: none;
@@ -982,10 +986,37 @@ textarea {
   border-radius: 5px;
   transition: all 0.3s linear;
 }
+.error{
+  border: 1px solid red;
+}
 .full-paymant-title-label, .avams-paymant-title-label{
   color: #EA4C89;
 }
 .hover:hover{
   color: #EA4C89;
   transition: all 0.3s linear;
+}
+
+.wrong-phone-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 472px;
+  width: 100%;
+  gap: 30px;
+  display: none;
+  border: 1px solid red;
+  background-color: #0000001f;
+  border-radius: 5px;
+}
+.wrong-phone-container >h2{
+  font-size: 14px;
+  color: red;
+}
+.show-wrong-phone-container{
+  display: flex;
+}
+.hide-wrong-phone-container {
+  display: none;
 }

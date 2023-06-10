@@ -94,7 +94,7 @@ function validateCountry(country) {
 
 function validatePhone(phone) {
   let re = /^[0-9\s]*$/;
-  return re.test(String(phone));
+  return re.test(String(phone)) || phone.startsWith("+");
 }
 
 form.onsubmit = function(){
@@ -103,7 +103,22 @@ form.onsubmit = function(){
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
   let passwordVal = formPassword.value;
   let passwordRepeatVal = formRepeatPassword.value;
- 
+  
+  formInputs.forEach(function(input){
+    input.addEventListener('focus', function() {
+      input.classList.remove('error');
+      
+    });
+  });
+
+  formInputs.forEach(function(input){
+    if(input.value === ''){
+      input.classList.add('error');
+    }
+    else{
+      input.classList.remove('error');
+    }
+  });
 
   formInputs.forEach(function(input){
     if(input.value === ''){
@@ -120,11 +135,38 @@ form.onsubmit = function(){
     return false;
   }
 
+  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
+  var inputElement = document.querySelector('.input-phone-number');
+  inputElement.addEventListener('focus', function() {
+    var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
+    wrongPhoneContainer.classList.remove('show-wrong-phone-container')
+    formPhone.classList.remove('error');
+    
+  });
   if (!validatePhone(phoneVal)) {
+    
     formPhone.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
     return false;
   } else {
     formPhone.classList.remove('error');
+  }
+
+  if ((formPhone.value.length === 13 || formPhone.value.length === 10)) {
+    formPhone.classList.remove('error');
+  } else {
+    
+    formPhone.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
   }
 
   if(!validateEmail(emailVal)){

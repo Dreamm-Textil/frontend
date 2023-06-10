@@ -13,7 +13,6 @@
     />
     <link rel="stylesheet" href="css/regestration.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    
     <title>Dream Textile</title>
 </head>
 <header>
@@ -93,7 +92,7 @@
   <div class="main-add-item-container">
     <h2>Оформлення замовлення</h2>
     <div class="main-add-item">
-              <form onsubmit="mySubmitFunctionAdd(event)"class="form-kek">
+              <form onsubmit="mySubmitFunctionOrder(event)"class="form-kek">
                 <div class="order-container">
                   <div class="order">
                     <div class="placing-an-order-col-1"> 
@@ -108,15 +107,18 @@
                           </div>
                       </div>
                       <div class="phone-order-container">
-                          <h2>Телефон</h2>
-                          <input class="phone-order js-input">
+                        <h2>Телефон</h2>
+                        <input class="phone-order js-input" type="text">
+                      </div>
+                      <div class="wrong-phone-container">
+                        <h2>Неправильно вказано номер телефону<br>Приклад: +380635961966 або 0635961966</h2>
                       </div>
                       <div class="gmail-order-container">
                         <h2>Електронна пошта (необов'язково)</h2>
                         <input class="gmail-order">
                       </div>
-                      <div class="type-radio">
-                        <h2 class="quastion">Вкажіть розмір наволочок</h2>
+                      <div class="type-radio" id="size-radio">
+                        <h2 class="">Вкажіть розмір наволочок</h2>
                         <label class="size-pills-7070"><input type="radio" name="recommend" required=""><h1>70*70</h1></label>
                         <label class="size-pills-7050"><input type="radio" name="recommend" required=""><h1>50*70</h1></label>
                         <label class="size-pills-none"><input type="radio" name="recommend" required=""><h1>Інший (вкажіть розмір у примітках)</h1></label>
@@ -131,7 +133,6 @@
                       </div>
                     </div>
                     <div class="placing-an-order-col-2">
-                      
                       <div class="city-delivery-container">
                         <h2>Вкажіть адресу доставки:</h2>
                         <div class="select-wrapper">
@@ -165,13 +166,10 @@
                         </div> 
                         <div class="idividuly-text-container">
                           <h2>Примітки (необов'язково)</h2>
-                          <textarea></textarea>
+                          <textarea class="textarea-order"></textarea>
                         </div>
                       </div>
                   </div>
-                  
-                
-                  
               </div>
               <div class="completed-title-order">
                 <h2>Підсумок замовлення</h2>
@@ -289,5 +287,5 @@
 <!-- <script src="js/login.js"></script> -->
 <script src="js/login.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
 </html>

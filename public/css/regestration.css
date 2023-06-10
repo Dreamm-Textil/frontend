@@ -2,7 +2,7 @@
 .main-regestration-contrainer-first{
   margin-top: 20px;
   padding: 0px 10px;
-  height: 640px;
+  height: auto;
   display: flex;
   justify-content: center;
 }
@@ -19,7 +19,7 @@
     margin: auto;
     background-color: #18181bed;
     border-radius: 10px;
-    height: 684px;
+    height: auto;
   }
   .main-regestration{
     display: flex;
@@ -369,4 +369,28 @@
     justify-content: center;
     margin-bottom: 20px;
   }
+}
+
+.wrong-phone-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 472px;
+  width: 100%;
+  gap: 30px;
+  display: none;
+  border: 1px solid red;
+  background-color: #0000001f;
+  border-radius: 5px;
+}
+.wrong-phone-container >h2{
+  font-size: 14px;
+  color: red;
+}
+.show-wrong-phone-container{
+  display: flex;
+}
+.hide-wrong-phone-container {
+  display: none;
 }

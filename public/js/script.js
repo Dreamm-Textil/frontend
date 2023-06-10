@@ -21,7 +21,7 @@ let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
 let adminOnPage = false;
 
-// if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   
 fetch(`${serverMachineUrl}/api/user`, {
   
@@ -42,7 +42,7 @@ fetch(`${serverMachineUrl}/api/user`, {
     adminOnPage = false;
   }
 });
-// }
+}
 
 setTimeout(function() { getSize('ONE_AND_HALF'); }, 500);
 oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
