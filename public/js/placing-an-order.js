@@ -420,18 +420,18 @@ arr.forEach((e) => {
                                         <table class="cart__config">
                                           <tbody><tr>
                                               <th class="size-cart">Розмір:</th>
-                                              <td>${sizeMap.get(json.size)}</td>
+                                              <td><p>${sizeMap.get(json.size)}</p></td>
                                           </tr>
                                               <th class="color-cart">Колір:</th>
-                                              <td>${colorMap.get(
+                                              <td><p>${colorMap.get(
                                                 json.color
-                                              )}</td>
+                                              )}</p></td>
                                           </tr>
                                           </tr>
                                               <th class="material-cart">Матеріал:</th>
-                                              <td>${materialMap.get(
+                                              <td><p>${materialMap.get(
                                                 json.material
-                                              )}</td>
+                                              )}</p></td>
                                           </tr>
                                           </tbody>
                                         </table>
@@ -743,7 +743,6 @@ form.onsubmit = function(e){
   formInputs.forEach(function(input){
     if(input.value === ''){
       input.classList.add('error');
-      formNameOrder.classList.add('error');
     }
     else{
       input.classList.remove('error');

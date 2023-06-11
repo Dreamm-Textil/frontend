@@ -266,7 +266,7 @@ font-size: 17px;
     max-height: 169px;
     margin: 10px 0px 0px 0px;
     border-radius: 1px;
-    font-size: 18px;
+    font-size: 16px;
     padding: 0.25rem;
     box-sizing: border-box;
     background-color: #464649;
@@ -337,7 +337,10 @@ font-size: 17px;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-radius: 0px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
   .arrow-down > i, .arrow-down-house > i{
     color: white;
@@ -497,7 +500,7 @@ cart__counter .increase {
   align-items: center;
   -ms-flex-pack: start;
   justify-content: flex-start;
-
+  border-radius: 5px;
   padding: 1.5rem 1rem;
   gap: 10px;
 }
@@ -659,6 +662,7 @@ cart__counter .increase {
 
 .products-container > span{
   font-size: 14px;
+  text-align: center;
 }
 .size-cart, .color-cart, .material-cart{
   font-size: 14px;
@@ -671,18 +675,14 @@ cart__counter .increase {
     width: 100%;
 }
 @media only screen and (max-width: 1100px){
-  .select-input, .select-input-house{
-    max-width: 400px;
-  }
+  
   textarea{
     max-width: 100%;
   }
 }
 
 @media only screen and (max-width: 1000px){
-  .select-input, .select-input-house{
-    max-width: 400px;
-  }
+  
   .order {
     display: flex;
     /* flex-direction: column; */
@@ -705,10 +705,7 @@ cart__counter .increase {
 textarea{
   max-width: 100%;
 }
-.select-input, .select-input-house{
-  max-width: 486px;
-    width: 100%;
-}
+
 .select-wrapper-house{
   top: 29.5%;
 }
@@ -996,7 +993,9 @@ textarea {
   color: #EA4C89;
   transition: all 0.3s linear;
 }
-
+p{
+  font-size: 14px;
+}
 .wrong-phone-container{
   display: flex;
   justify-content: center;
@@ -1009,6 +1008,7 @@ textarea {
   border: 1px solid red;
   background-color: #0000001f;
   border-radius: 5px;
+  transition: all 0.3 linear;
 }
 .wrong-phone-container >h2{
   font-size: 14px;
@@ -1016,7 +1016,9 @@ textarea {
 }
 .show-wrong-phone-container{
   display: flex;
+  transition: all 0.3 linear;
 }
 .hide-wrong-phone-container {
   display: none;
+  transition: all 0.3 linear;
 }

@@ -296,6 +296,8 @@ gap: 38px;
 }
 .product > img{
   width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card-title{
@@ -370,6 +372,8 @@ gap: 38px;
   border: none;
   font-size: 17px;
   font-size: 19px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .like{
   background-color: none;

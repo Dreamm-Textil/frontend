@@ -1,5 +1,5 @@
 
-let form = document.querySelector(".js-form");
+let form = document.querySelector(".js-form-personal-cabinete");
 let formInputs = document.querySelectorAll(".js-input");
 let formName = document.querySelector(".input-name");
 let formSurname = document.querySelector(".input-surname");
@@ -26,10 +26,11 @@ let deliveryBtn = document.querySelector('.nav-button-delivery');
 let personalCabineteAfterRegestration = document.querySelector('.personal-cabinete-after-registration');
 let personalCabineteAfterRegestrationPhoneSize = document.querySelector('.personal-cabinete-after-registration-phone-size');
 let profileBtn = document.querySelector('.profile-personal-cabinete');
+let orderUserBtn = document.querySelector('.my-order-personal-cabinete');
 let personalInfo = document.querySelector('.profile-personal-cabinete-container');
 let personalInfoPhoneGmail = document.querySelector('.profile-personal-cabinete-phone-gmail');
 let changePasswordBtn = document.querySelector('.change-password-personal-cabinete');
-let profileMainRegestration = document.querySelector('.main-regestration');
+let profileMainRegestration = document.querySelector('.main-regestration-profile');
 let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');
 let deleteAcountBtn = document.querySelector('.agree-for-delete-btn');
 let addNewPost = document.querySelector('.glek'); 
@@ -215,7 +216,7 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 profileBtn.classList.add("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
-    
+orderUserBtn.classList.remove("profile-btn-click")    
                                                                                                                    
 
   

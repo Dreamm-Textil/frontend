@@ -224,7 +224,7 @@ cart__counter .increase {
     align-items: center;
     -ms-flex-pack: start;
     justify-content: flex-start;
-
+    border-radius: 5px;
     padding: 1.5rem 1rem;
     gap: 10px;
 }

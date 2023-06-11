@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/about_us.css">
     <link rel="stylesheet" href="css/regestration.css">
-    <link rel="stylesheet" href="css/personal_cabinete.css">
+    <link rel="stylesheet" href="css/orders-user.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -87,41 +87,91 @@
 <main>
   <div class="main-container-personal-cabinete">
     <div class="nav-personal-cabinete">
-      <div class="button-nav-personal-cabinete">
-        <a type="button" href="profile_personal_cabinete.html" class="profile-personal-cabinete "><i class="fa-solid fa-user fa-arrow-right-from-bracket"></i><p class="visible">Профіль</p></a>
-        <a type="button" href="orders-user.html" class="my-order-personal-cabinete"><i class="fa-solid fa-tag fa-arrow-right-from-bracket"></i><p class="visible">Мої замовлення</p></a>
-        <a type="button" href="change-password_personal_cabinete.html" class="change-password-personal-cabinete"><i class="fa-solid fa-key fa-arrow-right-from-bracket"></i></i><p class="visible">Змінити пароль</p></a>
-        <button type="button" class="log-in-btn button-log-out-btn-profile-page"><i class="fa-solid fa-arrow-right-from-bracket"></i><p class="visible">Вийти</p></button>  
-      </div>
+        <div class="button-nav-personal-cabinete">
+            <a type="button" href="profile_personal_cabinete.html" class="profile-personal-cabinete "><i class="fa-solid fa-user fa-arrow-right-from-bracket"></i><p class="visible">Профіль</p></a>
+            <a type="button" href="orders-user.html" class="my-order-personal-cabinete"><i class="fa-solid fa-tag fa-arrow-right-from-bracket"></i><p class="visible">Мої замовлення</p></a>
+            <a type="button" href="change-password_personal_cabinete.html" class="change-password-personal-cabinete"><i class="fa-solid fa-key fa-arrow-right-from-bracket"></i></i><p class="visible">Змінити пароль</p></a>
+            <button type="button" class="log-in-btn button-log-out-btn-profile-page"><i class="fa-solid fa-arrow-right-from-bracket"></i><p class="visible">Вийти</p></button>  
+          </div>
       <div class="main-settings-contrainer-first">
         <div class="main-settings-container">
-            
-            <form onsubmit="myRegestrationForm(event)" value="regestration" class="js-form-personal-cabinete" method="POST" action="http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/registration" novalidate>
-              <div class="phone-title-personal-cabinete"><h2>Профіль</h2></div>
-                <div class="main-regestration-profile">
-                    <div class="name">
-                        <h2>Ім'я</h2>
-                        <input class="input input-name js-input">
-                    </div>
-                    <div class="surname">
-                        <h2>Прізвище</h2>
-                        <input class="input input-surname js-input">
-                    </div>
-                    <div class="phone-number">
-                        <h2>Телефон</h2>
-                        <input class="input input-phone-number js-input">
-                    </div>
-                    <div class="gmail-addres">
-                        <h2>Адреса електронної пошти</h2>
-                        <input class="input input-gmail-addres js-input">
-                    </div>
-                </div>
-                <div class="profile-btn-regestration-page">
-                  <button type="submit" class="button-regestration-btn-regestration-page">Зберегти зміни</button>
-                  <button type="button" class="delete-user-btn button-delete-profile">Видалити обліковий запис</button>
-                </div>
-                
-            </form>
+            <div class="phone-title-personal-cabinete"><h2>Мої замовлення</h2></div>
+            <div class="js-form-personal-cabinete" >
+                <!-- <table>
+                    <thead>
+                        <tr class="table-tr">
+                            <th class="th-img-title">Зображення</th>
+                            <th>Замовлення</th>
+                            <th>Прізвище</th>
+                            <th>Дата</th>
+                            <th>Статус</th>
+                            <th>Загалом</th>
+                            <th>Кількість</th>
+                            <th class="th-last-title">Дії</th>
+                          </tr>
+                      <tr class="table-tr-phone">
+                        <th class="th-img-title">Зображення</th>
+                        <th>Замовлення</th>
+                        <th>Прізвище</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                        <th>Загалом</th>
+                        <th>Кількість</th>
+                        <th class="th-last-title">Дії</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img src="images/catalog/Amelia.jpg"></td>
+                        <td>#51711</td>
+                        <td>Кривошапенко</td>
+                        <td>10.06.2023</td>
+                        <td>Виконується</td>
+                        <td>1510 грн</td>
+                        <td class="td-number">1</td>
+                        <td><button class="more-about-order">Перегляд</button></td>
+                      </tr>
+                      <tr>
+                        <td><img src="images/catalog/Amelia.jpg"></td>
+                        <td>#51711</td>
+                        <td>Кривошапенко</td>
+                        <td>10.06.2023</td>
+                        <td>Виконується</td>
+                        <td>1510 грн</td>
+                        <td class="td-number">1</td>
+                        <td><button class="more-about-order">Перегляд</button></td>
+                      </tr>
+                      <!-- Додайте інші рядки таблиці тут за необхідністю -->
+                    </tbody>
+                  </table>     -->
+                  <!-- <table>
+                    <thead>
+                      <tr class="table-tr-phone">
+                        <th class="th-img-title">Зображення</th>
+                        <th>Замовлення</th>
+                        <th>Прізвище</th>
+                        <th>Дата</th>
+                        <th>Статус</th>
+                        <th>Загалом</th>
+                        <th>Кількість</th>
+                        <th class="th-last-title">Дії</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><img src="images/catalog/Amelia.jpg"></td>
+                        <td>#51711</td>
+                        <td>Кривошапенко</td>
+                        <td>10.06.2023</td>
+                        <td>Виконується</td>
+                        <td>1510 грн</td>
+                        <td class="td-number">1</td>
+                        <td><button class="more-about-order">Перегляд</button></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>     -->
+            </div>
         </div>
       </div>
     </div>
@@ -182,6 +232,6 @@
 <script src="js/server-machine-url.js"></script>
 <script src="js/login.js"></script>
 <!-- <script src="js/script.js"></script> -->
-<script src="js/profile_personal_cabinete.js"></script>
+<script src="js/orders-user.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
 </html>

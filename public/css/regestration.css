@@ -364,7 +364,7 @@
   .main-regestration-contrainer-first{
     margin-top: 0px;
     padding: 0px 10px;
-    height: 640px;
+    height: auto;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;

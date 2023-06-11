@@ -1,4 +1,4 @@
-let form = document.querySelector(".js-form");
+let form = document.querySelector(".js-form-password-cabinete");
 let formInputs = document.querySelectorAll(".js-input");
 let formPassword = document.querySelector(".input-password-registration-page");
 let oldPassword = document.querySelector(".input-old-password-registration-page");
@@ -19,10 +19,11 @@ let deliveryBtn = document.querySelector('.nav-button-delivery');
 let personalCabineteAfterRegestration = document.querySelector('.personal-cabinete-after-registration');
 let personalCabineteAfterRegestrationPhoneSize = document.querySelector('.personal-cabinete-after-registration-phone-size');
 let profileBtn = document.querySelector('.profile-personal-cabinete');
+let orderUserBtn = document.querySelector('.my-order-personal-cabinete');
 let personalInfo = document.querySelector('.profile-personal-cabinete-container');
 let personalInfoPhoneGmail = document.querySelector('.profile-personal-cabinete-phone-gmail');
 let changePasswordBtn = document.querySelector('.change-password-personal-cabinete');
-let profileMainRegestration = document.querySelector('.main-regestration');
+let profileMainRegestration = document.querySelector('.main-regestration-profile');
 let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');  
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
@@ -31,6 +32,7 @@ indexBtn.classList.remove("nav-button-index-click");
 personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.add("profile-btn-click");
+orderUserBtn.classList.remove("profile-btn-click") 
                                                   
                                             
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
