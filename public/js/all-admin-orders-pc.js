@@ -35,40 +35,15 @@ let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');
 let deleteAcountBtn = document.querySelector('.agree-for-delete-btn');
 let addNewPost = document.querySelector('.glek');
 let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')
-let administrationAllOrders = document.querySelector('.all-administration-order-personal-cabinete')    
+let administrationAllOrders = document.querySelector('.all-administration-order-personal-cabinete')  
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
-fetch(`${serverMachineUrl}/api/user`, {
-  
-  method: 'GET',
-  headers: {
-    'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
-  },
-})
-
-.then((response) => response.json())
-
-.then((json) =>{
-  if(json.role === 'ADMIN'){
-    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
-    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-
-  }
-  else{
-    administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
-    administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
-  } 
-});
-
-
 if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
-  
+    
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin':'*',
@@ -82,11 +57,13 @@ if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   .then((json) =>{
     if(json.role === 'ADMIN'){
       administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+      administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+
     }
     else{
       administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
+      administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
     } 
-  
   });
 }                                           
 
@@ -120,8 +97,8 @@ navToggle.addEventListener('click', function(){
  indexBtn.classList.remove("nav-button-index-click");
  personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
  
-
- orderUserBtn.classList.add("profile-btn-click")
+ administrationAllOrders.classList.add("profile-btn-click")
+orderUserBtn.classList.remove("profile-btn-click")
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
     
@@ -131,7 +108,7 @@ agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
   location.href="http://127.0.0.1:5500/index.html";
 });
-                                                                                                                  
+                                                                                                                   
   
 logOutBtn.addEventListener('click', function(){
   modalOverlay.classList.toggle("open-modal");
@@ -187,7 +164,7 @@ orderContainer.innerHTML = `<table>
     <td>Виконується</td>
     <td class="td-number">1</td>
     <td>1510 грн</td>
-    <td><button class="more-about-order">Перегляд</button></td>
+    <td><button class="more-about-order">Видалити</button></td>
   </tr>
   <tr>
     <td><img src="images/catalog/Amelia.jpg"></td>
@@ -197,7 +174,7 @@ orderContainer.innerHTML = `<table>
     <td>Виконано</td>
     <td class="td-number">1</td>
     <td>1510 грн</td>
-    <td><button class="more-about-order">Перегляд</button></td>
+    <td><button class="more-about-order">Видалити</button></td>
   </tr>
   <!-- Додайте інші рядки таблиці тут за необхідністю -->
 </tbody>
@@ -226,7 +203,7 @@ orderContainer.innerHTML = `<table>
             <td>Виконується</td>
             <td class="td-number">1</td>
             <td>1510 грн</td>         
-            <td><button class="more-about-order">Перегляд</button></td>
+            <td><button class="more-about-order">Видалити</button></td>
         </tr>
         
         </tbody>
@@ -253,7 +230,7 @@ orderContainer.innerHTML = `<table>
             <td>Виконується</td>
             <td class="td-number">1</td>
             <td>1510 грн</td>
-            <td><button class="more-about-order">Перегляд</button></td>
+            <td><button class="more-about-order">Видалити</button></td>
         </tr>
         
         </tbody>

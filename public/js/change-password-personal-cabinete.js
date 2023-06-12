@@ -24,7 +24,9 @@ let personalInfo = document.querySelector('.profile-personal-cabinete-container'
 let personalInfoPhoneGmail = document.querySelector('.profile-personal-cabinete-phone-gmail');
 let changePasswordBtn = document.querySelector('.change-password-personal-cabinete');
 let profileMainRegestration = document.querySelector('.main-regestration-profile');
-let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');  
+let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');
+let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')   
+let administrationAllOrders = document.querySelector('.all-administration-order-personal-cabinete') 
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
@@ -33,7 +35,32 @@ personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-cl
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.add("profile-btn-click");
 orderUserBtn.classList.remove("profile-btn-click") 
-                                                  
+
+fetch(`${serverMachineUrl}/api/user`, {
+  
+  method: 'GET',
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+  },
+})
+
+.then((response) => response.json())
+
+.then((json) =>{
+  if(json.role === 'ADMIN'){
+    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+
+  }
+  else{
+    administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
+    administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
+  } 
+
+});
+       
                                             
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){

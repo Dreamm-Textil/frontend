@@ -6,6 +6,21 @@
     gap: 50px;
     padding: 0px 10px 0px 10px;
 }
+.modal-overlay-delete {
+    position: fixed;
+    top: 0;
+    display: none;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    visibility: hidden;
+    z-index: 3;
+  }
 
 .video-clear{
     position: relative;
@@ -42,6 +57,7 @@
     padding: 0px 5px;
     margin-top: 20px;
     align-items: flex-start;
+    min-height: 360px;
     gap: 5px;
     width: 100%;
     background-color: #18181bed;
@@ -59,7 +75,73 @@
     align-items: center;
     margin-top: 30px;
 }
+.cart-delete-btn > i {
+    display: flex;
+    background-color: none;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 
+.cart-delete-btn{
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+table span{
+    color: white;
+}
+table thead tr th{
+    color: white;
+    font-size: 15px;
+}
+.table-tr{
+    text-align: left;
+}
+
+tbody tr td{
+    color: white;
+    font-size: 14px;
+}
+table{
+    width: 100%;
+    margin-top: 35px;
+}
+td > img{
+    width: 85px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 1px solid #46464990;;
+    padding: 8px;
+  }
+
+
+
+
+.more-about-order{
+    background-color: #ea4c89d0;
+    color: white;
+    border: none;
+    height: 31px;
+    max-width: 88px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0px 5px 0px 5px;
+}
+.more-about-order:hover{
+    background-color: #EA4C89;
+}
 .profile-personal-cabinete-container{
     display: flex;
     /* justify-content: left; */
@@ -75,9 +157,9 @@
     gap: 31px;
     font-size: 18px;
 }
-.js-form-personal-cabinete,.js-form-password-cabinete{
+.js-form-personal-cabinete{
     width: 100%;
-    max-width: 600px;
+    max-width: 900px;
 }
 
 .profile-personal-cabinete,.all-administration-order-personal-cabinete,.administration-personal-cabinete, .button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete{
@@ -99,7 +181,7 @@
     background: none;
     padding: 0px 23px 0px 23px;
 }
-.profile-personal-cabinete:hover,.all-administration-order-personal-cabinete:hover,.administration-personal-cabinete:hover,.button-log-out-btn-profile-page:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
+.profile-personal-cabinete:hover,.all-administration-order-personal-cabinete:hover,.button-log-out-btn-profile-page:hover,.administration-personal-cabinete:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
     background-color: #464649;
     color: white;
     transition: 0.1s;
@@ -110,6 +192,7 @@
     color: white;
     border: none;
 }
+
 
 .main-settings-container{
     font-size: 17px;
@@ -124,7 +207,7 @@
     background-color: none;
     border-radius: 5px;
     border-left: 1px solid #46464990;
-    padding: 0px 5px 0px 5px;
+    padding: 0px 20px 35px 20px;
   }
 
 .header-settings-page{
@@ -194,13 +277,9 @@
     font-size: 17px;
     font-weight: 100;
 }
-.administration-personal-cabinete, .all-administration-order-personal-cabinete{
+.table-tr-phone{
     display: none;
 }
-.administration-personal-cabinete-show, .all-administration-order-personal-cabinete-show{
-    display: flex;
-}
-
 .agree-for-exit-btn:hover, .agree-for-delete-btn:hover{
     background-color: #EA4C89;
 }
@@ -228,6 +307,9 @@
 .fa-arrow-right-from-bracket{
     margin-right: 15px;
 }
+.td-number{
+    text-align: center;
+}
 
 
 .button-delete-profile{
@@ -251,22 +333,67 @@
     background-color: #35353B;
   color: white;
 }
-@media only screen and (max-width: 880px){
-    header {
-        font-family: var(--ff-secondary);
-        background: var(--clr-grey-10);
-        color: var(--clr-grey-1);
-        line-height: 1.5;
-        font-size: 0.875rem;
-        margin: 0;
-        min-height: 70px;
+@media only screen and (max-width: 1030px){
+    .th-img-title {
+        margin-bottom: 51px;
     }
-    .administration-personal-cabinete, .all-administration-order-personal-cabinete{
+    .table-tr{
         display: none;
     }
-    .administration-personal-cabinete-show, .all-administration-order-personal-cabinete-show{
+    .table-tr-phone{
         display: flex;
+        flex-direction: column;
     }
+    .nav-personal-cabinete {
+        display: flex;
+        flex-direction: row;
+        padding: 0px 5px;
+        margin-top: 20px;
+        align-items: flex-start;
+        min-height: 360px;
+        gap: 5px;
+        width: 100%;
+        background-color: #18181bed;
+        border-radius: 5px;
+    }
+    table thead tr th {
+        color: white;
+        font-size: 14px;
+    }
+    .more-about-order {
+        background-color: #ea4c89d0;
+        color: white;
+        border: none;
+        height: 27px;
+        max-width: 88px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        box-sizing: border-box;
+        padding: 0px 5px 0px 5px;
+    }
+    td > img {
+        width: 73px;
+    }
+    table {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    
+      th, td {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+      }
+    
+      th::before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+  
     .main-settings-container{
         font-size: 17px;
         margin-top: 20px;
@@ -279,7 +406,23 @@
         background-color: none;
         border-radius: 5px;
         padding: 0px 5px 0px 14px;
+        padding: 0px 5px 35px 14px;
       }
+    
+}
+
+
+@media only screen and (max-width: 880px){
+    header {
+        font-family: var(--ff-secondary);
+        background: var(--clr-grey-10);
+        color: var(--clr-grey-1);
+        line-height: 1.5;
+        font-size: 0.875rem;
+        margin: 0;
+        min-height: 70px;
+    }
+    
     .nav-personal-cabinete {
         display: flex;
         flex-direction: row;
@@ -294,17 +437,18 @@
 }
 
 @media only screen and (max-width: 700px){
+    .th-last-title{
+        margin-top: 1px;
+    }
+    .profile-btn-click > i{
+        color: #EA4C89;
+    }
     .phone-title-personal-cabinete{
         display: flex;
         justify-content: center;
         margin-top: 30px;
         display: flex;
     }
-    .profile-btn-click > i {
-        color: #EA4C89;
-    }
-   
-
     .input-password-registration-page, .input-repeat-password-registration-page, .input-old-password-registration-page {
         width: 100%;
         height: 34px;
@@ -374,12 +518,7 @@
     .profile-btn-regestration-page, .button-delete-profile{
         padding: 0px 5px 0px 5px;
     }
-    .administration-personal-cabinete, .all-administration-order-personal-cabinete{
-        display: none;
-    }
-    .administration-personal-cabinete-show, .all-administration-order-personal-cabinete-show{
-        display: flex;
-    }
+
     .main-regestration {
         display: flex;
         justify-content: center;
@@ -429,6 +568,11 @@
 
   
 
+  @media only screen and (max-width: 370px){
+    .th-last-title{
+        margin-top: 7px;
+    }
+}
   .profile-btn-regestration-page {
     width: 100%;
     display: flex;
@@ -440,11 +584,11 @@
 .modal-overlay-exit {
     position: fixed;
     top: 0;
+    display: none;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
-    display: none;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
@@ -458,6 +602,7 @@
   visibility: visible;
   z-index: 3;
   }
+
   .modal-container-exit {
     background: #28282B;
     border-radius: var(--radius);

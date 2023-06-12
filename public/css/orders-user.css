@@ -69,7 +69,7 @@
     flex-direction: column;
     max-width: 246px;
     width: 100%;
-    max-height: 195px;
+    max-height: auto;
     justify-content: center;
     gap: 13px;
     align-items: center;
@@ -146,7 +146,7 @@ table {
     max-width: 900px;
 }
 
-.profile-personal-cabinete,.button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete{
+.profile-personal-cabinete,.all-administration-order-personal-cabinete,.administration-personal-cabinete, .button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete{
     border: none;
     color: white;
     font-size: 16px;
@@ -165,7 +165,7 @@ table {
     background: none;
     padding: 0px 23px 0px 23px;
 }
-.profile-personal-cabinete:hover,.button-log-out-btn-profile-page:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
+.profile-personal-cabinete:hover,.all-administration-order-personal-cabinete:hover, .administration-personal-cabinete:hover,.button-log-out-btn-profile-page:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
     background-color: #464649;
     color: white;
     transition: 0.1s;
@@ -183,7 +183,7 @@ table {
     margin-top: 20px;
     width: 100%;
     display: flex;
-    min-height: 360px;
+    min-height: 502px;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
@@ -287,6 +287,12 @@ table {
 .disagree-for-exit-btn:hover, .disagree-for-delete-btn:hover{
     background-color: #35353B;
   color: white;
+}
+.administration-personal-cabinete, .all-administration-order-personal-cabinete{
+    display: none;
+}
+.administration-personal-cabinete-show, .all-administration-order-personal-cabinete-show{
+    display: flex;
 }
 .fa-arrow-right-from-bracket{
     margin-right: 15px;
@@ -485,7 +491,7 @@ table {
         justify-content: center;
         gap: 10px;
     }
-    .profile-personal-cabinete,.button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete {
+    .profile-personal-cabinete,.all-administration-order-personal-cabinete,.administration-personal-cabinete, .button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete {
         border: none;
         display: flex;
         justify-content: center;
@@ -501,6 +507,12 @@ table {
     }
     .profile-btn-regestration-page, .button-delete-profile{
         padding: 0px 5px 0px 5px;
+    }
+    .administration-personal-cabinete, .all-administration-order-personal-cabinete{
+        display: none;
+    }
+    .administration-personal-cabinete-show, .all-administration-order-personal-cabinete-show{
+        display: flex;
     }
 
     .main-regestration {

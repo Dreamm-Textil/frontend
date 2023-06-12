@@ -34,13 +34,13 @@ let profileMainRegestration = document.querySelector('.main-regestration-profile
 let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');
 let deleteAcountBtn = document.querySelector('.agree-for-delete-btn');
 let addNewPost = document.querySelector('.glek');
-let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')
-let administrationAllOrders = document.querySelector('.all-administration-order-personal-cabinete')    
+let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')  
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
+if(document.cookie.valueOf('Authorization').substring(14) !== ''){
 fetch(`${serverMachineUrl}/api/user`, {
   
   method: 'GET',
@@ -53,41 +53,14 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 .then((response) => response.json())
 
-.then((json) =>{
-  if(json.role === 'ADMIN'){
-    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
-    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-
-  }
-  else{
-    administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
-    administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
-  } 
-});
-
-
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
-  fetch(`${serverMachineUrl}/api/user`, {
-  
-    method: 'GET',
-    headers: {
-      'Access-Control-Allow-Origin':'*',
-      'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
-    },
-  })
-  
-  .then((response) => response.json())
-  
-  .then((json) =>{
+.then((json) =>{  
     if(json.role === 'ADMIN'){
-      administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
-    }
-    else{
-      administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
-    } 
-  
-  });
+        administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+      }
+      else{
+        administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
+      } ;
+});
 }                                           
 
  let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
@@ -120,8 +93,8 @@ navToggle.addEventListener('click', function(){
  indexBtn.classList.remove("nav-button-index-click");
  personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
  
-
- orderUserBtn.classList.add("profile-btn-click")
+ administrationPersonalCabinete.classList.add('profile-btn-click')
+ orderUserBtn.classList.remove("profile-btn-click")
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
     
@@ -131,7 +104,7 @@ agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
   location.href="http://127.0.0.1:5500/index.html";
 });
-                                                                                                                  
+                                                                                                                   
   
 logOutBtn.addEventListener('click', function(){
   modalOverlay.classList.toggle("open-modal");
@@ -158,46 +131,26 @@ if (window.innerWidth >= 1030) {
 orderContainer.innerHTML = `<table>
 <thead>
     <tr class="table-tr">
-        <th class="th-img-title">Зображення</th>
-        <th>Замовлення</th>
+        <th>Ім'я</th>
         <th>Прізвище</th>
-        <th>Дата</th>
-        <th>Статус</th>
-        <th>Кількість</th>
-        <th>Cума</th>
         <th class="th-last-title">Дії</th>
       </tr>
   <tr class="table-tr-phone">
-    <th class="th-img-title">Зображення</th>
-    <th>Замовлення</th>
+    <th>Ім'я</th>
     <th>Прізвище</th>
-    <th>Дата</th>
-    <th>Статус</th>
-    <th>Кількість</th>
-    <th>Cума</th>
     <th class="th-last-title">Дії</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td><img src="images/catalog/Amelia.jpg"></td>
-    <td>#51711</td>
+    <td>Олег</td>
     <td>Кривошапенко</td>
-    <td>10.06.2023</td>
-    <td>Виконується</td>
-    <td class="td-number">1</td>
-    <td>1510 грн</td>
-    <td><button class="more-about-order">Перегляд</button></td>
+    <td><button class="more-about-order">Видалити</button></td>
   </tr>
   <tr>
-    <td><img src="images/catalog/Amelia.jpg"></td>
-    <td>#51711</td>
+    <td>Олег</td>
     <td>Кривошапенко</td>
-    <td>10.06.2023</td>
-    <td>Виконано</td>
-    <td class="td-number">1</td>
-    <td>1510 грн</td>
-    <td><button class="more-about-order">Перегляд</button></td>
+    <td><button class="more-about-order">Видалити</button></td>
   </tr>
   <!-- Додайте інші рядки таблиці тут за необхідністю -->
 </tbody>
@@ -207,26 +160,16 @@ orderContainer.innerHTML = `<table>
         orderContainer.innerHTML =`<table>
         <thead>
         <tr class="table-tr-phone">
-            <th class="th-img-title">Зображення</th>
-            <th>Замовлення</th>
+            <th>Ім'я</th>
             <th>Прізвище</th>
-            <th>Дата</th>
-            <th>Статус</th>
-            <th>Кількість</th>
-            <th>Cума</th>
             <th class="th-last-title">Дії</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><img src="images/catalog/Amelia.jpg"></td>
-            <td>#51711</td>
+            <td>Олег</td>
             <td>Кривошапенко</td>
-            <td>10.06.2023</td>
-            <td>Виконується</td>
-            <td class="td-number">1</td>
-            <td>1510 грн</td>         
-            <td><button class="more-about-order">Перегляд</button></td>
+            <td><button class="more-about-order">Видалити</button></td>
         </tr>
         
         </tbody>
@@ -234,26 +177,16 @@ orderContainer.innerHTML = `<table>
     <table>
         <thead>
         <tr class="table-tr-phone">
-            <th class="th-img-title">Зображення</th>
-            <th>Замовлення</th>
+            <th>Ім'я</th>
             <th>Прізвище</th>
-            <th>Дата</th>
-            <th>Статус</th>
-            <th>Кількість</th>
-            <th>Cума</th>
             <th class="th-last-title">Дії</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td><img src="images/catalog/Amelia.jpg"></td>
-            <td>#51711</td>
+            <td>Олег</td>
             <td>Кривошапенко</td>
-            <td>10.06.2023</td>
-            <td>Виконується</td>
-            <td class="td-number">1</td>
-            <td>1510 грн</td>
-            <td><button class="more-about-order">Перегляд</button></td>
+            <td><button class="more-about-order">Видалити</button></td>
         </tr>
         
         </tbody>
