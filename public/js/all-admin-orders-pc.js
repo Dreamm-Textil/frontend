@@ -127,116 +127,302 @@ modalBtnPhoneSize.addEventListener('click', function(){
   modalDeleteUser.classList.toggle("open-modal");
 });
     
-let orderContainer = document.querySelector('.js-form-personal-cabinete');
 
-function checkScreenWidth() {
+// fetch(`${serverMachineUrl}/api/order/all-orders`, {
+//   method: 'GET',
+//   headers: {
+//     'Access-Control-Allow-Origin':'*',
+//     'Content-Type': 'application/json',
+//     'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+//   },
+// })
 
-if (window.innerWidth >= 1030) {
-orderContainer.innerHTML = `<table>
-<thead>
-    <tr class="table-tr">
-        <th class="th-img-title">Зображення</th>
-        <th>Замовлення</th>
-        <th>Прізвище</th>
-        <th>Дата</th>
-        <th>Статус</th>
-        <th>Кількість</th>
-        <th>Cума</th>
-        <th class="th-last-title">Дії</th>
-      </tr>
-  <tr class="table-tr-phone">
-    <th class="th-img-title">Зображення</th>
-    <th>Замовлення</th>
-    <th>Прізвище</th>
-    <th>Дата</th>
-    <th>Статус</th>
-    <th>Кількість</th>
-    <th>Cума</th>
-    <th class="th-last-title">Дії</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><img src="images/catalog/Amelia.jpg"></td>
-    <td>#51711</td>
-    <td>Кривошапенко</td>
-    <td>10.06.2023</td>
-    <td>Виконується</td>
-    <td class="td-number">1</td>
-    <td>1510 грн</td>
-    <td><button class="more-about-order">Видалити</button></td>
-  </tr>
-  <tr>
-    <td><img src="images/catalog/Amelia.jpg"></td>
-    <td>#51711</td>
-    <td>Кривошапенко</td>
-    <td>10.06.2023</td>
-    <td>Виконано</td>
-    <td class="td-number">1</td>
-    <td>1510 грн</td>
-    <td><button class="more-about-order">Видалити</button></td>
-  </tr>
-  <!-- Додайте інші рядки таблиці тут за необхідністю -->
-</tbody>
-</table> `
+// .then((response) => response.json())
+
+// .then((json) =>{ console.log(json);});
+
+
+let orderContainer = document.querySelector('.tr-orders');
+let orderPhoneContainer = document.querySelector('.js-form-personal-cabinete')
+
+const statusMap = new Map();
+statusMap.set("PROCESSED", "В обробці");
+statusMap.set("SENT", "У дорозі");
+statusMap.set("DONE", "Готово");
+
+fetch(`${serverMachineUrl}/api/order/all-orders`, {
+  method: 'GET',
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+  },
+})
+
+.then((response) => response.json())
+
+.then((json) =>{
+  json.reverse().forEach((e)=>{
+    if (window.innerWidth >= 1030) {
+    orderContainer.innerHTML += `
+    <div class = "test">
+        <td><img src="${e.textiles[0].imgUrl}"></td>
+        <td>#${e.id}</td>
+        <td>${e.secondName}</td>
+        <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
+        <option value="">${statusMap.get(e.status)}</option>
+        <option value="PROCESSED">В обробці</option>
+        <option value="SENT">У дорозі</option>
+        <option value="DONE">Готово</option>
+      </select>
+      </td>
+        <td class="td-number">${e.textiles.length}</td>
+        <td>1510 грн</td>
+        <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
+        <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
+        onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
+        </div>
+      `
+      }
+      else{
+        orderPhoneContainer.innerHTML +=`<table class="table-phone-size-all-order">
+          <thead>
+          <tr class="table-tr-phone">
+              <th class="th-img-title">Зображення</th>
+              <th>Замовлення</th>
+              <th>Прізвище</th>
+              <th>Статус</th>
+              <th>Кількість</th>
+              <th>Cума</th>
+              <th class="th-last-title">Дії</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="table-tr-phone">
+              <td><img src="${e.textiles[0].imgUrl}"></td>
+              <td>#${e.id}</td>
+              <td>${e.secondName}</td>
+              <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
+              <option value="">${statusMap.get(e.status)}</option>
+              <option value="PROCESSED">В обробці</option>
+              <option value="SENT">У дорозі</option>
+              <option value="DONE">Готово</option>
+            </select>
+              <td class="td-number">1</td>
+              <td>1510 грн</td>
+              <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>         
+              <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
+              onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
+          </tr>
+          
+          </tbody>
+      </table>   `
+      
+      
     }
-    else{
-        orderContainer.innerHTML =`<table>
-        <thead>
-        <tr class="table-tr-phone">
-            <th class="th-img-title">Зображення</th>
-            <th>Замовлення</th>
-            <th>Прізвище</th>
-            <th>Дата</th>
-            <th>Статус</th>
-            <th>Кількість</th>
-            <th>Cума</th>
-            <th class="th-last-title">Дії</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src="images/catalog/Amelia.jpg"></td>
-            <td>#51711</td>
-            <td>Кривошапенко</td>
-            <td>10.06.2023</td>
-            <td>Виконується</td>
-            <td class="td-number">1</td>
-            <td>1510 грн</td>         
-            <td><button class="more-about-order">Видалити</button></td>
-        </tr>
-        
-        </tbody>
-    </table>  
-    <table>
-        <thead>
-        <tr class="table-tr-phone">
-            <th class="th-img-title">Зображення</th>
-            <th>Замовлення</th>
-            <th>Прізвище</th>
-            <th>Дата</th>
-            <th>Статус</th>
-            <th>Кількість</th>
-            <th>Cума</th>
-            <th class="th-last-title">Дії</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src="images/catalog/Amelia.jpg"></td>
-            <td>#51711</td>
-            <td>Кривошапенко</td>
-            <td>10.06.2023</td>
-            <td>Виконується</td>
-            <td class="td-number">1</td>
-            <td>1510 грн</td>
-            <td><button class="more-about-order">Видалити</button></td>
-        </tr>
-        
-        </tbody>
-    </table>  `
+     
+  })
+  
+});
+
+
+
+
+function handleSelectChange(orderId) {
+  console.log(orderId);
+  var selectElement = document.getElementById(`ddlViewBy-${orderId}`);
+  var selectedValue = selectElement.value;
+  console.log(selectedValue);
+
+  // Prepare the data to be sent in the POST request
+  var data = {
+    id: orderId,
+    status: selectedValue
+  };
+
+  // Send the POST request to the backend
+  fetch(`${serverMachineUrl}/api/order/update-status`, {
+    method: "PUT",
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    // Handle the response from the backend
+    if (response.ok) {
+      // Status successfully updated
+      console.log("Status updated!");
+    } else {
+      // Error occurred while updating status
+      console.error("Failed to update status.");
     }
+  })
+  .catch(error => {
+    // Error occurred while making the request
+    console.error("Failed to send the request.", error);
+  });
 }
 
-window.addEventListener('load', checkScreenWidth);
-window.addEventListener('resize', checkScreenWidth);
+
+function handleButtonClickDelete(id) {
+  let alertSecces = document.querySelector('.alert');
+  alertSecces.classList.add("alert-show")
+  setTimeout(() => {
+    alertSecces.classList.remove("alert-show")
+    location.reload();
+  }, 1500);
+  fetch(`${serverMachineUrl}/api/order?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+}
+ 
+
+let mainSettingsContainer = document.querySelector('.main-settings-container');
+
+function handleButtonClick(id) {
+
+  const sizeMap = new Map();
+  sizeMap.set("ONE_AND_HALF", "Півтораспальний");
+  sizeMap.set("DOUBLE", "Двохспальний");
+  sizeMap.set("EURO", "Євро");
+  sizeMap.set("FAMILY", "Сімейний");
+
+  const materialMap = new Map();
+  materialMap.set("RANFORS", "Ранфорс");
+  materialMap.set("SATIN", "Сатин");
+  materialMap.set("STRAP_SATIN", "Страйп сатин");
+  materialMap.set("POPLIN", "Поплин");
+  materialMap.set("BIAZ", "Бязь");
+
+  const colorMap = new Map();
+  colorMap.set("RED", "Червоний");
+  colorMap.set("ORANGE", "Помаранчовий");
+  colorMap.set("YELLOW", "Жовтий");
+  colorMap.set("GREEN", "Зелений");
+  colorMap.set("BLUE", "Блакитний");
+  colorMap.set("INDIGO", "Індіго");
+  colorMap.set("VIOLET", "Фіолетовий");
+  colorMap.set("PINK", "Рожевий");
+  colorMap.set("SILVER", "Сріблястий");
+  colorMap.set("GOLD", "Золотий");
+  colorMap.set("BEIGE", "Бежевий");
+  colorMap.set("BROWN", "Коричневий");
+  colorMap.set("GRAY", "Сірий");
+  colorMap.set("BLACK", "Чорний");
+  colorMap.set("WHITE", "Білий");
+
+  const pillowCaseGetMap = new Map();
+    pillowCaseGetMap.set("SEVENTY_X_SEVENTY", "70*70");
+    pillowCaseGetMap.set("FIFTY_X_SEVENTY", "50*70");
+    pillowCaseGetMap.set("OTHER", "Інший");
+
+  const rubberGetMap = new Map();
+  rubberGetMap.set("YES", "Так");
+  rubberGetMap.set("NO", "Ні");
+
+  fetch(`${serverMachineUrl}/api/order?id=${id}`, {
+    method: 'GET',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    }
+  })
+  .then(res => res.json())
+  .then(data => {console.log(data)
+    mainSettingsContainer.innerHTML = `<section class="wrapper post">                              
+    <div class="post__content">
+        <div class="woocommerce">
+          <div class="woocommerce-order">
+            <p class="woocommerce-notice">Подробиці замовлення #${data.id}</p>
+              <div class="details-order-container">
+              ${(() => {
+                const counts = {};
+                data.textiles.forEach((e) => {
+                  counts[e.name] = (counts[e.name] || 0) + 1;
+                });
+            
+                return Object.entries(counts).map(([name, count]) => {
+                  const textile = data.textiles.find((e) => e.name === name);
+                  return `
+                  
+                    <div class="products-container">
+                                          <div class="img-cart">
+                                          <img src="${textile.imgUrl}">
+                                        </div>
+                                        <span class="cart-name">${
+                                          textile.name
+                                        }</span>
+                                        <table class="cart__config">
+                                          <tbody><tr>
+                                              <th class="size-cart">Розмір:</th>
+                                              <td><p>${sizeMap.get(textile.size)}</p></td>
+                                          </tr>
+                                              <th class="color-cart">Колір:</th>
+                                              <td><p>${colorMap.get(
+                                                textile.color
+                                              )}</p></td>
+                                          </tr>
+                                          </tr>
+                                              <th class="material-cart">Матеріал:</th>
+                                              <td><p>${materialMap.get(
+                                                textile.material
+                                              )}</p></td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                        <span type="number" class="cart-price" data-id="${
+                                          textile.id
+                                        }" value="1">${textile.discountPrice * count}грн</span>
+                                        <div class="cart__counter">
+                                          <span>Кількість:</span>
+                                          <input type="text" readonly name="quantity" сlass="input-quantity" data-id="${
+                                            textile.id
+                                          }" value="${count}">
+                                          <div class="arrow-container">
+                                            <img type="button" src="images/increase.png" class="increase" data-id="${
+                                              textile.id
+                                            }"></img>
+                                            <img class="decrease" type="button" src="images/increase.png" data-id="${
+                                              textile.id
+                                            }"></img>
+                                          </div>
+                                        </div>
+                                      
+                                      </div> 
+                                      
+                  `;
+                }).join('');
+              })()}
+              </div>
+              <div class="woocommerce-order">
+                <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.id}</p>
+              </div>
+              
+            <div class="confirmed-order-footer-container">
+              <div class="delivery-address">
+                  <p>Данні доставки</p>
+                  <textarea class = "text-area-after-order" readonly>${data.name} ${data.secondName}\n${data.phoneNumber}\n${data.city}\n${data.postNumber}</textarea>
+              </div>
+              <div class="description-after-order">
+              <p>Примітки</p>
+                  <textarea class = "text-area-after-order" readonly>Подушки - ${pillowCaseGetMap.get(data.pillowcase)}\nРезинка - ${rubberGetMap.get(data.rubber)}\n${data.description}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>`
+  
+  });
+}

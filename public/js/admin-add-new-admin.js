@@ -97,17 +97,26 @@ function validatePhone(phone) {
   return re.test(String(phone)) || phone.startsWith("+");
 }
 
-form.onsubmit = function(){
+
+
+
+form.onsubmit = function(e){
+  e.preventDefault();
   let emailVal = formEmail.value;
   let phoneVal = formPhone.value;
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
   let passwordVal = formPassword.value;
   let passwordRepeatVal = formRepeatPassword.value;
+  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
+  let wrongGmail = document.querySelector('.wrong-gmail-container')
+  let wrongPhoneOrGmail = document.querySelector('.wrong-phone-or-gmail-container')
+  var inputElement = document.querySelector('.input-phone-number');
   
   formInputs.forEach(function(input){
     input.addEventListener('focus', function() {
       input.classList.remove('error');
-      
+      wrongPhoneOrGmail.classList.remove('show-wrong-phone-or-gmail-container')
+      wrongGmail.classList.remove('show-wrong-gmail-container')
     });
   });
 
@@ -135,8 +144,7 @@ form.onsubmit = function(){
     return false;
   }
 
-  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
-  var inputElement = document.querySelector('.input-phone-number');
+  
   inputElement.addEventListener('focus', function() {
     var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
     wrongPhoneContainer.classList.remove('show-wrong-phone-container')
@@ -171,10 +179,12 @@ form.onsubmit = function(){
 
   if(!validateEmail(emailVal)){
     formEmail.classList.add('error');
+    wrongGmail.classList.add('show-wrong-gmail-container')
     return false;
   }
   else{
     formEmail.classList.remove('error');
+    wrongGmail.classList.remove('show-wrong-gmail-container')
   }
 
   if (validateCountry(emailVal)) {
@@ -194,7 +204,50 @@ form.onsubmit = function(){
     formRepeatPasswordContainer.classList.remove('error')
   }
   
-  let acceptRegestration = document.querySelector('.main-regestration-contrainer-first');
+  
+                                
+
+  function myFunction() {
+    let x = document.getElementById("myInputPasswor");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  const btns = document.querySelectorAll(".show-password-bt");
+  btns.forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      const showPassword = e.currentTarget;
+      showPassword.classList.toggle("show-password");
+    })
+  })
+  
+
+fetch(`${serverMachineUrl}/api/auth/registration`, {
+  method: 'POST',
+  mode: "cors",
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+  name: formName.value,
+  secondName: formSurname.value,
+  phoneNumber: formPhone.value,
+  email: formEmail.value, 
+  password: formPassword.value
+  }),
+})
+  .then(function(response){ 
+    if(response.ok === false){
+      wrongPhoneOrGmail.classList.add('show-wrong-phone-or-gmail-container')
+      return false
+    }
+    else{
+    console.log('ready');
+    let acceptRegestration = document.querySelector('.main-regestration-contrainer-first');
   acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
                                     <div class ="header-after-registration">
                                       <div class ="success-regestration-header">
@@ -202,7 +255,7 @@ form.onsubmit = function(){
                                         <h2>Успіх</h2>
                                       </div>
                                       <div class = "success-registration-main">
-                                        <h2>Вітаємо, Ваш акаунт успішно створенний</h2>
+                                        <h2>Адміністратор успішно доданний</h2>
                                       </div>
                                       <div class = "succes-registration-footer">
                                         <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
@@ -238,55 +291,20 @@ form.onsubmit = function(){
                                       <button class="close-btn"><i class="fas fa-times"></i></button>
                                   </div>
                                 </div> `
-                                
+                                const modalBt = document.querySelector(".log-in-bt");
 
-const modalBt = document.querySelector(".log-in-bt");
-
-modalBt.addEventListener('click', function(){
-  modalOverlay.classList.toggle("open-modal");
+                                modalBt.addEventListener('click', function(){
+                                  modalOverlay.classList.toggle("open-modal");
+                                  });
+                                  
+                                  closeBtn.addEventListener("click", function () {
+                                  modalOverlay.classList.remove("open-modal");
   });
-  
-  closeBtn.addEventListener("click", function () {
-      modalOverlay.classList.remove("open-modal");
-  });
-
-  function myFunction() {
-    let x = document.getElementById("myInputPasswor");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
     }
-  }
-
-  const btns = document.querySelectorAll(".show-password-bt");
-  btns.forEach(function(btn){
-    btn.addEventListener("click", function(e){
-      const showPassword = e.currentTarget;
-      showPassword.classList.toggle("show-password");
-    })
-  })
   
-
-// fetch(`${serverMachineUrl}/api/auth/registration`, {
-//   method: 'POST',
-//   mode: "cors",
-//   headers: {
-//     'Access-Control-Allow-Origin':'*',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//   name: formName.value,
-//   secondName: formSurname.value,
-//   phoneNumber: formPhone.value,
-//   email: formEmail.value, 
-//   password: formPassword.value
-//   }),
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
-
+  })
 }
+
 
   function showPasswordRegistrationPage() {
     let x = document.getElementById("PasswordRegistrationPage");
@@ -325,4 +343,7 @@ modalBt.addEventListener('click', function(){
       RepeatshowPasswordRegistrationPage.classList.toggle("show-password");
     })
 })
+
+
+
 

@@ -24,6 +24,11 @@ let formSecondNameOrder = document.querySelector('.surname-order');
 let formPhoneOrder = document.querySelector('.phone-order');
 let formGmailOrder = document.querySelector('.gmail-order');
 
+let checkOrder = localStorage.getItem("numberLS");
+if (checkOrder === ''){
+  location.href = 'index.html'
+}
+
 if(document.cookie.valueOf('Authorization').substring(14) !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
     method: 'GET',
@@ -352,7 +357,7 @@ arr.forEach((e) => {
   }
 });
 
-arr.forEach((e) => {
+
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
   sizeMap.set("DOUBLE", "Двохспальний");
@@ -382,8 +387,9 @@ arr.forEach((e) => {
   colorMap.set("GRAY", "Сірий");
   colorMap.set("BLACK", "Чорний");
   colorMap.set("WHITE", "Білий");
+  var result = arr.join(",");
 
-  fetch(`${serverMachineUrl}/api/textile?id=${e}`, {
+  fetch(`${serverMachineUrl}/api/textile/all-by-ids?ids=${result}`, {
     method: "GET",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -393,6 +399,9 @@ arr.forEach((e) => {
     .then((response) => response.json())
     .then((json) => {
       const storedQuantity = localStorage.getItem("numberLS");
+      json.forEach((textile)=>{
+
+      
 
       if (storedQuantity === "") {
         cartProductsPage.classList.add("cart__products-product-unshow");
@@ -400,67 +409,67 @@ arr.forEach((e) => {
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       } else {
         cartProductsPage.classList.remove("cart__products-product-unshow");
-        if (!displayedElements.includes(json.id)) {
-          const quantity = quantityCount[json.id];
+        if (!displayedElements.includes(textile.id)) {
+          const quantity = quantityCount[textile.id];
           const storedQuantity = localStorage.getItem("numberLS");
           const storedQuantityArray = storedQuantity
             ? storedQuantity.split(",")
             : [];
           const storedQuantityCount = storedQuantityArray.filter(
-            (id) => id === json.id
+            (id) => id === textile.id
           ).length;
-          formattedDiscountPrice = json.discountPrice.toLocaleString("uk-UA");
+          formattedDiscountPrice = textile.discountPrice.toLocaleString("uk-UA");
           cartProductsPage.innerHTML += `<div class="products-container">
                                           <div class="img-cart">
-                                          <img src="${json.imgUrl}">
+                                          <img src="${textile.imgUrl}">
                                         </div>
                                         <span class="cart-name">${
-                                          json.name
+                                          textile.name
                                         }</span>
                                         <table class="cart__config">
                                           <tbody><tr>
                                               <th class="size-cart">Розмір:</th>
-                                              <td><p>${sizeMap.get(json.size)}</p></td>
+                                              <td><p>${sizeMap.get(textile.size)}</p></td>
                                           </tr>
                                               <th class="color-cart">Колір:</th>
                                               <td><p>${colorMap.get(
-                                                json.color
+                                                textile.color
                                               )}</p></td>
                                           </tr>
                                           </tr>
                                               <th class="material-cart">Матеріал:</th>
                                               <td><p>${materialMap.get(
-                                                json.material
+                                                textile.material
                                               )}</p></td>
                                           </tr>
                                           </tbody>
                                         </table>
                                         <span type="number" class="cart-price" data-id="${
-                                          json.id
+                                          textile.id
                                         }" value="1">${formattedDiscountPrice} грн</span>
                                         <div class="cart__counter">
                                           <span>Кількість:</span>
                                           <input type="text" readonly name="quantity" сlass="input-quantity" data-id="${
-                                            json.id
+                                            textile.id
                                           }" value="${quantity}">
                                           <div class="arrow-container">
                                             <img type="button" src="images/increase.png" class="increase" data-id="${
-                                              json.id
+                                              textile.id
                                             }"></img>
                                             <img class="decrease" type="button" src="images/increase.png" data-id="${
-                                              json.id
+                                              textile.id
                                             }"></img>
                                           </div>
                                         </div>
                                         <span class="cart-price-all" data-id="${
-                                          json.id
+                                          textile.id
                                         }" value="0" id="cart-price-all-${
-            json.id
-          }" data-price="${json.discountPrice * quantity}" style="
+                                          textile.id
+          }" data-price="${textile.discountPrice * quantity}" style="
           display: none;
       "></span>
                                         <button data-id="${
-                                          json.id
+                                          textile.id
                                         }" class="cart-delete-btn"><i class="fas fa-trash-alt" style="color: black; transition: all 0.2s linear; font-size: 18px;font-weight: 100;" 
                                         onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i></button>
                                       </div> `;
@@ -473,17 +482,17 @@ arr.forEach((e) => {
                                                                         </div>`;
           let totalSum = 0;
 
-          displayedElements.push(json.id);
+          displayedElements.push(textile.id);
           let decreaseButtons = document.querySelectorAll(".decrease");
           let increaseButtons = document.querySelectorAll(".increase");
           let deleteBtn = document.querySelectorAll(".cart-delete-btn");
           let quantityInputs = document.querySelectorAll(
             'input[name="quantity"]'
           );
-          const button = document.querySelector(`button[data-id="${json.id}"]`);
+          const button = document.querySelector(`button[data-id="${textile.id}"]`);
           const parentElement = button.parentNode;
           const newPriceElement = document.createElement("span");
-          const price = json.discountPrice * quantity;
+          const price = textile.discountPrice * quantity;
           const formattedPrice = formatPrice(price);
           newPriceElement.innerText = `${formattedPrice} грн`;
           parentElement.insertBefore(newPriceElement, button);
@@ -654,8 +663,8 @@ arr.forEach((e) => {
           }
         }
       }
-    });
-});
+    })
+  });
 
  // Знаходимо елементи radio button
  const bacsRadio = document.querySelector('.full-paymant-container');
@@ -715,77 +724,78 @@ let formInputs = document.querySelectorAll('.js-input')
 
 
 form.onsubmit = function(e){
+
   
-  formInputs.forEach(function(input){
-    input.addEventListener('focus', function() {
-      input.classList.remove('error');
+  // formInputs.forEach(function(input){
+  //   input.addEventListener('focus', function() {
+  //     input.classList.remove('error');
       
-    });
-  });
+  //   });
+  // });
 
   e.preventDefault()
   
-  let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
+  // let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+  // let wrongNumberPhone = document.querySelector('.wrong-phone-container')
  
-  var inputElement = document.querySelector('.phone-order');
+  // var inputElement = document.querySelector('.phone-order');
   
 
 
-  inputElement.addEventListener('focus', function() {
-    var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
-    wrongPhoneContainer.classList.remove('show-wrong-phone-container')
-    formPhoneOrder.classList.remove('error');
+  // inputElement.addEventListener('focus', function() {
+  //   var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
+  //   wrongPhoneContainer.classList.remove('show-wrong-phone-container')
+  //   formPhoneOrder.classList.remove('error');
     
-  });
+  // });
 
   
-  formInputs.forEach(function(input){
-    if(input.value === ''){
-      input.classList.add('error');
-    }
-    else{
-      input.classList.remove('error');
-    }
-  });
+  // formInputs.forEach(function(input){
+  //   if(input.value === ''){
+  //     input.classList.add('error');
+  //   }
+  //   else{
+  //     input.classList.remove('error');
+  //   }
+  // });
 
-  if(emptyInputs.length !== 0){
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    return false;
-  }
+  // if(emptyInputs.length !== 0){
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth'
+  //   });
+  //   return false;
+  // }
 
-  function validatePhone(phone) {
-    let re = /^[0-9\s]*$/;
-    return re.test(String(phone)) || phone.startsWith("+");
-  }
-  if (!validatePhone(formPhoneOrder.value)) {
+  // function validatePhone(phone) {
+  //   let re = /^[0-9\s]*$/;
+  //   return re.test(String(phone)) || phone.startsWith("+");
+  // }
+  // if (!validatePhone(formPhoneOrder.value)) {
     
-    formPhoneOrder.classList.add('error');
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    wrongNumberPhone.classList.add('show-wrong-phone-container')
-    return false;
-  } else {
-    formPhoneOrder.classList.remove('error');
-  }
+  //   formPhoneOrder.classList.add('error');
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth'
+  //   });
+  //   wrongNumberPhone.classList.add('show-wrong-phone-container')
+  //   return false;
+  // } else {
+  //   formPhoneOrder.classList.remove('error');
+  // }
 
-  if ((formPhoneOrder.value.length === 13 || formPhoneOrder.value.length === 10)) {
-    formPhoneOrder.classList.remove('error');
-  } else {
+  // if ((formPhoneOrder.value.length === 13 || formPhoneOrder.value.length === 10)) {
+  //   formPhoneOrder.classList.remove('error');
+  // } else {
     
-    formPhoneOrder.classList.add('error');
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    wrongNumberPhone.classList.add('show-wrong-phone-container')
-    return false;
-  }
+  //   formPhoneOrder.classList.add('error');
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth'
+  //   });
+  //   wrongNumberPhone.classList.add('show-wrong-phone-container')
+  //   return false;
+  // }
 
   let checkbox = document.getElementById('scales');
   let checkScales;
@@ -805,37 +815,133 @@ form.onsubmit = function(e){
   } else {
     checkScales = false;
   }
+  
+  const pillowCaseMap = new Map();
+  pillowCaseMap.set("70*70", "SEVENTY_X_SEVENTY");
+  pillowCaseMap.set("50*70", " FIFTY_X_SEVENTY");
+  pillowCaseMap.set("Інший (вкажіть розмір у примітках)", "OTHER");
 
+  const rubberMap = new Map();
+  rubberMap.set(true, "YES");
+  rubberMap.set(false, "NO");
 
-  console.log(formNameOrder.value);
-  console.log(formSecondNameOrder.value)
-  console.log(formPhoneOrder.value);
-  console.log(formGmailOrder.value);
-  console.log(selectedValue);
-  console.log(checkScales);
-  console.log(selectedOption.textContent);
-  console.log(selectedPostOffice.textContent);
-  console.log(textAreaOrder);
-  console.log(checkAvansOrFullText);
-                                
+  const paymantMap = new Map();
+  paymantMap.set("Накладний платіж", "DELIVERY");
+  paymantMap.set("Повна оплата", "FULL");
 
+  
+  let headers;           
 
-// fetch(`${serverMachineUrl}/api/auth/registration`, {
-//   method: 'POST',
-//   mode: "cors",
-//   headers: {
-//     'Access-Control-Allow-Origin':'*',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//   name: formName.value,
-//   secondName: formSurname.value,
-//   phoneNumber: formPhone.value,
-//   email: formEmail.value, 
-//   password: formPassword.value
-//   }),
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
+if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+  headers = {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+  }
+}
+else{
+  headers = {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+  }
+}
+localStorage.removeItem("numberLS");
+counterBagadge.classList.remove('counter-show')
+let mainItemContainerAfterOrder = document.querySelector('.main-add-item-container')
+
+fetch(`${serverMachineUrl}/api/order`, {
+  method: 'POST',
+  mode: "cors",
+  headers: headers,
+  body: JSON.stringify({
+  name: formNameOrder.value,
+  secondName: formSecondNameOrder.value,
+  email: formGmailOrder.value, 
+  phoneNumber: formPhoneOrder.value,
+  pillowcase: pillowCaseMap.get(selectedValue),
+  rubber: rubberMap.get(checkScales),
+  city: selectedOption.textContent,
+  postNumber: selectedPostOffice.textContent,
+  description: textAreaOrder,
+  payment: paymantMap.get(checkAvansOrFullText),
+  ids: arr
+  }),
+})
+  .then((response) => response.json())
+  .then((json) => {
+    console.log(json);
+    const pillowCaseGetMap = new Map();
+    pillowCaseGetMap.set("SEVENTY_X_SEVENTY", "70*70");
+    pillowCaseGetMap.set("FIFTY_X_SEVENTY", "50*70");
+    pillowCaseGetMap.set("OTHER", "Інший");
+
+  const rubberGetMap = new Map();
+  rubberGetMap.set("YES", "Так");
+  rubberGetMap.set("NO", "Ні");
+
+    mainItemContainerAfterOrder.innerHTML = `<section class="wrapper post">                              
+                                              <div class="post__content">
+                                              <h1>Оформлення замовлення</h1>
+                                                <div class="woocommerce">
+                                                  <div class="woocommerce-order">
+                                                    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Дякуємо. Ваше замовлення було отримано.<br>Протягом 10 хвилин із Вами зв'яжеться наш менеджер.</p>
+                                                  </div>
+                                                  <table class="table-after-order">
+                                                  <thead>
+                                                      <tr class="table-tr">
+                                                          <th>Номер змовлення</th>
+                                                          <th>Ім'я</th>
+                                                          <th>Прізвище</th>
+                                                        </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr class="table-td">
+                                                      <td>${json.id}</td>
+                                                      <td>${json.name}</td>
+                                                      <td>${json.secondName}</td>
+                                                    </tr>
+                                                  </tbody>
+                                                  </table>
+                                                  <div class="paymant-data">
+                                                    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Деталі нашого банку</p>
+                                                  </div>
+                                                  <div class="paymant-data">
+                                                    <h3 class="woocommerce-notice woocommerce-notice--success-name woocommerce-thankyou-order-received">ФОП Хащук Аліна Сергіївна</h3>
+                                                  </div>
+                                                  <table class="table-after-order-paymant-data">
+                                                  <thead>
+                                                      <tr class="table-tr">
+                                                          <th>Банк</th>
+                                                          <th>Номер банківського рахунку</th>
+                                                          <th>SORT код</th>
+                                                          <th class="th-last-title">IBAN</th>
+                                                        </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr class="table-td">
+                                                      <td>Монобанк</td>
+                                                      <td>4035200042138963</td>
+                                                      <td>ІПН/ЄДРПОУ: 3689504109</td>
+                                                      <td>UA143220010000026000330041079</td>
+                                                    </tr>
+                                                  </tbody>
+                                                  </table>
+                                                  <div class="woocommerce-order">
+                                                    <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Інформація</p>
+                                                  </div>
+                                                  <div class="confirmed-order-footer-container">
+                                                    <div class="delivery-address">
+                                                        <h2>Данні доставки</h2>
+                                                        <textarea class = "text-area-after-order" readonly>${json.name} ${json.secondName}\n${json.phoneNumber}\n${json.city}\n${json.postNumber}</textarea>
+                                                    </div>
+                                                    <div class="description-after-order">
+                                                    <h2>Примітки</h2>
+                                                        <textarea class = "text-area-after-order" readonly>Подушки - ${pillowCaseGetMap.get(json.pillowcase)}\nРезинка - ${rubberGetMap.get(json.rubber)}\n${json.description}</textarea>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                          </section>`
+  });
 
 }

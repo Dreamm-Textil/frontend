@@ -257,9 +257,11 @@ font-size: 17px;
 .placing-an-order-col-2{
   width: 100%;
 }
-  textarea {
+.textarea-order {
     border: none;
+    resize: none;
     outline: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     max-width: 474px;
     width: 100%;
     height: 169px;
@@ -675,8 +677,10 @@ cart__counter .increase {
     width: 100%;
 }
 @media only screen and (max-width: 1100px){
-  
-  textarea{
+  .confirmed-order-footer-container{
+    flex-direction: column;
+  }
+ .textarea-order{
     max-width: 100%;
   }
 }
@@ -702,7 +706,7 @@ cart__counter .increase {
 .select-wrapper{
   top: 9%;
 }
-textarea{
+.textarea-order{
   max-width: 100%;
 }
 
@@ -886,9 +890,7 @@ textarea {
   top: 32.5%;
 
 }
-textarea {
-  max-width: 100%;
-}
+
 .select-wrapper-container, .select-wrapper-container-house {
   width: 100%;
   border: none;
@@ -909,7 +911,7 @@ textarea {
 }
 }
 
-.name-order:focus, .surname-order:focus, .gmail-order:focus, .phone-order:focus, textarea:focus, #regionsInput:focus, #postOfficesInput:focus{
+.name-order:focus, .surname-order:focus, .gmail-order:focus, .phone-order:focus, .textarea-order:focus, #regionsInput:focus, #postOfficesInput:focus{
   border:1px solid #EA4C89;
     background-color: black;
     box-sizing: border-box;
@@ -1021,4 +1023,124 @@ p{
 .hide-wrong-phone-container {
   display: none;
   transition: all 0.3 linear;
+}
+
+.wrapper{
+  width: 100%;
+}
+
+.post__content h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+    color: white;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.woocommerce-notice--success-name{
+  font-size: 17px;
+  font-weight: 100;
+  color: white;
+}
+.woocommerce-notice {
+  width: 100%;
+    color: white;
+    font-family: "Futura PT", sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.table-after-order{
+  max-width: 468px;
+    margin-bottom: 25px;
+}
+.table-after-order-paymant-data{
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 25px;
+}
+
+.table-tr {
+  text-align: left;
+}
+.table-after-order > thead tr th,.table-after-order-paymant-data > thead tr th{
+  color: white;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.table-tr-phone {
+  display: none;
+}
+.table-after-order > thead th,.table-after-order > tbody td,.table-after-order-paymant-data > thead th,.table-after-order-paymant-data > tbody td{
+  border: 1px solid #46464990;
+  padding: 8px;
+}
+.table-after-order-paymant-data td {
+  word-break: break-all;
+}
+tbody tr td {
+  color: white;
+  font-size: 15px;
+}
+@media only screen and (max-width: 1030px){
+.table-tr-phone {
+    display: flex;
+    flex-direction: column;
+}
+.table-tr >th,.table-td > td {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+}
+
+.table-after-order, .table-after-order-paymant-data {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+}
+
+.post__content{
+  max-width: 1016px;
+    width: 100%;
+    margin: auto;
+}
+.confirmed-order-footer-container{
+  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.delivery-address, .description-after-order{
+  max-width: 474px;
+  width: 100%;
+}
+.text-area-after-order{
+  width: 100%;
+  border: none;
+    outline: none;
+    max-width: 474px;
+    width: 100%;
+    min-height: 169px;
+    height: 169px;
+    max-height: 169px;
+    margin: 10px 0px 0px 0px;
+    border-radius: 1px;
+    font-size: 16px;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    background-color: #464649;
+    color: white;
+    border-radius: 5px;
 }

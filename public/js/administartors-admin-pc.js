@@ -34,7 +34,8 @@ let profileMainRegestration = document.querySelector('.main-regestration-profile
 let logOutBtn = document.querySelector('.button-log-out-btn-profile-page');
 let deleteAcountBtn = document.querySelector('.agree-for-delete-btn');
 let addNewPost = document.querySelector('.glek');
-let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')  
+let administrationPersonalCabinete = document.querySelector('.administration-personal-cabinete')
+let administrationAllOrders = document.querySelector('.all-administration-order-personal-cabinete')  
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
@@ -55,10 +56,12 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 .then((json) =>{  
     if(json.role === 'ADMIN'){
-        administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+      administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+      administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
       }
       else{
         administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
+      administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
       } ;
 });
 }                                           

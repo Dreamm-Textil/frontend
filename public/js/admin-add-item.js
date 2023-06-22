@@ -22,7 +22,6 @@ const links = document.querySelector(".links");
 
 
 
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");

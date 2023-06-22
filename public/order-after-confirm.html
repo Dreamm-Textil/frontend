@@ -5,12 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/about_us.css">
-    <link rel="stylesheet" href="css/regestration.css">
+    <link rel="stylesheet" href="css/catalog.css">
+    <link rel="stylesheet" href="css/placing-an-orded.css">
+    <link rel="stylesheet" href="css/order-after-confirm.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="css/regestration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <title>Dream Textile</title>
 </head>
 <header>
@@ -82,75 +85,86 @@
       </ul>
     </div>
   </nav>
+  </div>
+  <form class="js-form"></form>
 </header>
 <main>
-  <div class="main-regestration-contrainer-first">
-    <div class="main-regestration-container">
-        <div class="header-registration-page">
-            <h2>Реєстрація</h2>
-        </div>
-        <form onsubmit="myRegestrationForm(event)" value="regestration" class="js-form" method="POST" action="http://ec2-54-90-136-230.compute-1.amazonaws.com:8080/api/auth/registration" novalidate>
-            <div class="main-regestration">
-                <div class="name">
-                    <h2>Ім'я</h2>
-                    <input class="input input-name js-input">
+  <div class="container-order">
+  <div class="main-add-item-container">
+    <section class="wrapper post">                              
+        <div class="post__content">
+          <h1>Оформлення замовлення</h1>
+            <div class="woocommerce">
+              <div class="woocommerce-order">
+                <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Дякуємо. Ваше замовлення було отримано.</p>
+              </div>
+              <table class="table-after-order">
+              <thead>
+                  <tr class="table-tr">
+                      <th>Номер змовлення</th>
+                      <th>Ім'я</th>
+                      <th>Прізвище</th>
+                      <th class="th-last-title">Дата</th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr class="table-td">
+                  <td>1</td>
+                  <td>Олег</td>
+                  <td>Кривошапенко</td>
+                  <td>16.06.2023</td>
+                </tr>
+              </tbody>
+              </table>
+              <div class="paymant-data">
+                <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Деталі нашого банку</p>
+              </div>
+              <div class="paymant-data">
+                <h3 class="woocommerce-notice woocommerce-notice--success-name woocommerce-thankyou-order-received">ФОП Хащук Аліна Сергіївна</h3>
+              </div>
+              <table class="table-after-order-paymant-data">
+              <thead>
+                  <tr class="table-tr">
+                      <th>Банк</th>
+                      <th>Номер банківського рахунку</th>
+                      <th>SORT код</th>
+                      <th class="th-last-title">IBAN</th>
+                    </tr>
+              </thead>
+              <tbody>
+                <tr class="table-td">
+                  <td>Монобанк</td>
+                  <td>4035200042138963</td>
+                  <td>ІПН/ЄДРПОУ: 3689504109</td>
+                  <td>UA143220010000026000330041079</td>
+                </tr>
+              </tbody>
+              </table>
+              <div class="woocommerce-order">
+                <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Подробиці замовлення</p>
+              </div>
+              <div class="cart__products-product">
+              
+              </div>
+              <div class="cart-summary-container">
+              
+              </div>
+              <div class="woocommerce-order">
+                <p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">Данні доставки</p>
+              </div>
+              <div class="confirmed-order-footer-container">
+                <div class="delivery-address">
+                    <textarea></textarea>
                 </div>
-                <div class="surname">
-                    <h2>Прізвище</h2>
-                    <input class="input input-surname js-input">
+                <div class="text-area">
+                    <textarea></textarea>
                 </div>
-                <div class="phone-number">
-                    <h2>Телефон</h2>
-                    <input class="input input-phone-number js-input" placeholder="+380635961967">                   
-                </div>
-                <div class="wrong-phone-container">
-                  <h2>Неправильно вказано номер телефону<br>Приклад: +380635961966 або 0635961966</h2>
-                </div>
-                <div class="gmail-addres">
-                    <h2>Адреса електронної пошти</h2>
-                    <input class="input input-gmail-addres js-input" placeholder="exapmle@gmail.com">
-                </div>
-                <div class="wrong-gmail-container">
-                  <h2>Неправильно вказано електронну пошту<br>Приклад: exapmle@gmail.com</h2>
-                </div>
-                <div class="wrong-phone-or-gmail-container">
-                  <h2>Користувач із таким номером телефону<br>або поштою вже зареєстрований</br></h2>
-                </div>
-                <div class="password-registration-page">
-                    <h2>Пароль</h2>
-                    <div class="input password-registration-page-container js-input">
-                        <input type="password" id="PasswordRegistrationPage" class="input-password-registration-page js-input">
-                        <button type="button" class="show-password-btn-regestration-page" onclick="showPasswordRegistrationPage()">
-                            <span class="see-icon">
-                            <i class="far fa-eye"></i>
-                            </span>
-                            <span class="non-see-icon">
-                            <i class="far fa-eye-slash"></i>
-                            </span>
-                        </button> 
-                    </div>
-                </div>
-                <div class="repeat-password-registration-page">
-                    <h2>Повторити пароль</h2>
-                    <div class="input repeat-password-registration-page-container js-input">
-                        <input type="password" class="input-repeat-password-registration-page js-input" id="RepeatPasswordRegistrationPage">
-                        <button type="button" class="repeat-show-password-btn-regestration-page" onclick="showRepeatPasswordRegistrationPage()">
-                            <span class="see-icon">
-                            <i class="far fa-eye"></i>
-                            </span>
-                            <span class="non-see-icon">
-                            <i class="far fa-eye-slash"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="regestration-btn-regestration-page">
-                    <button type="submit" class="button-regestration-btn-regestration-page">Зареєструватися</button>
-                </div>
+              </div>
             </div>
-        </form>
-    </div>
+        </div>
+      </section>
   </div>
+</div>
 </main>
 <footer>
   <div class="footer-header">
@@ -211,10 +225,13 @@
         </div>
         <button type="button" class="close-btn"><i class="fas fa-times"></i></button>
       </form>
+      
   </div>
+  
 </div>
 <script src="js/server-machine-url.js"></script>
-<script src="js/registration.js"></script>
+<script src="js/placing-an-order.js"></script>
+<script src="js/order-after-confirm.js"></script>
 <script src="js/login.js"></script>
 <script src="https://kit.fontawesome.com/cd44c5413f.js" crossorigin="anonymous"></script>
 </html>

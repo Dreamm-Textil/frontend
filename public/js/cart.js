@@ -100,7 +100,7 @@ arr.forEach((e) => {
   }
 });
 
-arr.forEach((e) => {
+
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
   sizeMap.set("DOUBLE", "Двохспальний");
@@ -130,8 +130,10 @@ arr.forEach((e) => {
   colorMap.set("GRAY", "Сірий");
   colorMap.set("BLACK", "Чорний");
   colorMap.set("WHITE", "Білий");
+  var result = arr.join(",");
+  console.log(result);
 
-  fetch(`${serverMachineUrl}/api/textile?id=${e}`, {
+  fetch(`${serverMachineUrl}/api/textile/all-by-ids?ids=${result}`, {
     method: "GET",
     headers: {
       "Access-Control-Allow-Origin": "*",
@@ -146,69 +148,78 @@ arr.forEach((e) => {
         cartProductsPage.classList.add("cart__products-product-unshow");
         cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
+      }
+      
+  json.forEach((textile)=>{
+    const storedQuantity = localStorage.getItem("numberLS");
+
+      if (storedQuantity === "") {
+        cartProductsPage.classList.add("cart__products-product-unshow");
+        cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
+        <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       } else {
         cartProductsPage.classList.remove("cart__products-product-unshow");
-        if (!displayedElements.includes(json.id)) {
-          const quantity = quantityCount[json.id];
+        if (!displayedElements.includes(textile.id)) {
+          const quantity = quantityCount[textile.id];
           const storedQuantity = localStorage.getItem("numberLS");
           const storedQuantityArray = storedQuantity
             ? storedQuantity.split(",")
             : [];
           const storedQuantityCount = storedQuantityArray.filter(
-            (id) => id === json.id
+            (id) => id === textile.id
           ).length;
-          formattedDiscountPrice = json.discountPrice.toLocaleString("uk-UA");
+          formattedDiscountPrice = textile.discountPrice.toLocaleString("uk-UA");
           cartProductsPage.innerHTML += `<div class="products-container">
                                           <div class="img-cart">
-                                          <img src="${json.imgUrl}">
+                                          <img src="${textile.imgUrl}">
                                         </div>
                                         <span class="cart-name">${
-                                          json.name
+                                          textile.name
                                         }</span>
                                         <table class="cart__config">
                                           <tbody><tr>
                                               <th class="size-cart">Розмір:</th>
-                                              <td>${sizeMap.get(json.size)}</td>
+                                              <td>${sizeMap.get(textile.size)}</td>
                                           </tr>
                                               <th class="color-cart">Колір:</th>
                                               <td>${colorMap.get(
-                                                json.color
+                                                textile.color
                                               )}</td>
                                           </tr>
                                           </tr>
                                               <th class="material-cart">Матеріал:</th>
                                               <td>${materialMap.get(
-                                                json.material
+                                                textile.material
                                               )}</td>
                                           </tr>
                                           </tbody>
                                         </table>
                                         <span type="number" class="cart-price" data-id="${
-                                          json.id
+                                          textile.id
                                         }" value="1">${formattedDiscountPrice} грн</span>
                                         <div class="cart__counter">
                                           <span>Кількість:</span>
                                           <input  name="quantity" сlass="input-quantity" data-id="${
-                                            json.id
+                                            textile.id
                                           }" value="${quantity}">
                                           <div class="arrow-container">
                                             <img type="button" src="images/increase.png" class="increase" data-id="${
-                                              json.id
+                                              textile.id
                                             }"></img>
                                             <img class="decrease" type="button" src="images/increase.png" data-id="${
-                                              json.id
+                                              textile.id
                                             }"></img>
                                           </div>
                                         </div>
                                         <span class="cart-price-all" data-id="${
-                                          json.id
+                                          textile.id
                                         }" value="0" id="cart-price-all-${
-            json.id
-          }" data-price="${json.discountPrice * quantity}" style="
+                                          textile.id
+          }" data-price="${textile.discountPrice * quantity}" style="
           display: none;
       "></span>
                                         <button data-id="${
-                                          json.id
+                                          textile.id
                                         }" class="cart-delete-btn"><i class="fas fa-trash-alt" style="color: black; transition: all 0.2s linear; font-size: 18px;font-weight: 100;" 
                                         onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i></button>
                                       </div> `;
@@ -224,17 +235,17 @@ arr.forEach((e) => {
                                                                         </div>`;
           let totalSum = 0;
 
-          displayedElements.push(json.id);
+          displayedElements.push(textile.id);
           let decreaseButtons = document.querySelectorAll(".decrease");
           let increaseButtons = document.querySelectorAll(".increase");
           let deleteBtn = document.querySelectorAll(".cart-delete-btn");
           let quantityInputs = document.querySelectorAll(
             'input[name="quantity"]'
           );
-          const button = document.querySelector(`button[data-id="${json.id}"]`);
+          const button = document.querySelector(`button[data-id="${textile.id}"]`);
           const parentElement = button.parentNode;
           const newPriceElement = document.createElement("span");
-          const price = json.discountPrice * quantity;
+          const price = textile.discountPrice * quantity;
           const formattedPrice = formatPrice(price);
           newPriceElement.innerText = `${formattedPrice} грн`;
           parentElement.insertBefore(newPriceElement, button);
@@ -437,5 +448,6 @@ arr.forEach((e) => {
           }
         }
       }
+    })
     });
-});
+

@@ -1,11 +1,4 @@
-.main-container-personal-cabinete{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 50px;
-    padding: 0px 10px 0px 10px;
-}
+
 .modal-overlay-delete {
     position: fixed;
     top: 0;
@@ -22,59 +15,7 @@
     z-index: 3;
   }
 
-.video-clear{
-    position: relative;
-    padding-bottom: 5.25%;
-}
-.logo-personal-cabinete{
-    color: black;
-    font-weight: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-.main-regestration-profile{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: auto;
-    gap: 17px;
-    font-size: 12px;
-    margin-top: 30px;
-}
-.main-regestration-profile h2 {
-    color: white;
-    font-weight: 100;
-    font-size: 16px;
-}
 
-.nav-personal-cabinete{
-    display: flex;
-    flex-direction: row;
-    padding: 0px 5px;
-    margin-top: 20px;
-    align-items: flex-start;
-    min-height: 360px;
-    gap: 5px;
-    width: 100%;
-    background-color: #18181bed;
-    border-radius: 5px;
-}
-
-.button-nav-personal-cabinete{
-    display: flex;
-    flex-direction: column;
-    max-width: 246px;
-    width: 100%;
-    max-height: auto;
-    justify-content: center;
-    gap: 13px;
-    align-items: center;
-    margin-top: 30px;
-}
 .cart-delete-btn > i {
     display: flex;
     background-color: none;
@@ -142,197 +83,17 @@ table {
 .more-about-order:hover{
     background-color: #EA4C89;
 }
-.profile-personal-cabinete-container{
-    display: flex;
-    /* justify-content: left; */
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 31px;
-    max-width: 1400px;
-    width: 100%;
-}
-.name-surname-profile, .phone-gmail-profile{
-    display: flex;
-    flex-direction: column;
-    gap: 31px;
-    font-size: 18px;
-}
-.js-form-personal-cabinete{
-    width: 100%;
-    max-width: 900px;
-}
 
-.profile-personal-cabinete,.all-administration-order-personal-cabinete,.administration-personal-cabinete, .button-log-out-btn-profile-page, .change-password-personal-cabinete, .my-order-personal-cabinete, .settings-personal-cabinete{
-    border: none;
-    color: white;
-    font-size: 16px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-    width: 100%;
-    max-width: 219px;
-    box-sizing: border-box;
-    max-height: 100px;
-    height: 42px;
-    font-weight: 100;
-    gap: 0px;
-    border-radius: 5px;
-    background: none;
-    padding: 0px 23px 0px 23px;
-}
-.profile-personal-cabinete:hover,.all-administration-order-personal-cabinete:hover,.button-log-out-btn-profile-page:hover,.administration-personal-cabinete:hover, .change-password-personal-cabinete:hover, .my-order-personal-cabinete:hover, .settings-personal-cabinete:hover{
-    background-color: #464649;
-    color: white;
-    transition: 0.1s;
-}
-
-.profile-btn-click{
-    background-color: #464649;
-    color: white;
-    border: none;
-}
-
-
-.main-settings-container{
-    font-size: 17px;
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    min-height: 502px;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    margin: auto;
-    background-color: none;
-    border-radius: 5px;
-    border-left: 1px solid #46464990;
-    padding: 0px 20px 35px 20px;
-  }
-
-.header-settings-page{
-    max-width: 640px;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.header-settings-page > h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-weight: 100;
-    height: 66px;
-}
-.main-settings-contrainer-first{
-    width: 100%;
-    margin-top: 0px;
-}
-
-.main-regestration-container-after-change{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 486px;
-    margin: auto;
-}
-.agree-disagree-btn-container{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    justify-content: flex-end;
-    margin-top: 40px;
-}
-.agree-for-exit-btn, .agree-for-delete-btn{
-    background-color: #ea4c89d0;
-    border: none;
-    color: white;
-    display: flex;
-    font-size: 17px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 117px;
-    max-width: 313px;
-    box-sizing: border-box;
-    max-height: 100px;
-    height: 33px;
-    font-weight: 100;
-    border-radius: 5px;
-}
-.phone-title-personal-cabinete{
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    display: none;
-}
-.phone-title-personal-cabinete h2{
-    color: white;
-    font-size: 17px;
-    font-weight: 100;
-}
 .table-tr-phone{
     display: none;
 }
-.agree-for-exit-btn:hover, .agree-for-delete-btn:hover{
-    background-color: #EA4C89;
-}
-.disagree-for-exit-btn, .disagree-for-delete-btn{
-    background-color: #35353b9d;
-    border: none;
-    color: white;
-    font-size: 17px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 117px;
-    max-width: 313px;
-    box-sizing: border-box;
-    max-height: 100px;
-    height: 33px;
-    font-weight: 100;
-    border-radius: 5px;
-}
-.disagree-for-exit-btn:hover, .disagree-for-delete-btn:hover{
-    background-color: #35353B;
-  color: white;
-}
-.fa-arrow-right-from-bracket{
-    margin-right: 15px;
-}
+
 .td-number{
     text-align: center;
 }
 
 
-.button-delete-profile{
-    background-color: #18181b00;
-    border: none;
-    color: #ea4c89d0;
-    font-size: 17px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-    max-height: 100px;
-    height: 40px;
-    font-weight: 100;
-    border-radius: 5px;
-    margin-bottom: 25px;
-}
-.button-delete-profile:hover{
-    background-color: #35353B;
-  color: white;
-}
+
 @media only screen and (max-width: 1030px){
     .th-img-title {
         margin-bottom: 51px;
@@ -420,7 +181,10 @@ table {
         line-height: 1.5;
         font-size: 0.875rem;
         margin: 0;
-        min-height: 70px;
+        min-height: 50px;
+    }
+    .main-container-personal-cabinete{
+        margin-top: 25px;
     }
     
     .nav-personal-cabinete {
@@ -443,6 +207,7 @@ table {
     .profile-btn-click > i{
         color: #EA4C89;
     }
+    
     .phone-title-personal-cabinete{
         display: flex;
         justify-content: center;
@@ -497,7 +262,7 @@ table {
         flex-direction: column;
         max-width: 49px;
         width: 100%;
-        max-height: 195px;
+        max-height: 239px;
         justify-content: center;
         gap: 10px;
     }
@@ -555,7 +320,7 @@ table {
         line-height: 1.5;
         font-size: 0.875rem;
         margin: 0;
-        min-height: 70px;
+        min-height: 50px;
     }
     .agree-disagree-btn-container{
         display: flex;

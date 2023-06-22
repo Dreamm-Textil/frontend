@@ -411,7 +411,14 @@ cart__counter .increase {
         border-top: 1px solid #E5E5E5;
         border-bottom: 1px solid #E5E5E5;
     }
-    
+    .cart__products-product-unshow {
+        margin-top: 38px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        border: none;
+    }
 }
 
 

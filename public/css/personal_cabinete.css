@@ -259,7 +259,10 @@
         line-height: 1.5;
         font-size: 0.875rem;
         margin: 0;
-        min-height: 70px;
+        min-height: 50px;
+    }
+    .main-container-personal-cabinete{
+        margin-top: 25px;
     }
     .administration-personal-cabinete, .all-administration-order-personal-cabinete{
         display: none;
@@ -353,7 +356,7 @@
         flex-direction: column;
         max-width: 49px;
         width: 100%;
-        max-height: 195px;
+        max-height: 239px;
         justify-content: center;
         gap: 10px;
     }
@@ -416,7 +419,7 @@
         line-height: 1.5;
         font-size: 0.875rem;
         margin: 0;
-        min-height: 70px;
+        min-height: 50px;
     }
     .agree-disagree-btn-container{
         display: flex;

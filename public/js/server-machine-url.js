@@ -1,4 +1,4 @@
-let serverMachineUrl = 'http://ec2-18-215-183-214.compute-1.amazonaws.com:8080';
+let serverMachineUrl = 'http://ec2-54-204-73-97.compute-1.amazonaws.com:8080';
 
 
 if (!localStorage.getItem('numberLS')) {

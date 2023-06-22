@@ -362,35 +362,34 @@
     padding: 0px 5px 0px 5px;
   }
   .main-regestration-contrainer-first{
-    margin-top: 0px;
+    margin-top: 25px;
     padding: 0px 10px;
     height: auto;
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
 }
 
-.wrong-phone-container{
-  display: flex;
+.wrong-phone-container, .wrong-phone-or-gmail-container,.wrong-gmail-container{
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  max-width: 472px;
+  max-width: 500px;
   width: 100%;
   gap: 30px;
   display: none;
-  border: 1px solid red;
+  border: 1px solid rgba(223, 2, 2, 0.911);
   background-color: #0000001f;
   border-radius: 5px;
 }
-.wrong-phone-container >h2{
+.wrong-phone-container >h2, .wrong-phone-or-gmail-container>h2, .wrong-gmail-container  > h2{
   font-size: 14px;
-  color: red;
+  color: rgba(223, 2, 2, 0.911);
 }
-.show-wrong-phone-container{
+.show-wrong-phone-container, .show-wrong-phone-or-gmail-container, .show-wrong-gmail-container{
   display: flex;
 }
-.hide-wrong-phone-container {
+.hide-wrong-phone-container,.hide-wrong-phone-or-gmail-container{
   display: none;
 }
