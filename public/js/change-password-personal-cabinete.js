@@ -42,7 +42,7 @@ fetch(`${serverMachineUrl}/api/user`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
 })
 
@@ -125,7 +125,7 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
   body: JSON.stringify({
     "newPassword": passwordVal,

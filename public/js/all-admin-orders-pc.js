@@ -41,14 +41,14 @@ deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
     
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     },
   })
   
@@ -155,7 +155,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
 })
 
@@ -246,7 +246,7 @@ function handleSelectChange(orderId) {
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     },
     body: JSON.stringify(data)
   })
@@ -279,7 +279,7 @@ function handleButtonClickDelete(id) {
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     }
   })
   .then(res => res.json())
@@ -335,7 +335,7 @@ function handleButtonClick(id) {
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     }
   })
   .then(res => res.json())

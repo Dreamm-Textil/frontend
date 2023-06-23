@@ -21,7 +21,7 @@ let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
 let adminOnPage = false;
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(authorizationCookieValue !== ''){
   
 fetch(`${serverMachineUrl}/api/user`, {
   
@@ -29,7 +29,7 @@ fetch(`${serverMachineUrl}/api/user`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
 })
 .then((response) => response.json())
@@ -125,6 +125,7 @@ oneAndHalfSizeBtn.addEventListener('click', function(){
   getSize('ONE_AND_HALF');
   setTimeout(() => {
     updateButtonStatus();
+    updateButtonStatusLike();
   }, 800)
   complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
@@ -140,6 +141,7 @@ childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('DOUBLE');
 setTimeout(() => {
   updateButtonStatus();
+  updateButtonStatusLike();
 }, 800);
 
 complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
@@ -156,6 +158,7 @@ childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('EURO');
 setTimeout(() => {
   updateButtonStatus();
+  updateButtonStatusLike();
 }, 800)
 complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
@@ -171,6 +174,7 @@ childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
 getSize('FAMILY');
 setTimeout(() => {
   updateButtonStatus();
+  updateButtonStatusLike();
 }, 800)
 complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
@@ -186,6 +190,7 @@ childrenSizeBtn.classList.add("one-and-half-size-btn-show")
 getSize('CHILDREN');
 setTimeout(() => {
   updateButtonStatus();
+  updateButtonStatusLike();
 }, 800)
 complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
 })
@@ -229,7 +234,7 @@ function getSize(s){
             <div class="card-body">
               <div class="card-title-size-container">
                 <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
-                <button class="like"><i class="far fa-heart change-heart"></i></button>
+                <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
               </div>
               <!-- <div class="card-title-container"> -->
                 <h4 class="card-title">${user.name}</h4>
@@ -266,7 +271,7 @@ function getSize(s){
                                       <div class="card-body">
                                         <div class="card-title-size-container">
                                           <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
-                                          <button class="like"><i class="far fa-heart change-heart"></i></button>
+                                          <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
                                         </div>
                                         <!-- <div class="card-title-container"> -->
                                           <h4 class="card-title">${user.name}</h4>
@@ -313,7 +318,7 @@ function cliclDeleteBtn(id){
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     }
   })
   .then(res => res.json())

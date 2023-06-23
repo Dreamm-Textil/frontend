@@ -29,13 +29,13 @@ if (checkOrder === ''){
   location.href = 'index.html'
 }
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     },
   })
 
@@ -832,11 +832,11 @@ form.onsubmit = function(e){
   
   let headers;           
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(authorizationCookieValue !== ''){
   headers = {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   }
 }
 else{

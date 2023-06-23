@@ -169,6 +169,10 @@ svg{
   top: 0;
   left: 0;
 }
+.fa-shopping-bag:hover, .fa-heart:hover {
+  color: #EA4C89;
+  transition: var(--transition);
+}
 
 .logo-text {
   width: 100%;
@@ -408,10 +412,7 @@ nav .nav-header h2{
     cursor: pointer;
     font-size: 14px;
   }
-  .fa-shopping-bag:hover {
-    color: #EA4C89;
-    transition: var(--transition);
-  }
+  
 }
 
 .modal-overlay {
@@ -759,6 +760,23 @@ footer{
   font-size: 12px;
 }
 .counter-show{
+  display: flex;
+}
+
+.counter-like{
+  position: absolute;
+  top: -10px;
+  left: 7px;
+  background-color: #EA4C89;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.counter-like-show{
   display: flex;
 }
 

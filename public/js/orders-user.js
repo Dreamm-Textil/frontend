@@ -47,7 +47,7 @@ fetch(`${serverMachineUrl}/api/user`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
 })
 
@@ -66,14 +66,14 @@ fetch(`${serverMachineUrl}/api/user`, {
 });
 
 
-if(document.cookie.valueOf('Authorization').substring(14) !== ''){
+if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
   
     method: 'GET',
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     },
   })
   
@@ -163,7 +163,7 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
   headers: {
     'Access-Control-Allow-Origin':'*',
     'Content-Type': 'application/json',
-    'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+    'Authorization':  authorizationCookieValue
   },
 })
 
@@ -266,7 +266,7 @@ function handleButtonClick(id) {
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     }
   })
   .then(res => res.json())

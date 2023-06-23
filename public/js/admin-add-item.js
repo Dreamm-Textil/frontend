@@ -167,7 +167,7 @@ function mySubmitFunctionAdd(e) {
     headers: {
       'Access-Control-Allow-Origin':'*',
       'Content-Type': 'application/json',
-      'Authorization':  document.cookie.valueOf('Authorization').substring(14)
+      'Authorization':  authorizationCookieValue
     },
     body: JSON.stringify({
     name: inputName.value, 
