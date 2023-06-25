@@ -62,12 +62,13 @@ aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
 
 
-
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
       links.classList.remove('show-links')
+      navToggle.classList.remove('nav-toggle-show')
   } else {
       links.classList.add("show-links");
+      navToggle.classList.add('nav-toggle-show')
   }
 });
 

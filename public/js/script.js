@@ -21,7 +21,7 @@ let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
 let adminOnPage = false;
 
-if(authorizationCookieValue !== ''){
+if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
 fetch(`${serverMachineUrl}/api/user`, {
   
@@ -61,13 +61,18 @@ if(value_or_null === null){
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
 
+
+
 navToggle.addEventListener('click', function(){
     if(links.classList.contains('show-links')){
         links.classList.remove('show-links')
+        navToggle.classList.remove('nav-toggle-show')
     } else {
         links.classList.add("show-links");
+        navToggle.classList.add('nav-toggle-show')
     }
 });
+
 
 modalBtn.addEventListener('click', function(){
 modalOverlay.classList.toggle("open-modal");

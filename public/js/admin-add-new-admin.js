@@ -37,11 +37,13 @@ if(value_or_null === null){
 
 
 navToggle.addEventListener('click', function(){
-    if(links.classList.contains('show-links')){
-        links.classList.remove('show-links')
-    } else {
-        links.classList.add("show-links");
-    }
+  if(links.classList.contains('show-links')){
+      links.classList.remove('show-links')
+      navToggle.classList.remove('nav-toggle-show')
+  } else {
+      links.classList.add("show-links");
+      navToggle.classList.add('nav-toggle-show')
+  }
 });
 
 modalBtn.addEventListener('click', function(){

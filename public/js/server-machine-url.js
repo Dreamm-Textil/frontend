@@ -1,5 +1,22 @@
 let serverMachineUrl = 'http://ec2-54-204-73-97.compute-1.amazonaws.com:8080';
 
+function closeNavOnClickOutside(event) {
+  if (links.classList.contains("show-links")) {
+    var target = event.target;
+
+    // Check if the click occurred outside the navToggle and nav links
+    if (!navToggle.contains(target) && !links.contains(target)) {
+      links.classList.remove("show-links");
+      navToggle.classList.remove("nav-toggle-show");
+    }
+  }
+}
+
+// Adding click event listener to the document
+document.addEventListener("click", closeNavOnClickOutside);
+
+
+
 
 if (!localStorage.getItem('numberLS')) {
     localStorage.setItem('numberLS', '');
@@ -152,3 +169,18 @@ function updateButtonStatus() {
   }
   
   const authorizationCookieValue = getCookieValue('Authorization');
+
+  function checkAuthorizationCookie() {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf('Authorization=') === 0) {
+        // Ключ "Authorization" знайдено у куках
+        return true;
+      }
+    }
+    // Ключ "Authorization" не знайдено у куках
+    return false;
+  }
+
+  var hasAuthorizationCookie = checkAuthorizationCookie();

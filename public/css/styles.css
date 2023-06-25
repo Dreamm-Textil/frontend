@@ -302,7 +302,7 @@ nav .nav-header h2{
   transition: var(--transition);
   cursor: pointer;
 }
-.nav-toggle:hover {
+.nav-toggle-show {
   color: #EA4C89;
   transform: rotate(90deg);
 }
@@ -369,6 +369,7 @@ nav .nav-header h2{
   .log-in-btn-phone-size{
     display: none;
   }
+  
   
   .nav-header {
     padding: 0;
@@ -463,6 +464,7 @@ nav .nav-header h2{
 
 .header-modal-log-in > h3{
   font-size: 23px;
+  font-weight: 100;
   color: white;
 }
 
@@ -557,6 +559,7 @@ nav .nav-header h2{
   height: 38px;
   cursor: pointer;
   border-radius: 5px;
+  font-weight: 100;
 }
 .autorization-btn:hover{
 background-color: #EA4C89;
@@ -973,6 +976,17 @@ li, a{
   .logo-bedclothes-title {
     margin-top: 0px;
 }
+header{
+  min-height: 45px;
+}
+.links {
+  overflow: hidden;
+  background: #1E1E1E;
+  width: 100%;
+  border: none;
+  position: absolute;
+}
+
 .personal-cabinete-after-registration-show{
   display: none;
 }
@@ -983,10 +997,10 @@ li, a{
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  top: 1.7%;
+  position: absolute;
+  top: 16px;
   left: 82%;
-  gap: 4px;
+  gap: 16px;
 }
   .svg-video{
     height: 148px;
@@ -1121,6 +1135,18 @@ li, a{
 }
 
 
+@media only screen and (max-width: 720px){
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 16px;
+    left: 78%;
+  }
+}
+
+
 @media only screen and (max-width: 620px){
   .logo-text {
     margin-bottom: 0px;
@@ -1143,8 +1169,8 @@ li, a{
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 1.7%;
-    left: 79%;
+    top: 16px;
+    left: 73%;
   }
   .logo-phone{
     display: flex;
@@ -1178,8 +1204,8 @@ li, a{
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 1.8%;
-    left: 74%;
+    top: 16px;
+    left: 68%;
   }
   .logo-bedclothes-title {
     margin-top: -22px;
@@ -1202,8 +1228,8 @@ li, a{
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 1.8%;
-    left: 67%;
+    top: 18px;
+    left: 65%;
 }
   .personal-cabinete-after-registration-show{
     font-size: 11px;
@@ -1271,6 +1297,26 @@ li, a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 18px;
+  left: 63%;
+}
+}
+
+
+@media only screen and (max-width: 290px){
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 18px;
+    left: 54%;
 }
 }
 
