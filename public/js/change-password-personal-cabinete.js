@@ -137,49 +137,12 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
 .then(function(response){
     console.log(response); 
     if(response.ok === true){
-        let acceptRegestration = document.querySelector('.main-settings-contrainer-first');
-        acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-change">
-                                          <div class ="header-after-registration">
-                                            <div class ="success-regestration-header">
-                                              <i class="far fa-check-circle"></i>
-                                              <h2>Успіх</h2>
-                                            </div>
-                                            <div class = "success-registration-main">
-                                              <h2>Зміни збереженні</h2>
-                                            </div>
-                                            <div class = "succes-registration-footer">
-                                              <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
-                                           </div>
-                                        </div>
-                                        <div class="modal-overlay">
-                                        <div class="modal-container">
-                                            <div class="header-modal-log-in">
-                                            <h3>Вхід до особистого кабінету</h3>
-                                            </div>
-                                            <div class="login-and-password">
-                                              <input class="login" placeholder="Login">
-                                              <div class="password-container">
-                                                <input  type="password" class="password" placeholder="Password" value="" id="myInputPasswor">
-                                                <button class="show-password-bt" onclick="myFunction()">
-                                                  <span class="see-icon">
-                                                    <i class="far fa-eye"></i>
-                                                  </span>
-                                                  <span class="non-see-icon">
-                                                    <i class="far fa-eye-slash"></i>
-                                                  </span>
-                                                </button>
-                                              </div>
-                                            </div>
-                                            <div class="login-and-password-btn">
-                                              <button class="autorization-btn">Авторизація</button>
-                                              <a href="registration.html" class="registration-btn">Реєстарція</a>
-                                              <div class="remebmer-me-btn">
-                                                <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
-                                              </div>
-                                            </div>
-                                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                                        </div>
-                                      </div> `
+      let alertSecces = document.querySelector('.alert');
+      alertSecces.classList.add("alert-show")
+      setTimeout(() => {
+      alertSecces.classList.remove("alert-show")
+      location.reload();
+    }, 1500);
     }
     else{
     showWrongPassword.classList.add('show-wrong-password-or-email-container');
@@ -241,6 +204,6 @@ let agreeForExitBtn = document.querySelector('.agree-for-exit-btn');
 
 agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
-  location.href="http://127.0.0.1:5500/index.html";
+  location.href="index.html";
 });
 

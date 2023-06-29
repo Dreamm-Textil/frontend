@@ -440,7 +440,7 @@ nav .nav-header h2{
   background-color: #18181bf8;
   border-radius: var(--radius);
   width: 90vw;
-  height: 50vh;
+  height: auto;
   max-width: 700px;
   display: flex;
   flex-direction: column;
@@ -448,7 +448,7 @@ nav .nav-header h2{
   justify-content: center;
   gap: 33px;
   position: relative;
-  padding: 20px;
+  padding: 60px;
 }
 .close-btn {
   position: absolute;
@@ -584,6 +584,14 @@ background-color: #EA4C89;
   background-color: #35353B;
   color: white;
 }
+.login-email-container,.password-logis-container{
+  width: 100%;
+}
+.login-email-container > h2,.password-logis-container >h2{
+  color: white;
+  font-size: 16px;
+  font-weight: 100;
+}
 
 .login-and-password{
   display: flex;
@@ -593,8 +601,8 @@ background-color: #EA4C89;
   gap: 19px;
   width: 100%;
   max-width: 430px;
-  max-height: 106px;
-  height: 106px;
+  max-height: 155px;
+  height: 100%;
 }
 .login-and-password-btn{
   display: flex;
@@ -604,8 +612,9 @@ background-color: #EA4C89;
   gap: 25px;
   width: 100%;
   max-width: 430px;
-  max-height: 150px;
+  max-height: 175px;
   height: 132px;
+  margin-top: 20px;
 }
 .password-container{
   display: flex;
@@ -654,6 +663,22 @@ footer{
   gap: 18px;
   background-color: #1E1E1E;
 }
+.wrong-gmail-container{
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 500px;
+  width: 100%;
+  gap: 30px;
+  display: none;
+  border: 1px solid rgba(223, 2, 2, 0.911);
+  background-color: #0000001f;
+  border-radius: 5px;
+}
+.wrong-gmail-container  > h2{
+  font-size: 14px;
+  color: rgba(223, 2, 2, 0.911);
+}
 
 .footer-header{
   max-width: 1170px;
@@ -672,8 +697,7 @@ footer{
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  height: 75px;
-  padding-right: 5px;
+  height: 76px;
 }
 .footer-logo{
   margin-left: 0.5rem;
@@ -699,6 +723,7 @@ footer{
   justify-content: flex-end;
   align-items: center;
   font-weight: 100;
+  padding-right: 5px;
 }
 
 .personal-cabinete-after-registration{
@@ -844,17 +869,16 @@ li, a{
   max-width: 314px;
   width: 100%;
   gap: 6px;
-  border-bottom: 1px solid red;
   display: none;
 }
 
 .wrong-password-or-email-container >h2{
   font-size: 14px;
-  color: red;
+  color: rgba(223, 2, 2, 0.911);
 }
 .fa-xmark{
   font-size: 15px;
-  color: red;
+  color: rgba(223, 2, 2, 0.911);
 }
 .show-wrong-password-or-email-container{
   display: flex;
@@ -887,6 +911,7 @@ li, a{
     width: auto;
     height: auto;
     padding: 10px;
+    border: none;
     margin: 10px;
     line-height: 1.8;
     border-radius: 5px;
@@ -931,9 +956,9 @@ li, a{
 }
 
 .success {
-  background-color: rgb(165, 255, 165);
-  border: 1px solid #DED;
-  color: rgb(108, 120, 108);
+  background-color: #D1E7DD;
+  border: none;
+  color: #165B4F;
 }
 
 @media only screen and (max-width: 1450px){
@@ -975,6 +1000,32 @@ li, a{
 @media only screen and (max-width: 880px){
   .logo-bedclothes-title {
     margin-top: 0px;
+}
+.login-and-password-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  max-width: 430px;
+  max-height: 175px;
+  height: 132px;
+  margin-top: 20px;
+}
+.modal-container {
+  background-color: #18181bf8;
+  border-radius: var(--radius);
+  width: 90vw;
+  height: auto;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 33px;
+  position: relative;
+  padding: 60px 20px 60px 20px;
 }
 header{
   min-height: 45px;
@@ -1117,6 +1168,8 @@ header{
 .footer-nav {
   justify-content: space-between;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .footer-nav > h3 {
   color: white;
@@ -1126,7 +1179,6 @@ header{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 27px;
 }
 .alert{
   left: 30%;

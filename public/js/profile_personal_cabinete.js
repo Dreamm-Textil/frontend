@@ -104,17 +104,25 @@ function validateCountry(country) {
 
 function validatePhone(phone) {
   let re = /^[0-9\s]*$/;
-  return re.test(String(phone));
+  return re.test(String(phone)) || phone.startsWith("+");
 }
 
-form.onsubmit = function(){
+form.onsubmit = function(e){
+  e.preventDefault();
   let emailVal = formEmail.value;
   let phoneVal = formPhone.value;
+  var inputElement = document.querySelector('.input-phone-number');
+  let wrongNumberPhone = document.querySelector('.wrong-phone-container');
+  let wrongPhoneOrGmail = document.querySelector('.wrong-phone-or-gmail-container')
   let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-  console.log(formName.value);
-  console.log(formSurname.value);
-  console.log(formEmail.value);
-  console.log(formPhone.value);
+  
+  formInputs.forEach(function(input){
+    input.addEventListener('focus', function() {
+      input.classList.remove('error');
+      wrongPhoneOrGmail.classList.remove('show-wrong-phone-or-gmail-container')
+      wrongGmail.classList.remove('show-wrong-gmail-container')
+    });
+  });
 
   formInputs.forEach(function(input){
     if(input.value === ''){
@@ -129,11 +137,36 @@ form.onsubmit = function(){
     return false;
   }
 
+  
+  inputElement.addEventListener('focus', function() {
+    var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
+    wrongPhoneContainer.classList.remove('show-wrong-phone-container')
+    formPhone.classList.remove('error');
+  });
   if (!validatePhone(phoneVal)) {
+    
     formPhone.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
     return false;
   } else {
     formPhone.classList.remove('error');
+  }
+
+  if ((formPhone.value.length === 13 || formPhone.value.length === 10)) {
+    formPhone.classList.remove('error');
+  } else {
+    
+    formPhone.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
   }
 
   if(!validateEmail(emailVal)){
@@ -152,53 +185,6 @@ form.onsubmit = function(){
   }
 
 
-  
-  let acceptRegestration = document.querySelector('.main-settings-contrainer-first');
-  acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-change">
-                                    <div class ="header-after-registration">
-                                      <div class ="success-regestration-header">
-                                        <i class="far fa-check-circle"></i>
-                                        <h2>Успіх</h2>
-                                      </div>
-                                      <div class = "success-registration-main">
-                                        <h2>Зміни збереженні</h2>
-                                      </div>
-                                      <div class = "succes-registration-footer">
-                                        <a class ="back-to-shop-after-regestration" href="index.html"><i class="fas fa-chevron-left"></i> До каталогу </a>
-                                        
-                                     </div>
-                                  </div>
-                                  <div class="modal-overlay">
-                                  <div class="modal-container">
-                                      <div class="header-modal-log-in">
-                                      <h3>Вхід до особистого кабінету</h3>
-                                      </div>
-                                      <div class="login-and-password">
-                                        <input class="login" placeholder="Login">
-                                        <div class="password-container">
-                                          <input  type="password" class="password" placeholder="Password" value="" id="myInputPasswor">
-                                          <button class="show-password-bt" onclick="myFunction()">
-                                            <span class="see-icon">
-                                              <i class="far fa-eye"></i>
-                                            </span>
-                                            <span class="non-see-icon">
-                                              <i class="far fa-eye-slash"></i>
-                                            </span>
-                                          </button>
-                                        </div>
-                                      </div>
-                                      <div class="login-and-password-btn">
-                                        <button class="autorization-btn">Авторизація</button>
-                                        <a href="registration.html" class="registration-btn">Реєстарція</a>
-                                        <div class="remebmer-me-btn">
-                                          <input type="checkbox" class="checkbox-remember-me" unchecked> <h3>Запам'ятати мене</h3>
-                                        </div>
-                                      </div>
-                                      <button class="close-btn"><i class="fas fa-times"></i></button>
-                                  </div>
-                                </div> `
-                                
-
 
 fetch(`${serverMachineUrl}/api/user`, {
   method: 'PUT',
@@ -215,10 +201,26 @@ fetch(`${serverMachineUrl}/api/user`, {
   email: formEmail.value, 
   }),
 })
-  .then((response) => response.json())
-  .then((json) => console.log(json));
+.then(function(response){ 
+  if(response.ok === false){
+    wrongPhoneOrGmail.classList.add('show-wrong-phone-or-gmail-container')
+    return false
+  }
+  else{
+    let alertSecces = document.querySelector('.alert');
+    alertSecces.classList.add("alert-show")
+    setTimeout(() => {
+    alertSecces.classList.remove("alert-show")
+    location.reload();
+  }, 1500);
+  }
+})
 
- }
+
+
+  
+ 
+}
 
 
  deliveryBtn.classList.remove("nav-button-about-us-click");

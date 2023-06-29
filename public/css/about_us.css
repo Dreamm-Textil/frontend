@@ -38,6 +38,7 @@ left: 0;
     flex-direction: column;
     align-items: center;
     padding-bottom: 8px;
+    height: 193px;
     background-color: rgba(0,0,0,0.5);
 }
 .logo-text-about-us-page > h2{
@@ -216,6 +217,26 @@ left: 0;
     width: 100%;
     gap: 20px;
 }
+@media only screen and (max-width: 1000px){
+.logo-text-about-us-page {
+    height: 171px;
+}
+}
+
+
+@media only screen and (max-width: 930px){
+.logo-text-about-us-page {
+    height: 153px;
+}
+}
+
+@media only screen and (max-width: 880px){
+.logo-text-about-us-page {
+    margin-bottom: 39px;
+    height: 87px;
+}
+}
+
 @media only screen and (max-width: 767px){
     .logo-text-about-us-page > h2 {
         color: white;
@@ -228,8 +249,14 @@ left: 0;
         height: 61px;
         font-size: 28px;
     }
+    .intro-about-us {
+        max-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        margin-top: 46px;
+    }
     .logo-text-about-us-page {
-        margin-top: 96px;
+        margin-top: 68px;
     }
     .about-us-main-container > h2 {
         max-width: 651px;
@@ -274,4 +301,10 @@ left: 0;
         padding: 0px 10px;
         gap: 15px;
     }
+}
+
+@media only screen and (max-width: 620px){
+.logo-text-about-us-page {
+    margin-bottom: 0px;
+}
 }

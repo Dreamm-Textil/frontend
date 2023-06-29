@@ -160,6 +160,7 @@ arr.forEach((e) => {
         cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       } else {
+        cartProductsPage.classList.add("cart__products-add-border");
         cartProductsPage.classList.remove("cart__products-product-unshow");
         if (!displayedElements.includes(textile.id)) {
           const quantity = quantityCount[textile.id];

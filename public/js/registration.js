@@ -151,7 +151,6 @@ form.onsubmit = function(e){
     var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
     wrongPhoneContainer.classList.remove('show-wrong-phone-container')
     formPhone.classList.remove('error');
-    
   });
   if (!validatePhone(phoneVal)) {
     

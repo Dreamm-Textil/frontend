@@ -4,6 +4,7 @@ let formEmailLogin = document.querySelector(".login");
 let formPasswordLogin = document.querySelector(".password");
 let formInputsLogin = document.querySelectorAll(".js-input-login");
 let showWrongPassword = document.querySelector(".wrong-password-or-email-container");
+let wrongGmail = document.querySelector('.wrong-gmail-container')
 // autorizationBtn.addEventListener("click", function(){
   
 function mySubmitFunction(e) {
@@ -23,6 +24,12 @@ function validateCountry(country) {
   let re = new RegExp('.co$');
   return re.test(String(country).toLowerCase());
 }
+formInputsLogin.forEach(function(input){
+  input.addEventListener('focus', function() {
+    input.classList.remove('error');
+    wrongGmail.classList.remove('show-wrong-gmail-container')
+  });
+});
 
 let emailVal = formEmailLogin.value;
 let emptyInputs = Array.from(formInputsLogin).filter(input => input.value === '');
@@ -43,10 +50,12 @@ formInputsLogin.forEach(function(input){
 
   if(!validateEmail(emailVal)){
     formEmailLogin.classList.add('error');
+    wrongGmail.classList.add('show-wrong-gmail-container')
     return false;
   }
   else{
     formEmailLogin.classList.remove('error');
+    wrongGmail.classList.remove('show-wrong-gmail-container')
   }
 
   if (validateCountry(emailVal)) {

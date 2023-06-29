@@ -17,7 +17,7 @@
 <header>
   <div class="intro-about-us">
     <div class="video">
-      <img class="video-media-delivery" src="images/delivery.jpg" 
+      <img class="video-media-delivery" src="images/wallpaperflare.com_wallpaper.jpg" 
       autoplay muted loop></img>
     </div>
     <div class="logo-container-about-us-page">
@@ -162,19 +162,28 @@
       </div>
       <form onsubmit="mySubmitFunction(event)" value="login" class="js-form-login" method="POST" action="http://ec2-3-90-44-196.compute-1.amazonaws.com:8080/registration" novalidate>
         <div class="login-and-password">
-          <input class="login input-login js-input-login" placeholder="Login">
-          <div class="input password-modal-page-container js-input-login">
-            <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login" placeholder="Password">
-            <button type="button" class="show-password-btn-modal" onclick="myFunction()">
-                <span class="see-icon">
-                <i class="far fa-eye fa-eye-modal" style="color: white;"></i>
-                </span>
-                <span class="non-see-icon">
-                <i class="far fa-eye-slash fa-eye-slash-modal" style="color: white;"></i>
-                </span>
-            </button> 
-        </div>
-        </div>
+          <div class="login-email-container">
+            <h2>Пошта</h2>
+            <input class="login input-login js-input-login">
+          </div>
+          <div class="wrong-gmail-container">
+            <h2>Неправильно вказано електронну пошту<br>Приклад: example@gmail.com</h2>
+          </div>
+          <div class="password-logis-container">
+            <h2>Пароль</h2>
+              <div class="input password-modal-page-container js-input-login">
+                <input type="password" id="myInputPassword" class="password input-password-modal-page js-input-login">
+                <button type="button" class="show-password-btn-modal" onclick="myFunction()">
+                    <span class="see-icon">
+                    <i class="far fa-eye fa-eye-modal" style="color: white;"></i>
+                    </span>
+                    <span class="non-see-icon">
+                    <i class="far fa-eye-slash fa-eye-slash-modal" style="color: white;"></i>
+                    </span>
+                </button> 
+              </div>
+            </div>
+          </div>
         <div class="wrong-password-or-email-container">
           <i class="fa-solid fa-xmark"></i>
           <h2>Неправильно вказано Email або пароль</h2>
