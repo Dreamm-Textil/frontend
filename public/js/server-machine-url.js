@@ -1,4 +1,4 @@
-let serverMachineUrl = 'http://ec2-54-204-73-97.compute-1.amazonaws.com:8080';
+let serverMachineUrl = 'http://ec2-18-208-247-155.compute-1.amazonaws.com:8080';
 
 function closeNavOnClickOutside(event) {
   if (links.classList.contains("show-links")) {
@@ -93,9 +93,9 @@ function updateButtonStatus() {
   ? document.cookie.split("likes=")[1].split(",")
   : [];
       if (arrayBagageLike.includes(id.toString())) {
-        button.innerHTML = `<i class="fa-solid fa-heart" style="color: #ea4c89; font-size: 17px;"></i>`;
+        button.innerHTML = `<i class="fa-solid fa-heart" style="color: #ea4c89; font-size: 16px;"></i>`;
       } else {
-        button.innerHTML = `<i class="far fa-heart" aria-hidden="true" style="font-size: 17px;" onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i>`;
+        button.innerHTML = `<i class="far fa-heart" aria-hidden="true" style="font-size: 16px;" onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i>`;
       }
     });
   }
@@ -133,13 +133,13 @@ function updateButtonStatus() {
     document.cookie = `likes=${arrayBagageLike.join(',')}`;
     countLike--;
     // Зміна іконки на незаповнене серце
-    button.innerHTML = `<i class="fa-regular fa-heart" style="color: #000; font-size: 17px;" onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i>`;
+    button.innerHTML = `<i class="fa-regular fa-heart" style="color: #000; font-size: 16px;" onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i>`;
   } else {
     // Додавання id до кукі
     arrayBagageLike.unshift(id.toString());
     document.cookie = `likes=${arrayBagageLike.join(',')}`;
     // Зміна іконки на заповнене серце
-    button.innerHTML = `<i class="fa-solid fa-heart" style="color: #ea4c89; font-size: 17px;"></i>`;
+    button.innerHTML = `<i class="fa-solid fa-heart" style="color: #ea4c89; font-size: 16px;"></i>`;
     countLike++;
   }
   if(countLike<1 || countLike === 0){

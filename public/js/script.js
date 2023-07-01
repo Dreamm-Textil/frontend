@@ -120,6 +120,7 @@ allNewProductBtn.addEventListener('click', function(e){
 
 
 oneAndHalfSizeBtn.addEventListener('click', function(){
+  currentPage = 1  
   list_element.innerHTML = '';
   doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
   oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
@@ -137,6 +138,7 @@ oneAndHalfSizeBtn.addEventListener('click', function(){
 
 
 doubleSizeBtn.addEventListener('click', function(){
+currentPage = 1  
 list_element.innerHTML = '';
 doubleSizeBtn.classList.add("one-and-half-size-btn-show")
 oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
@@ -154,6 +156,7 @@ complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> 
 
 
 euroSizeBtn.addEventListener('click', function(){
+currentPage = 1  
 list_element.innerHTML = '';
 doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
 oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
@@ -170,6 +173,7 @@ complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> 
 
 
 familySizeBtn.addEventListener('click', function(){
+currentPage = 1  
 list_element.innerHTML = '';
 doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
 oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
@@ -186,6 +190,7 @@ complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> 
 
 
 childrenSizeBtn.addEventListener('click', function(){
+currentPage = 1  
 list_element.innerHTML = '';
 doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
 oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
@@ -201,114 +206,204 @@ complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> 
 })
 
 
+const itemsPerPage = 1; 
+let currentPage = 1; 
+const pagination_element = document.getElementById('pagination');
+let s;
 
-function getSize(s){
-  
-    const sizeMap = new Map()
-      sizeMap.set("ONE_AND_HALF", "Півтораспальний")
-      sizeMap.set("DOUBLE", "Двохспальний")
-      sizeMap.set("EURO", "Євро")
-      sizeMap.set("FAMILY", "Сімейний")
+function getSize(size) {
+  s = size;
+  const sizeMap = new Map();
+  sizeMap.set("ONE_AND_HALF", "Півтораспальний");
+  sizeMap.set("DOUBLE", "Двохспальний");
+  sizeMap.set("EURO", "Євро");
+  sizeMap.set("FAMILY", "Сімейний");
 
-    const materialMap = new Map()
-      materialMap.set("RANFORS", "Ранфорс")
-      materialMap.set("SATIN", "Сатин")
-      materialMap.set("STRAP_SATIN", "Страйп сатин")
-      materialMap.set("POPLIN", "Поплин")
-      materialMap.set("BIAZ", "Бязь")
-    
-  
-      fetch(`${serverMachineUrl}/api/textile/all?size=${s}`, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type': 'application/json',
-      },
-      
-    })
+  const materialMap = new Map();
+  materialMap.set("RANFORS", "Ранфорс");
+  materialMap.set("SATIN", "Сатин");
+  materialMap.set("STRAP_SATIN", "Страйп сатин");
+  materialMap.set("POPLIN", "Поплин");
+  materialMap.set("BIAZ", "Бязь");
 
+  fetch(`${serverMachineUrl}/api/textile/all?size=${size}`, {
+    method: 'GET',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((json) => {
-      json.forEach(user=> {
-        if(adminOnPage){
-          
-          list_element.innerHTML += `<div class="product-container">
-          <div class="card product">
-            <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
-            <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
-            <div class="card-body">
-              <div class="card-title-size-container">
-                <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
-                <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
-              </div>
-              <!-- <div class="card-title-container"> -->
-                <h4 class="card-title">${user.name}</h4>
-              <!-- </div> -->
-              <div class="cart-size-container">
-                <div class="card-size-title">
-                  <h2>Розмір:</h2>
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const items = json.slice(startIndex, endIndex);
+
+      list_element.innerHTML = ''; // Clear previous items in the list_element
+
+      items.forEach((user) => {
+        if (adminOnPage) {
+          list_element.innerHTML += `
+            <div class="product-container">
+              <div class="card product">
+                <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
+                <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
+                <div class="card-body">
+                  <div class="card-title-size-container">
+                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                    <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
+                  </div>
+                  <h4 class="card-title">${user.name}</h4>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Розмір:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${sizeMap.get(user.size)}</h2>
+                    </div>
+                  </div>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Матеріал:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${materialMap.get(user.material)}</h2>
+                    </div>
+                  </div>
+                  <div class="price-block new-price">
+                    <span class="new-price">${user.discountPrice} грн</span>
+                    <span class="price">${user.price} грн</span>
+                  </div>
+                  <div class="card-btns-container">
+                    <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+                  </div>
                 </div>
-                <div class="card-size">
-                  <h2>${sizeMap.get(user.size)}</h2>
+              </div>
+            </div>`;
+        } else {
+          list_element.innerHTML += `
+            <div class="product-container">
+              <div class="card product">
+                <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
+                <div class="card-body">
+                  <div class="card-title-size-container">
+                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                    <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
+                  </div>
+                  <h4 class="card-title">${user.name}</h4>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Розмір:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${sizeMap.get(user.size)}</h2>
+                    </div>
+                  </div>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Матеріал:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${materialMap.get(user.material)}</h2>
+                    </div>
+                  </div>
+                  <div class="price-block new-price">
+                    <span class="new-price">${user.discountPrice} грн</span>
+                    <span class="price">${user.price} грн</span>
+                  </div>
+                  <div class="card-btns-container">
+                    <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+                  </div>
                 </div>
               </div>
-              <div class="cart-size-container">
-                <div class="card-size-title">
-                  <h2>Матеріал:</h2>
-                </div>
-                <div class="card-size">
-                  <h2>${materialMap.get(user.material)}</h2>
-                </div>
-              </div>
-              <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
-              <div class="card-btns-container">
-                <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>`;
+            </div>`;
         }
-        else{
-          list_element.innerHTML += `<div class="product-container">
-                                    <div class="card product">
-                                      <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
-                                      <div class="card-body">
-                                        <div class="card-title-size-container">
-                                          <h2 сlass="promotion-card" style="color: black;">Знижка -50%</h2>
-                                          <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
-                                        </div>
-                                        <!-- <div class="card-title-container"> -->
-                                          <h4 class="card-title">${user.name}</h4>
-                                        <!-- </div> -->
-                                        <div class="cart-size-container">
-                                          <div class="card-size-title">
-                                            <h2>Розмір:</h2>
-                                          </div>
-                                          <div class="card-size">
-                                            <h2>${sizeMap.get(user.size)}</h2>
-                                          </div>
-                                        </div>
-                                        <div class="cart-size-container">
-                                          <div class="card-size-title">
-                                            <h2>Матеріал:</h2>
-                                          </div>
-                                          <div class="card-size">
-                                            <h2>${materialMap.get(user.material)}</h2>
-                                          </div>
-                                        </div>
-                                        <div class="price-block new-price"> <span class="new-price">${user.discountPrice} грн</span> <span class="price">${user.price} грн</span></div>
-                                        <div class="card-btns-container">
-                                          <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  </div>`;
-        }
-      })
-    }); 
+      });
+
+      // Create pagination buttons
+      createPaginationButtons(json.length);
+    });
 }
+
+function createPaginationButtons(itemCount) {
+  const pageCount = Math.ceil(itemCount / itemsPerPage);
+
+  pagination_element.innerHTML = ''; // Clear previous pagination buttons
+
+  const maxVisibleButtons = 3; // Maximum number of visible page buttons
+
+  let startPage;
+  let endPage;
+
+  if (pageCount <= maxVisibleButtons) {
+    // If the total number of pages is less than or equal to the maximum visible buttons,
+    // display all page buttons
+    startPage = 1;
+    endPage = pageCount;
+  } else {
+    if (currentPage <= 1) {
+      // If the current page is the first page or less, display the first maxVisibleButtons pages
+      startPage = 1;
+      endPage = maxVisibleButtons;
+    } else if (currentPage >= pageCount - maxVisibleButtons + 2) {
+      // If the current page is within the last maxVisibleButtons pages, display the last maxVisibleButtons pages
+      startPage = pageCount - maxVisibleButtons + 1;
+      endPage = pageCount;
+    } else {
+      // Display the current page along with ellipsis and the last page
+      startPage = currentPage - 1;
+      endPage = currentPage + maxVisibleButtons - 2;
+    }
+  }
+
+  if (startPage > 1) {
+    addButtonToPagination(1);
+    if (startPage > 2) {
+      addEllipsisToPagination();
+    }
+  }
+
+  for (let i = startPage; i <= Math.min(endPage, pageCount); i++) {
+    addButtonToPagination(i);
+  }
+
+  if (endPage < pageCount) {
+    if (endPage < pageCount - 1) {
+      addEllipsisToPagination();
+    }
+    addButtonToPagination(pageCount);
+  }
+}
+function addButtonToPagination(pageNumber) {
+
+  const button = document.createElement('button');
+  button.textContent = pageNumber;
+  button.addEventListener('click', () => {
+    currentPage = pageNumber;
+    getSize(s);
+    setTimeout(() => {
+      updateButtonStatus();
+      updateButtonStatusLike();
+    }, 800)
+    const scrollPosition = window.innerWidth < 600 ? 200 : 1000;
+    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+  });
+  if (pageNumber === currentPage) {
+    button.style.borderColor = '#EA4C89';
+    button.style.backgroundColor = '#EA4C89';
+    button.style.color = '#fff';
+  }
+  pagination_element.appendChild(button);
+}
+
+function addEllipsisToPagination() {
+  const ellipsis = document.createElement('span');
+  ellipsis.textContent = '...';
+  pagination_element.appendChild(ellipsis);
+}
+
+
+
 
 function cliclDeleteBtn(id){
   let alertSecces = document.querySelector('.alert');
