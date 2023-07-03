@@ -97,6 +97,8 @@ left: 0;
 .header-links li > h2{
 color: #B2B2B2;
 font-size: 12px;
+font-weight: 100;
+
 }
 .social-icons-phone-size{
   display: none;
@@ -104,10 +106,12 @@ font-size: 12px;
 .header-links li a{
   color:#B2B2B2;
   font-size: 13px;
+  font-weight: 100;
 }
 .header-links-container .work-time  h2{
   color: #B2B2B2;
   font-size: 13px;
+  font-weight: 100;
 }
 
 .color-video-logo{

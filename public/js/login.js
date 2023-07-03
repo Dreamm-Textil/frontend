@@ -28,6 +28,7 @@ formInputsLogin.forEach(function(input){
   input.addEventListener('focus', function() {
     input.classList.remove('error');
     wrongGmail.classList.remove('show-wrong-gmail-container')
+    showWrongPassword.classList.remove('show-wrong-password-or-email-container');
   });
 });
 

@@ -331,6 +331,10 @@ function handleButtonClick(id) {
   rubberGetMap.set("YES", "Так");
   rubberGetMap.set("NO", "Ні");
 
+  const paymantMapGet = new Map();
+  paymantMapGet.set("DELIVERY", "Накладний платіж ");
+  paymantMapGet.set("FULL", "Повна оплата");
+
   fetch(`${serverMachineUrl}/api/order?id=${id}`, {
     method: 'GET',
     headers: {
@@ -341,87 +345,73 @@ function handleButtonClick(id) {
   })
   .then(res => res.json())
   .then(data => {console.log(data)
-    mainSettingsContainer.innerHTML = `<section class="wrapper post">                              
+    const counts = {};
+data.textiles.forEach((e) => {
+  const key = `${e.name}-${e.size}`; // Create a unique key combining name and size
+  counts[key] = (counts[key] || 0) + 1; // Increment count for the unique key
+});
+
+mainSettingsContainer.innerHTML = `
+  <section class="wrapper post">
     <div class="post__content">
-        <div class="woocommerce">
+      <div class="woocommerce">
+        <div class="woocommerce-order">
+          <p class="woocommerce-notice">Подробиці замовлення #${data.id}</p>
+          <div class="details-order-container">
+            ${Object.entries(counts).map(([key, count]) => {
+              const [name, size] = key.split('-'); // Split the unique key back into name and size
+              const textile = data.textiles.find((e) => e.name === name && e.size === size); // Find the corresponding textile
+
+              return `
+                <div class="products-container">
+                  <div class="img-cart">
+                    <img src="${textile.imgUrl}">
+                  </div>
+                  <span class="cart-name">${textile.name}</span>
+                  <table class="cart__config">
+                    <tbody>
+                      <tr>
+                        <th class="size-cart">Розмір:</th>
+                        <td><p>${sizeMap.get(textile.size)}</p></td>
+                      </tr>
+                      <tr>
+                        <th class="color-cart">Колір:</th>
+                        <td><p>${colorMap.get(textile.color)}</p></td>
+                      </tr>
+                      <tr>
+                        <th class="material-cart">Матеріал:</th>
+                        <td><p>${materialMap.get(textile.material)}</p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <span type="number" class="cart-price" data-id="${textile.id}" value="1">${textile.discountPrice * count}грн</span>
+                  <div class="cart__counter">
+                    <span>Кількість:</span>
+                    <input type="text" readonly name="quantity" class="input-quantity" data-id="${textile.id}" value="${count}">
+                    <div class="arrow-container">
+                      <img type="button" src="images/increase.png" class="increase" data-id="${textile.id}"></img>
+                      <img class="decrease" type="button" src="images/increase.png" data-id="${textile.id}"></img>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
           <div class="woocommerce-order">
-            <p class="woocommerce-notice">Подробиці замовлення #${data.id}</p>
-              <div class="details-order-container">
-              ${(() => {
-                const counts = {};
-                data.textiles.forEach((e) => {
-                  counts[e.name] = (counts[e.name] || 0) + 1;
-                });
-            
-                return Object.entries(counts).map(([name, count]) => {
-                  const textile = data.textiles.find((e) => e.name === name);
-                  return `
-                  
-                    <div class="products-container">
-                                          <div class="img-cart">
-                                          <img src="${textile.imgUrl}">
-                                        </div>
-                                        <span class="cart-name">${
-                                          textile.name
-                                        }</span>
-                                        <table class="cart__config">
-                                          <tbody><tr>
-                                              <th class="size-cart">Розмір:</th>
-                                              <td><p>${sizeMap.get(textile.size)}</p></td>
-                                          </tr>
-                                              <th class="color-cart">Колір:</th>
-                                              <td><p>${colorMap.get(
-                                                textile.color
-                                              )}</p></td>
-                                          </tr>
-                                          </tr>
-                                              <th class="material-cart">Матеріал:</th>
-                                              <td><p>${materialMap.get(
-                                                textile.material
-                                              )}</p></td>
-                                          </tr>
-                                          </tbody>
-                                        </table>
-                                        <span type="number" class="cart-price" data-id="${
-                                          textile.id
-                                        }" value="1">${textile.discountPrice * count}грн</span>
-                                        <div class="cart__counter">
-                                          <span>Кількість:</span>
-                                          <input type="text" readonly name="quantity" сlass="input-quantity" data-id="${
-                                            textile.id
-                                          }" value="${count}">
-                                          <div class="arrow-container">
-                                            <img type="button" src="images/increase.png" class="increase" data-id="${
-                                              textile.id
-                                            }"></img>
-                                            <img class="decrease" type="button" src="images/increase.png" data-id="${
-                                              textile.id
-                                            }"></img>
-                                          </div>
-                                        </div>
-                                      
-                                      </div> 
-                                      
-                  `;
-                }).join('');
-              })()}
-              </div>
-              <div class="woocommerce-order">
-                <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.id}</p>
-              </div>
-              
-            <div class="confirmed-order-footer-container">
-              <div class="delivery-address">
-                  <p>Данні доставки</p>
-                  <textarea class = "text-area-after-order" readonly>${data.name} ${data.secondName}\n${data.phoneNumber}\n${data.city}\n${data.postNumber}</textarea>
-              </div>
-              <div class="description-after-order">
+            <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.id}</p>
+          </div>
+          <div class="confirmed-order-footer-container">
+            <div class="delivery-address">
+              <p>Данні доставки</p>
+              <textarea class="text-area-after-order" readonly>${data.name} ${data.secondName}\n${data.phoneNumber}\n${data.city}\n${data.postNumber}</textarea>
+            </div>
+            <div class="description-after-order">
               <p>Примітки</p>
-                  <textarea class = "text-area-after-order" readonly>Подушки - ${pillowCaseGetMap.get(data.pillowcase)}\nРезинка - ${rubberGetMap.get(data.rubber)}\n${data.description}</textarea>
-              </div>
+              <textarea class="text-area-after-order" readonly>Подушки - ${pillowCaseGetMap.get(data.pillowcase)}\nРезинка - ${rubberGetMap.get(data.rubber)}\nОплата - ${paymantMapGet.get(data.payment)}\n${data.description}</textarea>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </section>`
   

@@ -23,10 +23,12 @@ let formInputsAdd = document.querySelectorAll(".js-input");
 let warningImg = document.querySelector(".warning-img");
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
+let likesBtn = document.querySelector('.likes')
 
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
+likesBtn.classList.add('nav-button-about-us-click')
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
