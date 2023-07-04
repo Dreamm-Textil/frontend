@@ -160,7 +160,7 @@ const itemsPerPage = 1; // Number of items to display per page
 let orders = []; // Array to store the fetched orders
 
 // Fetch orders from the server
-fetch(`${serverMachineUrl}/api/order/my-orders`, {
+fetch(`${serverMachineUrl}/api/order/all-orders`, {
   method: 'GET',
   headers: {
     'Access-Control-Allow-Origin':'*',

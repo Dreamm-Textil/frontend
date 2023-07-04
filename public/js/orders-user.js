@@ -130,7 +130,7 @@ let agreeForExitBtn = document.querySelector('.agree-for-exit-btn');
 
 agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
-  location.href="http://127.0.0.1:5500/index.html";
+  location.href="index.html";
 });
                                                                                                                   
   
