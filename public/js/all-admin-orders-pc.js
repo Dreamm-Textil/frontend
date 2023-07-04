@@ -151,7 +151,16 @@ statusMap.set("PROCESSED", "В обробці");
 statusMap.set("SENT", "У дорозі");
 statusMap.set("DONE", "Готово");
 
-fetch(`${serverMachineUrl}/api/order/all-orders`, {
+
+const paginationContainer = document.querySelector('.pagination-container-all-orders');
+
+let currentPage = 10;
+let totalPages = 1;
+const itemsPerPage = 1; // Number of items to display per page
+let orders = []; // Array to store the fetched orders
+
+// Fetch orders from the server
+fetch(`${serverMachineUrl}/api/order/my-orders`, {
   method: 'GET',
   headers: {
     'Access-Control-Allow-Origin':'*',
@@ -159,72 +168,141 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
     'Authorization':  authorizationCookieValue
   },
 })
-
 .then((response) => response.json())
+.then((json) => {
+ 
+  const reversedData = json.reverse();
+  if(reversedData.length < 6){
+    let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+    pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
+  }
+  else{
+    let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+    pagginationAllOrders.classList.remove('pagination-container-all-orders-unshow')
+  }
+  console.log(reversedData.length); // Reverse the data array to show the most recent orders first
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(reversedData.length / itemsPerPage);
+  let currentPage = 1;
 
-.then((json) =>{
-  json.reverse().forEach((e)=>{
-    if (window.innerWidth >= 1030) {
-    orderContainer.innerHTML += `
-    <div class = "test">
-        <td><img src="${e.textiles[0].imgUrl}"></td>
-        <td>#${e.id}</td>
-        <td>${e.secondName}</td>
-        <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
-        <option value="">${statusMap.get(e.status)}</option>
-        <option value="PROCESSED">В обробці</option>
-        <option value="SENT">У дорозі</option>
-        <option value="DONE">Готово</option>
-      </select>
-      </td>
-        <td class="td-number">${e.textiles.length}</td>
-        <td>1510 грн</td>
-        <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
-        <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
-        onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
-        </div>
-      `
-      }
-      else{
-        orderPhoneContainer.innerHTML +=`<table class="table-phone-size-all-order">
-          <thead>
-          <tr class="table-tr-phone">
-              <th class="th-img-title">Зображення</th>
-              <th>Замовлення</th>
-              <th>Прізвище</th>
-              <th>Статус</th>
-              <th>Кількість</th>
-              <th>Cума</th>
-              <th class="th-last-title">Дії</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="table-tr-phone">
-              <td><img src="${e.textiles[0].imgUrl}"></td>
-              <td>#${e.id}</td>
-              <td>${e.secondName}</td>
-              <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
-              <option value="">${statusMap.get(e.status)}</option>
-              <option value="PROCESSED">В обробці</option>
-              <option value="SENT">У дорозі</option>
-              <option value="DONE">Готово</option>
-            </select>
-              <td class="td-number">1</td>
-              <td>1510 грн</td>
-              <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>         
-              <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
-              onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
-          </tr>
-          
-          </tbody>
-      </table>   `
-      
-      
-    }
-     
-  })
+  function renderItems(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
   
+    orderContainer.innerHTML = ''; // Clear the container before rendering
+    if (window.innerWidth < 1030) {
+      orderPhoneContainer.innerHTML = '';
+    }
+  
+    for (let i = startIndex; i < endIndex && i < reversedData.length; i++) {
+      const e = reversedData[i];
+      if (window.innerWidth >= 1030) {
+            orderContainer.innerHTML += `
+            <div class = "test">
+                <td><img src="${e.textiles[0].imgUrl}"></td>
+                <td>#${e.id}</td>
+                <td>${e.secondName}</td>
+                <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
+                <option value="">${statusMap.get(e.status)}</option>
+                <option value="PROCESSED">В обробці</option>
+                <option value="SENT">У дорозі</option>
+                <option value="DONE">Готово</option>
+              </select>
+              </td>
+                <td class="td-number">${e.textiles.length}</td>
+                <td>1510 грн</td>
+                <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
+                <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
+                onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
+                </div>
+              `
+              }
+              else{
+                orderPhoneContainer.innerHTML +=`<table class="table-phone-size-all-order">
+                  <thead>
+                  <tr class="table-tr-phone">
+                      <th class="th-img-title">Зображення</th>
+                      <th>Замовлення</th>
+                      <th>Прізвище</th>
+                      <th>Статус</th>
+                      <th>Кількість</th>
+                      <th>Cума</th>
+                      <th class="th-last-title">Дії</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="table-tr-phone">
+                      <td><img src="${e.textiles[0].imgUrl}"></td>
+                      <td>#${e.id}</td>
+                      <td>${e.secondName}</td>
+                      <td><select class="select-status" id="ddlViewBy-${e.id}" onchange="handleSelectChange(${e.id})">
+                      <option value="">${statusMap.get(e.status)}</option>
+                      <option value="PROCESSED">В обробці</option>
+                      <option value="SENT">У дорозі</option>
+                      <option value="DONE">Готово</option>
+                    </select>
+                      <td class="td-number">1</td>
+                      <td>1510 грн</td>
+                      <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>         
+                      <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
+                      onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
+                  </tr>
+                  
+                  </tbody>
+              </table>   `
+              
+              
+            }
+    }
+  }
+
+  function goToPage(page) {
+    if (page < 1 || page > totalPages) {
+      
+      return; // Do nothing if the page is out of bounds
+    }
+    const scrollPosition = window.innerWidth < 600 ? 0 : 0;
+    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+    currentPage = page;
+    renderItems(currentPage);
+  }
+
+  function createPaginationButtons() {
+  
+  
+
+    paginationContainer.innerHTML = ''; // Clear the container before rendering buttons
+
+    // Previous button
+    const previousButton = document.createElement('button');
+    previousButton.textContent = 'Попередні';
+    previousButton.classList.add('previous-button'); // Add custom CSS class
+    previousButton.addEventListener('click', () => goToPage(currentPage - 1));
+    paginationContainer.appendChild(previousButton);
+    
+    // Next button
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Наступні';
+    nextButton.classList.add('next-button'); // Add custom CSS class
+    nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+    paginationContainer.appendChild(nextButton);
+  }
+
+  // Call renderItems with the initial page
+  renderItems(currentPage);
+
+  // Create pagination buttons
+  createPaginationButtons();
 });
+
+
+
+
+
+
+
+
+ 
 
 
 
@@ -291,7 +369,12 @@ function handleButtonClickDelete(id) {
 let mainSettingsContainer = document.querySelector('.main-settings-container');
 
 function handleButtonClick(id) {
-
+  let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+  setTimeout(() => {
+    pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
+  }, 300);
+ 
+ 
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
   sizeMap.set("DOUBLE", "Двохспальний");
@@ -416,4 +499,8 @@ mainSettingsContainer.innerHTML = `
   </section>`
   
   });
+
+
 }
+
+

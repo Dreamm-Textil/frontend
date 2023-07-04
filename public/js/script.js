@@ -206,7 +206,7 @@ complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> 
 })
 
 
-const itemsPerPage = 1; 
+const itemsPerPage = 4; 
 let currentPage = 1; 
 const pagination_element = document.getElementById('pagination');
 let s;
