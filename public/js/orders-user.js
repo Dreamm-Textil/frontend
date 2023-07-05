@@ -150,7 +150,13 @@ closeBtn.addEventListener("click", function () {
 modalBtnPhoneSize.addEventListener('click', function(){
   modalDeleteUser.classList.toggle("open-modal");
 });
-    
+
+
+const paginationContainer = document.querySelector('.pagination-container-all-orders');
+let currentPage = 10;
+let totalPages = 1;
+const itemsPerPage = 1; // Number of items to display per page
+let orders = []; // Array to store the fetched orders
 let orderContainer = document.querySelector('.tr-orders');
 let orderPhoneContainer = document.querySelector('.js-form-personal-cabinete')
 
@@ -171,7 +177,32 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
 .then((response) => response.json())
 
 .then((json) =>{
-  json.reverse().forEach((e)=>{
+  
+  const reversedData = json.reverse();
+  if(reversedData.length < 6){
+    let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+    pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
+  }
+  else{
+    let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+    pagginationAllOrders.classList.remove('pagination-container-all-orders-unshow')
+  }
+  console.log(reversedData.length); // Reverse the data array to show the most recent orders first
+  const itemsPerPage = 5;
+  const totalPages = Math.ceil(reversedData.length / itemsPerPage);
+  let currentPage = 1;
+
+  function renderItems(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+  
+    orderContainer.innerHTML = ''; // Clear the container before rendering
+    if (window.innerWidth < 1030) {
+      orderPhoneContainer.innerHTML = '';
+    }
+  
+    for (let i = startIndex; i < endIndex && i < reversedData.length; i++) {
+      const e = reversedData[i];
     if (window.innerWidth >= 1030) {
     orderContainer.innerHTML += `
     <div class = "test">
@@ -214,16 +245,58 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
       
       
     }
-     
-  })
+
+    }     
+  }
   
+  function goToPage(page) {
+    if (page < 1 || page > totalPages) {
+      
+      return; // Do nothing if the page is out of bounds
+    }
+    const scrollPosition = window.innerWidth < 600 ? 0 : 0;
+    window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
+    currentPage = page;
+    renderItems(currentPage);
+  }
+
+  function createPaginationButtons() {
+  
+  
+
+    paginationContainer.innerHTML = ''; // Clear the container before rendering buttons
+
+    // Previous button
+    const previousButton = document.createElement('button');
+    previousButton.textContent = 'Попередні';
+    previousButton.classList.add('previous-button'); // Add custom CSS class
+    previousButton.addEventListener('click', () => goToPage(currentPage - 1));
+    paginationContainer.appendChild(previousButton);
+    
+    // Next button
+    const nextButton = document.createElement('button');
+    nextButton.textContent = 'Наступні';
+    nextButton.classList.add('next-button'); // Add custom CSS class
+    nextButton.addEventListener('click', () => goToPage(currentPage + 1));
+    paginationContainer.appendChild(nextButton);
+  }
+
+  // Call renderItems with the initial page
+  renderItems(currentPage);
+
+  // Create pagination buttons
+  createPaginationButtons();
+
 });
 
 
 let mainSettingsContainer = document.querySelector('.main-settings-container');
 
 function handleButtonClick(id) {
-
+  let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
+  setTimeout(() => {
+    pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
+  }, 300);
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
   sizeMap.set("DOUBLE", "Двохспальний");

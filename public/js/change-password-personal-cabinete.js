@@ -95,6 +95,12 @@ form.onsubmit = function(e){
   let oldPasswordValue = oldPassword.value;
 
   formInputs.forEach(function(input){
+    input.addEventListener('focus', function() {
+      input.classList.remove('error');
+      showWrongPassword.classList.remove('show-wrong-password-or-email-container');
+    });
+  });
+  formInputs.forEach(function(input){
     if(input.value === ''){
       input.classList.add('error');
     }

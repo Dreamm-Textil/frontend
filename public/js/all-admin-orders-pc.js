@@ -129,20 +129,6 @@ modalBtnPhoneSize.addEventListener('click', function(){
 });
     
 
-// fetch(`${serverMachineUrl}/api/order/all-orders`, {
-//   method: 'GET',
-//   headers: {
-//     'Access-Control-Allow-Origin':'*',
-//     'Content-Type': 'application/json',
-//     'Authorization':  document.cookie.valueOf('Authorization').substring(14)
-//   },
-// })
-
-// .then((response) => response.json())
-
-// .then((json) =>{ console.log(json);});
-
-
 let orderContainer = document.querySelector('.tr-orders');
 let orderPhoneContainer = document.querySelector('.js-form-personal-cabinete')
 
@@ -294,15 +280,6 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
   // Create pagination buttons
   createPaginationButtons();
 });
-
-
-
-
-
-
-
-
- 
 
 
 

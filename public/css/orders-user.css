@@ -200,6 +200,67 @@ table {
     text-transform: uppercase;
     color: #a9a7a7;
 }
+.pagination-container-all-orders{
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    align-items: center;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    gap: 15px;
+    padding: 0px 20px 0px 20px;
+  }
+  .pagination-container-all-orders-unshow{
+    display: none;
+  }
+  /* .pagination-container-all-orders > button{
+    background: none;
+    border: 1px solid white;
+    padding: 12px;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+  } */
+
+  .previous-button {
+    background: none;
+    border: none;
+    color: #ea4c89d0;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 117px;
+    width: 100%;
+    box-sizing: border-box;
+    max-height: 100px;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .next-button {
+    background-color: #ea4c89d0;
+    color: white;
+    border: none;
+    height: 35px;
+    max-width: 117px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 0px 5px 0px 5px;
+}
+.next-button:hover{
+    background-color: #EA4C89;
+}
+.previous-button:hover{
+    background-color: #35353B;
+    color: white;
+  }
+
 .cart__counter input {
     width: 2rem;
     margin-left: 0rem;
@@ -308,7 +369,7 @@ table {
     margin: auto;
     background-color: none;
     border-radius: 5px;
-    border-left: 1px solid #46464990;
+   
     padding: 0px 20px 35px 20px;
   }
 
@@ -334,6 +395,7 @@ table {
 .main-settings-contrainer-first{
     width: 100%;
     margin-top: 0px;
+    border-left: 1px solid #46464990;
 }
 
 .main-regestration-container-after-change{
