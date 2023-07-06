@@ -849,6 +849,15 @@ else{
 localStorage.removeItem("numberLS");
 counterBagadge.classList.remove('counter-show')
 let mainItemContainerAfterOrder = document.querySelector('.main-add-item-container')
+const cartSummaryTitle = document.querySelector(
+  ".cart-summaty-title"
+);
+console.log(cartSummaryTitle.innerText);
+// const numberString = cartSummaryTitle.innerText.replace(/\D/g, ''); // Remove all non-digit characters
+// let totalPrice = parseInt(numberString, 10);
+// console.log(totalPrice);
+
+
 
 fetch(`${serverMachineUrl}/api/order`, {
   method: 'POST',
@@ -860,6 +869,7 @@ fetch(`${serverMachineUrl}/api/order`, {
   email: formGmailOrder.value, 
   phoneNumber: formPhoneOrder.value,
   pillowcase: pillowCaseMap.get(selectedValue),
+  // price: totalPrice,
   rubber: rubberMap.get(checkScales),
   city: selectedOption.textContent,
   postNumber: selectedPostOffice.textContent,
@@ -870,6 +880,7 @@ fetch(`${serverMachineUrl}/api/order`, {
 })
   .then((response) => response.json())
   .then((json) => {
+    // console.log(totalPrice);
     console.log(json);
     const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
@@ -1030,36 +1041,3 @@ fetch(`${serverMachineUrl}/api/order`, {
   });
 
 }
-
-
-  // fetch(`${serverMachineUrl}/api/order?id=${id}`, {
-  //   method: 'GET',
-  //   headers: {
-  //     'Access-Control-Allow-Origin':'*',
-  //     'Content-Type': 'application/json',
-  //     'Authorization':  authorizationCookieValue
-  //   }
-  // })
-  // .then(res => res.json())
-  // .then(data => {console.log(data)
-  //   mainSettingsContainer.innerHTML = `<section class="wrapper post">                              
-  //   <div class="post__content">
-  //       <div class="woocommerce">
-          
-              
-  //           <div class="confirmed-order-footer-container">
-  //             <div class="delivery-address">
-  //                 <p>Данні доставки</p>
-  //                 <textarea class = "text-area-after-order" readonly>${data.name} ${data.secondName}\n${data.phoneNumber}\n${data.city}\n${data.postNumber}</textarea>
-  //             </div>
-  //             <div class="description-after-order">
-  //             <p>Примітки</p>
-  //                 <textarea class = "text-area-after-order" readonly>Подушки - ${pillowCaseGetMap.get(data.pillowcase)}\nРезинка - ${rubberGetMap.get(data.rubber)}\n${data.description}</textarea>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //   </div>
-  // </section>`
-  
-  // });

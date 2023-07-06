@@ -50,14 +50,17 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 .then((json) =>{
   if(json.role === 'ADMIN'){
-    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
 
   }
   else{
     administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
     administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
-  } 
+  }
+  if(json.role === 'MAIN_ADMIN'){
+    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+  }
 
 });
        

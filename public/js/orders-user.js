@@ -55,14 +55,17 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 .then((json) =>{
   if(json.role === 'ADMIN'){
-    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
 
   }
   else{
     administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
     administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
-  } 
+  }
+  if(json.role === 'MAIN_ADMIN'){
+    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+  }
 });
 
 
@@ -80,12 +83,6 @@ if(authorizationCookieValue !== ''){
   .then((response) => response.json())
   
   .then((json) =>{
-    if(json.role === 'ADMIN'){
-      administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
-    }
-    else{
-      administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
-    } 
   
   });
 }                                           
@@ -177,7 +174,11 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
 .then((response) => response.json())
 
 .then((json) =>{
-  
+  let mainSettingsContainer = document.querySelector('.main-settings-container');
+  if(json.length === 0){
+    mainSettingsContainer.innerHTML = `<h2 class="title-cart-clear">Ви не замовили жодного товару!</h2>
+    <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
+  }
   const reversedData = json.reverse();
   if(reversedData.length < 6){
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');

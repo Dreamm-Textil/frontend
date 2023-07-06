@@ -397,6 +397,29 @@ table {
     margin-top: 0px;
     border-left: 1px solid #46464990;
 }
+.back-from-cart-to-catalog{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    color: #ea4c89d0;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+}
+
+.back-from-cart-to-catalog:hover{
+    color: white;
+  }
+  .title-cart-clear{
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+    margin-top: 35px;
+    margin-bottom: 20px;
+ }
 
 .main-regestration-container-after-change{
     display: flex;

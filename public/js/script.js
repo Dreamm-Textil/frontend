@@ -19,7 +19,9 @@ let familySizeBtn = document.querySelector('.size-btn-family');
 let childrenSizeBtn = document.querySelector('.size-btn-children');
 let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
+let mainAdminPanel = document.querySelector('.main-admin-panel');
 let adminOnPage = false;
+let mainAdminOnPage = false;
 
 if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
@@ -41,6 +43,14 @@ fetch(`${serverMachineUrl}/api/user`, {
   else{
     adminOnPage = false;
   }
+  if (json.role === "MAIN_ADMIN"){
+    mainAdminPanel.classList.add("main-admin-panel-show");
+    mainAdminOnPage = true;
+  }
+  else{
+    mainAdminOnPage = false;
+  }
+
 });
 }
 
@@ -237,7 +247,7 @@ function getSize(size) {
     .then((json) => {
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const items = json.slice(startIndex, endIndex);
+      const items = json.reverse().slice(startIndex, endIndex);
 
       list_element.innerHTML = ''; // Clear previous items in the list_element
 
@@ -280,7 +290,45 @@ function getSize(size) {
                 </div>
               </div>
             </div>`;
-        } else {
+        } else if(mainAdminOnPage){
+          list_element.innerHTML += `
+            <div class="product-container">
+              <div class="card product">
+                <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
+                <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
+                <div class="card-body">
+                  <div class="card-title-size-container">
+                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                    <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
+                  </div>
+                  <h4 class="card-title">${user.name}</h4>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Розмір:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${sizeMap.get(user.size)}</h2>
+                    </div>
+                  </div>
+                  <div class="cart-size-container">
+                    <div class="card-size-title">
+                      <h2>Матеріал:</h2>
+                    </div>
+                    <div class="card-size">
+                      <h2>${materialMap.get(user.material)}</h2>
+                    </div>
+                  </div>
+                  <div class="price-block new-price">
+                    <span class="new-price">${user.discountPrice} грн</span>
+                    <span class="price">${user.price} грн</span>
+                  </div>
+                  <div class="card-btns-container">
+                    <button class="to-bag" id="product-${user.id}-button" onclick="cliclAddToBagBtn(${user.id})">В кошик</button>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        } else{
           list_element.innerHTML += `
             <div class="product-container">
               <div class="card product">

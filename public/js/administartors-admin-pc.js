@@ -55,14 +55,18 @@ fetch(`${serverMachineUrl}/api/user`, {
 .then((response) => response.json())
 
 .then((json) =>{  
-    if(json.role === 'ADMIN'){
-      administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
-      administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-      }
-      else{
-        administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
-      administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
-      } ;
+  if(json.role === 'ADMIN'){
+    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+
+  }
+  else{
+    administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
+    administrationAllOrders.classList.remove('all-administration-order-personal-cabinete-show')
+  }
+  if(json.role === 'MAIN_ADMIN'){
+    administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
+    administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
+  }
 });
 }                                           
 
@@ -130,7 +134,6 @@ modalBtnPhoneSize.addEventListener('click', function(){
     
 let orderContainer = document.querySelector('.js-form-personal-cabinete');
 
-function checkScreenWidth() {
 
 if (window.innerWidth >= 1030) {
 orderContainer.innerHTML = `<table>
@@ -197,7 +200,4 @@ orderContainer.innerHTML = `<table>
         </tbody>
     </table>  `
     }
-}
 
-window.addEventListener('load', checkScreenWidth);
-window.addEventListener('resize', checkScreenWidth);

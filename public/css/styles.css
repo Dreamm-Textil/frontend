@@ -767,6 +767,18 @@ footer{
   color: #EA4C89;
   transition: var(--transition);
 }
+.main-admin-panel{
+  display: none;
+}
+.main-admin-panel-show{
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  width: 100%;
+  max-width: 725px;
+}
+
+
 .admin-panel{
   display: none;
 }
