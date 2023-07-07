@@ -134,6 +134,18 @@ modalBtnPhoneSize.addEventListener('click', function(){
     
 let orderContainer = document.querySelector('.js-form-personal-cabinete');
 
+fetch(`${serverMachineUrl}/api/admin/all-admins`, {
+  method: 'GET',
+  headers: {
+    'Access-Control-Allow-Origin':'*',
+    'Content-Type': 'application/json',
+    'Authorization':  authorizationCookieValue
+  },
+})
+.then((response) => response.json())
+.then((json) => {
+  console.log(json);
+})
 
 if (window.innerWidth >= 1030) {
 orderContainer.innerHTML = `<table>

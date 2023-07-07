@@ -227,12 +227,13 @@ form.onsubmit = function(e){
   })
   
 
-fetch(`${serverMachineUrl}/api/auth/registration`, {
+fetch(`${serverMachineUrl}/api/admin/add-admin`, {
   method: 'POST',
   mode: "cors",
   headers: {
     'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization':  authorizationCookieValue
   },
   body: JSON.stringify({
   name: formName.value,
@@ -243,6 +244,7 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
   }),
 })
   .then(function(response){ 
+    console.log(response);
     if(response.ok === false){
       wrongPhoneOrGmail.classList.add('show-wrong-phone-or-gmail-container')
       return false
