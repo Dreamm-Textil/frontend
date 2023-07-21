@@ -20,8 +20,14 @@ let childrenSizeBtn = document.querySelector('.size-btn-children');
 let complectation = document.querySelector('.text-complectation');
 let adminPanel = document.querySelector('.admin-panel');
 let mainAdminPanel = document.querySelector('.main-admin-panel');
+let paginationContainer = document.querySelector('.pagination-container');
 let adminOnPage = false;
 let mainAdminOnPage = false;
+let arrSize = [];
+let arrMaterial = [];
+let arrColor = [];
+
+
 
 if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
@@ -54,12 +60,12 @@ fetch(`${serverMachineUrl}/api/user`, {
 });
 }
 
-setTimeout(function() { getSize('ONE_AND_HALF'); }, 500);
-oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
-deliveryBtn.classList.remove("nav-button-about-us-click");
-aboutUsBtn.classList.remove("nav-button-about-us-click");
-indexBtn.classList.add("nav-button-index-click");
-personalCabineteAfterRegestration.classList.remove("nav-button-personal-cabinete-click");
+setTimeout(function() { handleButtonClick(); }, 500);
+// oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
+// deliveryBtn.classList.remove("nav-button-about-us-click");
+// aboutUsBtn.classList.remove("nav-button-about-us-click");
+// indexBtn.classList.add("nav-button-index-click");
+// personalCabineteAfterRegestration.classList.remove("nav-button-personal-cabinete-click");
 
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
@@ -129,119 +135,140 @@ allNewProductBtn.addEventListener('click', function(e){
 })
 
 
-oneAndHalfSizeBtn.addEventListener('click', function(){
-  currentPage = 1  
-  list_element.innerHTML = '';
-  doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
-  oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
-  euroSizeBtn.classList.remove("one-and-half-size-btn-show")
-  familySizeBtn.classList.remove("one-and-half-size-btn-show")
-  childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
-  
-  getSize('ONE_AND_HALF');
-  setTimeout(() => {
-    updateButtonStatus();
-    updateButtonStatusLike();
-  }, 800)
-  complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
-})
 
-
-doubleSizeBtn.addEventListener('click', function(){
-currentPage = 1  
-list_element.innerHTML = '';
-doubleSizeBtn.classList.add("one-and-half-size-btn-show")
-oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
-euroSizeBtn.classList.remove("one-and-half-size-btn-show")
-familySizeBtn.classList.remove("one-and-half-size-btn-show")
-childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
-getSize('DOUBLE');
-setTimeout(() => {
-  updateButtonStatus();
-  updateButtonStatusLike();
-}, 800);
-
-complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
-})
-
-
-euroSizeBtn.addEventListener('click', function(){
-currentPage = 1  
-list_element.innerHTML = '';
-doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
-oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
-euroSizeBtn.classList.add("one-and-half-size-btn-show")
-familySizeBtn.classList.remove("one-and-half-size-btn-show")
-childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
-getSize('EURO');
-setTimeout(() => {
-  updateButtonStatus();
-  updateButtonStatusLike();
-}, 800)
-complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
-})
-
-
-familySizeBtn.addEventListener('click', function(){
-currentPage = 1  
-list_element.innerHTML = '';
-doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
-oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
-euroSizeBtn.classList.remove("one-and-half-size-btn-show")
-familySizeBtn.classList.add("one-and-half-size-btn-show")
-childrenSizeBtn.classList.remove("one-and-half-size-btn-show")
-getSize('FAMILY');
-setTimeout(() => {
-  updateButtonStatus();
-  updateButtonStatusLike();
-}, 800)
-complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
-})
-
-
-childrenSizeBtn.addEventListener('click', function(){
-currentPage = 1  
-list_element.innerHTML = '';
-doubleSizeBtn.classList.remove("one-and-half-size-btn-show")
-oneAndHalfSizeBtn.classList.remove("one-and-half-size-btn-show")
-euroSizeBtn.classList.remove("one-and-half-size-btn-show")
-familySizeBtn.classList.remove("one-and-half-size-btn-show")
-childrenSizeBtn.classList.add("one-and-half-size-btn-show")
-getSize('CHILDREN');
-setTimeout(() => {
-  updateButtonStatus();
-  updateButtonStatusLike();
-}, 800)
-complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong>'
-})
-
-
-const itemsPerPage = 4; 
+const itemsPerPage = 6; 
 let currentPage = 1; 
 const pagination_element = document.getElementById('pagination');
-let s;
 
-function getSize(size) {
-  s = size;
-  const sizeMap = new Map();
-  sizeMap.set("ONE_AND_HALF", "Півтораспальний");
-  sizeMap.set("DOUBLE", "Двохспальний");
-  sizeMap.set("EURO", "Євро");
-  sizeMap.set("FAMILY", "Сімейний");
+const sizeMap = new Map();
+sizeMap.set("ONE_AND_HALF", "Півтораспальний");
+sizeMap.set("DOUBLE", "Двохспальний");
+sizeMap.set("EURO", "Євро");
+sizeMap.set("FAMILY", "Сімейний");
+sizeMap.set("CHILDREN", "Дитячий");
 
-  const materialMap = new Map();
-  materialMap.set("RANFORS", "Ранфорс");
-  materialMap.set("SATIN", "Сатин");
-  materialMap.set("STRAP_SATIN", "Страйп сатин");
-  materialMap.set("POPLIN", "Поплин");
-  materialMap.set("BIAZ", "Бязь");
+const materialMap = new Map();
+materialMap.set("RANFORS", "Ранфорс");
+materialMap.set("SATIN", "Сатин");
+materialMap.set("STRAP_SATIN", "Страйп сатин");
+materialMap.set("POPLIN", "Поплин");
+materialMap.set("BIAZ", "Бязь");
 
-  fetch(`${serverMachineUrl}/api/textile/all?size=${size}`, {
-    method: 'GET',
+const colorMap = new Map();
+colorMap.set("RED", "Червоний");
+colorMap.set("ORANGE", "Помаранчовий");
+colorMap.set("YELLOW", "Жовтий");
+  colorMap.set("GREEN", "Зелений");
+  colorMap.set("BLUE", "Блакитний");
+  colorMap.set("INDIGO", "Індіго");
+  colorMap.set("VIOLET", "Фіолетовий");
+  colorMap.set("PINK", "Рожевий");
+  colorMap.set("SILVER", "Сріблястий");
+  colorMap.set("GOLD", "Золотий");
+  colorMap.set("BEIGE", "Бежевий");
+  colorMap.set("BROWN", "Коричневий");
+  colorMap.set("GRAY", "Сірий");
+  colorMap.set("BLACK", "Чорний");
+  colorMap.set("WHITE", "Білий");
+
+// Function to handle the click on any label
+function handleButtonClick() {
+    const sizeButtons = document.querySelectorAll('.size-option');
+    const materialButtons = document.querySelectorAll('.material-option');
+    const colorButtons = document.querySelectorAll('.color-option');
+  
+    // Clear the arrays to start with fresh selections
+    arrSize = [];
+    arrMaterial = [];
+    arrColor = [];
+  
+    // Collect selected options in the respective arrays
+    sizeButtons.forEach((button) => {
+      if (button.classList.contains('selected')) {
+        arrSize.push(button.dataset.value);
+      }
+    });
+  
+    materialButtons.forEach((button) => {
+      if (button.classList.contains('selected')) {
+        arrMaterial.push(button.dataset.value);
+      }
+    });
+  
+    colorButtons.forEach((button) => {
+      if (button.classList.contains('selected')) {
+        arrColor.push(button.dataset.value);
+      }
+    });
+
+    sizeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        // Clear previous complectation content
+        complectation.innerHTML = '';
+    
+        // Get the data-value attribute of the clicked button
+        const selectedSize = button.dataset.value;
+    
+        // Update the complectation based on the selected size
+        switch (selectedSize) {
+          case 'ONE_AND_HALF':
+            complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            break;
+          case 'DOUBLE':
+            complectation.innerHTML = '- простирадло: 200*215 см - 1 шт.<br> - підковдра: 180*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            break;
+          case 'EURO':
+            complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 200*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            break;
+          case 'FAMILY':
+            complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            break;
+          case 'CHILDREN':
+            complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            break;
+          default:
+            complectation.innerHTML = ''; // No selected size or unknown size value
+        }
+      });
+    });
+   
+
+    // sizeButtons.forEach((button) => {
+    //   button.addEventListener('touchstart', () => {
+    //     if (button.classList.contains('selected')) {
+    //     arrSize.push(button.dataset.value);
+    //   }
+    //   });
+    // });
+    
+    // materialButtons.forEach((button) => {
+    //   button.addEventListener('touchstart', () => {
+    //     if (button.classList.contains('selected')) {
+    //       arrMaterial.push(button.dataset.value);
+    //     }
+    //   });
+    // });
+    
+    // colorButtons.forEach((button) => {
+    //   button.addEventListener('touchstart', () => {
+    //     if (button.classList.contains('selected')) {
+    //       arrColor.push(button.dataset.value);
+    //     }
+    //   });
+    // });
+  // Send the POST request to the backend
+  fetch(`${serverMachineUrl}/api/textile/all-filter`, {
+    method: 'POST',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
+      'Authorization':  authorizationCookieValue
     },
+    body: JSON.stringify({
+      sizes: arrSize,
+      materials: arrMaterial,
+      colors: arrColor
+    }),
   })
     .then((response) => response.json())
     .then((json) => {
@@ -250,10 +277,15 @@ function getSize(size) {
       const items = json.reverse().slice(startIndex, endIndex);
 
       list_element.innerHTML = ''; // Clear previous items in the list_element
-
+      if(items.length === 0){
+        paginationContainer.classList.add('pagination-container-unshow');
+        list_element.innerHTML = `<h2 class="title-catalog-clear">Нажаль, таких варінтів постільної білизни немає!</h2>`;
+      }
+      else{
       items.forEach((user) => {
         if (adminOnPage) {
-          list_element.innerHTML += `
+          paginationContainer.classList.remove('pagination-container-unshow');
+            list_element.innerHTML += `
             <div class="product-container">
               <div class="card product">
                 <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
@@ -289,8 +321,9 @@ function getSize(size) {
                   </div>
                 </div>
               </div>
-            </div>`;
+            </div>`;   
         } else if(mainAdminOnPage){
+          paginationContainer.classList.remove('pagination-container-unshow');
           list_element.innerHTML += `
             <div class="product-container">
               <div class="card product">
@@ -329,6 +362,7 @@ function getSize(size) {
               </div>
             </div>`;
         } else{
+          paginationContainer.classList.remove('pagination-container-unshow');
           list_element.innerHTML += `
             <div class="product-container">
               <div class="card product">
@@ -366,12 +400,46 @@ function getSize(size) {
               </div>
             </div>`;
         }
+      
       });
-
       // Create pagination buttons
       createPaginationButtons(json.length);
-    });
+      }
+    });    
+    
 }
+
+function cliclDeleteBtn(id){
+  let alertSecces = document.querySelector('.alert');
+  alertSecces.classList.add("alert-show")
+  setTimeout(() => {
+    alertSecces.classList.remove("alert-show")
+    location.reload();
+  }, 1500);
+  
+  fetch(`${serverMachineUrl}/api/textile?id=${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  authorizationCookieValue
+    }
+  })
+  .then(res => res.json())
+  .then(data => console.log(data));
+}
+
+// Add click event listeners to the buttons
+document.querySelectorAll('.size-option, .material-option, .color-option').forEach((button) => {
+    button.addEventListener('click', () => {
+      button.classList.toggle('selected'); // Toggle the "selected" class on click
+      handleButtonClick(); // Call the function to handle the click event
+      setTimeout(() => {
+        updateButtonStatus();
+        updateButtonStatusLike();
+      }, 800)
+    });
+  });
 
 function createPaginationButtons(itemCount) {
   const pageCount = Math.ceil(itemCount / itemsPerPage);
@@ -428,12 +496,12 @@ function addButtonToPagination(pageNumber) {
   button.textContent = pageNumber;
   button.addEventListener('click', () => {
     currentPage = pageNumber;
-    getSize(s);
+    handleButtonClick();
     setTimeout(() => {
       updateButtonStatus();
       updateButtonStatusLike();
     }, 800)
-    const scrollPosition = window.innerWidth < 600 ? 200 : 1000;
+    const scrollPosition = window.innerWidth < 600 ? 200 : 780;
     window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
   });
   if (pageNumber === currentPage) {
@@ -452,24 +520,4 @@ function addEllipsisToPagination() {
 
 
 
-
-function cliclDeleteBtn(id){
-  let alertSecces = document.querySelector('.alert');
-  alertSecces.classList.add("alert-show")
-  setTimeout(() => {
-    alertSecces.classList.remove("alert-show")
-    location.reload();
-  }, 1500);
-  
-  fetch(`${serverMachineUrl}/api/textile?id=${id}`, {
-    method: 'DELETE',
-    headers: {
-      'Access-Control-Allow-Origin':'*',
-      'Content-Type': 'application/json',
-      'Authorization':  authorizationCookieValue
-    }
-  })
-  .then(res => res.json())
-  .then(data => console.log(data));
-}
 

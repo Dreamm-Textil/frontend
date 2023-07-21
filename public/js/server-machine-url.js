@@ -1,4 +1,4 @@
-let serverMachineUrl = 'http://ec2-18-208-247-155.compute-1.amazonaws.com:8080';
+let serverMachineUrl = 'http://ec2-54-147-56-107.compute-1.amazonaws.com:8080';
 
 function closeNavOnClickOutside(event) {
   if (links.classList.contains("show-links")) {

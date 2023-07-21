@@ -111,7 +111,7 @@ let agreeForExitBtn = document.querySelector('.agree-for-exit-btn');
 
 agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
-  location.href="http://127.0.0.1:5500/index.html";
+  location.href="index.html";
 });
                                                                                                                    
   
@@ -132,7 +132,8 @@ modalBtnPhoneSize.addEventListener('click', function(){
   modalDeleteUser.classList.toggle("open-modal");
 });
     
-let orderContainer = document.querySelector('.js-form-personal-cabinete');
+let orderPhoneContainer = document.querySelector('.js-form-personal-cabinete');
+let orderContainer = document.querySelector('.tr-orders');
 
 fetch(`${serverMachineUrl}/api/admin/all-admins`, {
   method: 'GET',
@@ -145,71 +146,37 @@ fetch(`${serverMachineUrl}/api/admin/all-admins`, {
 .then((response) => response.json())
 .then((json) => {
   console.log(json);
-})
 
-if (window.innerWidth >= 1030) {
-orderContainer.innerHTML = `<table>
-<thead>
-    <tr class="table-tr">
-        <th>Ім'я</th>
-        <th>Прізвище</th>
-        <th class="th-last-title">Дії</th>
-      </tr>
-  <tr class="table-tr-phone">
-    <th>Ім'я</th>
-    <th>Прізвище</th>
-    <th class="th-last-title">Дії</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td>Олег</td>
-    <td>Кривошапенко</td>
-    <td><button class="more-about-order">Видалити</button></td>
-  </tr>
-  <tr>
-    <td>Олег</td>
-    <td>Кривошапенко</td>
-    <td><button class="more-about-order">Видалити</button></td>
-  </tr>
-  <!-- Додайте інші рядки таблиці тут за необхідністю -->
-</tbody>
-</table> `
-    }
-    else{
-        orderContainer.innerHTML =`<table>
-        <thead>
-        <tr class="table-tr-phone">
-            <th>Ім'я</th>
-            <th>Прізвище</th>
-            <th class="th-last-title">Дії</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Олег</td>
-            <td>Кривошапенко</td>
-            <td><button class="more-about-order">Видалити</button></td>
-        </tr>
-        
-        </tbody>
-    </table>  
-    <table>
-        <thead>
-        <tr class="table-tr-phone">
-            <th>Ім'я</th>
-            <th>Прізвище</th>
-            <th class="th-last-title">Дії</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Олег</td>
-            <td>Кривошапенко</td>
-            <td><button class="more-about-order">Видалити</button></td>
-        </tr>
-        
-        </tbody>
-    </table>  `
-    }
-
+  json.forEach(e=>{
+    if (window.innerWidth >= 1030) {
+      orderContainer.innerHTML += `
+      <div class = "test">
+          <td>${e.name}</td>
+          <td>${e.secondName}</td>
+          <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Видалити</button></td>
+          </div>
+        `
+        }
+        else{
+          orderPhoneContainer.innerHTML +=`<table class="table-phone-size-all-order">
+            <thead>
+            <tr class="table-tr-phone">
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th class="th-last-title">Дії</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-tr-phone">
+              <td>${e.name}</td>
+              <td>${e.secondName}</td>
+              <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Видалити</button></td>
+            </tr>
+            </tbody>
+        </table>   `
+        }
+  })
+  })
+  function handleButtonClick(id){
+    console.log(id);
+  }

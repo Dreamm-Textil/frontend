@@ -853,9 +853,9 @@ const cartSummaryTitle = document.querySelector(
   ".cart-summaty-title"
 );
 console.log(cartSummaryTitle.innerText);
-// const numberString = cartSummaryTitle.innerText.replace(/\D/g, ''); // Remove all non-digit characters
-// let totalPrice = parseInt(numberString, 10);
-// console.log(totalPrice);
+const numberString = cartSummaryTitle.innerText.replace(/\D/g, ''); // Remove all non-digit characters
+let totalPrice = parseInt(numberString, 10);
+console.log(totalPrice);
 
 
 
@@ -869,7 +869,7 @@ fetch(`${serverMachineUrl}/api/order`, {
   email: formGmailOrder.value, 
   phoneNumber: formPhoneOrder.value,
   pillowcase: pillowCaseMap.get(selectedValue),
-  // price: totalPrice,
+  price: totalPrice,
   rubber: rubberMap.get(checkScales),
   city: selectedOption.textContent,
   postNumber: selectedPostOffice.textContent,
@@ -1023,7 +1023,7 @@ fetch(`${serverMachineUrl}/api/order`, {
               }
               </div>
               <div class="woocommerce-order">
-                <p class="woocommerce-notice-summary">Підсумок замовлення: ${json.id}</p>
+                <p class="woocommerce-notice-summary">Підсумок замовлення: ${json.price} грн</p>
               </div>
                                                   <div class="confirmed-order-footer-container">
                                                     <div class="delivery-address">

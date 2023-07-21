@@ -119,36 +119,30 @@
     <div class="catalog-container">
       <div class="filtr-catalog-container">
        
-        <div class="filter-size-container">
-          <div class="change-size-container">
-              <button type="button" class="one-and-half-size-btn">1,5-спальний</button>
-              <button type="button" class="double-size-btn">2-спальний</button>
-              <button type="button" class="euro-size-btn">Євростандарт</button>
-              <button type="button" class="size-btn-family">Сімейний</button>
-              <button type="button" class="size-btn-children">Дитячий</button>
-          </div>
-        </div>
+        
         <div class="information-about-product">
           <div class="info-container">
             <div class="material-container">
               <img src="images/needle.png">
-              <div class="material">
+              <div class="material-description">
                 <div class="title">Матеріал:</div>
-                <div class="text">Ранфорс - 100% бавовна</div>
+                <div class="text">- Ранфорс</div>
+                <div class="text">- Сатин</div>
+                <div class="text">- Страйп Сатин</div>
               </div>
             </div>
             
               <div class="material-container">
                 <img src="images/double-bed.png">
-                <div class="material">
+                <div class="complectation">
                   <div class="title">У комплекті:</div>
-                  <div class="text-complectation"> - простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - Можливий <strong>ІНДИВІДУАЛЬНИЙ ПОШИВ</strong></div>
+                  <div class="text-complectation"> - простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ</div>
                 </div>
               </div>
             
             <div class="material-container">
               <img src="images/sewing-machine.png">
-              <div class="material">
+              <div class="emploee">
                 <div class="title">Виробник:</div>
                 <div class="text">Україна</div>
               </div>
@@ -165,8 +159,53 @@
         <a href="admin-add-item.html" class="admin-add">Додати постільну білизну</a>
         <a href="admin-add-new-admin.html" class="admin-add">Додати адміністратора</a>
       </div>
-      <div class="product-section">
-  
+      <div class="product-section-container">
+        <div class="filter-container">
+          <div class="size">
+            <h2>Розмір</h2>
+            <div class="size-btn-container">
+                    <button type="button" class="size-option" data-value="ONE_AND_HALF">Півтораспальний</button>
+                    <button type="button" class="size-option" data-value="DOUBLE">Двохспальний</button>
+                    <button type="button" class="size-option" data-value="EURO">Євро</button>
+                    <button type="button" class="size-option" data-value="FAMILY">Сімейний</button>
+                    <button type="button" class="size-option" data-value="CHILDREN">Дитячий</button>
+            </div>
+          </div>
+          <div class="material">
+            <h2>Матеріал</h2>
+            <div class="material-btn-container">
+                    <button type="button" class="material-option" data-value="RANFORS">Ранфорс</button>
+                    <button type="button" class="material-option" data-value="SATIN">Сатин</button>
+                    <button type="button" class="material-option" data-value="STRAP_SATIN">Страйп сатин</button>
+            </div>
+          </div>
+          <div class="color">
+            <h2>Колір</h2>
+            <div class="color-btn-container">
+                <div class="color-btn-first-row">
+                    <button type="button" class="color-option red" data-value="RED"><span style="background: rgb(221, 51, 51); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option orange" data-value="ORANGE"><span style="background: rgb(255,165,0); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option yellow" data-value="YELLOW"><span style="background: rgb(255,255,0); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option green" data-value="GREEN"><span style="background: rgb(0,255,0); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option blue" data-value="BLUE"><span style="background: rgb(0,191,255); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option indigo" data-value="INDIGO"><span style="background: rgb(75,0,130); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option violet" data-value="VIOLET"><span style="background: rgb(128,0,128); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button> 
+                </div>
+                <div class="color-btn-first-row">
+                    <button type="button" class="color-option pink" data-value="PINK"><span style="background: rgb(255,192,203); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>              
+                    <button type="button" class="color-option silver" data-value="SILVER"><span style="background: rgb(192,192,192); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option gold" data-value="GOLD"><span style="background: rgb(255,215,0); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option beige" data-value="BEIGE"><span style="background: rgb(245,245,220); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option brown" data-value="BROWN"><span style="background: rgb(165,42,42); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option white" data-value="WHITE"><span style="background: rgb(255,255,255); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                    <button type="button" class="color-option black" data-value="BLACK"><span style="background: rgb(0,0,0); width: 10px; height: 10px; display: inline-block; border-radius: 10px;"></span></button>
+                </div>
+                <!-- Add other color options as needed -->
+            </div>
+          </div>
+        </div>      
+        <div class="product-section"></div>
+        
       </div>
   </div>
   <div id="pagination" class="pagination-container"></div>

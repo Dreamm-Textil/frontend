@@ -43,6 +43,18 @@ table thead tr th{
 .table-tr{
     text-align: left;
 }
+.my-orders-table{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+.js-form-personal-cabinete,.js-form-password-cabinete{
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
 
 tbody tr td{
     color: white;
@@ -50,7 +62,7 @@ tbody tr td{
 }
 table{
     width: 100%;
-    margin-top: 35px;
+    margin-top: 0px;
 }
 td > img{
     width: 85px;
@@ -125,7 +137,7 @@ table {
         background-color: #ea4c89d0;
         color: white;
         border: none;
-        height: 27px;
+        height: 22px;
         max-width: 88px;
         width: 100%;
         border-radius: 5px;
@@ -185,6 +197,9 @@ table {
     }
     .main-container-personal-cabinete{
         margin-top: 25px;
+    }
+    .my-orders-table{
+        margin: 0px;
     }
     
     .nav-personal-cabinete {

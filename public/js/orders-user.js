@@ -212,7 +212,7 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
         <td>${e.secondName}</td>
         <td>${statusMap.get(e.status)}</td>
         <td class="td-number">${e.textiles.length}</td>
-        <td>1510 грн</td>
+        <td>${e.price} грн</td>
         <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
         </div>
       `
@@ -237,7 +237,7 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
               <td>${e.secondName}</td>
               <td>${statusMap.get(e.status)}</td>
               <td class="td-number">1</td>
-              <td>1510 грн</td>         
+              <td>${e.price} грн</td>         
               <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
           </tr>
           
@@ -404,7 +404,7 @@ mainSettingsContainer.innerHTML = `
             }).join('')}
           </div>
           <div class="woocommerce-order">
-            <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.id}</p>
+            <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.price} грн</p>
           </div>
           <div class="confirmed-order-footer-container">
             <div class="delivery-address">

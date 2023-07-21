@@ -355,6 +355,13 @@ nav .nav-header h2{
 
 
 @media screen and (min-width: 880px) {
+  .size-option:hover,
+  .material-option:hover {
+    background-color: #EA4C89;
+    color: white;
+    border: 1px solid #EA4C89;
+  }
+  
  
   .nav-center {
     max-width: 1170px;
@@ -485,6 +492,12 @@ nav .nav-header h2{
   width: 100%;
   gap: 5px;
 }
+.product-section-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 48px;
+}
 
 .login-container > h2{
   color: white;
@@ -591,6 +604,124 @@ nav .nav-header h2{
 }
 .autorization-btn:hover{
 background-color: #EA4C89;
+}
+.filter-container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 190px;
+  width: 100%;
+}
+
+.size,.material,.color{
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+}
+.size-btn-container,.material-btn-container,.color-btn-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.title-catalog-clear{
+  font-weight: 100;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.pagination-container-unshow{
+  display: none;
+}
+.size-option,.material-option{
+  border: 1px solid black;
+  background: none;
+  color: black;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+/* .size-option:hover,.material-option:hover {
+  background-color: #EA4C89;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  transition: all 0.3s;
+  border: 1px solid #EA4C89;
+} */
+.size-btn-first-row{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.size-btn-second-row{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.color-btn-first-row{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.color-btn-second-row{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.red,.orange,.yellow,.green,.blue,.indigo,.violet,.pink,.silver,.gold,.beige,.brown,.gray,.white,.black{
+  background: none;
+  border: none;
+  border-radius: 10px;
+  max-width: 26px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.filter-container button {
+  border: 1px solid black;
+  background: none;
+  color: black;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.filter-container button.selected {
+  background-color: #EA4C89;
+  color: white;
+  border: 1px solid #EA4C89;
+}
+
+
+.filter-container  button.color-option {
+  background: none;
+  border: 1px solid #F7F6FF;
+  border-radius: 22px;
+  max-width: 22px;
+  height: 22px;
+  cursor: pointer;
+
+}
+
+.filter-container button.color-option.selected {
+  border: 1px solid #EA4C89;
+}
+.size > h2, .material > h2,.color > h2{
+  color: black;
+  font-family: "Futura PT", sans-serif;
+  font-weight: 100;
+  font-size: 21px;
 }
 
 .registration-btn{
@@ -866,7 +997,7 @@ li, a{
 }
 
 .information-about-product{
-  margin-top: 52px;
+  margin-top: 16px;
   margin-bottom: 16px;
 }
 .material-container > img{
@@ -1041,6 +1172,12 @@ li, a{
   .logo-bedclothes-title {
     margin-top: 0px;
 }
+.color-btn-first-row {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+}
 .login-and-password-btn{
   display: flex;
   justify-content: center;
@@ -1109,6 +1246,25 @@ header{
     margin-bottom: 39px;
     height: 87px;
   }
+  .product-section-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+}
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+.size, .material, .color{
+  width: 100%;
+  max-width: inherit;
+}
   .logo-bedclothes-title {
     position: absolute;
     top: 44%;

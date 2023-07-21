@@ -159,7 +159,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
 })
 .then((response) => response.json())
 .then((json) => {
- 
+ console.log(json);
   const reversedData = json.reverse();
   if(reversedData.length < 6){
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
@@ -199,7 +199,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
               </select>
               </td>
                 <td class="td-number">${e.textiles.length}</td>
-                <td>1510 грн</td>
+                <td>${e.price} грн</td>
                 <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>
                 <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
                 onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
@@ -231,7 +231,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
                       <option value="DONE">Готово</option>
                     </select>
                       <td class="td-number">1</td>
-                      <td>1510 грн</td>
+                      <td>${e.price} грн</td>
                       <td><button class="more-about-order" onclick="handleButtonClick(${e.id})">Перегляд</button></td>         
                       <td><button class="more-about-order-delete" onclick="handleButtonClickDelete(${e.id})"><i class="fas fa-trash-alt" style="color: white; transition: all 0.2s linear; font-size: 16px;font-weight: 100;" 
                       onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='white';"></button></td>
@@ -461,7 +461,7 @@ mainSettingsContainer.innerHTML = `
             }).join('')}
           </div>
           <div class="woocommerce-order">
-            <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.id}</p>
+            <p class="woocommerce-notice-summary">Підсумок замовлення: ${data.price} грн</p>
           </div>
           <div class="confirmed-order-footer-container">
             <div class="delivery-address">
