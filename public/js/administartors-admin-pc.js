@@ -178,5 +178,18 @@ fetch(`${serverMachineUrl}/api/admin/all-admins`, {
   })
   })
   function handleButtonClick(id){
-    console.log(id);
+    setTimeout(() => {
+      location.reload();
+    }, 500);
+    
+    fetch(`${serverMachineUrl}/api/admin/remove-user?id=${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type': 'application/json',
+        'Authorization':  authorizationCookieValue
+      }
+    })
+    .then(res => res.json())
+    .then(data => console.log(data));
   }

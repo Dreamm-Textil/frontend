@@ -27,8 +27,6 @@ let arrSize = [];
 let arrMaterial = [];
 let arrColor = [];
 
-
-
 if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
 fetch(`${serverMachineUrl}/api/user`, {
@@ -61,11 +59,6 @@ fetch(`${serverMachineUrl}/api/user`, {
 }
 
 setTimeout(function() { handleButtonClick(); }, 500);
-// oneAndHalfSizeBtn.classList.add("one-and-half-size-btn-show")
-// deliveryBtn.classList.remove("nav-button-about-us-click");
-// aboutUsBtn.classList.remove("nav-button-about-us-click");
-// indexBtn.classList.add("nav-button-index-click");
-// personalCabineteAfterRegestration.classList.remove("nav-button-personal-cabinete-click");
 
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
@@ -102,7 +95,7 @@ closeBtn.addEventListener("click", function () {
     modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
+
 
 function myFunction() {
   let x = document.getElementById("myInputPassword");
@@ -120,11 +113,6 @@ btns.forEach(function(btn){
     showPassword.classList.toggle("show-password");
   })
 })
-
-// ------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
 
 let allNewProductBtn = document.querySelector('.allnewprod-btn');
 allNewProductBtn.addEventListener('click', function(e){
@@ -171,18 +159,15 @@ colorMap.set("YELLOW", "Жовтий");
   colorMap.set("BLACK", "Чорний");
   colorMap.set("WHITE", "Білий");
 
-// Function to handle the click on any label
 function handleButtonClick() {
     const sizeButtons = document.querySelectorAll('.size-option');
     const materialButtons = document.querySelectorAll('.material-option');
     const colorButtons = document.querySelectorAll('.color-option');
   
-    // Clear the arrays to start with fresh selections
     arrSize = [];
     arrMaterial = [];
     arrColor = [];
   
-    // Collect selected options in the respective arrays
     sizeButtons.forEach((button) => {
       if (button.classList.contains('selected')) {
         arrSize.push(button.dataset.value);
@@ -203,13 +188,9 @@ function handleButtonClick() {
 
     sizeButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        // Clear previous complectation content
         complectation.innerHTML = '';
-    
-        // Get the data-value attribute of the clicked button
         const selectedSize = button.dataset.value;
     
-        // Update the complectation based on the selected size
         switch (selectedSize) {
           case 'ONE_AND_HALF':
             complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
@@ -227,43 +208,31 @@ function handleButtonClick() {
             complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
             break;
           default:
-            complectation.innerHTML = ''; // No selected size or unknown size value
+            complectation.innerHTML = ''; 
         }
       });
     });
-   
 
-    // sizeButtons.forEach((button) => {
-    //   button.addEventListener('touchstart', () => {
-    //     if (button.classList.contains('selected')) {
-    //     arrSize.push(button.dataset.value);
-    //   }
-    //   });
-    // });
+    let headersCatalogCheck;
+
+    if((authorizationCookieValue !== '') && ((authorizationCookieValue !== null))){
+      headersCatalogCheck = {
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type': 'application/json',
+        'Authorization':  authorizationCookieValue
+      }
+    }
+    else {
+      headersCatalogCheck = {
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type': 'application/json',
+      }
+    }
     
-    // materialButtons.forEach((button) => {
-    //   button.addEventListener('touchstart', () => {
-    //     if (button.classList.contains('selected')) {
-    //       arrMaterial.push(button.dataset.value);
-    //     }
-    //   });
-    // });
-    
-    // colorButtons.forEach((button) => {
-    //   button.addEventListener('touchstart', () => {
-    //     if (button.classList.contains('selected')) {
-    //       arrColor.push(button.dataset.value);
-    //     }
-    //   });
-    // });
-  // Send the POST request to the backend
+   
   fetch(`${serverMachineUrl}/api/textile/all-filter`, {
     method: 'POST',
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      'Authorization':  authorizationCookieValue
-    },
+    headers: headersCatalogCheck,
     body: JSON.stringify({
       sizes: arrSize,
       materials: arrMaterial,
@@ -276,7 +245,7 @@ function handleButtonClick() {
       const endIndex = startIndex + itemsPerPage;
       const items = json.reverse().slice(startIndex, endIndex);
 
-      list_element.innerHTML = ''; // Clear previous items in the list_element
+      list_element.innerHTML = '';
       if(items.length === 0){
         paginationContainer.classList.add('pagination-container-unshow');
         list_element.innerHTML = `<h2 class="title-catalog-clear">Нажаль, таких варінтів постільної білизни немає!</h2>`;
@@ -289,7 +258,11 @@ function handleButtonClick() {
             <div class="product-container">
               <div class="card product">
                 <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
-                <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
+                <div class="admin-navigation-item">
+                  <button class="btn-delete-item " onclick="cliclDeleteBtn(${user.id})"><i class="fa-solid fa-trash-can catalog-trash" style="color: white; font-size:15px;"></i></button>
+                  <button id="unshow-btn-${user.id}" class="btn-unshow-item btn-${user.id}-unshow" onclick="clickUnShowBtn(${user.id})"><i class="fa-regular fa-eye" style="color: #02cd02; font-size:15px;"></i></button>
+                  <button id="show-btn-${user.id}" class="btn-show-item btn-${user.id}-unshow" onclick="clickShowBtn(${user.id})"><i class="fa-regular fa-eye-slash" style="color: red; font-size:15px;"></i></button>
+                </div>
                 <div class="card-body">
                   <div class="card-title-size-container">
                     <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
@@ -328,7 +301,11 @@ function handleButtonClick() {
             <div class="product-container">
               <div class="card product">
                 <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
-                <button class="btn-delete-item" onclick="cliclDeleteBtn(${user.id})"><img src="images/bin.png"></button>
+                <div class="admin-navigation-item">
+                  <button class="btn-delete-item " onclick="cliclDeleteBtn(${user.id})"><i class="fa-solid fa-trash-can catalog-trash" style="color: white; font-size:15px;"></i></button>
+                  <button id="unshow-btn-${user.id}" class="btn-unshow-item btn-${user.id}-unshow" onclick="clickUnShowBtn(${user.id})"><i class="fa-regular fa-eye" style="color: #02cd02; font-size:15px;"></i></button>
+                  <button id="show-btn-${user.id}" class="btn-show-item btn-${user.id}-unshow" onclick="clickShowBtn(${user.id})"><i class="fa-regular fa-eye-slash" style="color: red; font-size:15px;"></i></button>
+                </div>
                 <div class="card-body">
                   <div class="card-title-size-container">
                     <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
@@ -400,13 +377,86 @@ function handleButtonClick() {
               </div>
             </div>`;
         }
-      
       });
-      // Create pagination buttons
       createPaginationButtons(json.length);
+      items.forEach((userState) => {
+        const unshowBtn = document.getElementById(`unshow-btn-${userState.id}`);
+        const showBtn = document.getElementById(`show-btn-${userState.id}`);
+        if (userState.isHide) {
+          unshowBtn.style.display = 'none';
+          showBtn.style.display = 'inline-block';
+        } else {
+          unshowBtn.style.display = 'inline-block';
+          showBtn.style.display = 'none';
+        }
+      });
+      
       }
-    });    
-    
+      
+    });
+}
+
+function clickUnShowBtn(id) {
+  fetch(`${serverMachineUrl}/api/textile/hide`, {
+    method: 'PUT',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  authorizationCookieValue
+    },
+    body: JSON.stringify({
+      id: id,
+      isHide: true
+    }),
+  })
+  .then(res => res.json())
+  .then(data => {
+    // Отримали відповідь з сервера, оновлюємо стан кнопок
+    const unshowBtn = document.getElementById(`unshow-btn-${id}`);
+    const showBtn = document.getElementById(`show-btn-${id}`);
+
+    if (data.isHide) {
+      unshowBtn.style.display = 'none';
+      showBtn.style.display = 'inline-block';
+    } else {
+      unshowBtn.style.display = 'inline-block';
+      showBtn.style.display = 'none';
+    }
+  });
+  setTimeout(() => {
+    location.reload();
+  }, 500);
+}
+
+function clickShowBtn(id) {
+  fetch(`${serverMachineUrl}/api/textile/hide`, {
+    method: 'PUT',
+    headers: {
+      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json',
+      'Authorization':  authorizationCookieValue
+    },
+    body: JSON.stringify({
+      id: id,
+      isHide: false
+    }),
+  })
+  .then(res => res.json())
+  .then(data => {
+    const unshowBtn = document.getElementById(`unshow-btn-${id}`);
+    const showBtn = document.getElementById(`show-btn-${id}`);
+
+    if (data.isHide) {
+      unshowBtn.style.display = 'none';
+      showBtn.style.display = 'inline-block';
+    } else {
+      unshowBtn.style.display = 'inline-block';
+      showBtn.style.display = 'none';
+    }
+  });
+  setTimeout(() => {
+    location.reload();
+  }, 500);
 }
 
 function cliclDeleteBtn(id){
@@ -429,11 +479,10 @@ function cliclDeleteBtn(id){
   .then(data => console.log(data));
 }
 
-// Add click event listeners to the buttons
 document.querySelectorAll('.size-option, .material-option, .color-option').forEach((button) => {
     button.addEventListener('click', () => {
-      button.classList.toggle('selected'); // Toggle the "selected" class on click
-      handleButtonClick(); // Call the function to handle the click event
+      button.classList.toggle('selected'); 
+      handleButtonClick(); 
       setTimeout(() => {
         updateButtonStatus();
         updateButtonStatusLike();
@@ -444,29 +493,24 @@ document.querySelectorAll('.size-option, .material-option, .color-option').forEa
 function createPaginationButtons(itemCount) {
   const pageCount = Math.ceil(itemCount / itemsPerPage);
 
-  pagination_element.innerHTML = ''; // Clear previous pagination buttons
+  pagination_element.innerHTML = ''; 
 
-  const maxVisibleButtons = 3; // Maximum number of visible page buttons
+  const maxVisibleButtons = 3; 
 
   let startPage;
   let endPage;
 
   if (pageCount <= maxVisibleButtons) {
-    // If the total number of pages is less than or equal to the maximum visible buttons,
-    // display all page buttons
     startPage = 1;
     endPage = pageCount;
   } else {
     if (currentPage <= 1) {
-      // If the current page is the first page or less, display the first maxVisibleButtons pages
       startPage = 1;
       endPage = maxVisibleButtons;
     } else if (currentPage >= pageCount - maxVisibleButtons + 2) {
-      // If the current page is within the last maxVisibleButtons pages, display the last maxVisibleButtons pages
       startPage = pageCount - maxVisibleButtons + 1;
       endPage = pageCount;
     } else {
-      // Display the current page along with ellipsis and the last page
       startPage = currentPage - 1;
       endPage = currentPage + maxVisibleButtons - 2;
     }

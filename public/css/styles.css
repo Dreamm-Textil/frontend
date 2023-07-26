@@ -331,7 +331,15 @@ nav .nav-header h2{
   transition: var(--transition);
 }
 .show-links {
-  height: 11rem;
+  height: 15rem;
+}
+.links > li > a i{
+  font-size: 13px;
+}
+.social-media-phone > li > a{
+  color: #B2B2B2;
+    font-size: 13px;
+    font-weight: 100;
 }
 .personal-cabinete-after-registration-phone-size{
   display: none;
@@ -352,7 +360,9 @@ nav .nav-header h2{
   top: 34%;
   left: 77%; */
 }
-
+.social-media-phone{
+  display: none;
+}
 
 @media screen and (min-width: 880px) {
   .size-option:hover,
@@ -497,6 +507,12 @@ nav .nav-header h2{
   flex-direction: row;
   width: 100%;
   gap: 48px;
+}
+.admins-area{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-container > h2{
@@ -915,6 +931,7 @@ footer{
 }
 .admin-panel-show{
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   gap: 20px;
   width: 100%;
@@ -1054,23 +1071,66 @@ li, a{
 .show-wrong-password-or-email-container{
   display: flex;
 }
+.admin-navigation-item{
+  position: absolute;
+  width: 33px;
+  height: 76px;
+  top: 1%;
+  left: 86%;
+  background: rgba(0, 0, 0, 0.5);;
+  border-radius: 10px;
+}
+.admin-navigation-item:hover{
+  background: rgba(0, 0, 0, 0.9);
+}
 .btn-delete-item{
   position: absolute;
-    width: 40px;
+    width: 33px;
     height: 40px;
-    top: 2%;
-    left: 83%;
+    top: 43%;
+    left: 5%;
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    background-color: rgb(161 161 161 / 40%);
+    background: none;
     opacity: 1;
 }
-.btn-delete-item:hover{
-  background-color:rgba(161 161 161 / 80%);
+.btn-delete-item > i{
+  font-size: 18px;
 }
-.btn-delete-item > img{
-  width: 20px;
+
+
+.btn-unshow-item{
+  position: absolute;
+    width: 33px;
+    height: 40px;
+    top: 2%;
+    left: 2%;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    opacity: 1;
+}
+
+.btn-unshow-item > i{
+  font-size: 18px;
+}
+.btn-show-item{
+  position: absolute;
+    width: 33px;
+    height: 40px;
+    top: 2%;
+    left: 2%;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    opacity: 1;
+}
+
+.btn-show-item > i{
+  font-size: 18px;
 }
 
 .alert {
@@ -1178,6 +1238,9 @@ li, a{
   gap: 5px;
   justify-content: center;
 }
+.social-media-phone{
+  display: inline;
+}
 .login-and-password-btn{
   display: flex;
   justify-content: center;
@@ -1203,6 +1266,24 @@ li, a{
   gap: 33px;
   position: relative;
   padding: 60px 20px 60px 20px;
+}
+.main-admin-panel-show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+.admin-panel-show{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 500px;
 }
 header{
   min-height: 45px;

@@ -1,4 +1,10 @@
-let serverMachineUrl = 'http://ec2-54-147-56-107.compute-1.amazonaws.com:8080';
+let serverMachineUrl = 'http://ec2-54-90-234-207.compute-1.amazonaws.com:8080';
+const authorizationCookieValue = getCookieValue('Authorization');
+
+
+  // document.cookie = `Authorization=`;
+
+
 
 function closeNavOnClickOutside(event) {
   if (links.classList.contains("show-links")) {
@@ -168,7 +174,7 @@ function updateButtonStatus() {
     return null;
   }
   
-  const authorizationCookieValue = getCookieValue('Authorization');
+
 
   function checkAuthorizationCookie() {
     var cookies = document.cookie.split(';');

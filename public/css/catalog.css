@@ -312,7 +312,7 @@ gap: 38px;
   width: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  height: 268px;
+  height: 100%;
 }
 
 .card-title{
@@ -338,6 +338,12 @@ gap: 38px;
   background-color: #EA4C89;
   transition: 0.5s;
   cursor: pointer;
+}
+#size-radio > label > input{
+  width: 13px;
+}
+#scales{
+  width: 13px;
 }
 .cart-size-container{
   display: flex;
@@ -415,7 +421,7 @@ transition: all 0.3s;
   flex-direction: row;
 }
 
-@media only screen and (max-width: 620px){
+@media only screen and (max-width: 880px){
   .catalog-container{
     display: flex;
     flex-direction: column;
@@ -425,7 +431,6 @@ transition: all 0.3s;
 
 }
 .filtr-catalog-container {
-  max-width: 600px;
   width: 100%;
   display: flex;
   flex-direction: column;

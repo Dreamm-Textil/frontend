@@ -725,7 +725,7 @@ let formInputs = document.querySelectorAll('.js-input')
 
 
 form.onsubmit = function(e){
-
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   
   // formInputs.forEach(function(input){
   //   input.addEventListener('focus', function() {
