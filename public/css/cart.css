@@ -357,6 +357,7 @@ cart__counter .increase {
 .title-cart-clear{
    font-weight: 100;
    margin-bottom: 20px;
+   text-align: center;
 }
 .cart-summaty-title{
     font-weight: 100;

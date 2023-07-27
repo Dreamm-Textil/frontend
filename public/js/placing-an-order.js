@@ -208,7 +208,7 @@ function toggleOptionsVisibility(event, containerId) {
       wrapperContainerFirstShow.classList.add('regions-container-first-show')
       wrapperContainerHouseFirstShow.classList.add('regions-container-house-first-show')
 
-      optionsContainer.style.maxHeight = '120px';
+      optionsContainer.style.maxHeight = '175px';
       optionsContainer.style.overflowY = 'auto';
     } else {
       optionsContainer.style.display = 'none';
@@ -371,6 +371,7 @@ arr.forEach((e) => {
   materialMap.set("STRAP_SATIN", "Страйп сатин");
   materialMap.set("POPLIN", "Поплин");
   materialMap.set("BIAZ", "Бязь");
+  materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
   const colorMap = new Map();
   colorMap.set("RED", "Червоний");
@@ -894,6 +895,7 @@ fetch(`${serverMachineUrl}/api/order`, {
   materialMap.set("STRAP_SATIN", "Страйп сатин");
   materialMap.set("POPLIN", "Поплин");
   materialMap.set("BIAZ", "Бязь");
+  materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
   const colorMap = new Map();
   colorMap.set("RED", "Червоний");

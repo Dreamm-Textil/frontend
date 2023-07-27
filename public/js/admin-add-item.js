@@ -143,13 +143,6 @@ function mySubmitFunctionAdd(e) {
     var valueColor = inputColor.value;
     var textColor = inputColor.options[inputColor.selectedIndex].text
 
-    console.log(inputName.value);
-    console.log(value, text);
-    console.log(valueSize, textSize);
-    console.log(inputPrice.value);
-    console.log(inputPriceDiscount.value);
-    console.log(valueColor, textColor);
-    console.log(flag);
     
     
     

@@ -141,6 +141,7 @@ materialMap.set("SATIN", "Сатин");
 materialMap.set("STRAP_SATIN", "Страйп сатин");
 materialMap.set("POPLIN", "Поплин");
 materialMap.set("BIAZ", "Бязь");
+materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
 const colorMap = new Map();
 colorMap.set("RED", "Червоний");
@@ -244,7 +245,7 @@ function handleButtonClick() {
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
       const items = json.reverse().slice(startIndex, endIndex);
-
+      
       list_element.innerHTML = '';
       if(items.length === 0){
         paginationContainer.classList.add('pagination-container-unshow');
@@ -252,6 +253,14 @@ function handleButtonClick() {
       }
       else{
       items.forEach((user) => {
+
+        const promotionHTML =
+  user.material === 'STRAP_SATIN' || user.material === 'SATIN'
+    ? '<h2 class="promotion-card" style="color: black;">Знижка -300 грн</h2>'
+    : user.material === 'RANFORS'
+    ? '<h2 class="promotion-card" style="color: black;">Знижка -40%</h2>'
+    : '<h2 class="promotion-card" style="color: black;">Знижка -40%</h2>';
+
         if (adminOnPage) {
           paginationContainer.classList.remove('pagination-container-unshow');
             list_element.innerHTML += `
@@ -265,7 +274,7 @@ function handleButtonClick() {
                 </div>
                 <div class="card-body">
                   <div class="card-title-size-container">
-                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                  ${promotionHTML}
                     <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
                   </div>
                   <h4 class="card-title">${user.name}</h4>
@@ -308,7 +317,7 @@ function handleButtonClick() {
                 </div>
                 <div class="card-body">
                   <div class="card-title-size-container">
-                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                  ${promotionHTML}
                     <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
                   </div>
                   <h4 class="card-title">${user.name}</h4>
@@ -346,7 +355,7 @@ function handleButtonClick() {
                 <img class="card-img-top" src="${user.imgUrl}" alt="klitka-white">
                 <div class="card-body">
                   <div class="card-title-size-container">
-                    <h2 class="promotion-card" style="color: black;">Знижка -50%</h2>
+                  ${promotionHTML}
                     <button class="like" id="like-${user.id}-button" onclick="cliclLikeBtn(${user.id})"><i class="far fa-heart change-heart"></i></button>
                   </div>
                   <h4 class="card-title">${user.name}</h4>
@@ -379,6 +388,7 @@ function handleButtonClick() {
         }
       });
       createPaginationButtons(json.length);
+      
       items.forEach((userState) => {
         const unshowBtn = document.getElementById(`unshow-btn-${userState.id}`);
         const showBtn = document.getElementById(`show-btn-${userState.id}`);
@@ -545,7 +555,7 @@ function addButtonToPagination(pageNumber) {
       updateButtonStatus();
       updateButtonStatusLike();
     }, 800)
-    const scrollPosition = window.innerWidth < 600 ? 200 : 780;
+    const scrollPosition = window.innerWidth < 600 ? 200 : 850;
     window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
   });
   if (pageNumber === currentPage) {

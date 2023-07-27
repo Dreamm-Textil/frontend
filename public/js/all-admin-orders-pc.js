@@ -367,6 +367,7 @@ function handleButtonClick(id) {
   materialMap.set("STRAP_SATIN", "Страйп сатин");
   materialMap.set("POPLIN", "Поплин");
   materialMap.set("BIAZ", "Бязь");
+  materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
   const colorMap = new Map();
   colorMap.set("RED", "Червоний");
