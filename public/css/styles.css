@@ -93,7 +93,9 @@ left: 0;
   font-size: 25px;
   color: white;
 }
-
+.card-title{
+  font-family: var(--ff-secondary);
+}
 .header-links li > h2{
 color: #B2B2B2;
 font-size: 12px;
@@ -256,6 +258,14 @@ ul {
 }
 a {
   text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+}
+button{
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 }
 .section {
   padding: 5rem 0;
@@ -561,6 +571,7 @@ nav .nav-header h2{
   align-items: center;
   margin-top: 75px;
   gap: 5px;
+  padding-left: 260px;
 }
 .pagination-container > button{
   background: none;
@@ -737,7 +748,7 @@ background-color: #EA4C89;
 }
 .size > h2, .material > h2,.color > h2{
   color: black;
-  font-family: "Futura PT", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 100;
   font-size: 21px;
 }
@@ -1297,7 +1308,9 @@ header{
   border: none;
   position: absolute;
 }
-
+.pagination-container{
+  padding-left: 0px;
+}
 .personal-cabinete-after-registration-show{
   display: none;
 }

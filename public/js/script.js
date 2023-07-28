@@ -124,7 +124,7 @@ allNewProductBtn.addEventListener('click', function(e){
 
 
 
-const itemsPerPage = 6; 
+const itemsPerPage = 9; 
 let currentPage = 1; 
 const pagination_element = document.getElementById('pagination');
 

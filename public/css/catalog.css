@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
 .main-catalog-container{
     margin-top: 30px;
     display: flex;
@@ -43,9 +45,9 @@
 .catalog-title{
     max-width: 651px;
     color: black;
-    font-family: "Futura PT", sans-serif;
+    font-family:'Open Sans', sans-serif;
     font-weight: 100;
-    font-size: 40px;
+    font-size: 33px;
 }
 * {
     margin: 0;
@@ -301,7 +303,7 @@ gap: 38px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -313,6 +315,7 @@ gap: 38px;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   height: 100%;
+  max-height: 269px;
 }
 
 .card-title{
@@ -332,7 +335,8 @@ gap: 38px;
 }
 .card-title-size-container > h2{
   font-weight: 100;
-  font-size: 12px;
+  font-size: 13px;
+  font-family: 'Open Sans', sans-serif;
 }
 .to-bag:hover {
   background-color: #EA4C89;
@@ -356,6 +360,7 @@ gap: 38px;
   font-size: 16px;
   font-weight: 100;
   transition: all 5s;
+  font-family: 'Open Sans',sans-serif;
 }
 .pagenumbers{
   margin-top: 50px;
@@ -377,12 +382,18 @@ gap: 38px;
 .price-block.new-price .new-price {
   margin-right: 15px;
   font-weight: 100;
+  font-family: 'Open Sans',sans-serif;
 }
 .price-block.new-price .price {
   font-size: 16px;
   color: #a6a6a6;
   font-weight: 500;
   text-decoration: line-through;
+  font-family: 'Open Sans',sans-serif;
+}
+.text-complectation,.material-description,.emploee{
+  letter-spacing: .004em;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 .to-bag{
   background-color: #1E1E1E;
@@ -391,8 +402,7 @@ gap: 38px;
   height: 47px;
   cursor: pointer;
   border: none;
-  font-size: 17px;
-  font-size: 19px;
+  font-size: 18px;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -429,6 +439,13 @@ transition: all 0.3s;
     gap: 35px;
     align-items: flex-start;
 
+}
+.product > img{
+  width: 100%;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  height: 100%;
+  max-height: 323px;
 }
 .filtr-catalog-container {
   width: 100%;
