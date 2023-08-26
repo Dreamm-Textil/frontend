@@ -26,6 +26,9 @@ let mainAdminOnPage = false;
 let arrSize = [];
 let arrMaterial = [];
 let arrColor = [];
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.add("nav-button-index-click");
 
 if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
