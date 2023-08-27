@@ -1,4 +1,4 @@
-let serverMachineUrl = 'https://ec2-54-89-130-128.compute-1.amazonaws.com:8080';
+let serverMachineUrl = 'http://ec2-3-80-78-246.compute-1.amazonaws.com:8080';
 const authorizationCookieValue = getCookieValue('Authorization');
 
 
