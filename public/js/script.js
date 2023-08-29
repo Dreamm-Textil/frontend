@@ -209,7 +209,7 @@ function handleButtonClick() {
             complectation.innerHTML = '- простирадло: 240*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 2 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
             break;
           case 'CHILDREN':
-            complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 2 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
+            complectation.innerHTML = '- простирадло: 150*215 см - 1 шт.<br> - підковдра: 150*215 см - 1 шт.<br> - наволочка: 70 * 70 або 50 * 70 см - 1 шт.<br> - можливий ІНДИВІДУАЛЬНИЙ ПОШИВ';
             break;
           default:
             complectation.innerHTML = ''; 
@@ -245,9 +245,10 @@ function handleButtonClick() {
   })
     .then((response) => response.json())
     .then((json) => {
+      const sortedItems = json.sort((a, b) => a.id - b.id);
       const startIndex = (currentPage - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
-      const items = json.reverse().slice(startIndex, endIndex);
+      const items = sortedItems.reverse().slice(startIndex, endIndex);
       
       list_element.innerHTML = '';
       if(items.length === 0){
