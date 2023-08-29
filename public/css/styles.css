@@ -76,6 +76,7 @@ left: 0;
 .logo-phone{
   display: none;
 }
+
 .header-links-container{
   max-width: 1170px;
   margin:auto;
@@ -192,10 +193,21 @@ svg{
   margin-bottom: 300px;
 }
 .logo-text > h2{
-  color: white;
-  font-size: 50px;
+  color: transparent;
+  font-size: 62px;
+  background: linear-gradient(135deg, #ffffff, #EA4C89);
+  margin-bottom: 35px;
+  font-weight: 100;
+  font-family: var(--ff-secondary);
+  -webkit-background-clip: text;
 }
-
+.logo-phone{
+  color: transparent;
+  background: linear-gradient(135deg, #ffffff, #EA4C89);
+  font-weight: 100;
+  font-family: var(--ff-secondary);
+  -webkit-background-clip: text;
+}
 .logo-text > h3{
   color: #B2B2B2;
   font-size: 25px;
@@ -1245,6 +1257,7 @@ li, a{
   .logo-bedclothes-title {
     margin-top: 0px;
 }
+
 .color-btn-first-row {
   display: flex;
   flex-direction: row;
@@ -1507,6 +1520,9 @@ header{
   }
   .admin-panel-show{
     flex-direction: column;
+  }
+  .logo-pc{
+    display: none;
   }
   .social-icons {
     display: flex;
