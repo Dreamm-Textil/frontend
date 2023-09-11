@@ -1,4 +1,4 @@
-let serverMachineUrl = 'https://ec2-3-80-218-85.compute-1.amazonaws.com';
+let serverMachineUrl = 'https://dreamtextile-336453f67890.herokuapp.com';
 const authorizationCookieValue = getCookieValue('Authorization');
 
 function closeNavOnClickOutside(event) {
