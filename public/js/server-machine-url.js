@@ -1,11 +1,6 @@
 let serverMachineUrl = 'https://ec2-3-80-218-85.compute-1.amazonaws.com';
 const authorizationCookieValue = getCookieValue('Authorization');
 
-
-  // document.cookie = `Authorization=`;
-
-
-
 function closeNavOnClickOutside(event) {
   if (links.classList.contains("show-links")) {
     var target = event.target;
@@ -18,11 +13,7 @@ function closeNavOnClickOutside(event) {
   }
 }
 
-// Adding click event listener to the document
 document.addEventListener("click", closeNavOnClickOutside);
-
-
-
 
 if (!localStorage.getItem('numberLS')) {
     localStorage.setItem('numberLS', '');
@@ -41,8 +32,6 @@ if (!localStorage.getItem('numberLS')) {
       numberArray1 = count.split(',');
       counterBagadge.innerHTML = numberArray1.length;
 }
-
-
 
 if (!document.cookie.includes('likes')) {
  document.cookie = "likes=";
@@ -73,7 +62,6 @@ let countLike = getCookieValue("likes");
     numberArray1 = countLike.split(',');
     counterBagadgeLike.innerHTML = numberArray1.length - 1;
 }
-
 
 function updateButtonStatus() {
     let buttons = document.querySelectorAll("[id^='product-']");
@@ -106,8 +94,6 @@ function updateButtonStatus() {
     });
   }
 
-
-  
   function cliclAddToBagBtn(id) {
     counterBagadge.classList.add('counter-show');    
     let arrayBagage = localStorage.getItem("numberLS") ? localStorage.getItem("numberLS").split(',') : [];
@@ -123,7 +109,6 @@ function updateButtonStatus() {
     }
   }
 
-
   function cliclLikeBtn(id){
   counterBagadgeLike.classList.add('counter-like-show');
   let arrayBagageLike = document.cookie.includes("likes")
@@ -134,17 +119,13 @@ function updateButtonStatus() {
   let button = document.getElementById(`like-${id}-button`);
 
   if (arrayBagageLike.includes(id.toString())) {
-    // Видалення id з кукі
     arrayBagageLike = arrayBagageLike.filter(item => item !== id.toString());
     document.cookie = `likes=${arrayBagageLike.join(',')}`;
     countLike--;
-    // Зміна іконки на незаповнене серце
     button.innerHTML = `<i class="fa-regular fa-heart" style="color: #000; font-size: 16px;" onmouseover="this.style.color='#EA4C89';" onmouseout="this.style.color='black';"></i>`;
   } else {
-    // Додавання id до кукі
     arrayBagageLike.unshift(id.toString());
     document.cookie = `likes=${arrayBagageLike.join(',')}`;
-    // Зміна іконки на заповнене серце
     button.innerHTML = `<i class="fa-solid fa-heart" style="color: #ea4c89; font-size: 16px;"></i>`;
     countLike++;
   }
@@ -159,7 +140,6 @@ function updateButtonStatus() {
     updateButtonStatusLike();
   }, 800);
 
-  
   function getCookieValue(cookieName) {
     const cookieString = document.cookie;
     const cookies = cookieString.split(';');
@@ -174,8 +154,6 @@ function updateButtonStatus() {
     return null;
   }
   
-
-
   function checkAuthorizationCookie() {
     var cookies = document.cookie.split(';');
     for (var i = 0; i < cookies.length; i++) {

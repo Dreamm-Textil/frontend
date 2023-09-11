@@ -52,11 +52,9 @@ fetch(`${serverMachineUrl}/api/user`, {
 })
 
 .then((response) => response.json())
-
 .then((json) =>{
   if(json.role === 'ADMIN'){
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-
   }
   else{
     administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
@@ -68,7 +66,6 @@ fetch(`${serverMachineUrl}/api/user`, {
   }
 });
 
-
 if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {
   
@@ -79,27 +76,20 @@ if(authorizationCookieValue !== ''){
       'Authorization':  authorizationCookieValue
     },
   })
-  
   .then((response) => response.json())
-  
   .then((json) =>{
-  
   });
 }                                           
 
- let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
   
 }
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -111,18 +101,14 @@ navToggle.addEventListener('click', function(){
   }
 });
 
-
-
- deliveryBtn.classList.remove("nav-button-about-us-click");
- aboutUsBtn.classList.remove("nav-button-about-us-click");
- indexBtn.classList.remove("nav-button-index-click");
- personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
- 
-
- orderUserBtn.classList.add("profile-btn-click")
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
+orderUserBtn.classList.add("profile-btn-click")
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
-    
+
 let agreeForExitBtn = document.querySelector('.agree-for-exit-btn');
 
 agreeForExitBtn.addEventListener('click', function(){
@@ -188,7 +174,6 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
     pagginationAllOrders.classList.remove('pagination-container-all-orders-unshow')
   }
-  console.log(reversedData.length); // Reverse the data array to show the most recent orders first
   const itemsPerPage = 5;
   const totalPages = Math.ceil(reversedData.length / itemsPerPage);
   let currentPage = 1;
@@ -197,7 +182,7 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
   
-    orderContainer.innerHTML = ''; // Clear the container before rendering
+    orderContainer.innerHTML = ''; 
     if (window.innerWidth < 1030) {
       orderPhoneContainer.innerHTML = '';
     }
@@ -251,9 +236,8 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
   }
   
   function goToPage(page) {
-    if (page < 1 || page > totalPages) {
-      
-      return; // Do nothing if the page is out of bounds
+    if (page < 1 || page > totalPages) {    
+      return; 
     }
     const scrollPosition = window.innerWidth < 600 ? 0 : 0;
     window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
@@ -262,37 +246,25 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
   }
 
   function createPaginationButtons() {
-  
-  
-
-    paginationContainer.innerHTML = ''; // Clear the container before rendering buttons
-
-    // Previous button
+    paginationContainer.innerHTML = ''; 
     const previousButton = document.createElement('button');
     previousButton.textContent = 'Попередні';
-    previousButton.classList.add('previous-button'); // Add custom CSS class
+    previousButton.classList.add('previous-button'); 
     previousButton.addEventListener('click', () => goToPage(currentPage - 1));
     paginationContainer.appendChild(previousButton);
     
-    // Next button
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Наступні';
-    nextButton.classList.add('next-button'); // Add custom CSS class
+    nextButton.classList.add('next-button'); 
     nextButton.addEventListener('click', () => goToPage(currentPage + 1));
     paginationContainer.appendChild(nextButton);
   }
-
-  // Call renderItems with the initial page
   renderItems(currentPage);
-
-  // Create pagination buttons
   createPaginationButtons();
-
 });
 
 
 let mainSettingsContainer = document.querySelector('.main-settings-container');
-
 function handleButtonClick(id) {
   let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
   setTimeout(() => {
@@ -351,11 +323,11 @@ function handleButtonClick(id) {
     }
   })
   .then(res => res.json())
-  .then(data => {console.log(data)
+  .then(data => {
     const counts = {};
-data.textiles.forEach((e) => {
-  const key = `${e.name}-${e.size}`; // Create a unique key combining name and size
-  counts[key] = (counts[key] || 0) + 1; // Increment count for the unique key
+    data.textiles.forEach((e) => {
+    const key = `${e.name}-${e.size}`; 
+    counts[key] = (counts[key] || 0) + 1; 
 });
 
 mainSettingsContainer.innerHTML = `
@@ -366,8 +338,8 @@ mainSettingsContainer.innerHTML = `
           <p class="woocommerce-notice">Подробиці замовлення #${data.id}</p>
           <div class="details-order-container">
             ${Object.entries(counts).map(([key, count]) => {
-              const [name, size] = key.split('-'); // Split the unique key back into name and size
-              const textile = data.textiles.find((e) => e.name === name && e.size === size); // Find the corresponding textile
+              const [name, size] = key.split('-'); 
+              const textile = data.textiles.find((e) => e.name === name && e.size === size); 
 
               return `
                 <div class="products-container">

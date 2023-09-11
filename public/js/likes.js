@@ -5,12 +5,8 @@ let inputColor = document.getElementById("ddlViewColor");
 let inputPrice = document.querySelector(".price-new-item");
 let inputPriceDiscount = document.querySelector(".price-new-item-discount");
 let inputURL = document.querySelector(".url-input-new");
-let personalCabineteAfterRegestration = document.querySelector(
-  ".personal-cabinete-after-registration"
-);
-let personalCabineteAfterRegestrationPhoneSize = document.querySelector(
-  ".personal-cabinete-after-registration-phone-size"
-);
+let personalCabineteAfterRegestration = document.querySelector(".personal-cabinete-after-registration");
+let personalCabineteAfterRegestrationPhoneSize = document.querySelector(".personal-cabinete-after-registration-phone-size");
 const modalBtn = document.querySelector(".log-in-btn");
 const modalBtnPhoneSize = document.querySelector(".log-in-btn-phone-size");
 const modalOverlay = document.querySelector(".modal-overlay");
@@ -52,8 +48,6 @@ closeBtn.addEventListener("click", function () {
   modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
   let x = document.getElementById("myInputPassword");
   if (x.type === "password") {
@@ -75,9 +69,7 @@ let value_or_null = (document.cookie.match(
   /^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/
 ) || [, null])[1];
 if (value_or_null === null) {
-
 } else {
-
   personalCabineteAfterRegestration.classList.add(
     "personal-cabinete-after-registration-show"
   );
@@ -101,9 +93,7 @@ let arrayBagageLike = document.cookie.includes("likes")
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       }
     let result = arrayBagageLike.join(",");
-
-   
-        const sizeMap = new Map()
+      const sizeMap = new Map()
       sizeMap.set("ONE_AND_HALF", "Півтораспальний")
       sizeMap.set("DOUBLE", "Двохспальний")
       sizeMap.set("EURO", "Євро")
@@ -123,9 +113,7 @@ let arrayBagageLike = document.cookie.includes("likes")
               'Access-Control-Allow-Origin':'*',
               'Content-Type': 'application/json',
             },
-            
           })
-      
           .then((response) => response.json())
           .then((json) => {
             json.forEach((textile)=>{
@@ -171,17 +159,13 @@ let arrayBagageLike = document.cookie.includes("likes")
         let arrayBagageLike = document.cookie.includes("likes")
           ? document.cookie.split("likes=")[1].split(",")
           : [];
-      
         if (arrayBagageLike.includes(id.toString())) {
-          // Find the index of the element with the specified ID
           const index = arrayBagageLike.indexOf(id.toString());
           if (index > -1) {
-            // Remove the element from the array
             arrayBagageLike.splice(index, 1);
-            // Update the cookie with the updated array
             document.cookie = `likes=${arrayBagageLike.join(',')}`;
           }
         }
       
-        location.reload(); // Reload the page to reflect the changes
+        location.reload(); 
       }

@@ -51,9 +51,7 @@ fetch(`${serverMachineUrl}/api/user`, {
     'Authorization':  authorizationCookieValue
   },
 })
-
 .then((response) => response.json())
-
 .then((json) =>{  
   if(json.role === 'ADMIN'){
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
@@ -72,15 +70,11 @@ fetch(`${serverMachineUrl}/api/user`, {
 
  let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
-  
 }
 
 
@@ -94,16 +88,12 @@ navToggle.addEventListener('click', function(){
   }
 });
 
-
-
-
- deliveryBtn.classList.remove("nav-button-about-us-click");
- aboutUsBtn.classList.remove("nav-button-about-us-click");
- indexBtn.classList.remove("nav-button-index-click");
- personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
- 
- administrationPersonalCabinete.classList.add('profile-btn-click')
- orderUserBtn.classList.remove("profile-btn-click")
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
+administrationPersonalCabinete.classList.add('profile-btn-click')
+orderUserBtn.classList.remove("profile-btn-click")
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
     
@@ -145,8 +135,6 @@ fetch(`${serverMachineUrl}/api/admin/all-admins`, {
 })
 .then((response) => response.json())
 .then((json) => {
-  console.log(json);
-
   json.forEach(e=>{
     if (window.innerWidth >= 1030) {
       orderContainer.innerHTML += `

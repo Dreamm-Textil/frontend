@@ -22,22 +22,16 @@ const links = document.querySelector(".links");
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
 
-
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
-
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -61,30 +55,26 @@ closeBtn.addEventListener("click", function () {
   modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
-let x = document.getElementById("myInputPassword");
-if (x.type === "password") {
-  x.type = "text";
-} else {
-  x.type = "password";
-}
+  let x = document.getElementById("myInputPassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
 }
 
 const btns = document.querySelectorAll(".show-password-btn-modal");
-btns.forEach(function(btn){
-btn.addEventListener("click", function(e){
-  const showPassword = e.currentTarget;
-  showPassword.classList.toggle("show-password");
+  btns.forEach(function(btn){
+  btn.addEventListener("click", function(e){
+    const showPassword = e.currentTarget;
+    showPassword.classList.toggle("show-password");
+  })
 })
-})
-
 
 
 function mySubmitFunctionAdd(e) {
   e.preventDefault()
-
   let emptyInputs = Array.from(formInputsAdd).filter(input => input.value === '');
   formInputsAdd.forEach(function(input){
     if(input.value === ''){
@@ -98,10 +88,8 @@ function mySubmitFunctionAdd(e) {
   if(emptyInputs.length !== 0){
     return false;
   }
-
     let flag;
     e.preventDefault();
-   
     let AcceptedAddItem = document.querySelector('.main-add-item-container');
     AcceptedAddItem.innerHTML = `<div class ="main-regestration-container-after-registration">
                                   <div class ="header-after-registration">

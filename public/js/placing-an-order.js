@@ -23,8 +23,8 @@ let formNameOrder = document.querySelector('.name-order');
 let formSecondNameOrder = document.querySelector('.surname-order');
 let formPhoneOrder = document.querySelector('.phone-order');
 let formGmailOrder = document.querySelector('.gmail-order');
-
 let checkOrder = localStorage.getItem("numberLS");
+
 if (checkOrder === ''){
   location.href = 'index.html'
 }
@@ -38,9 +38,7 @@ if(authorizationCookieValue !== ''){
       'Authorization':  authorizationCookieValue
     },
   })
-
   .then((response) => response.json())
-
   .then((json) =>{ formNameOrder.value = json.name; formSecondNameOrder.value = json.secondName; formPhoneOrder.value = json.phoneNumber;
     formGmailOrder.value = json.email;
   });
@@ -55,12 +53,9 @@ if(value_or_null === null){
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
 
-
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -84,8 +79,6 @@ closeBtn.addEventListener("click", function () {
   modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
 let x = document.getElementById("myInputPassword");
 if (x.type === "password") {
@@ -97,15 +90,13 @@ if (x.type === "password") {
 
 const btns = document.querySelectorAll(".show-password-btn-modal");
 btns.forEach(function(btn){
-btn.addEventListener("click", function(e){
-  const showPassword = e.currentTarget;
-  showPassword.classList.toggle("show-password");
+  btn.addEventListener("click", function(e){
+    const showPassword = e.currentTarget;
+    showPassword.classList.toggle("show-password");
+  })
 })
-})
-
 
 function fetchRegions() {
-
   fetch('https://api.novaposhta.ua/v2.0/json/Address/getCities', {
     method: 'POST',
     headers: {
@@ -126,10 +117,8 @@ function fetchRegions() {
       initializeOptions(regions, 'regions');
     })
     .catch((error) => {
-      console.error('Помилка при отриманні областей:', error);
     });
 }
-
 
 function fetchPostOffices(city) {
   fetch('https://api.novaposhta.ua/v2.0/json/Address/getWarehouses', {
@@ -152,9 +141,9 @@ function fetchPostOffices(city) {
       initializeOptions(postOffices, 'postOffices');
     })
     .catch((error) => {
-      console.error('Помилка при отриманні відділень:', error);
     });
 }
+
 function initializeOptions(options, containerId) {
   const optionsContainer = document.getElementById(`${containerId}Options`);
   optionsContainer.innerHTML = '';
@@ -178,22 +167,19 @@ function initializeOptions(options, containerId) {
     });
     optionsContainer.appendChild(option);
   }
-  
 }
+
 let selectInputShow = document.querySelector('.select-input');
 function toggleOptionsVisibility(event, containerId) {
   const optionsContainer = document.getElementById(`${containerId}Options`);
   const inputElement = document.getElementById(`${containerId}Input`);
   let wrapperShow = document.querySelector('.select-wrapper-container');
-  
   let wrapperShowHouse = document.querySelector('.select-wrapper-container-house')
   let arrowDownClick = document.querySelector('.arrow-down')
   let selectInputHouseShow = document.querySelector('.select-input-house');
   let arrowDownClickHouse = document.querySelector('.arrow-down-house');
   let wrapperContainerFirstShow = document.querySelector('.regions-container-first');
   let wrapperContainerHouseFirstShow = document.querySelector('.regions-container-house-first');
-
- 
 
   if (optionsContainer && inputElement) {
     if (optionsContainer.style.display === 'none') {
@@ -222,7 +208,6 @@ function toggleOptionsVisibility(event, containerId) {
       wrapperContainerFirstShow.classList.remove('regions-container-first-show')
       wrapperContainerHouseFirstShow.classList.remove('regions-container-house-first-show')
     }
-
     if (containerId !== 'regions') {
       const regionsOptionsContainer = document.getElementById('regionsOptions');
       regionsOptionsContainer.style.display = 'none';
@@ -245,39 +230,29 @@ function toggleOptionsVisibility(event, containerId) {
       wrapperContainerHouseFirstShow.classList.remove('regions-container-house-first-show')
     }
   }
-
   event.stopPropagation();
 }
 const selectedOption = document.getElementById('selectedRegion');
 const selectedPostOffice = document.getElementById('selectedPostOffice');
 function selectOption(option, containerId) {
   if (containerId === 'regions') {
-    
     selectedOption.textContent = option;
-
     const selectedPostOffice = document.getElementById('selectedPostOffice');
     selectedPostOffice.textContent = 'Виберіть відділення';
-
     const postOfficesOptionsContainer = document.getElementById('postOfficesOptions');
     postOfficesOptionsContainer.innerHTML = '';
-
     fetchPostOffices(option);
   } else if (containerId === 'postOffices') {
-    
     selectedPostOffice.textContent = option;
-
     fetchPostOffices(option); 
   }
-
   const optionsContainer = document.getElementById(`${containerId}Options`);
   optionsContainer.style.display = 'none';
-  
 }
 
 function filterOptions(containerId) {
   const inputElement = document.getElementById(`${containerId}Input`);
   const filterValue = inputElement.value.toUpperCase();
-
   const optionsContainer = document.getElementById(`${containerId}Options`);
   const options = Array.from(optionsContainer.getElementsByClassName('option'));
 if(containerId === 'regions'){
@@ -311,7 +286,6 @@ function toggleInputVisibility(event, containerId) {
 document.addEventListener('click', function () {
   const regionsOptionsContainer = document.getElementById('regionsOptions');
   regionsOptionsContainer.style.display = 'none';
-
   let wrapperShow = document.querySelector('.select-wrapper-container');
   let selectInputShow = document.querySelector('.select-input');
   let arrowDownClick = document.querySelector('.arrow-down')
@@ -335,7 +309,6 @@ document.addEventListener('click', function () {
   const regionInput = document.getElementById('regionsInput');
   regionInput.style.display = 'none';
 
-
   const postOfficeInput = document.getElementById('postOfficesInput');
   postOfficeInput.style.display = 'none';
 });
@@ -357,7 +330,6 @@ arr.forEach((e) => {
     quantityCount[e] = 1;
   }
 });
-
 
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
@@ -402,9 +374,6 @@ arr.forEach((e) => {
     .then((json) => {
       const storedQuantity = localStorage.getItem("numberLS");
       json.forEach((textile)=>{
-
-      
-
       if (storedQuantity === "") {
         cartProductsPage.classList.add("cart__products-product-unshow");
         cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
@@ -597,11 +566,9 @@ arr.forEach((e) => {
               }
             });
           });
-
           const quantityInputse = document.querySelectorAll(
             'input[name="quantity"]'
           );
-
 
           function updateCartPrice(id, quantity) {
             const price = parseFloat(prices[id]);
@@ -660,7 +627,6 @@ arr.forEach((e) => {
                   ? totalPrice.toFixed(0)
                   : totalPrice.toFixed(2);
             } else {
-              console.error(`Element with data-id "${id}" not found.`);
             }
           }
         }
@@ -668,7 +634,7 @@ arr.forEach((e) => {
     })
   });
 
- // Знаходимо елементи radio button
+
  const bacsRadio = document.querySelector('.full-paymant-container');
  const codRadio = document.querySelector('.avans-paymant-container');
  let fullPaymentBorder = document.querySelector('.full-paymant-container');
@@ -677,11 +643,10 @@ arr.forEach((e) => {
  let avansPaymantBorder = document.querySelector('.avans-paymant-container');
  avansPaymantBorder.classList.remove('avans-paymant-container')
  avansPaymentTitle.classList.remove('avams-paymant-title-label')
- // Знаходимо елементи з вмістом параграфів
  const bacsParagraph = document.querySelector('.payment_method_bacs p');
  const codParagraph = document.querySelector('.payment_method_cod p');
  let codParagraphShow = document.querySelector('.kek')
- // Встановлюємо обробники подій на клік
+
  bacsRadio.addEventListener('click', function() {
   fullPaymentBorder.classList.add('full-paymant-container')
   fullPaymentTitle.classList.add('full-paymant-title-label')
@@ -719,85 +684,81 @@ for (var i = 0; i < radioButtons.length; i++) {
   radioButtons[i].addEventListener('change', handleRadioButtonChange);
 }
 
-
 let formInputs = document.querySelectorAll('.js-input')
-
-
-
 
 form.onsubmit = function(e){
   window.scrollTo({ top: 0, behavior: 'smooth' });
   
-  // formInputs.forEach(function(input){
-  //   input.addEventListener('focus', function() {
-  //     input.classList.remove('error');
+  formInputs.forEach(function(input){
+    input.addEventListener('focus', function() {
+      input.classList.remove('error');
       
-  //   });
-  // });
+    });
+  });
 
   e.preventDefault()
   
-  // let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-  // let wrongNumberPhone = document.querySelector('.wrong-phone-container')
+  let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
+  let wrongNumberPhone = document.querySelector('.wrong-phone-container')
  
-  // var inputElement = document.querySelector('.phone-order');
+  var inputElement = document.querySelector('.phone-order');
   
 
 
-  // inputElement.addEventListener('focus', function() {
-  //   var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
-  //   wrongPhoneContainer.classList.remove('show-wrong-phone-container')
-  //   formPhoneOrder.classList.remove('error');
+  inputElement.addEventListener('focus', function() {
+    var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
+    wrongPhoneContainer.classList.remove('show-wrong-phone-container')
+    formPhoneOrder.classList.remove('error');
     
-  // });
+  });
 
   
-  // formInputs.forEach(function(input){
-  //   if(input.value === ''){
-  //     input.classList.add('error');
-  //   }
-  //   else{
-  //     input.classList.remove('error');
-  //   }
-  // });
+  formInputs.forEach(function(input){
+    if(input.value === ''){
+      input.classList.add('error');
+    }
+    else{
+      input.classList.remove('error');
+    }
+  });
 
-  // if(emptyInputs.length !== 0){
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth'
-  //   });
-  //   return false;
-  // }
+  if(emptyInputs.length !== 0){
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    return false;
+  }
 
-  // function validatePhone(phone) {
-  //   let re = /^[0-9\s]*$/;
-  //   return re.test(String(phone)) || phone.startsWith("+");
-  // }
-  // if (!validatePhone(formPhoneOrder.value)) {
+  function validatePhone(phone) {
+    let re = /^[0-9\s]*$/;
+    return re.test(String(phone)) || phone.startsWith("+");
+  }
+  if (!validatePhone(formPhoneOrder.value)) {
     
-  //   formPhoneOrder.classList.add('error');
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth'
-  //   });
-  //   wrongNumberPhone.classList.add('show-wrong-phone-container')
-  //   return false;
-  // } else {
-  //   formPhoneOrder.classList.remove('error');
-  // }
+    formPhoneOrder.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
+  } else {
+    formPhoneOrder.classList.remove('error');
+  }
 
-  // if ((formPhoneOrder.value.length === 13 || formPhoneOrder.value.length === 10)) {
-  //   formPhoneOrder.classList.remove('error');
-  // } else {
+  if ((formPhoneOrder.value.length === 13 || formPhoneOrder.value.length === 10)) {
+    formPhoneOrder.classList.remove('error');
+  } else {
     
-  //   formPhoneOrder.classList.add('error');
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth'
-  //   });
-  //   wrongNumberPhone.classList.add('show-wrong-phone-container')
-  //   return false;
-  // }
+    formPhoneOrder.classList.add('error');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    wrongNumberPhone.classList.add('show-wrong-phone-container')
+    return false;
+  }
 
   let checkbox = document.getElementById('scales');
   let checkScales;
@@ -830,8 +791,6 @@ form.onsubmit = function(e){
   const paymantMap = new Map();
   paymantMap.set("Накладний платіж", "DELIVERY");
   paymantMap.set("Повна оплата", "FULL");
-
-  
   let headers;           
 
 if(authorizationCookieValue !== ''){
@@ -853,12 +812,8 @@ let mainItemContainerAfterOrder = document.querySelector('.main-add-item-contain
 const cartSummaryTitle = document.querySelector(
   ".cart-summaty-title"
 );
-console.log(cartSummaryTitle.innerText);
 const numberString = cartSummaryTitle.innerText.replace(/\D/g, ''); // Remove all non-digit characters
 let totalPrice = parseInt(numberString, 10);
-console.log(totalPrice);
-
-
 
 fetch(`${serverMachineUrl}/api/order`, {
   method: 'POST',
@@ -881,9 +836,7 @@ fetch(`${serverMachineUrl}/api/order`, {
 })
   .then((response) => response.json())
   .then((json) => {
-    // console.log(totalPrice);
-    console.log(json);
-    const sizeMap = new Map();
+  const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
   sizeMap.set("DOUBLE", "Двохспальний");
   sizeMap.set("EURO", "Євро");
@@ -929,8 +882,8 @@ fetch(`${serverMachineUrl}/api/order`, {
 
   const counts = {};
   json.textiles.forEach((e) => {
-    const key = `${e.name}-${e.size}`; // Create a unique key combining name and size
-    counts[key] = (counts[key] || 0) + 1; // Increment count for the unique key
+    const key = `${e.name}-${e.size}`; 
+    counts[key] = (counts[key] || 0) + 1; 
   });
     mainItemContainerAfterOrder.innerHTML = `<section class="wrapper post">                              
                                               <div class="post__content">

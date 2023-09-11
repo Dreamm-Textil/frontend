@@ -19,14 +19,12 @@ indexBtn.classList.remove("nav-button-index-click");
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow")
 }
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -50,8 +48,6 @@ closeBtn.addEventListener("click", function () {
     modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
   let x = document.getElementById("myInputPassword");
   if (x.type === "password") {
@@ -68,5 +64,5 @@ btns.forEach(function(btn){
     showPassword.classList.toggle("show-password");
   })
 })
-// ------------------------------------------------------------------------------------------------------------------------------------//
+
 

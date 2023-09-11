@@ -52,11 +52,9 @@ fetch(`${serverMachineUrl}/api/user`, {
 })
 
 .then((response) => response.json())
-
 .then((json) =>{
   if(json.role === 'ADMIN'){
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-
   }
   else{
     administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
@@ -66,24 +64,19 @@ fetch(`${serverMachineUrl}/api/user`, {
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
     administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
   }
-  
   formPhone.value = json.phoneNumber; formEmail.value = json.email; formName.value = json.name; formSurname.value = json.secondName
 });
                                            
 
- let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
+let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
   
 }
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -94,7 +87,6 @@ navToggle.addEventListener('click', function(){
       navToggle.classList.add('nav-toggle-show')
   }
 });
-
 
 function validateEmail(email) {
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -127,7 +119,6 @@ form.onsubmit = function(e){
       wrongGmail.classList.remove('show-wrong-gmail-container')
     });
   });
-
   formInputs.forEach(function(input){
     if(input.value === ''){
       input.classList.add('error');
@@ -140,15 +131,12 @@ form.onsubmit = function(e){
   if(emptyInputs.length !== 0){
     return false;
   }
-
-  
   inputElement.addEventListener('focus', function() {
     var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
     wrongPhoneContainer.classList.remove('show-wrong-phone-container')
     formPhone.classList.remove('error');
   });
   if (!validatePhone(phoneVal)) {
-    
     formPhone.classList.add('error');
     window.scrollTo({
       top: 0,
@@ -159,11 +147,9 @@ form.onsubmit = function(e){
   } else {
     formPhone.classList.remove('error');
   }
-
   if ((formPhone.value.length === 13 || formPhone.value.length === 10)) {
     formPhone.classList.remove('error');
   } else {
-    
     formPhone.classList.add('error');
     window.scrollTo({
       top: 0,
@@ -188,8 +174,6 @@ form.onsubmit = function(e){
   formEmail.classList.remove('error');
   }
 
-
-
 fetch(`${serverMachineUrl}/api/user`, {
   method: 'PUT',
   mode: "cors",
@@ -206,40 +190,29 @@ fetch(`${serverMachineUrl}/api/user`, {
   }),
 })
 .then(function(response){ 
-  if(response.ok === false){
-    wrongPhoneOrGmail.classList.add('show-wrong-phone-or-gmail-container')
-    return false
-  }
-  else{
-    let alertSecces = document.querySelector('.alert');
-    alertSecces.classList.add("alert-show")
-    setTimeout(() => {
-    alertSecces.classList.remove("alert-show")
-    location.reload();
-  }, 1500);
-  }
-})
-
-
-
-  
- 
+    if(response.ok === false){
+      wrongPhoneOrGmail.classList.add('show-wrong-phone-or-gmail-container')
+      return false
+    }
+    else{
+      let alertSecces = document.querySelector('.alert');
+      alertSecces.classList.add("alert-show")
+      setTimeout(() => {
+      alertSecces.classList.remove("alert-show")
+      location.reload();
+    }, 1500);
+    }
+  })
 }
 
-
- deliveryBtn.classList.remove("nav-button-about-us-click");
- aboutUsBtn.classList.remove("nav-button-about-us-click");
- indexBtn.classList.remove("nav-button-index-click");
- personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
- 
-
-
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
 profileBtn.classList.add("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
 orderUserBtn.classList.remove("profile-btn-click")    
                                                                                                                    
-
-  
 logOutBtn.addEventListener('click', function(){
   modalOverlay.classList.toggle("open-modal");
 });
@@ -253,13 +226,10 @@ closeBtn.addEventListener("click", function () {
 });
 
 let agreeForExitBtn = document.querySelector('.agree-for-exit-btn');
-
 agreeForExitBtn.addEventListener('click', function(){
   document.cookie = `Authorization=`
   location.href="index.html";
 });
-
-
 
 modalBtnDeleteUser.addEventListener('click', function(){
   modalDeleteUser.classList.toggle("open-modal");

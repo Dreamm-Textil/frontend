@@ -20,13 +20,9 @@ let warningImg = document.querySelector(".warning-img");
 const navToggle = document.querySelector(".nav-toggle");
 const links = document.querySelector(".links");
 
-
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
-
-
 
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
@@ -50,8 +46,6 @@ closeBtn.addEventListener("click", function () {
   modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
 let x = document.getElementById("myInputPassword");
 if (x.type === "password") {
@@ -71,9 +65,7 @@ btn.addEventListener("click", function(e){
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
@@ -143,18 +135,13 @@ function mySubmitFunctionAdd(e) {
     var valueColor = inputColor.value;
     var textColor = inputColor.options[inputColor.selectedIndex].text
 
-    
-    
-    
     e.preventDefault();
     fetch('http://127.0.0.1:5500/api', {
         method: 'POST',
         body: formData, 
     })
     .then(res => res.json())
-    .then(data => console.log(data));
     e.preventDefault();
-    console.log(name.value);
 
     fetch(`${serverMachineUrl}/api/textile`, {
     method: 'POST',

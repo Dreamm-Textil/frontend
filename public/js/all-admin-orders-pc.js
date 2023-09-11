@@ -72,10 +72,7 @@ if(authorizationCookieValue !== ''){
 
  let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
@@ -96,12 +93,11 @@ navToggle.addEventListener('click', function(){
 
 
 
- deliveryBtn.classList.remove("nav-button-about-us-click");
- aboutUsBtn.classList.remove("nav-button-about-us-click");
- indexBtn.classList.remove("nav-button-index-click");
- personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
- 
- administrationAllOrders.classList.add("profile-btn-click")
+deliveryBtn.classList.remove("nav-button-about-us-click");
+aboutUsBtn.classList.remove("nav-button-about-us-click");
+indexBtn.classList.remove("nav-button-index-click");
+personalCabineteAfterRegestration.classList.add("nav-button-personal-cabinete-click");
+administrationAllOrders.classList.add("profile-btn-click")
 orderUserBtn.classList.remove("profile-btn-click")
 profileBtn.classList.remove("profile-btn-click");
 changePasswordBtn.classList.remove("profile-btn-click");
@@ -113,7 +109,6 @@ agreeForExitBtn.addEventListener('click', function(){
   location.href="http://127.0.0.1:5500/index.html";
 });
                                                                                                                    
-  
 logOutBtn.addEventListener('click', function(){
   modalOverlay.classList.toggle("open-modal");
 });
@@ -130,8 +125,7 @@ closeBtn.addEventListener("click", function () {
 modalBtnPhoneSize.addEventListener('click', function(){
   modalDeleteUser.classList.toggle("open-modal");
 });
-    
-
+  
 let orderContainer = document.querySelector('.tr-orders');
 let orderPhoneContainer = document.querySelector('.js-form-personal-cabinete')
 
@@ -140,15 +134,12 @@ statusMap.set("PROCESSED", "В обробці");
 statusMap.set("SENT", "У дорозі");
 statusMap.set("DONE", "Готово");
 
-
 const paginationContainer = document.querySelector('.pagination-container-all-orders');
-
 let currentPage = 10;
 let totalPages = 1;
-const itemsPerPage = 1; // Number of items to display per page
-let orders = []; // Array to store the fetched orders
+const itemsPerPage = 1; 
+let orders = []; 
 
-// Fetch orders from the server
 fetch(`${serverMachineUrl}/api/order/all-orders`, {
   method: 'GET',
   headers: {
@@ -159,7 +150,6 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
 })
 .then((response) => response.json())
 .then((json) => {
- console.log(json);
   const reversedData = json.reverse();
   if(reversedData.length < 6){
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
@@ -169,7 +159,6 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
     pagginationAllOrders.classList.remove('pagination-container-all-orders-unshow')
   }
-  console.log(reversedData.length); // Reverse the data array to show the most recent orders first
   const itemsPerPage = 5;
   const totalPages = Math.ceil(reversedData.length / itemsPerPage);
   let currentPage = 1;
@@ -178,11 +167,10 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
   
-    orderContainer.innerHTML = ''; // Clear the container before rendering
+    orderContainer.innerHTML = ''; 
     if (window.innerWidth < 1030) {
       orderPhoneContainer.innerHTML = '';
     }
-  
     for (let i = startIndex; i < endIndex && i < reversedData.length; i++) {
       const e = reversedData[i];
       if (window.innerWidth >= 1030) {
@@ -248,7 +236,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
   function goToPage(page) {
     if (page < 1 || page > totalPages) {
       
-      return; // Do nothing if the page is out of bounds
+      return;
     }
     const scrollPosition = window.innerWidth < 600 ? 0 : 0;
     window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
@@ -260,27 +248,22 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
   
   
 
-    paginationContainer.innerHTML = ''; // Clear the container before rendering buttons
+    paginationContainer.innerHTML = ''; 
 
-    // Previous button
     const previousButton = document.createElement('button');
     previousButton.textContent = 'Попередні';
-    previousButton.classList.add('previous-button'); // Add custom CSS class
+    previousButton.classList.add('previous-button'); 
     previousButton.addEventListener('click', () => goToPage(currentPage - 1));
     paginationContainer.appendChild(previousButton);
     
-    // Next button
+
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Наступні';
-    nextButton.classList.add('next-button'); // Add custom CSS class
+    nextButton.classList.add('next-button'); 
     nextButton.addEventListener('click', () => goToPage(currentPage + 1));
     paginationContainer.appendChild(nextButton);
   }
-
-  // Call renderItems with the initial page
   renderItems(currentPage);
-
-  // Create pagination buttons
   createPaginationButtons();
 });
 
@@ -288,18 +271,15 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
 
 
 function handleSelectChange(orderId) {
-  console.log(orderId);
+
   var selectElement = document.getElementById(`ddlViewBy-${orderId}`);
   var selectedValue = selectElement.value;
-  console.log(selectedValue);
 
-  // Prepare the data to be sent in the POST request
   var data = {
     id: orderId,
     status: selectedValue
   };
 
-  // Send the POST request to the backend
   fetch(`${serverMachineUrl}/api/order/update-status`, {
     method: "PUT",
     headers: {
@@ -310,18 +290,11 @@ function handleSelectChange(orderId) {
     body: JSON.stringify(data)
   })
   .then(response => {
-    // Handle the response from the backend
     if (response.ok) {
-      // Status successfully updated
-      console.log("Status updated!");
     } else {
-      // Error occurred while updating status
-      console.error("Failed to update status.");
     }
   })
   .catch(error => {
-    // Error occurred while making the request
-    console.error("Failed to send the request.", error);
   });
 }
 
@@ -342,10 +315,8 @@ function handleButtonClickDelete(id) {
     }
   })
   .then(res => res.json())
-  .then(data => console.log(data));
 }
  
-
 let mainSettingsContainer = document.querySelector('.main-settings-container');
 
 function handleButtonClick(id) {
@@ -353,7 +324,6 @@ function handleButtonClick(id) {
   setTimeout(() => {
     pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
   }, 300);
- 
  
   const sizeMap = new Map();
   sizeMap.set("ONE_AND_HALF", "Півтораспальний");
@@ -408,11 +378,11 @@ function handleButtonClick(id) {
     }
   })
   .then(res => res.json())
-  .then(data => {console.log(data)
+  .then(data => {
     const counts = {};
 data.textiles.forEach((e) => {
-  const key = `${e.name}-${e.size}`; // Create a unique key combining name and size
-  counts[key] = (counts[key] || 0) + 1; // Increment count for the unique key
+  const key = `${e.name}-${e.size}`; 
+  counts[key] = (counts[key] || 0) + 1; 
 });
 
 mainSettingsContainer.innerHTML = `
@@ -423,8 +393,8 @@ mainSettingsContainer.innerHTML = `
           <p class="woocommerce-notice">Подробиці замовлення #${data.id}</p>
           <div class="details-order-container">
             ${Object.entries(counts).map(([key, count]) => {
-              const [name, size] = key.split('-'); // Split the unique key back into name and size
-              const textile = data.textiles.find((e) => e.name === name && e.size === size); // Find the corresponding textile
+              const [name, size] = key.split('-'); 
+              const textile = data.textiles.find((e) => e.name === name && e.size === size); 
 
               return `
                 <div class="products-container">
@@ -478,10 +448,7 @@ mainSettingsContainer.innerHTML = `
       </div>
     </div>
   </section>`
-  
   });
-
-
 }
 
 

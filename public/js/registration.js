@@ -35,7 +35,6 @@ if(value_or_null === null){
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
 
-
 navToggle.addEventListener('click', function(){
   if(links.classList.contains('show-links')){
       links.classList.remove('show-links')
@@ -58,8 +57,6 @@ closeBtn.addEventListener("click", function () {
     modalOverlay.classList.remove("open-modal");
 });
 
-// ----------------------------------------------------------Buttons SHOW PASSWORD-----------------------------------------//
-
 function myFunction() {
   let x = document.getElementById("myInputPassword");
   if (x.type === "password") {
@@ -77,12 +74,9 @@ btns.forEach(function(btn){
   })
 })
 
-// ------------------------------------------------------------------------------------------------------------------------------------//
-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
-
 
 function validateEmail(email) {
   let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<div>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -98,9 +92,6 @@ function validatePhone(phone) {
   let re = /^[0-9\s]*$/;
   return re.test(String(phone)) || phone.startsWith("+");
 }
-
-
-
 
 form.onsubmit = function(e){
   e.preventDefault();
@@ -145,15 +136,12 @@ form.onsubmit = function(e){
   if(emptyInputs.length !== 0){
     return false;
   }
-
-  
   inputElement.addEventListener('focus', function() {
     var wrongPhoneContainer = document.querySelector('.show-wrong-phone-container');
     wrongPhoneContainer.classList.remove('show-wrong-phone-container')
     formPhone.classList.remove('error');
   });
   if (!validatePhone(phoneVal)) {
-    
     formPhone.classList.add('error');
     window.scrollTo({
       top: 0,
@@ -168,7 +156,6 @@ form.onsubmit = function(e){
   if ((formPhone.value.length === 13 || formPhone.value.length === 10)) {
     formPhone.classList.remove('error');
   } else {
-    
     formPhone.classList.add('error');
     window.scrollTo({
       top: 0,
@@ -204,10 +191,7 @@ form.onsubmit = function(e){
     formPasswordContainer.classList.remove('error');
     formRepeatPasswordContainer.classList.remove('error')
   }
-  
-  
-                                
-
+   
   function myFunction() {
     let x = document.getElementById("myInputPasswor");
     if (x.type === "password") {
@@ -225,7 +209,6 @@ form.onsubmit = function(e){
     })
   })
   
-
 fetch(`${serverMachineUrl}/api/auth/registration`, {
   method: 'POST',
   mode: "cors",
@@ -247,9 +230,8 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
       return false
     }
     else{
-    console.log('ready');
     let acceptRegestration = document.querySelector('.main-regestration-contrainer-first');
-  acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
+    acceptRegestration.innerHTML = `<div class ="main-regestration-container-after-registration">
                                     <div class ="header-after-registration">
                                       <div class ="success-regestration-header">
                                         <i class="far fa-check-circle"></i>
@@ -302,10 +284,8 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
                                   modalOverlay.classList.remove("open-modal");
   });
     }
-  
   })
 }
-
 
   function showPasswordRegistrationPage() {
     let x = document.getElementById("PasswordRegistrationPage");
@@ -316,7 +296,6 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
     }
   }
   
-  
   const btnShowPasswordRegistrationPage = document.querySelectorAll(".show-password-btn-regestration-page");
   btnShowPasswordRegistrationPage.forEach(function(btn){
     btn.addEventListener("click", function(e){
@@ -324,8 +303,6 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
       showPasswordRegistrationPage.classList.toggle("show-password");
     })
   })
-  
-  
   
   function showRepeatPasswordRegistrationPage() {
     let x = document.getElementById("RepeatPasswordRegistrationPage");
@@ -335,7 +312,6 @@ fetch(`${serverMachineUrl}/api/auth/registration`, {
       x.type = "password";
     }
   }
-  
   
   const btnRepeatShowPasswordRegistrationPage = document.querySelectorAll(".repeat-show-password-btn-regestration-page");
   btnRepeatShowPasswordRegistrationPage.forEach(function(btn){

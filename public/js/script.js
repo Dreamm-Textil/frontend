@@ -26,6 +26,7 @@ let mainAdminOnPage = false;
 let arrSize = [];
 let arrMaterial = [];
 let arrColor = [];
+
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.add("nav-button-index-click");
@@ -63,7 +64,6 @@ fetch(`${serverMachineUrl}/api/user`, {
 
 setTimeout(function() { handleButtonClick(); }, 500);
 
-
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
 }else{
@@ -72,8 +72,6 @@ if(value_or_null === null){
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
 }
-
-
 
 navToggle.addEventListener('click', function(){
     if(links.classList.contains('show-links')){
@@ -84,7 +82,6 @@ navToggle.addEventListener('click', function(){
         navToggle.classList.add('nav-toggle-show')
     }
 });
-
 
 modalBtn.addEventListener('click', function(){
 modalOverlay.classList.toggle("open-modal");
@@ -97,8 +94,6 @@ modalBtnPhoneSize.addEventListener('click', function(){
 closeBtn.addEventListener("click", function () {
     modalOverlay.classList.remove("open-modal");
 });
-
-
 
 function myFunction() {
   let x = document.getElementById("myInputPassword");
@@ -124,8 +119,6 @@ allNewProductBtn.addEventListener('click', function(e){
     behavior:"smooth"
   })
 })
-
-
 
 const itemsPerPage = 9; 
 let currentPage = 1; 
@@ -177,13 +170,14 @@ function handleButtonClick() {
         arrSize.push(button.dataset.value);
       }
     });
+
   
     materialButtons.forEach((button) => {
       if (button.classList.contains('selected')) {
         arrMaterial.push(button.dataset.value);
       }
     });
-  
+
     colorButtons.forEach((button) => {
       if (button.classList.contains('selected')) {
         arrColor.push(button.dataset.value);
@@ -218,7 +212,6 @@ function handleButtonClick() {
     });
 
     let headersCatalogCheck;
-
     if((authorizationCookieValue !== '') && ((authorizationCookieValue !== null))){
       headersCatalogCheck = {
         'Access-Control-Allow-Origin':'*',
@@ -232,8 +225,7 @@ function handleButtonClick() {
         'Content-Type': 'application/json',
       }
     }
-    
-   
+     
   fetch(`${serverMachineUrl}/api/textile/all-filter`, {
     method: 'POST',
     headers: headersCatalogCheck,
@@ -392,7 +384,6 @@ function handleButtonClick() {
         }
       });
       createPaginationButtons(json.length);
-      
       items.forEach((userState) => {
         const unshowBtn = document.getElementById(`unshow-btn-${userState.id}`);
         const showBtn = document.getElementById(`show-btn-${userState.id}`);
@@ -404,9 +395,7 @@ function handleButtonClick() {
           showBtn.style.display = 'none';
         }
       });
-      
       }
-      
     });
 }
 
@@ -490,7 +479,6 @@ function cliclDeleteBtn(id){
     }
   })
   .then(res => res.json())
-  .then(data => console.log(data));
 }
 
 document.querySelectorAll('.size-option, .material-option, .color-option').forEach((button) => {
@@ -506,11 +494,8 @@ document.querySelectorAll('.size-option, .material-option, .color-option').forEa
 
 function createPaginationButtons(itemCount) {
   const pageCount = Math.ceil(itemCount / itemsPerPage);
-
   pagination_element.innerHTML = ''; 
-
   const maxVisibleButtons = 3; 
-
   let startPage;
   let endPage;
 
@@ -549,7 +534,6 @@ function createPaginationButtons(itemCount) {
   }
 }
 function addButtonToPagination(pageNumber) {
-
   const button = document.createElement('button');
   button.textContent = pageNumber;
   button.addEventListener('click', () => {

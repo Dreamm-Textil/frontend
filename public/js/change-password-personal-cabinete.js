@@ -37,7 +37,6 @@ changePasswordBtn.classList.add("profile-btn-click");
 orderUserBtn.classList.remove("profile-btn-click") 
 
 fetch(`${serverMachineUrl}/api/user`, {
-  
   method: 'GET',
   headers: {
     'Access-Control-Allow-Origin':'*',
@@ -45,13 +44,10 @@ fetch(`${serverMachineUrl}/api/user`, {
     'Authorization':  authorizationCookieValue
   },
 })
-
 .then((response) => response.json())
-
 .then((json) =>{
   if(json.role === 'ADMIN'){
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
-
   }
   else{
     administrationPersonalCabinete.classList.remove('administration-personal-cabinete-show')
@@ -61,20 +57,16 @@ fetch(`${serverMachineUrl}/api/user`, {
     administrationAllOrders.classList.add('all-administration-order-personal-cabinete-show')
     administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
   }
-
 });
        
                                             
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
-  console.log('clear');
 }else{
-  console.log('user');
   personalCabineteAfterRegestration.classList.add("personal-cabinete-after-registration-show");
   modalBtn.classList.add("log-in-btn-unshow");
   personalCabineteAfterRegestrationPhoneSize.classList.add("personal-cabinete-after-registration-phone-size-show")
   modalBtnPhoneSize.classList.add("log-in-btn-unshow");
-  
 }
 
 
@@ -87,8 +79,6 @@ navToggle.addEventListener('click', function(){
       navToggle.classList.add('nav-toggle-show')
   }
 });
-
-
 
 form.onsubmit = function(e){
   e.preventDefault();
@@ -115,7 +105,6 @@ form.onsubmit = function(e){
   if(emptyInputs.length !== 0){
     return false;
   }
-
   if(passwordVal !== passwordRepeatVal){
     formPasswordContainer.classList.add('error');
     formRepeatPasswordContainer.classList.add('error')
@@ -125,11 +114,7 @@ form.onsubmit = function(e){
     formPasswordContainer.classList.remove('error');
     formRepeatPasswordContainer.classList.remove('error')
   }
-  
-  
-                                
-
-
+                   
 fetch(`${serverMachineUrl}/api/user/update-password`, {
   method: 'PUT',
   mode: "cors",
@@ -144,7 +129,6 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
   }),
 })
 .then(function(response){
-    console.log(response); 
     if(response.ok === true){
       let alertSecces = document.querySelector('.alert');
       alertSecces.classList.add("alert-show")
@@ -168,7 +152,6 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
     }
   }
   
-  
   const btnShowPasswordRegistrationPage = document.querySelectorAll(".show-password-btn-regestration-page");
   btnShowPasswordRegistrationPage.forEach(function(btn){
     btn.addEventListener("click", function(e){
@@ -176,9 +159,7 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
       showPasswordRegistrationPage.classList.toggle("show-password");
     })
   })
-  
-  
-  
+ 
   function showRepeatPasswordRegistrationPage() {
     let x = document.getElementById("RepeatPasswordRegistrationPage");
     if (x.type === "password") {
@@ -187,7 +168,6 @@ fetch(`${serverMachineUrl}/api/user/update-password`, {
       x.type = "password";
     }
   }
-  
   
   const btnRepeatShowPasswordRegistrationPage = document.querySelectorAll(".repeat-show-password-btn-regestration-page");
   btnRepeatShowPasswordRegistrationPage.forEach(function(btn){
