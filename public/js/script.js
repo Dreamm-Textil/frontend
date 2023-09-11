@@ -168,6 +168,7 @@ function handleButtonClick() {
     sizeButtons.forEach((button) => {
       if (button.classList.contains('selected')) {
         arrSize.push(button.dataset.value);
+       
       }
     });
 
@@ -414,7 +415,6 @@ function clickUnShowBtn(id) {
   })
   .then(res => res.json())
   .then(data => {
-    // Отримали відповідь з сервера, оновлюємо стан кнопок
     const unshowBtn = document.getElementById(`unshow-btn-${id}`);
     const showBtn = document.getElementById(`show-btn-${id}`);
 
@@ -481,10 +481,24 @@ function cliclDeleteBtn(id){
   .then(res => res.json())
 }
 
-document.querySelectorAll('.size-option, .material-option, .color-option').forEach((button) => {
+document.querySelectorAll('.material-option, .color-option').forEach((button) => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('selected'); 
+    handleButtonClick(); 
+    setTimeout(() => {
+      updateButtonStatus();
+      updateButtonStatusLike();
+    }, 800)
+  });
+});
+
+  document.querySelectorAll('.size-option').forEach((button) => {
     button.addEventListener('click', () => {
-      button.classList.toggle('selected'); 
-      handleButtonClick(); 
+      document.querySelectorAll('.size-option').forEach((btn)=>{
+        btn.classList.remove('selected');
+      })
+      button.classList.toggle('selected');
+      handleButtonClick();
       setTimeout(() => {
         updateButtonStatus();
         updateButtonStatusLike();
