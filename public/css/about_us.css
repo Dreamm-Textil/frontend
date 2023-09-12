@@ -235,6 +235,14 @@ left: 0;
     margin-bottom: 39px;
     height: 87px;
 }
+.about-ranfors-contrainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0px;
+    gap:30px;
+}
 }
 
 @media only screen and (max-width: 767px){
