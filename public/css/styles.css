@@ -652,7 +652,7 @@ background-color: #EA4C89;
 .filter-container{
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   max-width: 190px;
   width: 100%;
 }
@@ -1369,7 +1369,7 @@ header{
 .filter-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
   max-width: 500px;
   width: 100%;
 }

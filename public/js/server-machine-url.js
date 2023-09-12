@@ -7,8 +7,6 @@ const authorizationCookieValue = getCookieValue('Authorization');
 function closeNavOnClickOutside(event) {
   if (links.classList.contains("show-links")) {
     var target = event.target;
-
-    // Check if the click occurred outside the navToggle and nav links
     if (!navToggle.contains(target) && !links.contains(target)) {
       links.classList.remove("show-links");
       navToggle.classList.remove("nav-toggle-show");
