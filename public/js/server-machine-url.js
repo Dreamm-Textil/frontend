@@ -1,4 +1,7 @@
 let serverMachineUrl = 'https://dreamtextile-336453f67890.herokuapp.com';
+if (!document.cookie.includes('Authorization')) {
+  document.cookie = "Authorization=";
+ }
 const authorizationCookieValue = getCookieValue('Authorization');
 
 function closeNavOnClickOutside(event) {
