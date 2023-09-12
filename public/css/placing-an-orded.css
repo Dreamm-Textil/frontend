@@ -309,6 +309,10 @@ font-size: 17px;
     background-color: black;
     color: white;
   }
+  .size-pills-title-container{
+    display: flex;
+    gap: 5px;
+  }
   .select-options > .option:hover{
     background-color: #EA4C89;
     color: white;
