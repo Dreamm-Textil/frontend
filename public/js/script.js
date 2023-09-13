@@ -256,7 +256,7 @@ function handleButtonClick() {
     ? '<h2 class="promotion-card" style="color: black;">Знижка -300 грн</h2>'
     : user.material === 'RANFORS'
     ? '<h2 class="promotion-card" style="color: black;">Знижка -40%</h2>'
-    : '<h2 class="promotion-card" style="color: black;">Знижка -40%</h2>';
+    : user.material === 'TURKISH_RANFORS' ? '<h2 class="promotion-card" style="color: black;">Знижка -550 грн</h2>':'<h2 class="promotion-card" style="color: black;">Знижка -40%</h2>'
 
         if (adminOnPage) {
           paginationContainer.classList.remove('pagination-container-unshow');

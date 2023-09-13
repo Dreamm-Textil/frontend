@@ -146,6 +146,7 @@ table {
  
 .img-cart > img {
     width: 110px;
+    height: 110px;
 }
 .products-container > span {
     font-size: 14px;

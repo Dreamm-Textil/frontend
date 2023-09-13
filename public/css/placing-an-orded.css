@@ -465,6 +465,7 @@ font-size: 17px;
 }
 .img-cart > img{
   width: 110px;
+  height: 110px;
 }
 .cart__config{
   width: 100%;

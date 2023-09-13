@@ -172,6 +172,7 @@ font-size: 17px;
 }
 .img-cart > img{
     width: 115px;
+    height: 115px;
 }
 .cart__config{
     width: 100%;
