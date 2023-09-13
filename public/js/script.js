@@ -483,7 +483,8 @@ function cliclDeleteBtn(id){
 
 document.querySelectorAll('.material-option, .color-option').forEach((button) => {
   button.addEventListener('click', () => {
-    button.classList.toggle('selected'); 
+    button.classList.toggle('selected');
+    currentPage = 1; 
     handleButtonClick(); 
     setTimeout(() => {
       updateButtonStatus();
