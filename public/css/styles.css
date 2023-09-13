@@ -815,7 +815,7 @@ background-color: #EA4C89;
   max-width: 430px;
   max-height: 175px;
   height: 132px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .password-container{
   display: flex;

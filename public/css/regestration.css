@@ -395,8 +395,6 @@
 }
 .show-wrong-phone-container, .show-wrong-phone-or-gmail-container, .show-wrong-gmail-container{
   display: flex;
-  flex-direction: column;
-  gap: 0px;
 }
 .hide-wrong-phone-container,.hide-wrong-phone-or-gmail-container{
   display: none;
