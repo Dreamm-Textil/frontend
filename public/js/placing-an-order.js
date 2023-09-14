@@ -919,15 +919,15 @@ fetch(`${serverMachineUrl}/api/order`, {
                                                       <tr class="table-tr">
                                                           <th>Банк</th>
                                                           <th>Номер банківського рахунку</th>
-                                                          <th>SORT код</th>
+                                                          <th class="sort-cod">SORT код</th>
                                                           <th class="th-last-title">IBAN</th>
                                                         </tr>
                                                   </thead>
                                                   <tbody>
                                                     <tr class="table-td">
                                                       <td>Монобанк</td>
-                                                      <td>4035200042138963</td>
-                                                      <td>ІПН/ЄДРПОУ: 3689504109</td>
+                                                      <td class="bankN">4035200042138963</td>
+                                                      <td class="ipn-edrpou">ІПН/ЄДРПОУ: 3689504109</td>
                                                       <td>UA143220010000026000330041079</td>
                                                     </tr>
                                                   </tbody>

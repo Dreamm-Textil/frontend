@@ -474,6 +474,9 @@ font-size: 17px;
   border-collapse: separate;
   border-spacing: 0 1.2rem;
 }
+.bankN{
+  color: white;
+}
 .size-cart, .color-cart{
   display: flex;
 }
@@ -829,6 +832,18 @@ cart__counter .increase {
   color: white;
   box-sizing: border-box;
 }
+.bankN{
+  height: 63px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+}
+.th-last-title{
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+}
 .order {
   display: flex;
   /* flex-direction: column; */
@@ -870,7 +885,7 @@ textarea {
   }
   }
 
-@media only screen and (max-width: 420px){
+@media only screen and (max-width: 425px){
  
 .select-wrapper {
   top: 12%;
@@ -878,6 +893,18 @@ textarea {
 .select-wrapper-house {
   top: 31%;
 
+}
+.sort-cod,.ipn-edrpou{
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+}
+.th-last-title{
+  height: 62px;
+  display: flex;
+  justify-content: center;
+  align-items: left;
 }
 .show{
   font-size: 14px
@@ -888,6 +915,14 @@ textarea {
 .avans-paymant{
   height: 55px;
 }
+}
+@media only screen and (max-width: 395px){
+  .bankN{
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+  }
 }
 
 @media only screen and (max-width: 360px){
@@ -933,6 +968,8 @@ textarea {
 }
 
 }
+
+
 
 @media only screen and (max-width: 320px){
 
