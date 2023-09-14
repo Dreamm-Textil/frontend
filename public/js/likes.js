@@ -89,7 +89,7 @@ let arrayBagageLike = document.cookie.includes("likes")
     arrayBagageLike.pop();
     if (arrayBagageLike.length <= 0) {
         list_element.classList.add("cart__products-product-unshow");
-        list_element.innerHTML = `<h2 class="title-cart-clear">Ви не вподобали жодного товару!</h2>
+        list_element.innerHTML = `<h2 class="title-cart-clear">Ви не вподобали жодного товару</h2>
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       }
     let result = arrayBagageLike.join(",");

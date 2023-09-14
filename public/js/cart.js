@@ -141,7 +141,7 @@ arr.forEach((e) => {
       const storedQuantity = localStorage.getItem("numberLS");
       if (storedQuantity === "") {
         cartProductsPage.classList.add("cart__products-product-unshow");
-        cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
+        cartProductsPage.innerHTML = `<h2 class="title-cart-clear">Ваш кошик поки що порожній</h2>
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       }
       
@@ -150,7 +150,7 @@ arr.forEach((e) => {
 
       if (storedQuantity === "") {
         cartProductsPage.classList.add("cart__products-product-unshow");
-        cartProductsPage.innerHTML = `<h2 class="title-cart-clear">В кошику не має товарів!</h2>
+        cartProductsPage.innerHTML = `<h2 class="title-cart-clear">Ваш кошик поки що порожній</h2>
         <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
       } else {
         cartProductsPage.classList.add("cart__products-add-border");

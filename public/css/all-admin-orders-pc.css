@@ -112,6 +112,7 @@ table{
 }
 td > img{
     width: 85px;
+    height: 85px;
 }
 table {
     border-collapse: collapse;
@@ -610,6 +611,7 @@ table {
     }
     td > img {
         width: 73px;
+        height: 73px;
     }
     .table-phone-size-all-order{
         display: flex;

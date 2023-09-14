@@ -162,7 +162,7 @@ fetch(`${serverMachineUrl}/api/order/my-orders`, {
 .then((json) =>{
   let mainSettingsContainer = document.querySelector('.main-settings-container');
   if(json.length === 0){
-    mainSettingsContainer.innerHTML = `<h2 class="title-cart-clear">Ви не замовили жодного товару!</h2>
+    mainSettingsContainer.innerHTML = `<h2 class="title-cart-clear">Історія замовлень відсутня</h2>
     <a type="button" href="index.html" class="back-from-cart-to-catalog">Повернутися до покупок</a>`;
   }
   const reversedData = json.reverse();
