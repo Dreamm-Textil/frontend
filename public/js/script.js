@@ -558,7 +558,7 @@ function addButtonToPagination(pageNumber) {
       updateButtonStatus();
       updateButtonStatusLike();
     }, 800)
-    const scrollPosition = window.innerWidth < 600 ? 1500 : 850;
+    const scrollPosition = window.innerWidth < 600 ? 1300 : 850;
     window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
   });
   if (pageNumber === currentPage) {
