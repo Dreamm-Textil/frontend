@@ -150,7 +150,15 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
 })
 .then((response) => response.json())
 .then((json) => {
-  const reversedData = json.reverse();
+  
+  let currentPage = 1;
+  const itemsPerPage = 5;
+  const sortedItems = json.sort((a, b) => a.id - b.id);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const reversedData = sortedItems.reverse();
+  const totalPages = Math.ceil(reversedData.length / itemsPerPage);
+
   if(reversedData.length < 6){
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
     pagginationAllOrders.classList.add('pagination-container-all-orders-unshow')
@@ -159,10 +167,6 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
     let pagginationAllOrders = document.querySelector('.pagination-container-all-orders');
     pagginationAllOrders.classList.remove('pagination-container-all-orders-unshow')
   }
-  const itemsPerPage = 5;
-  const totalPages = Math.ceil(reversedData.length / itemsPerPage);
-  let currentPage = 1;
-
   function renderItems(page) {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
