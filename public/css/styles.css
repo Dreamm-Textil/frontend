@@ -391,9 +391,9 @@ nav .nav-header h2{
 @media screen and (min-width: 880px) {
   .size-option:hover,
   .material-option:hover {
-    background-color: #EA4C89;
+    background-color: #f47fabf7;
     color: white;
-    border: 1px solid #EA4C89;
+    border: 1px solid #f47fabf7;
   }
   
  
