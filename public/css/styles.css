@@ -598,8 +598,8 @@ nav .nav-header h2{
   border-radius: 2px;
 }
 .pagination-container > button:hover{
-    border: 1px solid #EA4C89;
-    background-color: #EA4C89;
+    border: 1px solid #f47fabf7;
+    background-color: #f47fabf7;
     color: #fff;
     transition: all 0.3s linear;
 }
