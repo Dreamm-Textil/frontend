@@ -40,6 +40,9 @@ let administrationAllOrders = document.querySelector('.all-administration-order-
 deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.remove("nav-button-index-click");
+if(authorizationCookieValue === ''){
+  location.href="index.html";
+}
 
 if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {

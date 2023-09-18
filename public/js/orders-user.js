@@ -65,6 +65,9 @@ fetch(`${serverMachineUrl}/api/user`, {
     administrationPersonalCabinete.classList.add('administration-personal-cabinete-show')
   }
 });
+if(authorizationCookieValue === ''){
+  location.href="index.html";
+}
 
 if(authorizationCookieValue !== ''){
   fetch(`${serverMachineUrl}/api/user`, {

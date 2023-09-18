@@ -66,7 +66,10 @@ fetch(`${serverMachineUrl}/api/user`, {
   }
   formPhone.value = json.phoneNumber; formEmail.value = json.email; formName.value = json.name; formSurname.value = json.secondName
 });
-                                           
+ 
+if(authorizationCookieValue === ''){
+  location.href="index.html";
+}
 
 let value_or_null = (document.cookie.match(/^(?:.*;)?\s*Authorization\s*=\s*([^;]+)(?:.*)?$/)||[,null])[1];
 if(value_or_null === null){
