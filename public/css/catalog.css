@@ -491,17 +491,7 @@ transition: all 0.3s;
   font-size: 17px;
   transition: all 0.3s;
 }
-/* .size-btn-family, .size-btn-children {
-  background-color: #1E1E1E;
-  color: white;
-  border-radius: 10px;
-  width: 100%;
-  height: 40px;
-  cursor: pointer;
-  border: none;
-  font-size: 17px;
-  transition: all 0.3s;
-} */
+
 .change-color-container {
   display: flex;
   flex-direction: column;
