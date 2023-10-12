@@ -104,7 +104,7 @@ let arrayBagageLike = document.cookie.includes("likes")
       materialMap.set("SATIN", "Сатин")
       materialMap.set("STRAP_SATIN", "Страйп сатин")
       materialMap.set("POPLIN", "Поплин")
-      materialMap.set("BIAZ", "Бязь")
+      materialMap.set("BIAZ", "Мікросатин")
       materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
     
         fetch(`${serverMachineUrl}/api/textile/all-by-ids?ids=${result}`, {

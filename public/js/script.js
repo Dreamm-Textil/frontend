@@ -31,6 +31,7 @@ deliveryBtn.classList.remove("nav-button-about-us-click");
 aboutUsBtn.classList.remove("nav-button-about-us-click");
 indexBtn.classList.add("nav-button-index-click");
 
+
 if(hasAuthorizationCookie && authorizationCookieValue !== ''){
   
 fetch(`${serverMachineUrl}/api/user`, {
@@ -136,7 +137,7 @@ materialMap.set("RANFORS", "Ранфорс");
 materialMap.set("SATIN", "Сатин");
 materialMap.set("STRAP_SATIN", "Страйп сатин");
 materialMap.set("POPLIN", "Поплин");
-materialMap.set("BIAZ", "Бязь");
+materialMap.set("BIAZ", "Мікросатин");
 materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
 const colorMap = new Map();

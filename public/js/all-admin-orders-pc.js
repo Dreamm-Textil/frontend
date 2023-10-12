@@ -153,7 +153,7 @@ fetch(`${serverMachineUrl}/api/order/all-orders`, {
 })
 .then((response) => response.json())
 .then((json) => {
-  
+  console.log(json);
   let currentPage = 1;
   const itemsPerPage = 5;
   const sortedItems = json.sort((a, b) => a.id - b.id);
@@ -343,7 +343,7 @@ function handleButtonClick(id) {
   materialMap.set("SATIN", "Сатин");
   materialMap.set("STRAP_SATIN", "Страйп сатин");
   materialMap.set("POPLIN", "Поплин");
-  materialMap.set("BIAZ", "Бязь");
+  materialMap.set("BIAZ", "Мікросатин");
   materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
   const colorMap = new Map();

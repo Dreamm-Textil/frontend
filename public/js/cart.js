@@ -108,7 +108,7 @@ arr.forEach((e) => {
   materialMap.set("SATIN", "Сатин");
   materialMap.set("STRAP_SATIN", "Страйп сатин");
   materialMap.set("POPLIN", "Поплин");
-  materialMap.set("BIAZ", "Бязь");
+  materialMap.set("BIAZ", "Мікросатин");
   materialMap.set("TURKISH_RANFORS", "Турецький Ранфорс");
 
   const colorMap = new Map();
